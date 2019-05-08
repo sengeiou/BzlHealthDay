@@ -358,19 +358,19 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
         BigDecimal bdD = new BigDecimal((double) (calorieWithSteps / 1000.00));
         BigDecimal setScaleD = bdD.setScale(1, RoundingMode.DOWN);
 
-        disValue = setScaleD.toString();
-        calValue = setScaleK.toString();
+        disValue = setScaleK.toString();
+        calValue = setScaleD.toString();
         Log.e("======", distanceWithStep + "   " + calorieWithSteps
                 + "\n" + setScaleD.toString() + "  " + setScaleK.toString());
 
 //
         boolean isMetric = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSystem, true);
-//        if (!isMetric) {
-//
-//            BigDecimal bdDS = new BigDecimal((double) (Double.valueOf(disValue) * Constant.METRIC_MILE));
-//            BigDecimal setScaleDS = bdDS.setScale(1, RoundingMode.DOWN);
-//            disValue = setScaleDS.toString();
-//        }
+        if (!isMetric) {
+
+            BigDecimal bdDS = new BigDecimal((double) (Double.valueOf(disValue) * Constant.METRIC_MILE));
+            BigDecimal setScaleDS = bdDS.setScale(1, RoundingMode.DOWN);
+            disValue = setScaleDS.toString();
+        }
 //        disValue = Math.round(disValue * 100) / 100;
         Log.d("bobo", "calValue: " + calValue + ",disValue: " + disValue);
         String disStr = isMetric ? getString(R.string.mileage_setkm) : getString(R.string.mileage_setmi);

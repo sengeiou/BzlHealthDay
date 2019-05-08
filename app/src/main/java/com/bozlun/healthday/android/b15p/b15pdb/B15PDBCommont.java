@@ -74,8 +74,7 @@ public class B15PDBCommont {
 //        List<B15PSleepDB> lists = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac),
 //                B15PSleepDBDao.Properties.SleepData.eq(timeDate)).list();
 //        Log.e(TAG, "=========获取的睡眠  " + (lists == null ? "获取的睡眠为空" : lists.toString()));
-
-        List<B15PSleepDB> list = b15PSleepDBDao.loadAll();
+        List<B15PSleepDB> list = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac)).list();
 
 //        List<B15PSleepDB> list = LitePal.where("devicesMac = ? and sleepData = ?", mac, timeDate).find(B15PSleepDB.class);
 //        if (list == null) list = LitePal.findAll(B15PSleepDB.class);

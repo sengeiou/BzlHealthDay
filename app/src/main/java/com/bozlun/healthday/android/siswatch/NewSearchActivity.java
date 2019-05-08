@@ -95,9 +95,9 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
     public static final int H8_CONNECT_FAILED_CDOEE = 1114; //H8手表连接失败
     private static final int H8_BLE_BANDSTATE_CODE = 12;    //H8手表蓝牙配对状态
     private static final int H8_PAIR_REQUEST_CODE = 1115;   //H8手表配对返回
-    private static final String B15P_BLENAME = "B15P";  //B15P
-    private static final String B18I_BLENAME = "B18I";  //B18I
-    private static final String H9_BLENAME = "H9"; //H9手表名字标识  保存时后面+X
+//    private static final String B15P_BLENAME = "B15P";  //B15P
+//    private static final String B18I_BLENAME = "B18I";  //B18I
+//    private static final String H9_BLENAME = "H9"; //H9手表名字标识  保存时后面+X
     private String H9CONNECT_STATE_ACTION = "com.example.bozhilun.android.h9.connstate";
 
     //RecycleView
@@ -409,8 +409,8 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
         public void onLeScan(BluetoothDevice bluetoothDevice, int rssi, byte[] scanRecord) {
             String bleName = bluetoothDevice.getName();
             String bleMac = bluetoothDevice.getAddress(); //bozlun
-            if (!WatchUtils.isEmpty(bleName) && bleName.length() >= 3) {
-                if (WatchUtils.verBleNameForSearch(bleName) || bleName.equals(B15P_BLENAME)) {
+            if (!WatchUtils.isEmpty(bleName) && bleName.length() >= 2) {
+                if (WatchUtils.verBleNameForSearch(bleName)){
                     if (!repeatList.contains(bleMac)) {
                         if (customDeviceList.size() <= 30) {
                             repeatList.add(bleMac);
@@ -427,7 +427,6 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                             scanBlueDevice(false);
                         }
                     }
-
                 }
             }
         }
@@ -525,7 +524,8 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
 
 
             //W30手表
-            if (bleName.substring(0, 3).equals("W30")) {
+            if (bleName.length()>=3
+                    &&(bleName.substring(0, 3).equals("W30") || bleName.substring(0, 3).equals("W31"))) {
                 showLoadingDialog("connection...");
                 String W30address = customBlueDevice.getBluetoothDevice().getAddress();
                 if (!WatchUtils.isEmpty(W30address)) {
@@ -534,15 +534,19 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                 return;
             }
             //B30，B36，Ringmiihx手表
-            if (bleName.equals(WatchUtils.B30_NAME) || bleName.equals(WatchUtils.B36_NAME)
-                    || bleName.equals(WatchUtils.RINGMII_NAME) || bleName.equals(B31_NAME)
-                    || bleName.equals(WatchUtils.B31S_NAME) || bleName.equals(WatchUtils.S500_NAME)) {
+            if ((bleName.length()>=3&&bleName.equals(WatchUtils.B30_NAME))
+                    || (bleName.length()>=3&&bleName.equals(WatchUtils.B36_NAME))
+                    || (bleName.length()>=7&&bleName.equals("Ringmii"))
+                    || (bleName.length()>=3&&bleName.equals(WatchUtils.B31_NAME))
+                    || (bleName.length()>=4&&bleName.equals(WatchUtils.B31S_NAME))
+                    || (bleName.length()>=4&&bleName.equals(WatchUtils.S500_NAME))) {
                 connectB30(customBlueDevice.getBluetoothDevice().getAddress().trim(), bleName);
                 return;
             }
 
             //H9
-            if (bleName.substring(0, 2).equals(H9_BLENAME) || bleName.substring(0, 4).equals("W06X")) {
+            if (bleName.substring(0, 2).equals(WatchUtils.H9_BLENAME)
+                    ||( bleName.length() >= 4 && bleName.substring(0, 4).equals("W06X"))) {
                 showLoadingDialog("connection...");
                 String h9Address = customBlueDevice.getBluetoothDevice().getAddress().trim();
                 if (!WatchUtils.isEmpty(h9Address)) {
@@ -554,9 +558,12 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
 
 
 
+
             //B15P
-            if (bleName.length() >= 4 && bleName.substring(0, 4).equals(B15P_BLENAME)) {
+            if (bleName.substring(0, 2).equals(WatchUtils.W3_BLENAME)
+                    ||(bleName.length() >= 4 && bleName.substring(0, 4).equals(WatchUtils.B15P_BLENAME))) {
                 showLoadingDialog("connection...");
+
 
                 Dev.Try_Connect(customBlueDevice.getBluetoothDevice(), new Dev.ConnectReslutCB() {
                     @Override
@@ -568,7 +575,7 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                         //如果已经有设备 先断开再连接
                         if (CntExists) {
                             //ScanLeDevice(false);
-//                            if (bluetoothAdapter != null)getApplicationContext
+//                            if (bluetoothAdapter != null)
 //                                bluetoothAdapter.stopLeScan(leScanCallback);
                             Dev.RemoteDev_CloseManual();
                             Dev.Cache_Connect(customBlueDevice.getBluetoothDevice());
@@ -594,7 +601,8 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                     }
                 });
             }
-        }catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

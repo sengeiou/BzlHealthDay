@@ -41,34 +41,45 @@ public class B30HeartDetailAdapter extends RecyclerView.Adapter<B30HeartDetailAd
 
     @Override
     public void onBindViewHolder(@NonNull B30ViewHolder holder, int position) {
-        if (position < halfHourSportData.size()) {
-            HalfHourRateData halfHourRateData = list.get(position);
-            String colck = halfHourRateData.getTime().getColck();
-            int rateValue = halfHourRateData.getRateValue();
-            holder.dateTv.setText(colck);
-            holder.valueTv.setText(rateValue==0?"--":rateValue+"");
-            HalfHourSportData halfHourSportDatas = halfHourSportData.get(position);
-            int sportValue = halfHourSportDatas.getSportValue();
 
-            if (sportValue <= 220) {//静止
-                holder.img.setImageResource(R.drawable.history_heart_rest);
-            } else if (sportValue > 220 && sportValue <= 700) {//少量
-                holder.img.setImageResource(R.drawable.history_heart_move);
-            } else if (sportValue > 700 && sportValue <= 1400) {//中量
-                holder.img.setImageResource(R.drawable.history_heart_moderrate);
-            } else if (sportValue > 1400 && sportValue <= 3200) {//大量
-                holder.img.setImageResource(R.drawable.history_heart_mass);
-            } else if (sportValue > 3200) {//剧烈
-                holder.img.setImageResource(R.drawable.history_heart_strenuous);
-            }
-        }else{
+        if (halfHourSportData ==null){
             HalfHourRateData halfHourRateData = list.get(position);
             String colck = halfHourRateData.getTime().getColck();
             int rateValue = halfHourRateData.getRateValue();
             holder.dateTv.setText(colck);
             holder.valueTv.setText(rateValue==0?"--":rateValue+"");
-            holder.img.setImageResource(R.drawable.history_heart_move);
+            holder.img.setVisibility(View.INVISIBLE);
+        }else {
+            if (position < halfHourSportData.size()) {
+                HalfHourRateData halfHourRateData = list.get(position);
+                String colck = halfHourRateData.getTime().getColck();
+                int rateValue = halfHourRateData.getRateValue();
+                holder.dateTv.setText(colck);
+                holder.valueTv.setText(rateValue==0?"--":rateValue+"");
+                HalfHourSportData halfHourSportDatas = halfHourSportData.get(position);
+                int sportValue = halfHourSportDatas.getSportValue();
+
+                if (sportValue <= 220) {//静止
+                    holder.img.setImageResource(R.drawable.history_heart_rest);
+                } else if (sportValue > 220 && sportValue <= 700) {//少量
+                    holder.img.setImageResource(R.drawable.history_heart_move);
+                } else if (sportValue > 700 && sportValue <= 1400) {//中量
+                    holder.img.setImageResource(R.drawable.history_heart_moderrate);
+                } else if (sportValue > 1400 && sportValue <= 3200) {//大量
+                    holder.img.setImageResource(R.drawable.history_heart_mass);
+                } else if (sportValue > 3200) {//剧烈
+                    holder.img.setImageResource(R.drawable.history_heart_strenuous);
+                }
+            }else{
+                HalfHourRateData halfHourRateData = list.get(position);
+                String colck = halfHourRateData.getTime().getColck();
+                int rateValue = halfHourRateData.getRateValue();
+                holder.dateTv.setText(colck);
+                holder.valueTv.setText(rateValue==0?"--":rateValue+"");
+                holder.img.setImageResource(R.drawable.history_heart_move);
+            }
         }
+
 
     }
 

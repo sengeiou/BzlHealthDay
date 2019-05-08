@@ -310,18 +310,20 @@ public class B15PShockDetailedActivity extends WatchBaseActivity {
         minuteMapList = new HashMap<>();
         //分钟数据源
         ArrayList<String> minuteList = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i <= 5; i++) {
             String minute = "0" + i;
+            if (i == 0) {
+                minute = "00";
+            } else {
+                minute = "" + i * 10;
+            }
             minuteList.add(minute);
         }
-        for (int i = 0; i <= 5; i++) {
-            if ((i * 10) < 10) {
-                hourList.add("0" + i);
-                minuteMapList.put("0" + i, minuteList);
-            } else {
-                hourList.add("" + i);
-                minuteMapList.put("" + i, minuteList);
-            }
+
+        //小时数据
+        for (int i = 0; i < 4; i++) {
+            hourList.add("0" + i);
+            minuteMapList.put("0" + i, minuteList);
         }
     }
 }

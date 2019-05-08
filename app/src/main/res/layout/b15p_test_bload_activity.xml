@@ -24,7 +24,7 @@
             android:visibility="visible" />
 
 
-        <com.example.bozhilun.android.b30.b30view.CustomCircleProgressBar
+        <com.bozlun.healthday.android.b30.b30view.CustomCircleProgressBar
             android:id="@+id/b30MeaureBloadProgressView"
             android:layout_width="@dimen/size_200"
             android:layout_height="@dimen/size_200"

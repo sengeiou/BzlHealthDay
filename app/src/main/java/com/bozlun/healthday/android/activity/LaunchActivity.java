@@ -11,6 +11,7 @@ import android.view.Window;
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
+import com.bozlun.healthday.android.b15p.B15pHomeActivity;
 import com.bozlun.healthday.android.b30.B30HomeActivity;
 import com.bozlun.healthday.android.b30.bean.B30HalfHourDB;
 import com.bozlun.healthday.android.b31.B31HomeActivity;
@@ -150,6 +151,8 @@ public class LaunchActivity extends WatchBaseActivity {
                     startActivity(new Intent(LaunchActivity.this, B30HomeActivity.class));
                 } else if("B31".equals(btooth) || "B31S".equals(btooth) || "500S".equals(btooth)){
                     startActivity(new Intent(LaunchActivity.this,B31HomeActivity.class));
+                }else if ("B15P".equals(btooth)||"W3".equals(btooth)) {
+                    startActivity(new Intent(LaunchActivity.this, B15pHomeActivity.class));
                 }
 
                 else {

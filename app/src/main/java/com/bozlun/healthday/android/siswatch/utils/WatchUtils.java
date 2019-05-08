@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
@@ -38,7 +39,9 @@ import com.veepoo.protocol.model.enums.ESex;
 import com.veepoo.protocol.model.settings.AllSetSetting;
 import com.veepoo.protocol.model.settings.CustomSetting;
 import com.veepoo.protocol.model.settings.CustomSettingData;
+
 import org.apache.commons.lang.StringUtils;
+
 import java.io.File;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -52,6 +55,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import static android.content.Context.TELEPHONY_SERVICE;
 import static com.tencent.mm.sdk.platformtools.MMApplicationContext.getPackageName;
 
@@ -92,29 +96,52 @@ public class WatchUtils {
      * @param input
      * @return
      */
+//    private static final String B18I_BLENAME = "B18I";  //B18I
+//    private static final String H9_BLENAME = "H9"; //H9手表名字标识  保存时后面+X
+//    private static final String B15PNAME = "B15P";  //B15P
+//    public static final String B30_NAME = "B30";  //B30
+//    public static final String W30_NAME = "W30";     //W30
+//    public static final String B36_NAME = "B36";     //B36
+//    public static final String RINGMII_NAME = "Ringmii";   //盖德蓝牙名称
+//    public static final String H8_NAME = "H8";
+//    public static final String B31_NAME = "B31";        //B31手环
+//    public static final String B31S_NAME = "B31S";        //B31S手环
+//    public static final String S500_NAME = "500S";        //500S手环
+
     private static final String B18I_BLENAME = "B18I";  //B18I
-    private static final String H9_BLENAME = "H9"; //H9手表名字标识  保存时后面+X
-    private static final String B15PNAME = "B15P";  //B15P
+    public static final String H9_BLENAME = "H9"; //H9手表名字标识  保存时后面+X
+    public static final String W06_BLENAME = "W06X"; //H9手表名字标识  保存时后面+X
+    public static final String B15P_BLENAME = "B15P";  //B15P
+    public static final String W3_BLENAME = "W3";  //W3
     public static final String B30_NAME = "B30";  //B30
     public static final String W30_NAME = "W30";     //W30
+    public static final String W31_NAME = "W31";        //W31
     public static final String B36_NAME = "B36";     //B36
     public static final String RINGMII_NAME = "Ringmii";   //盖德蓝牙名称
     public static final String H8_NAME = "H8";
     public static final String B31_NAME = "B31";        //B31手环
     public static final String B31S_NAME = "B31S";        //B31S手环
-    public static final String S500_NAME = "500S";        //500S手环
+    public static final String S500_NAME = "500S";        //B31S手环
 
     /**
      * 搜索 ，根据蓝牙名字过滤
+     *
      * @param bleName
      * @return
      */
     public static boolean verBleNameForSearch(String bleName) {
-        if (bleName.substring(0, 2).equals(H8_NAME) ||
-                bleName.substring(0, 2).equals(H9_BLENAME) || bleName.substring(0, 3).equals(W30_NAME) ||
-                bleName.equals(RINGMII_NAME) || bleName.equals(B30_NAME) || bleName.equals(B36_NAME) ||
-                bleName.equals(B31_NAME) || bleName.length() > 4 && bleName.substring(0, 4).equals("W06X")|| (bleName.length() >= 4 && bleName.substring(0, 4).equals(B31S_NAME))
-                || (bleName.length() >= 4 && bleName.substring(0, 4).equals(S500_NAME))) {
+//        if ((bleName.length() >= 2 && bleName.substring(0, 2).equals(H8_NAME))
+//                ||(bleName.length() >= 2 && bleName.substring(0, 2).equals(H9_BLENAME))
+//                ||(bleName.length() >= 3 && bleName.substring(0, 3).equals(W30_NAME))
+//                ||(bleName.length() >= 7 && bleName.substring(0, 7).equals(RINGMII_NAME))
+//                ||(bleName.length() >= 3 && bleName.substring(0, 3).equals(B30_NAME))
+//                ||(bleName.length() >= 3 && bleName.substring(0, 3).equals(B36_NAME))
+//                ||(bleName.length() >= 3 && bleName.substring(0, 3).equals(B31_NAME))
+//                || (bleName.length() == 2 && bleName.equals(W3_BLENAME))
+//                || bleName.length() >= 4 && bleName.substring(0, 4).equals(W06_BLENAME)
+//                || (bleName.length() >= 4 && bleName.substring(0, 4).equals(B31S_NAME))
+//                || (bleName.length() >= 4 && bleName.substring(0, 4).equals(S500_NAME))) {
+        if (bleName.length() == 2 && bleName.equals(W3_BLENAME)) {
             return true;
         } else {
             return false;
@@ -124,11 +151,12 @@ public class WatchUtils {
 
     /**
      * 判断是否是维亿魄系列的，B30，B31,B36
+     *
      * @param bName
      * @return
      */
-    public static boolean isVPBleDevice(String bName){
-        String[] bleArray = new String[]{B30_NAME,B31_NAME,B36_NAME,B31S_NAME,S500_NAME};
+    public static boolean isVPBleDevice(String bName) {
+        String[] bleArray = new String[]{B30_NAME, B31_NAME, B36_NAME, B31S_NAME, S500_NAME};
         Set<String> set = new HashSet<>(Arrays.asList(bleArray));
         return set.contains(bName);
     }
@@ -150,13 +178,14 @@ public class WatchUtils {
 
     /**
      * 利用正则表达式判断字符串是否是数字
+     *
      * @param str
      * @return
      */
-    public static boolean isNumeric(String str){
+    public static boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(str);
-        if( !isNum.matches() ){
+        if (!isNum.matches()) {
             return false;
         }
         return true;
@@ -728,7 +757,6 @@ public class WatchUtils {
     }
 
 
-
     // 根据年月日计算年龄,birthTimeString:"1994-11-14"
     public static int getAgeFromBirthTime2(String birthTimeString) {
         // 先截取到字符串中的年、月、日
@@ -1244,10 +1272,11 @@ public class WatchUtils {
 
     /**
      * 获取保存的蓝牙mac地址
+     *
      * @param context
      * @return
      */
-    public static String getSherpBleMac(Context context){
+    public static String getSherpBleMac(Context context) {
         //蓝牙名字
         String bleName = (String) SharedPreferencesUtils.readObject(context, Commont.BLEMAC);
         return !isEmpty(bleName) ? bleName : null;
@@ -1256,15 +1285,15 @@ public class WatchUtils {
 
     /**
      * 获取保存的蓝牙名字
+     *
      * @param context
      * @return
      */
-    public static String getSherpBleName(Context context){
+    public static String getSherpBleName(Context context) {
         //蓝牙名字
         String bleName = (String) SharedPreferencesUtils.readObject(context, Commont.BLENAME);
         return !isEmpty(bleName) ? bleName : null;
     }
-
 
 
     /**
@@ -1324,10 +1353,10 @@ public class WatchUtils {
         PersonInfoData personInfoData = null;
         //同步用户信息
         String userData = (String) SharedPreferencesUtils.readObject(MyApp.getContext(), Commont.USER_INFO_DATA);
-        if(isEmpty(userData))
+        if (isEmpty(userData))
             return null;
         UserInfoBean userInfoBean = JSON.parseObject(userData, UserInfoBean.class);
-        if(userInfoBean == null){
+        if (userInfoBean == null) {
             return null;
         }
         //体重
@@ -1430,27 +1459,26 @@ public class WatchUtils {
     }
 
 
-
     //获取手机的状态信息正常，震动，静音
-    public static int getPhoneStatus(){
-        int PHONE_STATUS =  AudioManager.RINGER_MODE_NORMAL;
+    public static int getPhoneStatus() {
+        int PHONE_STATUS = AudioManager.RINGER_MODE_NORMAL;
         AudioManager audioManager = (AudioManager) MyApp.getInstance().getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        if(audioManager != null){
+        if (audioManager != null) {
             int ringMode = audioManager.getRingerMode();
             //audioManager.getStreamVolume()
-            Log.e(TAG, "-------手环模式="+ringMode);
+            Log.e(TAG, "-------手环模式=" + ringMode);
             switch (ringMode) {
                 case AudioManager.RINGER_MODE_NORMAL:
                     //普通模式
-                     PHONE_STATUS =  AudioManager.RINGER_MODE_NORMAL;
+                    PHONE_STATUS = AudioManager.RINGER_MODE_NORMAL;
                     break;
                 case AudioManager.RINGER_MODE_VIBRATE:
                     //振动模式
-                    PHONE_STATUS =  AudioManager.RINGER_MODE_VIBRATE;
+                    PHONE_STATUS = AudioManager.RINGER_MODE_VIBRATE;
                     break;
                 case AudioManager.RINGER_MODE_SILENT:
                     //静音模式
-                    PHONE_STATUS =  AudioManager.RINGER_MODE_SILENT;
+                    PHONE_STATUS = AudioManager.RINGER_MODE_SILENT;
                     break;
             }
 
@@ -1506,76 +1534,77 @@ public class WatchUtils {
 
     /**
      * 设置消息提醒的开关
+     *
      * @param context
      */
-    public static void setCommSocailMsgSetting(Context context){
-        boolean isOpenPhone = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISPhone,false);
-        boolean isMsg = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISMsm,false);
-        boolean isWeChat = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISWechart,false);
-        boolean isQQ = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISQQ,false);
-        boolean isFaceBook = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISFacebook,false);
-        boolean isTwitter = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISTwitter,false);
-        boolean isLinkin = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISLINE,false);
-        boolean isWhats = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISWhatsApp,false);
-        boolean isLine = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISLINE,false);
-        boolean isSkype = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISSkype,false);
-        boolean isOther = (boolean) SharedPreferencesUtils.getParam(context,Commont.ISOther,false);
+    public static void setCommSocailMsgSetting(Context context) {
+        boolean isOpenPhone = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISPhone, false);
+        boolean isMsg = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISMsm, false);
+        boolean isWeChat = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISWechart, false);
+        boolean isQQ = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISQQ, false);
+        boolean isFaceBook = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISFacebook, false);
+        boolean isTwitter = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISTwitter, false);
+        boolean isLinkin = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISLINE, false);
+        boolean isWhats = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISWhatsApp, false);
+        boolean isLine = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISLINE, false);
+        boolean isSkype = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISSkype, false);
+        boolean isOther = (boolean) SharedPreferencesUtils.getParam(context, Commont.ISOther, false);
 
         FunctionSocailMsgData socailMsgData = new FunctionSocailMsgData();
         //电话提醒
-        if(isOpenPhone){
+        if (isOpenPhone) {
             socailMsgData.setPhone(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setPhone(EFunctionStatus.SUPPORT_CLOSE);
         }
         //短信
-        if(isMsg){
+        if (isMsg) {
             socailMsgData.setMsg(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setMsg(EFunctionStatus.SUPPORT_CLOSE);
         }
         //微信
-        if(isWeChat){
+        if (isWeChat) {
             socailMsgData.setWechat(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setWechat(EFunctionStatus.SUPPORT_CLOSE);
         }
         //QQ
-        if(isQQ){
+        if (isQQ) {
             socailMsgData.setQq(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setQq(EFunctionStatus.SUPPORT_CLOSE);
         }
         //新浪 不支持
         socailMsgData.setSina(EFunctionStatus.UNSUPPORT);
         //facebook
-        if(isFaceBook){
+        if (isFaceBook) {
             socailMsgData.setFacebook(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setFacebook(EFunctionStatus.SUPPORT_CLOSE);
         }
 
-        if(isTwitter){
+        if (isTwitter) {
             socailMsgData.setTwitter(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setTwitter(EFunctionStatus.SUPPORT_CLOSE);
         }
         //flicker  不支持
         socailMsgData.setFlickr(EFunctionStatus.UNSUPPORT);
-        if(isLinkin){
+        if (isLinkin) {
             socailMsgData.setLinkin(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setLinkin(EFunctionStatus.SUPPORT_CLOSE);
         }
 
-        if(isWhats){
+        if (isWhats) {
             socailMsgData.setWhats(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setWhats(EFunctionStatus.SUPPORT_CLOSE);
         }
-        if(isLine){
+        if (isLine) {
             socailMsgData.setLine(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setLine(EFunctionStatus.SUPPORT_CLOSE);
         }
 
@@ -1583,19 +1612,19 @@ public class WatchUtils {
         socailMsgData.setInstagram(EFunctionStatus.SUPPORT_OPEN);
         //snapchat
         socailMsgData.setSnapchat(EFunctionStatus.SUPPORT_OPEN);
-        if(isSkype){
+        if (isSkype) {
             socailMsgData.setSkype(EFunctionStatus.SUPPORT_OPEN);
-        }else{
+        } else {
             socailMsgData.setSkype(EFunctionStatus.SUPPORT_CLOSE);
         }
         //gmail
         socailMsgData.setGmail(EFunctionStatus.SUPPORT_OPEN);
 
         //isOther
-        socailMsgData.setOther(isOther?EFunctionStatus.SUPPORT_OPEN:EFunctionStatus.SUPPORT_CLOSE);
+        socailMsgData.setOther(isOther ? EFunctionStatus.SUPPORT_OPEN : EFunctionStatus.SUPPORT_CLOSE);
 
 
-        Log.e(TAG,"-------------socailMsgData="+socailMsgData.toString());
+        Log.e(TAG, "-------------socailMsgData=" + socailMsgData.toString());
 
         MyApp.getInstance().getVpOperateManager().settingSocialMsg(iBleWriteResponse, new ISocialMsgDataListener() {
             @Override
@@ -1607,7 +1636,6 @@ public class WatchUtils {
     }
 
 
-
     //开关设置
     public static void setSwitchCheck() {
         //运动过量提醒 B31不支持
@@ -1615,7 +1643,7 @@ public class WatchUtils {
         //血压/心率播报 B31不支持
         EFunctionStatus isOpenVoiceBpHeart = EFunctionStatus.UNSUPPORT;
         //查找手表  B31不支持
-        EFunctionStatus isOpenFindPhoneUI ;
+        EFunctionStatus isOpenFindPhoneUI;
         //秒表功能  支持
         EFunctionStatus isOpenStopWatch;
         //低压报警 支持
@@ -1630,7 +1658,7 @@ public class WatchUtils {
         //断连提醒 支持
         EFunctionStatus isOpenDisconnectRemind;
         //SOS  不支持
-        EFunctionStatus isOpenSOS ;// = EFunctionStatus.UNSUPPORT;
+        EFunctionStatus isOpenSOS;// = EFunctionStatus.UNSUPPORT;
 
 
         //保存的状态
@@ -1647,36 +1675,36 @@ public class WatchUtils {
 
 
         //秒表功能
-        if(isSecondwatch){
+        if (isSecondwatch) {
             isOpenStopWatch = EFunctionStatus.SUPPORT_OPEN;
-        }else{
+        } else {
             isOpenStopWatch = EFunctionStatus.SUPPORT_CLOSE;
         }
         //断连提醒
-        if(isDisconn){
+        if (isDisconn) {
             isOpenDisconnectRemind = EFunctionStatus.SUPPORT_OPEN;
-        }else{
+        } else {
             isOpenDisconnectRemind = EFunctionStatus.SUPPORT_CLOSE;
         }
 
         //查找手机
-        if(isFindPhone){
+        if (isFindPhone) {
             isOpenFindPhoneUI = EFunctionStatus.SUPPORT_OPEN;
-        }else{
+        } else {
             isOpenFindPhoneUI = EFunctionStatus.SUPPORT_CLOSE;
         }
 
         //sos
-        if(isSos){
+        if (isSos) {
             isOpenSOS = EFunctionStatus.SUPPORT_OPEN;
-        }else{
+        } else {
             isOpenSOS = EFunctionStatus.SUPPORT_CLOSE;
         }
 
-        CustomSetting customSetting = new CustomSetting(true,isSystem,is24Hour,isAutomaticHeart,
-                isAutomaticBoold,isOpenSportRemain,isOpenVoiceBpHeart,isOpenFindPhoneUI,isOpenStopWatch,isOpenSpo2hLowRemind,
-                isOpenWearDetectSkin,isOpenAutoInCall,isOpenAutoHRV,isOpenDisconnectRemind,isOpenSOS);
-        Log.e(TAG,"--------customSetting="+customSetting.toString());
+        CustomSetting customSetting = new CustomSetting(true, isSystem, is24Hour, isAutomaticHeart,
+                isAutomaticBoold, isOpenSportRemain, isOpenVoiceBpHeart, isOpenFindPhoneUI, isOpenStopWatch, isOpenSpo2hLowRemind,
+                isOpenWearDetectSkin, isOpenAutoInCall, isOpenAutoHRV, isOpenDisconnectRemind, isOpenSOS);
+        Log.e(TAG, "--------customSetting=" + customSetting.toString());
 
         MyApp.getInstance().getVpOperateManager().changeCustomSetting(new IBleWriteResponse() {
             @Override
@@ -1694,7 +1722,7 @@ public class WatchUtils {
         //B31血氧夜间检测
         //boolean isB31NightSpo2Check = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(),Commont.B31_Night_BPOxy,false);
         AllSetSetting allSetSetting = new AllSetSetting(EAllSetType.SPO2H_NIGHT_AUTO_DETECT,
-                22,0,8,0,0,1);
+                22, 0, 8, 0, 0, 1);
         MyApp.getInstance().getVpOperateManager().settingSpo2hAutoDetect(iBleWriteResponse, new IAllSetDataListener() {
             @Override
             public void onAllSetDataChangeListener(AllSetData allSetData) {
@@ -1704,9 +1732,6 @@ public class WatchUtils {
 
 
     }
-
-
-
 
 
     private static IBleWriteResponse iBleWriteResponse = new IBleWriteResponse() {

@@ -58,7 +58,6 @@ import butterknife.OnClick;
  */
 public class B15PDeviceActivity extends WatchBaseActivity
         implements Rationale<List<String>> {
-
     private static final String TAG = "B15PDeviceActivity";
     @BindView(R.id.commentB30BackImg)
     ImageView commentB30BackImg;
@@ -87,7 +86,7 @@ public class B15PDeviceActivity extends WatchBaseActivity
     ArrayList<String> sportGoalList;
     //睡眠目标
     ArrayList<String> sleepGoalList;
-
+    RadioCheckeListenter radioCheckeListenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,34 +126,15 @@ public class B15PDeviceActivity extends WatchBaseActivity
     private void initViews() {
         commentB30BackImg.setVisibility(View.VISIBLE);
         commentB30TitleTv.setText(getResources().getString(R.string.device));
-
-        radioGroupTime.setOnCheckedChangeListener(new RadioCheckeListenter());
+        if (radioCheckeListenter == null) radioCheckeListenter = new RadioCheckeListenter();
+        radioGroupTime.setOnCheckedChangeListener(radioCheckeListenter);
     }
 
 
     private void readDeviceCusSetting() {
         if (MyCommandManager.DEVICENAME == null)
             return;
-        if (!this.isFinishing()) showLoadingDialog(getResources().getString(R.string.dlog));
-        //时间制
-        String sTime = L4M.GetUser_TimeMode();
-        Log.e(TAG, "时间制 " + sTime);
-        if (sTime.equals("1")) {
-            radio12.setChecked(true);
-        } else {
-            radio24.setChecked(true);
-        }
-
-        //单位制
-        String sUnit = L4M.GetUser_Unit();
-        Log.e(TAG, "单位制 " + sUnit);
-        if (sUnit.equals(CMKG)) {
-            b31DeviceUnitTv.setText(getResources().getString(R.string.setkm));
-        } else if (sUnit.equals(INLB)) {
-            b31DeviceUnitTv.setText(getResources().getString(R.string.setmi));
-        }
-        closeLoadingDialog();
-
+        handler.sendEmptyMessageDelayed(0x33, 500);//去读取时间制度
     }
 
 
@@ -209,7 +189,7 @@ public class B15PDeviceActivity extends WatchBaseActivity
                 break;
             case R.id.b31DeviceUnitRel:     //单位设置
                 showLoadingDialog(getResources().getString(R.string.dlog));
-                handler.sendEmptyMessageDelayed(0x22, 800);
+                handler.sendEmptyMessageDelayed(0x22, 500);
 //                startActivity(TimesAndUntiSettingActivity.class);
                 break;
             case R.id.b31DeviceSwitchRel:   //开关设置
@@ -315,33 +295,9 @@ public class B15PDeviceActivity extends WatchBaseActivity
                         dialogInterface.dismiss();
                         if (i == 0) {
                             boolean b = TimeUnitSet(0, 255, 0);//CM KG
-
-                            //监听
-                            L4Command.Brlt_LANGGet(new L4M.BTResultListenr() {
-                                @Override
-                                public void On_Result(String TypeInfo, String StrData, Object DataObj) {
-                                    final String tTypeInfo = TypeInfo;
-                                    final String TempStr = StrData;
-                                    final Object TempObj = DataObj;
-
-
-                                    Log.e(TAG, "inTempStr:" + TempStr);
-                                    if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
-                                        return;
-                                    }
-
-                                    if (tTypeInfo.equals(L4M.SetLANG) && TempStr.equals(L4M.OK)) {
-                                        L4Command.Brlt_LANGGet(null);
-                                    } else if (tTypeInfo.equals(L4M.GetLANG) && TempStr.equals(L4M.OK)) {
-                                        TimeUnitSet.TimeUnitSetData timeUnitSetData = (TimeUnitSet.TimeUnitSetData) DataObj;
-                                    }
-                                }
-                            });
-
                             Log.e(TAG, "公英制 CMKG 设置结果 " + b);
                             if (b) {
                                 L4M.SaveUser_Unit(CMKG);
-
 
                                 DecimalFormat df = new DecimalFormat("#");
                                 String formatH = df.format(userHeight);
@@ -597,33 +553,82 @@ public class B15PDeviceActivity extends WatchBaseActivity
                         out();
                     }
                     break;
-                case 0x22:
+                case 0x22://单位设置弹出
                     showUnitDialog();
                     closeLoadingDialog();
                     break;
-                case 0x33:
-                    boolean b = TimeUnitSet(0, 0, 255);//24小时制
-                    Log.e(TAG, "24小时制设置结果 " + b);
+                case 0x33://读并显示时间制
+                    if (!B15PDeviceActivity.this.isFinishing())
+                        showLoadingDialog(getResources().getString(R.string.dlog));
 
-                    if (b) {
+//                            //监听
+//                            L4Command.Brlt_LANGGet(new L4M.BTResultListenr() {
+//                                @Override
+//                                public void On_Result(String TypeInfo, String StrData, Object DataObj) {
+//                                    final String tTypeInfo = TypeInfo;
+//                                    final String TempStr = StrData;
+//                                    final Object TempObj = DataObj;
+//
+//
+//                                    Log.e(TAG, "inTempStr:" + TempStr);
+//                                    if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
+//                                        return;
+//                                    }
+//
+//                                    if (tTypeInfo.equals(L4M.SetLANG) && TempStr.equals(L4M.OK)) {
+//                                        L4Command.Brlt_LANGGet(null);
+//                                    } else if (tTypeInfo.equals(L4M.GetLANG) && TempStr.equals(L4M.OK)) {
+//                                        TimeUnitSet.TimeUnitSetData timeUnitSetData = (TimeUnitSet.TimeUnitSetData) DataObj;
+//
+//
+//                                        Log.e(TAG, "======" + timeUnitSetData.Sett1 + "  " + timeUnitSetData.Sett2 + "  " + timeUnitSetData.Sett3);
+//                                    }
+//                                }
+//                            });
+                    //时间制
+                    String sTime = L4M.GetUser_TimeMode();
+                    Log.e(TAG, "时间制 " + sTime);
+                    if (sTime.equals("1")) {
+                        radio12.setChecked(true);
+//                        if (radioGroupTime != null) radioGroupTime.check(R.id.radio_12);
+                    } else {
+                        radio24.setChecked(true);
+//                        if (radioGroupTime != null) radioGroupTime.check(R.id.radio_24);
+
+                    }
+
+                    //单位制
+                    String sUnit = L4M.GetUser_Unit();
+                    Log.e(TAG, "单位制 " + sUnit);
+                    if (sUnit.equals(CMKG)) {
+                        b31DeviceUnitTv.setText(getResources().getString(R.string.setkm));
+                    } else if (sUnit.equals(INLB)) {
+                        b31DeviceUnitTv.setText(getResources().getString(R.string.setmi));
+                    }
+                    closeLoadingDialog();
+                    break;
+                case 0x44://设置24小时制
+                    boolean is24 = TimeUnitSet(0, 0, 255);//24小时制
+                    Log.e(TAG, "24小时制设置结果 " + is24);
+                    if (is24) {
                         L4M.SaveUser_TimeMode("0");
                         SharedPreferencesUtils.setParam(B15PDeviceActivity.this, Commont.IS24Hour, true);
-                    }else {
+                    } else {
                         radio24.setChecked(false);
                         radio12.setChecked(true);
                     }
                     closeLoadingDialog();
                     break;
-                case 0x44:
+                case 0x55://设置12小时制
                     //时间制
-                    boolean b1 = TimeUnitSet(0, 1, 255);//12小时制
-                    Log.e(TAG, "12小时制设置结果 " + b1);
-                    if (b1) {
+                    boolean is12 = TimeUnitSet(0, 1, 255);//12小时制
+                    Log.e(TAG, "12小时制设置结果 " + is12);
+                    if (is12) {
                         L4M.SaveUser_TimeMode("1");
                         SharedPreferencesUtils.setParam(B15PDeviceActivity.this, Commont.IS24Hour, false);
-                    }else {
-                        radio24.setChecked(false);
-                        radio12.setChecked(true);
+                    } else {
+                        radio24.setChecked(true);
+                        radio12.setChecked(false);
                     }
                     closeLoadingDialog();
                     break;
@@ -656,39 +661,16 @@ public class B15PDeviceActivity extends WatchBaseActivity
          */
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-            if (radioGroup.isPressed()) return;
+            Log.e(TAG, "-----------自动设置状态 " + radioGroup.isPressed() + "  " + radio24.isPressed()
+                    + "  " + radio12.isPressed());
+            if (!radio24.isPressed() && !radio12.isPressed()) return;
             switch (radioGroup.getId()) {
                 case R.id.radioGroup_time:
                     if (!B15PDeviceActivity.this.isFinishing()) showLoadingDialog("setting...");
-
                     if (checkedId == R.id.radio_24) {
-
-                        handler.sendEmptyMessageDelayed(0x33,800);
-//                        boolean b = TimeUnitSet(0, 0, 255);//24小时制
-//                        Log.e(TAG, "24小时制设置结果 " + b);
-//
-//                        if (b) {
-//                            L4M.SaveUser_TimeMode("0");
-//                            SharedPreferencesUtils.setParam(B15PDeviceActivity.this, Commont.IS24Hour, true);
-//                        }else {
-//                            radio24.setChecked(false);
-//                            radio12.setChecked(true);
-//                        }
-//                        closeLoadingDialog();
+                        handler.sendEmptyMessageDelayed(0x44, 500);
                     } else if (checkedId == R.id.radio_12) {
-
-                        handler.sendEmptyMessageDelayed(0x44,800);
-//                        //时间制
-//                        boolean b = TimeUnitSet(0, 1, 255);//12小时制
-//                        Log.e(TAG, "12小时制设置结果 " + b);
-//                        if (b) {
-//                            L4M.SaveUser_TimeMode("1");
-//                            SharedPreferencesUtils.setParam(B15PDeviceActivity.this, Commont.IS24Hour, false);
-//                        }else {
-//                            radio24.setChecked(false);
-//                            radio12.setChecked(true);
-//                        }
-//                        closeLoadingDialog();
+                        handler.sendEmptyMessageDelayed(0x55, 500);
                     }
                     break;
             }
@@ -696,3 +678,4 @@ public class B15PDeviceActivity extends WatchBaseActivity
 
     }
 }
+

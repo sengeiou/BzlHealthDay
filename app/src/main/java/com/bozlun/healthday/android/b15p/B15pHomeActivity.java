@@ -119,7 +119,7 @@ public class B15pHomeActivity extends WatchBaseActivity {
      */
     private void setFragment() {
         if (h18iFragmentList == null) h18iFragmentList = new ArrayList<>();
-        h18iFragmentList.add(B15pHomeFragment.getInstance());
+        h18iFragmentList.add(new B15pHomeFragment());
 //        h18iFragmentList.add(new H9NewDataFragment()); //数据
 //        h18iFragmentList.add(new W30sNewRunFragment());   //跑步
 //        h18iFragmentList.add(new W30SMineFragment());

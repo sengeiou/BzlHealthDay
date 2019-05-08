@@ -57,7 +57,8 @@ public class CustomBlueAdapter extends RecyclerView.Adapter<CustomBlueAdapter.Cu
             //展示图片
             String bleName = customBlueDeviceList.get(position).getBluetoothDevice().getName();
             if (!WatchUtils.isEmpty(bleName)) {
-                if (bleName.equals("B15P")) { //B15P手环
+                if ((bleName.length() >= 2 && bleName.equals("W3"))
+                        || (bleName.length() >= 3 && bleName.equals("B15P"))) { //B15P手环
                     holder.img.setImageResource(R.mipmap.b15p_xiaotu);
                 } else if ((bleName.length()>=2&&bleName.substring(0, 2).equals("H9"))) {    //H9手表
                     holder.img.setImageResource(R.mipmap.seach_h9);

@@ -106,6 +106,42 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
                 case 0x01:
                     finish();
                     break;
+                case 0x02:
+                    L4Command.Brlt_FuncGet(new L4M.BTResultListenr() {
+                        @Override
+                        public void On_Result(String TypeInfo, String StrData, Object DataObj) {
+                            final String tTypeInfo = TypeInfo;
+                            final String TempStr = StrData;
+                            final Object TempObj = DataObj;
+                            Log.e(TAG, "inTempStr:" + TempStr);
+
+                            if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
+                                handler.sendEmptyMessage(0x00);
+                                return;
+                            }
+                            if (tTypeInfo.equals(L4M.SetFunc) && TempStr.equals(L4M.OK)) {
+                                L4Command.Brlt_FuncGet(null);
+                            }
+                            if (tTypeInfo.equals(L4M.GetFunc) && TempStr.equals(L4M.Data)) {
+                                BractletFuncSet.FuncSetData myAlarmClockData = (BractletFuncSet.FuncSetData) TempObj;
+                                //sw_manage.setChecked(myAlarmClockData.mSW_manage);//读取开关状态
+                                Log.e(TAG, "开关状态  亮屏 " + myAlarmClockData.mSW_manage
+                                        + "  久坐 " + myAlarmClockData.mSW_sed + "  喝水 " + myAlarmClockData.mSW_drink
+                                        + "  拍照 " + myAlarmClockData.mSW_camera + "  放丢失 " + myAlarmClockData.mSW_antilost);
+
+
+                                SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISDisAlert, myAlarmClockData.mSW_antilost);//断开连接提醒--防丢失
+                                SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISSedentary, myAlarmClockData.mSW_sed);//久坐
+                                SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISWrists, myAlarmClockData.mSW_manage);//翻腕亮屏
+                                SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISDrink, myAlarmClockData.mSW_drink);//喝水
+                                SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISCamera, myAlarmClockData.mSW_camera);//拍照
+
+                                handler.sendEmptyMessage(0x00);
+                            }
+
+                        }
+                    });
+                    break;
             }
         }
     };
@@ -124,8 +160,8 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
          * 读取设备内的开关
          */
         if (!this.isFinishing()) showLoadingDialog(getResources().getString(R.string.dlog));
-        L4Command.Brlt_FuncGet(btResultListenr);
-
+        //活动刚创建就去读取开关
+        handler.sendEmptyMessageDelayed(0x02, 200);
     }
 
 
@@ -147,6 +183,22 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
 //        b3SwirrerBlood.setOnCheckedChangeListener(this);// ---血压显示
 //        b3SwirrerFind.setOnCheckedChangeListener(this);// ---查找手机
 //        b3SwirrerMac.setOnCheckedChangeListener(this);// ---MAC 显示
+
+        if (switchBeans == null) switchBeans = new ArrayList<>();
+        if (switchBeans.isEmpty() || switchBeans.size() < 4) {
+            switchBeans.clear();
+            boolean wrists = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISWrists, false);//翻腕亮屏
+            boolean sedentatry = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSedentary, false);//久坐
+            boolean drink = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDrink, false);//喝水
+            boolean camera = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISCamera, false);//拍照
+            boolean disalert = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDisAlert, false);//断开连接提醒--防丢失
+
+            switchBeans.add(0, new SwitchBean("wrists", wrists));
+            switchBeans.add(1, new SwitchBean("sedentatry", sedentatry));
+            switchBeans.add(2, new SwitchBean("drink", drink));
+            switchBeans.add(3, new SwitchBean("camera", camera));
+            switchBeans.add(4, new SwitchBean("disalert", disalert));
+        }
     }
 
 
@@ -358,13 +410,13 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
                 SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISWrists, isChecked);//翻腕亮屏
 //                booleansNew[0] = isChecked;
 
-                switchBeans.add(0, new SwitchBean("wrists", isChecked));
+                switchBeans.set(0, new SwitchBean("wrists", isChecked));
 
                 break;
             case R.id.b31AutoHeartToggleBtn:
                 SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISSedentary, isChecked);//久坐
 //                booleansNew[1] = isChecked;
-                switchBeans.add(1, new SwitchBean("sedentatry", isChecked));
+                switchBeans.set(1, new SwitchBean("sedentatry", isChecked));
 
                 if (isChecked) {
                     boolean sedentary = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSedentary, false);//久坐
@@ -373,13 +425,12 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
                         intent.putExtra("type", "sedentary");
                         startActivityForResult(intent, 1);
                     }
-
                 }
                 break;
             case R.id.b30AutoBloadToggleBtn:
                 SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISDrink, isChecked);//喝水
 //                booleansNew[2] = isChecked;
-                switchBeans.add(2, new SwitchBean("drink", isChecked));
+                switchBeans.set(2, new SwitchBean("drink", isChecked));
 
                 if (isChecked) {
                     boolean dring = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDrink, false);//久坐
@@ -399,7 +450,7 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
             case R.id.b31SwitchDisAlertTogg:    //断连提醒
                 SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISDisAlert, isChecked);//断开连接提醒--防丢失
 //                booleansNew[4] = isChecked;
-                switchBeans.add(4, new SwitchBean("disalert", isChecked));
+                switchBeans.set(4, new SwitchBean("disalert", isChecked));
                 break;
 //            case R.id.b31SwitchStepShow://步数显示
 //                SharedPreferencesUtils.setParam(MyApp.getContext(), "StepShow", isChecked);//步数
@@ -438,7 +489,6 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
      */
     private void readDeviceCusSetting() {
         closeLoadingDialog();
-        switchBeans.clear();
         if (MyCommandManager.DEVICENAME == null)
             return;
 //        booleans[0] = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISWrists, false);//翻腕亮屏
@@ -452,18 +502,28 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
 //        b30AutoBloadToggleBtn.setChecked(booleans[2]);// ---喝水提醒
 //        b31AutoBPOxyToggbleBtn.setChecked(booleans[3]);// 摇一摇拍照
 //        b31SwitchDisAlertTogg.setChecked(booleans[4]); // --- 防止丢失
+
         boolean wrists = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISWrists, false);//翻腕亮屏
         boolean sedentatry = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSedentary, false);//久坐
         boolean drink = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDrink, false);//喝水
         boolean camera = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISCamera, false);//拍照
         boolean disalert = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDisAlert, false);//断开连接提醒--防丢失
 
-        switchBeans.add(0, new SwitchBean("wrists", wrists));
-        switchBeans.add(1, new SwitchBean("sedentatry", sedentatry));
-        switchBeans.add(2, new SwitchBean("drink", drink));
-        switchBeans.add(3, new SwitchBean("camera", camera));
-        switchBeans.add(4, new SwitchBean("disalert", disalert));
+        if (switchBeans.size() > 4) {
+            switchBeans.clear();
 
+            switchBeans.add(0, new SwitchBean("wrists", wrists));
+            switchBeans.add(1, new SwitchBean("sedentatry", sedentatry));
+            switchBeans.add(2, new SwitchBean("drink", drink));
+            switchBeans.add(3, new SwitchBean("camera", camera));
+            switchBeans.add(4, new SwitchBean("disalert", disalert));
+        } else {
+            switchBeans.set(0, new SwitchBean("wrists", wrists));
+            switchBeans.set(1, new SwitchBean("sedentatry", sedentatry));
+            switchBeans.set(2, new SwitchBean("drink", drink));
+            switchBeans.set(3, new SwitchBean("camera", camera));
+            switchBeans.set(4, new SwitchBean("disalert", disalert));
+        }
 
         b31CheckWearToggleBtn.setChecked(wrists); // --- 翻腕亮屏
         b31AutoHeartToggleBtn.setChecked(sedentatry);// --- 久坐提醒
@@ -505,7 +565,7 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
                 SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISDrink, myAlarmClockData.mSW_drink);//喝水
                 SharedPreferencesUtils.setParam(MyApp.getContext(), Commont.ISCamera, myAlarmClockData.mSW_camera);//拍照
 
-                handler.sendEmptyMessage(0x00);
+                handler.sendEmptyMessageDelayed(0x00, 200);
             }
 
         }

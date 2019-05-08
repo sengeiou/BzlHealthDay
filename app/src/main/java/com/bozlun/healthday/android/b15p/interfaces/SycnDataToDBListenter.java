@@ -1,5 +1,6 @@
 package com.bozlun.healthday.android.b15p.interfaces;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -32,10 +33,10 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
     public static SycnDataToDBListenter getSycnDataToDBListenter() {
         sycnDataToDBListenter = null;
 //        if (sycnDataToDBListenter == null) {
-            synchronized (SycnDataToDBListenter.class) {
-                if (sycnDataToDBListenter == null) {
-                    sycnDataToDBListenter = new SycnDataToDBListenter();
-                }
+        synchronized (SycnDataToDBListenter.class) {
+            if (sycnDataToDBListenter == null) {
+                sycnDataToDBListenter = new SycnDataToDBListenter();
+            }
 
 //            }
         }
@@ -45,7 +46,7 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
 
     @Override
     public void On_Result(String typeInfo, String strData, Object dataObj) {
-        Log.d(TAG, "==TypeInfo:" + typeInfo + "  StrData:" + strData);
+        Log.e(TAG, "原始数据  ==TypeInfo:" + typeInfo + "  StrData:" + strData);
 
         try {
             //接收健康数据后 处理....
@@ -63,12 +64,14 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
             if (!WatchUtils.isEmpty(mac)) {
                 switch (typeInfo) {
                     case "HEART_NOW"://当前测量的心率值
+                        Log.e(TAG,"单词检测心率保存");
                         if (!WatchUtils.isEmpty(mac) && !WatchUtils.isEmpty(strData.substring(2, strData.length() - 1)))
                             b15PDBCommont.saveHeartToDB(mac, WatchUtils.getCurrentDate1(), Integer.valueOf(strData.substring(2, strData.length() - 1)));
                         else b15PDBCommont.saveHeartToDB(mac, WatchUtils.getCurrentDate1(), 0);
                         break;
                     case "BLDPRESS_NOW"://当前测量的血压值
                         //StrData:[,115,83]
+                        Log.e(TAG,"单词检测血压保存");
                         String[] splitBloopNew = strData.substring(2, strData.length() - 1).split(",");
                         if (!WatchUtils.isEmpty(mac) && !WatchUtils.isEmpty(strData.substring(2, strData.length() - 1))) {
                             //保存到历史表库
@@ -83,37 +86,46 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                         }
                         break;
                     case "HEART_HISTORY"://历史测量的心率值
+//                        Message messageHeart = Message.obtain();
+//                        messageHeart.what = 0x03;
+//                        messageHeart.obj = strData;
+//                        handler.sendMessage(messageHeart);
 
-
-                        Message messageHeart = Message.obtain();
-                        messageHeart.what = 0x03;
-                        messageHeart.obj = strData;
-                        handler.sendMessage(messageHeart);
-
+                        String[] hearts = {"heart", strData};
+                        new SaveDatas().execute(hearts);
                         break;
                     case "BLDPRESS_HISTORY"://历史测量的血压值
-                        Message messageBloop = Message.obtain();
-                        messageBloop.what = 0x04;
-                        messageBloop.obj = strData;
-                        handler.sendMessage(messageBloop);
+//                        Message messageBloop = Message.obtain();
+//                        messageBloop.what = 0x04;
+//                        messageBloop.obj = strData;
+//                        handler.sendMessage(messageBloop);
+
+                        String[] bloops = {"bloop", strData};
+                        new SaveDatas().execute(bloops);
                         break;
                     case "PEDO_DAY"://天记步数据
 
                         break;
                     case "PEDO_TIME_HISTORY"://时间段记步数据
-                        Message messageStep = Message.obtain();
-                        messageStep.what = 0x01;
-                        messageStep.obj = strData;
-                        handler.sendMessage(messageStep);
+//                        Message messageStep = Message.obtain();
+//                        messageStep.what = 0x01;
+//                        messageStep.obj = strData;
+//                        handler.sendMessage(messageStep);
+
+                        String[] steps = {"step", strData};
+                        new SaveDatas().execute(steps);
                         break;
                     case "SLEEP_DAY"://天睡眠数据
 
                         break;
                     case "SLEEP_TIME_HISTORY"://天睡眠时间段数
-                        Message messageSleep = Message.obtain();
-                        messageSleep.what = 0x02;
-                        messageSleep.obj = strData;
-                        handler.sendMessage(messageSleep);
+//                        Message messageSleep = Message.obtain();
+//                        messageSleep.what = 0x02;
+//                        messageSleep.obj = strData;
+//                        handler.sendMessage(messageSleep);
+
+                        String[] sleeps = {"sleep", strData};
+                        new SaveDatas().execute(sleeps);
 
                         break;
                 }
@@ -130,84 +142,85 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
     }
 
 
-    Handler handler = new Handler(new Handler.Callback() {
-        @Override
-        public boolean handleMessage(Message message) {
-            switch (message.what) {
-                case 0x01:
-                    String strDataStep = (String) message.obj;
-                    Log.e(TAG, "=========" + strDataStep);
-                    String[] steps = {"step", strDataStep};
-                    new SaveDatas().execute(steps);
+//    Handler handler = new Handler(new Handler.Callback() {
+//        @Override
+//        public boolean handleMessage(Message message) {
+//            switch (message.what) {
+//                case 0x01:
+//                    String strDataStep = (String) message.obj;
+//                    Log.e(TAG, "=========" + strDataStep);
+//                    String[] steps = {"step", strDataStep};
+//                    new SaveDatas().execute(steps);
+////
+////
+////                    //[,2019-04-24 13:30:00,337]
+////                    String[] splitStep = strDataStep.substring(2, strDataStep.length() - 1).split(",");
+////                    if (splitStep[0].substring(0, 10).equals(t)
+////                            || splitStep[0].substring(0, 10).equals(y)
+////                            || splitStep[0].substring(0, 10).equals(q)) {
+////
+////                        //保存详细步数数据
+////                        if (!WatchUtils.isEmpty(mac))
+////                            b15PDBCommont.saveStepToDB(mac, splitStep[0], Integer.valueOf(splitStep[1]));
+////                    }
+//                    break;
+//                case 0x02:
+//                    String strDataSleep = (String) message.obj;
+//                    String[] sleeps = {"sleep", strDataSleep};
+//                    new SaveDatas().execute(sleeps);
+//
+////
+////                    String[] splitSleep = strDataSleep.substring(2, strDataSleep.length() - 1).split(",");
+////                    if (splitSleep[0].substring(0, 10).equals(t)
+////                            || splitSleep[0].substring(0, 10).equals(y)
+////                            || splitSleep[0].substring(0, 10).equals(q)
+////                            || splitSleep[0].substring(0, 10).equals(WatchUtils.obtainAroundDate(q, true))) {
+////
+////                        //保存详细睡眠数据
+////                        if (!WatchUtils.isEmpty(mac))
+////                            b15PDBCommont.saveSleepToDB(mac, splitSleep[0], splitSleep[1]);
+////                    }
+//                    break;
+//                case 0x03:
+//                    String strDataHeart = (String) message.obj;
+//                    String[] hearts = {"heart", strDataHeart};
+//                    new SaveDatas().execute(hearts);
 //
 //
-//                    //[,2019-04-24 13:30:00,337]
-//                    String[] splitStep = strDataStep.substring(2, strDataStep.length() - 1).split(",");
-//                    if (splitStep[0].substring(0, 10).equals(t)
-//                            || splitStep[0].substring(0, 10).equals(y)
-//                            || splitStep[0].substring(0, 10).equals(q)) {
+////                    String[] splitHeart = strDataHeart.substring(2, strDataHeart.length() - 1).split(",");
+////                    if (splitHeart[0].substring(0, 10).equals(t)
+////                            || splitHeart[0].substring(0, 10).equals(y)
+////                            || splitHeart[0].substring(0, 10).equals(q)) {
+////
+////                        //保存详细步数数据
+////                        if (!WatchUtils.isEmpty(mac))
+////                            b15PDBCommont.saveHeartToDB(mac, splitHeart[0], Integer.valueOf(splitHeart[1]));
+////                    }
+//                    break;
+//                case 0x04:
+//                    String strDataBloop = (String) message.obj;
+//                    String[] bloops = {"bloop", strDataBloop};
+//                    new SaveDatas().execute(bloops);
 //
-//                        //保存详细步数数据
-//                        if (!WatchUtils.isEmpty(mac))
-//                            b15PDBCommont.saveStepToDB(mac, splitStep[0], Integer.valueOf(splitStep[1]));
-//                    }
-                    break;
-                case 0x02:
-                    String strDataSleep = (String) message.obj;
-                    String[] sleeps = {"sleep", strDataSleep};
-                    new SaveDatas().execute(sleeps);
+////                    //[,2019-04-17 09:36:30,129,89]
+////                    String[] splitBloop = strDataBloop.substring(2, strDataBloop.length() - 1).split(",");
+////                    if (splitBloop[0].substring(0, 10).equals(t)
+////                            || splitBloop[0].substring(0, 10).equals(y)
+////                            || splitBloop[0].substring(0, 10).equals(q)) {
+////
+////                        if (!WatchUtils.isEmpty(mac))
+////                            b15PDBCommont.saveBloopToDB(mac, splitBloop[0],
+////                                    Integer.valueOf(splitBloop[1]),
+////                                    Integer.valueOf(splitBloop[2]));
+////                    }
+//                    break;
+//            }
+//            return false;
+//        }
+//    });
 
-//
-//                    String[] splitSleep = strDataSleep.substring(2, strDataSleep.length() - 1).split(",");
-//                    if (splitSleep[0].substring(0, 10).equals(t)
-//                            || splitSleep[0].substring(0, 10).equals(y)
-//                            || splitSleep[0].substring(0, 10).equals(q)
-//                            || splitSleep[0].substring(0, 10).equals(WatchUtils.obtainAroundDate(q, true))) {
-//
-//                        //保存详细睡眠数据
-//                        if (!WatchUtils.isEmpty(mac))
-//                            b15PDBCommont.saveSleepToDB(mac, splitSleep[0], splitSleep[1]);
-//                    }
-                    break;
-                case 0x03:
-                    String strDataHeart = (String) message.obj;
-                    String[] hearts = {"heart", strDataHeart};
-                    new SaveDatas().execute(hearts);
 
-
-//                    String[] splitHeart = strDataHeart.substring(2, strDataHeart.length() - 1).split(",");
-//                    if (splitHeart[0].substring(0, 10).equals(t)
-//                            || splitHeart[0].substring(0, 10).equals(y)
-//                            || splitHeart[0].substring(0, 10).equals(q)) {
-//
-//                        //保存详细步数数据
-//                        if (!WatchUtils.isEmpty(mac))
-//                            b15PDBCommont.saveHeartToDB(mac, splitHeart[0], Integer.valueOf(splitHeart[1]));
-//                    }
-                    break;
-                case 0x04:
-                    String strDataBloop = (String) message.obj;
-                    String[] bloops = {"bloop", strDataBloop};
-                    new SaveDatas().execute(bloops);
-
-//                    //[,2019-04-17 09:36:30,129,89]
-//                    String[] splitBloop = strDataBloop.substring(2, strDataBloop.length() - 1).split(",");
-//                    if (splitBloop[0].substring(0, 10).equals(t)
-//                            || splitBloop[0].substring(0, 10).equals(y)
-//                            || splitBloop[0].substring(0, 10).equals(q)) {
-//
-//                        if (!WatchUtils.isEmpty(mac))
-//                            b15PDBCommont.saveBloopToDB(mac, splitBloop[0],
-//                                    Integer.valueOf(splitBloop[1]),
-//                                    Integer.valueOf(splitBloop[2]));
-//                    }
-                    break;
-            }
-            return false;
-        }
-    });
-
-
+    @SuppressLint("StaticFieldLeak")
     class SaveDatas extends AsyncTask<String, Void, Void> {
 
         @Override

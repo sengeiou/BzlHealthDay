@@ -21,6 +21,7 @@ import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.adpter.HomeAdapter;
+import com.bozlun.healthday.android.b15p.B15pHomeActivity;
 import com.bozlun.healthday.android.b30.B30HomeActivity;
 import com.bozlun.healthday.android.base.BaseActivity;
 import com.bozlun.healthday.android.bean.BlueUser;
@@ -140,6 +141,8 @@ public class GuideActivity extends BaseActivity {
                             startActivity(new Intent(GuideActivity.this, W30SHomeActivity.class));
                         }else if("B30".equals(btooth)){
                             startActivity(new Intent(GuideActivity.this, B30HomeActivity.class));
+                        }else if ("B15P".equals(btooth)||"W3".equals(btooth)) {
+                            startActivity(new Intent(GuideActivity.this, B15pHomeActivity.class));
                         }
                         else {
                             startActivity(new Intent(GuideActivity.this, NewSearchActivity.class));

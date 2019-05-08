@@ -8,6 +8,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.b15p.interfaces.ConntentStuteListenter;
@@ -48,6 +49,18 @@ public class B15PContentState {
         return instance;
     }
 
+    private B15PContentState() {
+        isNull();
+    }
+
+    void isNull() {
+        if (bluetoothManager == null) bluetoothManager =
+                (BluetoothManager) MyApp.getContext().getSystemService(Context.BLUETOOTH_SERVICE);
+        if (bluetoothManager != null) {
+            bluetoothAdapter = bluetoothManager.getAdapter();
+            if (bluetoothAdapter == null) bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        }
+    }
 
     /**
      * 判断返回设备是否链接
@@ -78,8 +91,10 @@ public class B15PContentState {
         Dev.Try_Connect(bluetoothDevice, new Dev.ConnectReslutCB() {
             @Override
             public void OnConnectReslut(boolean CntExists, BluetoothDevice inBluetoothDevice) {
-                if (bluetoothAdapter != null)
-                    bluetoothAdapter.stopLeScan(leScanCallback);
+                if (bluetoothAdapter == null) bluetoothAdapter = bluetoothManager.getAdapter();
+                if (bluetoothAdapter == null)
+                    bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                bluetoothAdapter.stopLeScan(leScanCallback);
                 if (handler != null) handler.removeMessages(0x01);//取消延时的问题
                 Log.e(TAG, " B15P  =OnConnectReslut=" + CntExists + "===" + inBluetoothDevice.toString());
                 //如果已经有设备 先断开再连接
@@ -113,6 +128,7 @@ public class B15PContentState {
         if (bluetoothManager == null)
             bluetoothManager = (BluetoothManager) MyApp.getContext().getSystemService(Context.BLUETOOTH_SERVICE);
         if (bluetoothAdapter == null) bluetoothAdapter = bluetoothManager.getAdapter();
+        if (bluetoothAdapter == null) bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         Log.d(TAG, "=====开始扫描");
         bluetoothAdapter.startLeScan(leScanCallback);
         handler.sendEmptyMessageDelayed(0x01, 20 * 1000);

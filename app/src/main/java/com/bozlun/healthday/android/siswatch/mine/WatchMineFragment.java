@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bozlun.healthday.android.b15p.activity.B15PDeviceActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
@@ -292,10 +293,12 @@ public class WatchMineFragment extends LazyFragment {
                     } else if (MyCommandManager.DEVICENAME.equals("B30") || MyCommandManager.DEVICENAME.equals("B36")
                             || MyCommandManager.DEVICENAME.equals("Ringmii")) {    //B30
                         startActivity(new Intent(getActivity(), B30DeviceActivity.class));
-                    } else if (MyCommandManager.DEVICENAME.equals("B31")
-                            || MyCommandManager.DEVICENAME.equals("B31S")
-                            || MyCommandManager.DEVICENAME.equals("500S")) {    //B31
+                    } else if (MyCommandManager.DEVICENAME.equals(WatchUtils.B31_NAME)
+                            || MyCommandManager.DEVICENAME.equals(WatchUtils.B31S_NAME)
+                            || MyCommandManager.DEVICENAME.equals(WatchUtils.S500_NAME)) {    //B31,B31S,500s
                         startActivity(new Intent(getActivity(), B31DeviceActivity.class));
+                    } else if (MyCommandManager.DEVICENAME.equals(WatchUtils.B15P_BLENAME)) {//b15p
+                        startActivity(new Intent(getActivity(), B15PDeviceActivity.class));
                     }
 
 

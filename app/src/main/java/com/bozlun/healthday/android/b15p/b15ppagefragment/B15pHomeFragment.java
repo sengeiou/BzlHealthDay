@@ -104,37 +104,14 @@ public class B15pHomeFragment extends LazyFragment
     private B15PContentState b15PContentState;
     //默认步数
     int defaultSteps = 0;
-    int defaultStepsY = 0;//昨天步数
-    int defaultStepsTY = 0;//前天步数
     /**
      * 目标步数
      */
     int goalStep;
 
-    private B15PDBCommont b15PDBCommont;//b15P数据库工具
-
-
     //运动图表最大步数
     @BindView(R.id.sycn_stute)
     TextView sycnStute;
-
-
-    private static volatile B15pHomeFragment instance = null;
-
-    public B15pHomeFragment() {
-    }
-
-    public static B15pHomeFragment getInstance() {
-        if (instance == null) {
-            synchronized (B15pHomeFragment.class) {
-                if (instance == null) {
-                    instance = new B15pHomeFragment();
-                }
-            }
-        }
-        return instance;
-    }
-
 
     @Nullable
     @Override
@@ -304,7 +281,7 @@ public class B15pHomeFragment extends LazyFragment
                         String tmpSaveTime = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "saveDate", currentTime + "");
                         long diffTime = (currentTime - Long.valueOf(tmpSaveTime)) / 60;
                         Log.e(TAG, "不是第一次链接--- 有 " + diffTime + "分钟没同步了");
-                        if (diffTime > 2) {// 大于2分钟没更新再取数据
+                        if (diffTime > 5) {// 大于2分钟没更新再取数据
                             mHandler.sendEmptyMessageDelayed(0x01, 500);
                         } else {
                             /**
@@ -321,9 +298,6 @@ public class B15pHomeFragment extends LazyFragment
                              */
                             Log.e(TAG, "不是第一次同步每次回来主动从数据库中获取一次");
                             mHandler.sendEmptyMessage(0x00);
-//                            sycnDataListenterStep.getAllDatas(Dev.L4UI_PageDATA_PEDO);
-//                            sycnDataListenterSleep.getAllDatas(Dev.L4UI_PageDATA_SLEEP);
-//                            sycnDataListenterHeart.getAllDatas(Dev.L4UI_PageDATA_HEARTRATE);
                         }
                     }
                     break;
@@ -422,21 +396,6 @@ public class B15pHomeFragment extends LazyFragment
         //同步进度
         Dev.SetUpdateUiListener(Dev.L4UI_PageDATA_HEALTH, myUpDateUiCb);
         Dev.EnUpdateUiListener(myUpDateUiCb, 1);
-
-//        sycnDataListenterStep = SycnDataListenter.newInstance(Dev.L4UI_PageDATA_PEDO, WatchUtils.obtainFormatDate(currDay), this);
-//        sycnDataListenterSleep = SycnDataListenter.newInstance(Dev.L4UI_PageDATA_SLEEP, WatchUtils.obtainFormatDate(currDay), this);
-//        sycnDataListenterHeart = SycnDataListenter.newInstance(Dev.L4UI_PageDATA_HEARTRATE, WatchUtils.obtainFormatDate(currDay), this);
-//
-//        Dev.SetUpdateUiListener(Dev.L4UI_PageDATA_PEDO, sycnDataListenterStep);
-//        Dev.SetUpdateUiListener(Dev.L4UI_PageDATA_SLEEP, sycnDataListenterSleep);
-//        Dev.SetUpdateUiListener(Dev.L4UI_PageDATA_HEARTRATE, sycnDataListenterHeart);
-//        Dev.EnUpdateUiListener(sycnDataListenterStep, 1);
-//        Dev.EnUpdateUiListener(sycnDataListenterSleep, 1);
-//        Dev.EnUpdateUiListener(sycnDataListenterHeart, 1);
-
-
-        b15PDBCommont = B15PDBCommont.getInstance();
-//        L4M.SetResultToDBListener(btResultToDBListenr);
     }
 
 
@@ -445,110 +404,7 @@ public class B15pHomeFragment extends LazyFragment
      */
     void unRegisterListenter() {
         Dev.EnUpdateUiListener(myUpDateUiCb, 0);//同步进度
-
-//        Dev.EnUpdateUiListener(sycnDataListenterStep, 0);
-//        Dev.EnUpdateUiListener(sycnDataListenterSleep, 0);
-//        Dev.EnUpdateUiListener(sycnDataListenterHeart, 0);
     }
-
-//
-//    L4M.BTResultToDBListenr btResultToDBListenr = new L4M.BTResultToDBListenr() {
-//        @Override
-//        public void On_Result(String TypeInfo, String StrData, Object DataObj) {
-//            Log.d(TAG, "==TypeInfo:" + TypeInfo + "  StrData:" + StrData);
-//            //接收健康数据后处理....
-//            //TypeInfo 类型
-//            //HEART_NOW         --当前测量的心率值
-//            //BLDPRESS_NOW      --当前测量的血压值
-//            //HEART_HISTORY     --历史测量的心率值
-//            //BLDPRESS_HISTORY  --历史测量的血压值
-//
-//            //PEDO_DAY          --天记步数据
-//            //PEDO_TIME_HISTORY --时间段记步数据
-//
-//            //SLEEP_DAY         --天睡眠数据
-//            //SLEEP_TIME_HISTORY--天睡眠时间段数
-//
-//            /**
-//             * 0_今天 1_昨天 2_前天
-//             */
-//            String t = WatchUtils.obtainFormatDate(0);
-//            String y = WatchUtils.obtainFormatDate(1);
-//            String q = WatchUtils.obtainFormatDate(2);
-//            String mac = (String) SharedPreferencesUtils.readObject(MyApp.getInstance(), Commont.BLEMAC);
-//
-//            if (WatchUtils.isEmpty(mac)) return;
-//            if (TypeInfo.equals("PEDO_DAY")) {
-//                Log.e(TAG, "==== 步数日 " + StrData);
-//                //[,2019-04-22,2697]
-//                mHandler.sendEmptyMessageDelayed(0x04, 2000);//获取睡眠
-//            }
-//            if (TypeInfo.equals("PEDO_TIME_HISTORY")) {
-//                //[,2019-04-19 20:00:00,58]
-//                Log.e(TAG, "==== 日步数详细 " + StrData);
-//
-//                String[] split = StrData.substring(2, StrData.length() - 1).split(",");
-//                if (split[0].substring(0, 10).equals(t)
-//                        || split[0].substring(0, 10).equals(y)
-//                        || split[0].substring(0, 10).equals(q)) {
-//
-//                    if (!WatchUtils.isEmpty(mac))
-//                        b15PDBCommont.saveStepToDB(mac, split[0], Integer.valueOf(split[1]));
-//                }
-//
-//            }
-//
-//            if (TypeInfo.equals("SLEEP_DAY")) {
-//                Log.e(TAG, "==== 睡眠日 " + StrData);
-//                mHandler.sendEmptyMessageDelayed(0x05, 2000);//获取心率
-//            }
-//            if (TypeInfo.equals("SLEEP_TIME_HISTORY")) {
-//                //[,2019-04-22 03:29:00,1]
-//                Log.e(TAG, "==== 日睡眠详细 " + StrData);
-//                String[] split = StrData.substring(2, StrData.length() - 1).split(",");
-//                if (split[0].substring(0, 10).equals(t)
-//                        || split[0].substring(0, 10).equals(y)
-//                        || split[0].substring(0, 10).equals(q)
-//                        || split[0].substring(0, 10).equals(WatchUtils.obtainAroundDate(q, true))) {
-//
-//                    if (!WatchUtils.isEmpty(mac))
-//                        b15PDBCommont.saveSleepToDB(mac, split[0], split[1]);
-//                }
-//
-//            }
-//
-//            if (TypeInfo.equals("HEART_HISTORY")) {
-//                //[,1999-11-30 00:00:00,0]
-//                Log.e(TAG, "==== 心率详细 " + StrData);
-//                String[] split = StrData.substring(2, StrData.length() - 1).split(",");
-//                if (split[0].substring(0, 10).equals(t)
-//                        || split[0].substring(0, 10).equals(y)
-//                        || split[0].substring(0, 10).equals(q)) {
-//
-//                    if (!WatchUtils.isEmpty(mac))
-//                        b15PDBCommont.saveHeartToDB(mac, split[0], Integer.valueOf(split[1]));
-//                    if (b30HomeSwipeRefreshLayout != null && b30HomeSwipeRefreshLayout.isShown())
-//                        b30HomeSwipeRefreshLayout.finishRefresh();
-//                    setSysTextStute(false);
-//                }
-//            }
-//
-//            if (TypeInfo.equals("BLDPRESS_HISTORY")) {
-//                Log.e(TAG, "==== 血压详细 " + StrData);
-//                String[] split = StrData.substring(2, StrData.length() - 1).split(",");
-//                if (split[0].substring(0, 10).equals(t)
-//                        || split[0].substring(0, 10).equals(y)
-//                        || split[0].substring(0, 10).equals(q)) {
-//
-//                    if (!WatchUtils.isEmpty(mac))
-//                        b15PDBCommont.saveBloopToDB(mac, split[0], Integer.valueOf(split[1]));
-//                }
-//
-//            }
-//
-//
-//        }
-//    };
 
     int type = 0;
     List<String> typSync = new ArrayList<>();
@@ -852,9 +708,6 @@ public class B15pHomeFragment extends LazyFragment
                             }
                         }).execute(steps);
 
-//                        if (b30HomeSwipeRefreshLayout != null)
-//                            b30HomeSwipeRefreshLayout.finishRefresh();
-//                        setSysTextStute(false);
                     }
 
                     break;
@@ -863,319 +716,6 @@ public class B15pHomeFragment extends LazyFragment
         }
     });
 
-
-//    void setSleep(List<B15PSleepDB> sleepAllDatas) {
-//        /**
-//         * 睡眠
-//         */
-////     List<B15PSleepDB> sleepAllDatas = b15PDBCommont.findSleepAllDatas(mac, WatchUtils.obtainFormatDate(currDay));
-//
-//        String dateStr = WatchUtils.obtainFormatDate(currDay);//根据选择的是哪一天，获取当天时间，再根据当天的前一天获取睡眠数据
-//        List<W30S_SleepDataItem> sleepDataList = new ArrayList<>();
-//        if (sleepAllDatas != null && !sleepAllDatas.isEmpty()) {
-////                            Log.e(TAG, "===睡眠=A=" + sleepAllDatas.toString());
-//
-//            //Log.e(TAG, "===睡眠=AS=" + dateStr + "    " + WatchUtils.obtainAroundDate(dateStr, true));
-//            sleepDataList.clear();
-//            for (int i = 0; i < sleepAllDatas.size(); i++) {
-//                B15PSleepDB b15PSleepDB = sleepAllDatas.get(i);
-//                if (b15PSleepDB != null) {
-//                    String sleepData = b15PSleepDB.getSleepData();
-//                    //Log.e(TAG, "===睡眠=A2=" + b15PSleepDB.getSleepData() + "  " + b15PSleepDB.getSleepType());
-//                    if ((sleepData.substring(0, 10).equals(dateStr)
-//                            && Integer.valueOf(sleepData.substring(11, 13)) <= 16)
-//                            || (sleepData.substring(0, 10).equals(WatchUtils.obtainAroundDate(dateStr, true))
-//                            && Integer.valueOf(sleepData.substring(11, 13)) >= 22)) {
-//
-////                                        Log.e(TAG, "===睡眠=A2S=" + b15PSleepDB.getSleepData() + "  " + b15PSleepDB.getSleepType());
-//                        W30S_SleepDataItem w30S_sleepDataItem = new W30S_SleepDataItem();
-//                        w30S_sleepDataItem.setStartTime(sleepData.substring(11, 16));
-//                        w30S_sleepDataItem.setSleep_type(b15PSleepDB.getSleepType());
-//                        sleepDataList.add(w30S_sleepDataItem);
-//                    }
-//                }
-//            }
-//        } else {
-//            if (b30CusSleepView != null) {
-//                b30CusSleepView.setSeekBarShow(false);
-//                b30CusSleepView.setSleepList(new ArrayList<Integer>());
-//            }
-//        }
-////                        Log.e(TAG, "===睡眠=B=" + sleepDataList.toString());
-//
-//
-//        if (!sleepDataList.isEmpty()) {
-////                        ALLTIME = 0;//睡眠总时间
-//            AWAKE = 0;//清醒的次数
-////                        DEEP = 0;//深睡
-////                        SHALLOW = 0;//浅睡
-//            startSleepTime = "";
-//            endSleepTime = "";
-//            StringBuilder strSleep = new StringBuilder("");
-//            for (int i = 0; i < sleepDataList.size() - 1; i++) {
-//                String startTime = null;
-//                String startTimeLater = null;
-//                String sleep_type = null;
-////                                Log.e(TAG, "===睡眠=C= " + sleepDataList.get(i).getStartTime() + "======" +
-////                                        (sleepDataList.get(i).getSleep_type().equals("0") ? "===清醒" : sleepDataList.get(i).getSleep_type().equals("1") ? "---->>>浅睡" : "===>>深睡"));
-//
-//                if (i == 0) startSleepTime = sleepDataList.get(i).getStartTime();
-//                endSleepTime = sleepDataList.get(i).getStartTime();
-//                if (i >= (sleepDataList.size() - 1)) {
-//                    startTime = sleepDataList.get(i).getStartTime();
-//                    startTimeLater = sleepDataList.get(i).getStartTime();
-//                    sleep_type = sleepDataList.get(i).getSleep_type();
-//                } else {
-//                    startTime = sleepDataList.get(i).getStartTime();
-//                    startTimeLater = sleepDataList.get(i + 1).getStartTime();
-//                    sleep_type = sleepDataList.get(i).getSleep_type();
-//                }
-//                String[] starSplit = startTime.split("[:]");
-//                String[] endSplit = startTimeLater.split("[:]");
-//
-//                int startHour = Integer.valueOf(!TextUtils.isEmpty(starSplit[0].replace(",", "")) ? starSplit[0].replace(",", "") : "0");
-//                int endHour = Integer.valueOf(!TextUtils.isEmpty(endSplit[0].replace(",", "")) ? endSplit[0].replace(",", "") : "0");
-//
-//                int startMin = Integer.valueOf(!TextUtils.isEmpty(starSplit[1].replace(",", "")) ? starSplit[1].replace(",", "") : "0");
-//                int endMin = (Integer.valueOf(!TextUtils.isEmpty(endSplit[1].replace(",", "")) ? endSplit[1].replace(",", "") : "0"));
-//                if (startHour > endHour) {
-//                    endHour = endHour + 24;
-//                }
-//                int all_m = (endHour - startHour) * 60 + (endMin - startMin);
-//                //B15P元数据   清醒  0    浅睡 1   深睡 2
-//                //图标绘制时    浅睡  0    深睡 1   清醒 2
-//                if (sleep_type.equals("0")) {
-//                    AWAKE++;
-////                                Log.e(TAG, "====0===" + all_m);
-//                    for (int j = 1; j <= all_m; j++) {
-//                        strSleep.append("2");
-//                    }
-//                } else if (sleep_type.equals("1")) {
-//                    //潜水
-////                                SHALLOW = SHALLOW + all_m;
-////                                ALLTIME = ALLTIME + all_m;
-////                                Log.e(TAG, "====1===" + all_m);
-//                    for (int j = 1; j <= all_m; j++) {
-//                        strSleep.append("0");
-//                    }
-//                } else if (sleep_type.equals("2")) {
-//                    //深水
-////                                DEEP = DEEP + all_m;
-////                                ALLTIME = ALLTIME + all_m;
-////                                Log.e(TAG, "====2===" + all_m);
-//                    for (int j = 1; j <= all_m; j++) {
-//                        strSleep.append("1");
-//                    }
-//                }
-//
-//            }
-//
-////                            Log.e(TAG, "===睡眠=D=" + strSleep.toString());
-//
-//
-//            if (!TextUtils.isEmpty(strSleep)) {
-//
-////                                Log.e(TAG, strSleep.toString().length() + " 睡眠 \n" + strSleep.toString());
-//                /**
-//                 * 显示睡眠图标
-//                 */
-//                showSleepData(strSleep.toString(), dateStr);
-//            }
-//        } else {
-//            if (b30CusSleepView != null) {
-//                b30CusSleepView.setSeekBarShow(false);
-//                b30CusSleepView.setSleepList(new ArrayList<Integer>());
-//            }
-//        }
-//    }
-//
-//    void setHeart(List<B15PHeartDB> heartAllDatas) {
-//
-////       List<B15PHeartDB> heartAllDatas = b15PDBCommont.findHeartAllDatas(mac, WatchUtils.obtainFormatDate(currDay));
-//        if (heartAllDatas != null && !heartAllDatas.isEmpty()) {
-////                            Log.e(TAG, "===心率表==" + heartAllDatas.toString());
-//            String dayTimes = WatchUtils.obtainFormatDate(currDay);
-//            Map<String, Integer> heartMapFa = new HashMap<>();
-//            Map<String, Integer> heartMap = new LinkedHashMap<>();
-//            int allValues1 = 0;
-////                            int allValues2 = 0;
-//            int valueCount1 = 0;
-////                            int valueCount2 = 0;
-//
-//
-//            /**
-//             * 设置长度为48的空的数据组
-//             */
-//            for (int i = 0; i < timeString.length; i++) {
-//                heartMap.put(timeString[i], 0);
-//            }
-////                            Log.e(TAG, "====bb = " + heartMap.size());
-////                            Log.e(TAG, "====bbA = " + heartMap.toString());
-////                            for (int n = 0; n < 24; n++) {
-////                                String key = "00";
-////                                if (n <= 9) {
-////                                    key = "0" + n;
-////                                } else {
-////                                    key = "" + n;
-////                                }
-////                                if (!heartMap.containsKey(key)) {
-////                                    heartMap.put(key, 0);
-////                                }
-////                            }
-//
-//            for (int j = 0; j < heartAllDatas.size(); j++) {
-//
-//                B15PHeartDB b15PHeartDB = heartAllDatas.get(j);
-//                if (b15PHeartDB != null) {
-//                    String heartData = b15PHeartDB.getHeartData();
-////                                    Log.e(TAG, "====进入循环，有数据 = " + heartData + "   " + dayTimes);
-//                    // 判断只是取今天的心率数据
-//                    if (dayTimes.equals(heartData.substring(0, 10))) {
-//                        int heartNumber = b15PHeartDB.getHeartNumber();
-//
-//                        //Log.e(TAG, "====进入循环内，有数据 = " + heartData.substring(11, 13) + "   " + dayTimes + "  " + heartNumber);
-//                        //2019-04-22 13:59:38
-//
-////                                        ////2019-04-22 13:59:38 ------13:00
-////                                        if (heartMapFa.containsKey(heartData.substring(11, 13) + ":00")
-////                                                || heartMapFa.containsKey(heartData.substring(11, 13) + ":30")) {
-////
-////                                            //2019-04-22 13:59:38 ----- 59
-////                                            String substring = heartData.substring(14, 16).trim();
-////                                            if (Integer.valueOf(substring) / 60 >= 0.5) {//该小时 30 分钟以前
-////                                                valueCount1++;//半小时测量的次数---用于计算半小时内的平均数
-////                                                allValues1 = allValues1 + heartNumber;//半小时内的所有数据累加
-////                                                if (allValues1 > 0) {
-////                                                    heartMap.put(heartData.substring(11, 13) + ":00", (int) allValues1 / valueCount1);
-////                                                } else {
-////                                                    heartMap.put(heartData.substring(11, 13) + ":00", (int) 0);
-////                                                }
-////                                                heartMapFa.put(heartData.substring(11, 13) + ":00", 0);
-////                                            } else {//该小时 30 分钟以后
-////                                                valueCount2++;//半小时测量的次数---用于计算半小时内的平均数
-////                                                allValues2 = allValues2 + heartNumber;//半小时内的所有数据累加
-////                                                if (allValues2 > 0) {
-////                                                    heartMap.put(heartData.substring(11, 13) + ":30", (int) allValues2 / valueCount2);
-////                                                } else {
-////                                                    heartMap.put(heartData.substring(11, 13) + ":30", (int) 0);
-////                                                }
-////                                                heartMapFa.put(heartData.substring(11, 13) + ":30", 0);
-////                                            }
-////                                        } else {
-////                                            String substring = heartData.substring(14, 16).trim();
-////                                            if (Integer.valueOf(substring) / 60 >= 0.5) {//该小时 30 分钟以前
-////                                                valueCount1 = 1;
-////                                                allValues1 = heartNumber;
-////                                                heartMap.put(heartData.substring(11, 13) + ":00", allValues1);
-////                                                heartMapFa.put(heartData.substring(11, 13) + ":00", 0);
-////                                            } else {//该小时 30 分钟以后
-////                                                valueCount2 = 1;
-////                                                allValues2 = heartNumber;
-////                                                heartMap.put(heartData.substring(11, 13) + ":30", allValues2);
-////                                                heartMapFa.put(heartData.substring(11, 13) + ":30", 0);
-////                                            }
-////                                        }
-//
-//                        ////2019-04-22 13:59:38 ------13:00
-//
-//                        if (heartMapFa.containsKey(heartData.substring(11, 13))) {
-//                            valueCount1++;//1小时测量的次数---用于计算1小时内的平均数
-//                            allValues1 = allValues1 + heartNumber;//半小时内的所有数据累加
-//                            heartMapFa.put(heartData.substring(11, 13), 0);
-//
-//                            if (allValues1 > 0) {
-//                                heartMap.put(heartData.substring(11, 13), (int) allValues1 / valueCount1);
-//                            } else {
-//                                heartMap.put(heartData.substring(11, 13), (int) 0);
-//                            }
-//                        } else {
-//                            valueCount1 = 1;
-//                            allValues1 = heartNumber;
-//                            heartMap.put(heartData.substring(11, 13), allValues1);
-//                            heartMapFa.put(heartData.substring(11, 13), 0);
-//                        }
-//                    }
-//                }
-//            }
-//
-////                            Log.e(TAG, "=AAS===心率真实值设置完成 " + heartMap.size() + "   " + heartMap.toString());
-//            showSportHeartData(heartMap);
-//        } else {
-//            if (b30CusHeartView != null)
-//                b30CusHeartView.setRateDataList(heartList);
-//        }
-//    }
-//
-//    void setStep(List<B15PStepDB> stepAllDatas) {
-//
-//        /**
-//         * 步数
-//         */
-////                        List<B15PStepDB> stepAllDatas = b15PDBCommont.findStepAllDatas(mac, WatchUtils.obtainFormatDate(currDay));
-//        List<Integer> sportData = new ArrayList<>();
-//        String dayTimes = WatchUtils.obtainFormatDate(currDay);
-//        if (stepAllDatas != null && !stepAllDatas.isEmpty()) {
-////                            Log.e(TAG, "===步数==" + stepAllDatas.toString());
-//            int hourStep = 0;
-//            for (int i = 0; i < timeString.length; i++) {
-//                hourStep = 0;
-//                defaultSteps = 0;
-//                defaultStepsY = 0;
-//                defaultStepsTY = 0;
-//                for (int j = 0; j < stepAllDatas.size(); j++) {
-//                    B15PStepDB b15PStepDB = stepAllDatas.get(j);
-//                    if (b15PStepDB != null) {
-//                        String stepData = b15PStepDB.getStepData();
-//                        /**
-//                         * 用于过滤数据，只拿去三天的数据
-//                         * 0_今天 1_昨天 2_前天
-//                         */
-////                                        private String t = WatchUtils.obtainFormatDate(0);
-////                                        private String y = WatchUtils.obtainFormatDate(1);
-////                                        private String q = WatchUtils.obtainFormatDate(2);
-//                        //根据日期判断去当天的值
-//                        if (stepData.substring(0, 10).equals(dayTimes)) {//例如：现在是   2019-04-25
-////                                            Log.e(TAG, "===步数计算时间对比==" + stepData.substring(0, 10) + "  " + dayTimes + "  " + b15PStepDB.getStepItemNumber());
-//                            defaultSteps = defaultSteps + b15PStepDB.getStepItemNumber();
-//                            String stepTime = b15PStepDB.getStepTime();
-//                            if (timeString[i].equals(stepTime.substring(0, 2))) {
-//                                hourStep += b15PStepDB.getStepItemNumber();
-//                            }
-//                            //保存总步数  数据面板的显示
-//                            CommDBManager.getCommDBManager().saveCommCountStepDate("B15P", mac,
-//                                    dayTimes,
-//                                    defaultSteps);
-//                        }
-////                                        else if (stepData.substring(0, 10).equals(WatchUtils.obtainAroundDate(dayTimes, true))) {//那么这个现在是   2019-04-24
-////                                            defaultStepsY = defaultStepsY + b15PStepDB.getStepItemNumber();
-////
-////                                            //保存总步数  数据面板的显示
-////                                            CommDBManager.getCommDBManager().saveCommCountStepDate("B15P", mac,
-////                                                    WatchUtils.obtainAroundDate(dayTimes, true),
-////                                                    defaultStepsY);
-////                                        } else if (stepData.substring(0, 10)
-////                                                .equals(WatchUtils.obtainAroundDate(WatchUtils.obtainAroundDate(dayTimes, true), true))) {//那么这个现在是   2019-04-23
-////                                            defaultStepsTY = defaultStepsTY + b15PStepDB.getStepItemNumber();
-////                                            //保存总步数  数据面板的显示
-////                                            CommDBManager.getCommDBManager().saveCommCountStepDate("B15P", mac,
-////                                                    WatchUtils.obtainAroundDate(WatchUtils.obtainAroundDate(dayTimes, true), true),
-////                                                    defaultStepsTY);
-////                                        }
-//
-//
-//                    }
-//                }
-//                sportData.add(hourStep);
-//            }
-//        }
-//
-//
-//        if (getActivity() != null && !getActivity().isFinishing() && b30ProgressBar != null) {
-//            b30ProgressBar.setMaxValue(goalStep);
-//            b30ProgressBar.setValue(defaultSteps);
-//        }
-//        showSportStepData(sportData);
-//    }
 
 
     /**
@@ -1230,9 +770,8 @@ public class B15pHomeFragment extends LazyFragment
 //                intent.putExtra("is18i", "B36");
 //                intent.putExtra("stepNum", defaultSteps + "");
 //                startActivity(intent);
-               // startActivity(new Intent(getActivity(), CommentDataActivity.class));
+                //startActivity(new Intent(getActivity(), CommentDataActivity.class));
                 break;
-
         }
     }
 
@@ -1244,6 +783,17 @@ public class B15pHomeFragment extends LazyFragment
      */
     void showBatterStute(int batteryLevel) {
         try {
+//            if (batteryTopImg == null) return;
+//            if (batteryLevel >= 0 && batteryLevel == 1) {
+//                batteryTopImg.setBackground(getResources().getDrawable(R.mipmap.image_battery_two));
+//            } else if (batteryLevel == 2) {
+//                batteryTopImg.setBackground(getResources().getDrawable(R.mipmap.image_battery_three));
+//            } else if (batteryLevel == 3) {
+//                batteryTopImg.setBackground(getResources().getDrawable(R.mipmap.image_battery_four));
+//            } else if (batteryLevel == 4) {
+//                batteryTopImg.setBackground(getResources().getDrawable(R.mipmap.image_battery_five));
+//            }
+//            if (batteryPowerTv != null) batteryPowerTv.setText("" + batteryLevel * 25 + "%");
             if (batteryTopImg == null) return;
             if (batteryLevel >= 0 && batteryLevel < 25) {
                 batteryTopImg.setBackground(getResources().getDrawable(R.mipmap.image_battery_two));
@@ -1329,7 +879,7 @@ public class B15pHomeFragment extends LazyFragment
 
     //开始上传本地缓存的数据
     private void startUploadDBService() {
-        //CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
+       // CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
     }
 
 
@@ -1560,79 +1110,4 @@ public class B15pHomeFragment extends LazyFragment
         }
     }
 
-
-//    /**
-//     * 展示心率图表
-//     */
-//    private void showSportHeartData(Map<String, Integer> heartMap) {
-//        if (getActivity() != null && !getActivity().isFinishing()) {
-//            heartList.clear();
-//            heartListNew.clear();
-//            int noZeroCount = 0;
-//            int noZeroAvgCount = 0;
-//            if (heartMap != null && !heartMap.isEmpty()) {
-//                List<Integer> heartValue = new ArrayList<>();
-//                for (String key : heartMap.keySet()) {
-//                    heartValue.add(heartMap.get(key));
-//                }
-////                Log.e(TAG, "====B=aaa " + heartValue.size());
-////                Log.e(TAG, "=====aaa " + heartValue.toString());
-//                List<Map<String, Integer>> listMap = new ArrayList<>();
-//
-//                for (int i = 0; i < 48; i++) {
-//                    int time = 30;
-//                    Map<String, Integer> map = new HashMap<>();
-//                    if (i % 2 == 0) {//0  2  4  6      30   120   240  360
-//                        time = i * 60;
-//                        map.put("val", heartValue.get(i / 2));
-//                    } else { // 1 3 5 7    60  180  300  420
-//                        time = i * 30;
-//                        map.put("val", 0);
-//                    }
-//                    map.put("time", time);
-//                    listMap.add(map);
-//                }
-//
-//                for (int i = 0; i < listMap.size(); i++) {
-//                    Map<String, Integer> map = listMap.get(i);
-//                    heartList.add(map.get("val"));
-//                    if (map.get("val") > 0) {
-//                        noZeroCount++;
-//                        noZeroAvgCount += map.get("val");
-//                        heartListNew.add(map.get("val"));
-//                    }
-//                }
-//
-//
-//                /**
-//                 * 保存心率数据
-//                 *
-//                 * @param bleName  蓝牙名字
-//                 * @param bleMac   蓝牙mac地址
-//                 * @param dataStr  日期
-//                 * @param avgHeart 平均心率
-//                 */
-//                if (!heartListNew.isEmpty()) {
-//                    String dayTimes = WatchUtils.obtainFormatDate(currDay);
-//                    CommDBManager.getCommDBManager().saveCommHeartData("B15P", WatchUtils.getSherpBleMac(MyApp.getContext()), dayTimes,
-//                            Collections.max(heartListNew), Collections.min(heartListNew), (int) noZeroAvgCount / noZeroCount);
-//                }
-//
-//
-////            HalfHourRateData lastHalfHourRateData = rateData.get(rateData.size() - 1);
-////            if (lastHalfHourRateData != null) {
-////                if (lastTimeTv != null)
-////                    lastTimeTv.setText(getResources().getString(R.string.string_recent) + " " + lastHalfHourRateData.getTime().getColck());
-////                if (b30HeartValueTv != null)
-////                    b30HeartValueTv.setText(lastHalfHourRateData.getRateValue() + " bpm");
-////            }
-////            b30CusHeartView.setPointRadio(5);//圆点的半径
-//                if (b30CusHeartView != null) b30CusHeartView.setRateDataList(heartList);
-//            } else {
-////            b30CusHeartView.setPointRadio(5);//圆点的半径
-//                if (b30CusHeartView != null) b30CusHeartView.setRateDataList(heartList);
-//            }
-//        }
-//
-//    }
 }

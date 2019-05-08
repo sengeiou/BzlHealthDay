@@ -42,7 +42,7 @@
                         android:layout_gravity="center"
                         android:layout_height="wrap_content">
 
-                        <com.example.bozhilun.android.b30.b30view.B15PCusSleepView
+                        <com.bozlun.healthday.android.b30.b30view.B15PCusSleepView
                             android:id="@+id/detailCusSleepView"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/size_150"

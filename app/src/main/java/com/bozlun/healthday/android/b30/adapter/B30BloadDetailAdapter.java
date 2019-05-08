@@ -21,7 +21,6 @@ import java.util.List;
  * 血压详情adapter
  */
 public class B30BloadDetailAdapter extends RecyclerView.Adapter<B30BloadDetailAdapter.B30StepDetailViewHolder>{
-
     private Context mContext;
     private List<HalfHourBpData> list;
 
