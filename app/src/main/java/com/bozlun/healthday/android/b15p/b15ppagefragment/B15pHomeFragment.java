@@ -31,7 +31,6 @@ import com.bozlun.healthday.android.b30.ManualMeaureHeartActivity;
 import com.bozlun.healthday.android.b30.b30view.B15PCusSleepView;
 import com.bozlun.healthday.android.b30.b30view.B30CusHeartView;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
-import com.bozlun.healthday.android.commdbserver.CommDBManager;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.github.mikephil.charting.charts.BarChart;
@@ -1066,16 +1065,16 @@ public class B15pHomeFragment extends LazyFragment
          * @param waketime  清醒时间
          * @param wakeCount 清醒次数
          */
-        CommDBManager.getCommDBManager().saveCommSleepDbData("B15P",
-                WatchUtils.getSherpBleMac(MyApp.getContext()),
-                dateStr,
-                shen,
-                qian,
-                xing,
-                allSleep + xing,
-                startSleepTime,
-                endSleepTime,
-                AWAKE);
+//        CommDBManager.getCommDBManager().saveCommSleepDbData("B15P",
+//                WatchUtils.getSherpBleMac(MyApp.getContext()),
+//                dateStr,
+//                shen,
+//                qian,
+//                xing,
+//                allSleep + xing,
+//                startSleepTime,
+//                endSleepTime,
+//                AWAKE);
 //      Log.e(TAG, "====" + AWAKE + "   " + SHALLOW + "  " + DEEP);
 
 
