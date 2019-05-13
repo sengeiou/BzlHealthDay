@@ -25,6 +25,8 @@ import com.sdk.bluetooth.utils.BackgroundThread;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.sdk.bluetooth.manage.AppsBluetoothManager;
 import com.sdk.bluetooth.protocol.command.base.BaseCommand;
+import com.tjdL4.tjdmain.AppIC;
+import com.tjdL4.tjdmain.contr.L4Command;
 import com.veepoo.protocol.listener.base.IBleWriteResponse;
 import com.veepoo.protocol.listener.data.IDeviceControlPhone;
 import com.veepoo.protocol.model.enums.ESocailMsg;
@@ -130,6 +132,14 @@ public class PhoneBroadcastReceiver extends BroadcastReceiver {
                     //维亿魄系列
                     if(!WatchUtils.isEmpty(bleName) && WatchUtils.isVPBleDevice(bleName)){   //B30手环
                         sendPhoneAlertData(phoneNumber,"B30");
+                    }
+
+                    //滕进达系列
+                    if (WatchUtils.verBleNameForSearch(bleName)) {
+                        int pushMsg_call = AppIC.SData().getIntData("pushMsg_call");
+                        if (pushMsg_call == 1) {
+                            L4Command.SendCallInstruction(phoneNumber);
+                        }
                     }
                     break;
                 case TelephonyManager.CALL_STATE_IDLE:// "[Broadcast]挂断电话

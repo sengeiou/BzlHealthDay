@@ -151,7 +151,7 @@ public class LaunchActivity extends WatchBaseActivity {
                     startActivity(new Intent(LaunchActivity.this, B30HomeActivity.class));
                 } else if("B31".equals(btooth) || "B31S".equals(btooth) || "500S".equals(btooth)){
                     startActivity(new Intent(LaunchActivity.this,B31HomeActivity.class));
-                }else if ("B15P".equals(btooth)||"W3".equals(btooth)) {
+                }else if (WatchUtils.verBleNameForSearch(btooth)) {//腾进达系列
                     startActivity(new Intent(LaunchActivity.this, B15pHomeActivity.class));
                 }
 

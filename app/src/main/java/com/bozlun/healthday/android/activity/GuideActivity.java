@@ -141,7 +141,7 @@ public class GuideActivity extends BaseActivity {
                             startActivity(new Intent(GuideActivity.this, W30SHomeActivity.class));
                         }else if("B30".equals(btooth)){
                             startActivity(new Intent(GuideActivity.this, B30HomeActivity.class));
-                        }else if ("B15P".equals(btooth)||"W3".equals(btooth)) {
+                        }else if (WatchUtils.verBleNameForSearch(btooth)) {//腾进达系列
                             startActivity(new Intent(GuideActivity.this, B15pHomeActivity.class));
                         }
                         else {

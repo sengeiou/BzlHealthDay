@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
@@ -50,6 +51,7 @@ import com.tjdL4.tjdmain.Dev;
 import com.tjdL4.tjdmain.L4M;
 import com.tjdL4.tjdmain.contr.BracltBatLevel;
 import com.tjdL4.tjdmain.contr.L4Command;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -57,6 +59,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -364,6 +367,10 @@ public class B15pHomeFragment extends LazyFragment
             final Object TempObj = DataObj;
             Log.d(TAG, "电池电量    获取有返回了" + tTypeInfo + "  " + TempStr + "  " + TempObj);
 
+            if (!WatchUtils.isEmpty(TempStr) && TempStr.equals("5A1400FF0300004633350502000501544A4400C1") && TempObj == null) {
+                getBatter();
+                return;
+            }
             if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
                 Log.e(TAG, "--------------==  获取电量超时 ~~~~~~~~~~~~~~ 跳过去执行下一个指令");
                 mHandler.sendEmptyMessageDelayed(0x02, 100);
@@ -716,7 +723,6 @@ public class B15pHomeFragment extends LazyFragment
     });
 
 
-
     /**
      * 当前显示哪天的数据(0_今天 1_昨天 2_前天)
      */
@@ -878,7 +884,7 @@ public class B15pHomeFragment extends LazyFragment
 
     //开始上传本地缓存的数据
     private void startUploadDBService() {
-       // CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
+        // CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
     }
 
 

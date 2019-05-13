@@ -560,8 +560,9 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
 
 
             //B15P
-            if (bleName.substring(0, 2).equals(WatchUtils.W3_BLENAME)
-                    ||(bleName.length() >= 4 && bleName.substring(0, 4).equals(WatchUtils.B15P_BLENAME))) {
+//            if (bleName.substring(0, 2).equals(WatchUtils.W3_BLENAME)
+//                    ||(bleName.length() >= 4 && bleName.substring(0, 4).equals(WatchUtils.B15P_BLENAME))) {
+            if (WatchUtils.verBleNameForSearch(bleName)){
                 showLoadingDialog("connection...");
 
 

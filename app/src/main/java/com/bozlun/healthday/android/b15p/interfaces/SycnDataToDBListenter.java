@@ -141,7 +141,7 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                         Log.e(TAG, "线程中保存步数" + splitStep[0] + "   " + Integer.valueOf(splitStep[1]));
                         //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
-                                && !splitStep[0].substring(11, 19).equals("00:00:00")
+//                                && !splitStep[0].substring(11, 19).equals("00:00:00")
                                 &&(L4M.Get_Connect_flag() == 2))
                             b15PDBCommont.saveStepToDB(mac, splitStep[0], Integer.valueOf(splitStep[1]));
                     }

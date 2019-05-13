@@ -111,8 +111,6 @@ public class WatchUtils {
     private static final String B18I_BLENAME = "B18I";  //B18I
     public static final String H9_BLENAME = "H9"; //H9手表名字标识  保存时后面+X
     public static final String W06_BLENAME = "W06X"; //H9手表名字标识  保存时后面+X
-    public static final String B15P_BLENAME = "B15P";  //B15P
-    public static final String W3_BLENAME = "W3";  //W3
     public static final String B30_NAME = "B30";  //B30
     public static final String W30_NAME = "W30";     //W30
     public static final String W31_NAME = "W31";        //W31
@@ -130,6 +128,13 @@ public class WatchUtils {
      * @return
      */
     public static boolean verBleNameForSearch(String bleName) {
+        String []FilterNamas=new String[]{"B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7","F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
+        Set<String> set = new HashSet<>(Arrays.asList(FilterNamas));
+        if (set.contains(bleName)){
+            return true;
+        }else {
+            return false;
+        }
 //        if ((bleName.length() >= 2 && bleName.substring(0, 2).equals(H8_NAME))
 //                ||(bleName.length() >= 2 && bleName.substring(0, 2).equals(H9_BLENAME))
 //                ||(bleName.length() >= 3 && bleName.substring(0, 3).equals(W30_NAME))
@@ -141,11 +146,11 @@ public class WatchUtils {
 //                || bleName.length() >= 4 && bleName.substring(0, 4).equals(W06_BLENAME)
 //                || (bleName.length() >= 4 && bleName.substring(0, 4).equals(B31S_NAME))
 //                || (bleName.length() >= 4 && bleName.substring(0, 4).equals(S500_NAME))) {
-        if (bleName.length() == 2 && bleName.equals(W3_BLENAME)) {
-            return true;
-        } else {
-            return false;
-        }
+//        if (bleName.length() == 2 && bleName.equals(W3_BLENAME)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
 
     }
 

@@ -18,6 +18,7 @@ import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.suchengkeji.android.w30sblelibrary.W30SBLEServices;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
+import com.tjd.tjdmain.icentre.ICC_Contents;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
@@ -179,6 +180,40 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                         mBluetoothStateListenter.BluetoothStateListenter();
                 } catch (Exception e) {
                     e.getMessage();
+                }
+                break;
+            case ICC_Contents.ToUi://腾进达方案着手机
+                try {
+                    String msgData1 = intent.getStringExtra(ICC_Contents.ToUi_D1);
+                    if (WatchUtils.isEmpty(msgData1))
+                        return;
+
+                    if (msgData1.contains("FindPhone_Ring")) {
+
+                        Log.e(TAG, "叉着手还---" + msgData1);
+                        mVibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+                        mMediaPlayer = new MediaPlayer();
+                        AssetFileDescriptor file = context.getResources().openRawResourceFd(R.raw.music);
+                        try {
+                            mMediaPlayer.setDataSource(file.getFileDescriptor(), file.getStartOffset(),
+                                    file.getLength());
+                            mMediaPlayer.prepare();
+                            file.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        mMediaPlayer.setVolume(0.5f, 0.5f);
+                        mMediaPlayer.setLooping(false);
+                        mMediaPlayer.start();
+                        if (mVibrator.hasVibrator()) {
+                            //想设置震动大小可以通过改变pattern来设定，如果开启时间太短，震动效果可能感觉不到
+                            mVibrator.vibrate(new long[]{500, 1000, 500, 1000}, -1);//查找手机是调用系统震动
+                        }
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 break;
             case W30SBLEServices.ACTION_FINDE_AVAILABLE_DEVICE://着手机
