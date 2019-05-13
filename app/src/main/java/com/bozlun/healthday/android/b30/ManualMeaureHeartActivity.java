@@ -20,6 +20,7 @@ import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
+import com.tjdL4.tjdmain.contr.Health_HeartBldPrs;
 import com.veepoo.protocol.listener.base.IBleWriteResponse;
 import com.veepoo.protocol.listener.data.IHeartDataListener;
 import com.veepoo.protocol.model.datas.HeartData;
@@ -27,6 +28,14 @@ import com.veepoo.protocol.model.datas.HeartData;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+/**
+ * Created by Administrator on 2018/8/6.
+ */
+
+/**
+ * 手动测量心率
+ */
 
 /**
  * Created by Administrator on 2018/8/6.
@@ -61,19 +70,31 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
     //缩放动画
     Animation animationRoate;
     ScaleAnimation animation_suofang;
-
+    String devicesType;
 
     @SuppressLint("HandlerLeak")
-    Handler handler = new Handler(){
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 1001:
                     HeartData heartData = (HeartData) msg.obj;
-                    Log.e(TAG,"----heartData-="+heartData.toString());
-                    b30MeaureHeartValueTv.setText(heartData.getData()+"");
+                    Log.e(TAG, "----heartData-=" + heartData.toString());
+                    b30MeaureHeartValueTv.setText(heartData.getData() + "");
 
+                    break;
+                case 0x11:
+                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+                    isMeaure = false;
+                    stopAllAnimat(b30ScaleLin, b30cirImg);
+                    b30finishTv.setText("测量完毕");
+                    String heartValue = (String) msg.obj;
+                    Log.e(TAG, "----heartData-=" + heartValue);
+                    b30MeaureHeartValueTv.setText(heartValue + "");
+                    break;
+                case 0x12:
+                    Health_HeartBldPrs.ForceClose_HeartrateMeasure();
                     break;
             }
 
@@ -85,6 +106,13 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_meaure_heart);
         ButterKnife.bind(this);
+
+        try {
+            devicesType = getIntent().getStringExtra("what");
+        } catch (Error error) {
+        }
+
+
         initViews();
     }
 
@@ -94,7 +122,7 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
         commentB30BackImg.setVisibility(View.VISIBLE);
     }
 
-    @OnClick({R.id.commentB30BackImg, R.id.commentB30ShareImg,R.id.b30MeaureHeartStartBtn})
+    @OnClick({R.id.commentB30BackImg, R.id.commentB30ShareImg, R.id.b30MeaureHeartStartBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.commentB30BackImg:    //返回
@@ -104,61 +132,149 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
                 WatchUtils.shareCommData(ManualMeaureHeartActivity.this);
                 break;
             case R.id.b30MeaureHeartStartBtn:   //开始和结束
-                if(MyCommandManager.DEVICENAME != null){
-                    if(!isMeaure){
-                        isMeaure = true;
-                        b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_pause);
-                        startAllAnimat(b30ScaleLin,b30cirImg);
-                        MyApp.getInstance().getVpOperateManager().startDetectHeart(iBleWriteResponse, new IHeartDataListener() {
-                            @Override
-                            public void onDataChange(HeartData heartData) {
-                                if(heartData != null){
-                                    Message message = handler.obtainMessage();
-                                    message.obj = heartData;
-                                    message.what = 1001;
-                                    handler.sendMessage(message);
+                if (MyCommandManager.DEVICENAME != null) {
+
+
+                    if (!isMeaure) {
+
+                        if (!WatchUtils.isEmpty(devicesType) && devicesType.equals("b15p")) {
+                            testB15PHeart();
+                        } else {
+
+                            isMeaure = true;
+                            b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_pause);
+                            startAllAnimat(b30ScaleLin, b30cirImg);
+                            MyApp.getInstance().getVpOperateManager().startDetectHeart(iBleWriteResponse, new IHeartDataListener() {
+                                @Override
+                                public void onDataChange(HeartData heartData) {
+                                    if (heartData != null) {
+                                        Message message = handler.obtainMessage();
+                                        message.obj = heartData;
+                                        message.what = 1001;
+                                        handler.sendMessage(message);
+                                    }
                                 }
+                            });
+                        }
 
 
-                            }
-                        });
-
-                    }else{
+                    } else {
                         b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
                         isMeaure = false;
-                        stopAllAnimat(b30ScaleLin,b30cirImg);
+                        stopAllAnimat(b30ScaleLin, b30cirImg);
                         b30finishTv.setText("测量完毕");
-                        MyApp.getInstance().getVpOperateManager().stopDetectHeart(iBleWriteResponse);
+                        if (!WatchUtils.isEmpty(devicesType)&&devicesType.equals("b15p")){
+                            //如果推出界面或者界面停止时心率还在测量，则强行关闭心率测量
+                            Health_HeartBldPrs.ForceClose_HeartrateMeasure();
+                        }else {
+                            MyApp.getInstance().getVpOperateManager().stopDetectHeart(iBleWriteResponse);
+                        }
                     }
-                }else{
-                    b30finishTv.setText("手环未连接");
+                } else {
+                    b30finishTv.setText(getResources().getString(R.string.device)+getResources().getString(R.string.string_not_coon));
                 }
                 break;
         }
     }
 
+    /**
+     * b15P心率测量
+     */
+    private void testB15PHeart() {
+        Health_HeartBldPrs.Get_HeartrateMeasureResult(new Health_HeartBldPrs.HeartResultListener() {
+            @Override
+            public void OnErr(String EventStr, String ErrInfo) {
+                if (EventStr.equals(Health_HeartBldPrs.START)) {
+                    if (ErrInfo.equals(Health_HeartBldPrs.NOTSUPPORT)) {
+                        Log.e(TAG, "-----手环不支持心率测量");
+                    }
+                } else if (EventStr.equals(Health_HeartBldPrs.CONNECT)) {
+                    switch (ErrInfo) {
+                        case Health_HeartBldPrs.WRONGCONNECTION:
+                            Log.e(TAG, "-----蓝牙连接不正常");
+                            break;
+                        case Health_HeartBldPrs.ARESYNCHRONIZED:
+                            Log.e(TAG, "-----正在同步心率数据,稍后再试!");
+                            break;
+                        case Health_HeartBldPrs.CONNECTLATER:
+                            Log.e(TAG, "-----请稍后测量心率再试");
+                            break;
+                    }
+                }
+            }
 
-    private void startAllAnimat(View view1,View view2){
+            @Override
+            public void OnOpen(String EventStr) {
+                if (EventStr.equals(Health_HeartBldPrs.OPENSTART)) {
+                    //测量开始
+                    Log.e(TAG, "-----开始测量心率");
+                    isMeaure = true;
+                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_pause);
+                    startAllAnimat(b30ScaleLin, b30cirImg);
+                } else if (EventStr.equals(Health_HeartBldPrs.OPENOK)) {
+                    //打开测量成功，等待结果
+                    //可以在界面做等待超时处理，超时后可以使用Health_HeartBldPrs.ForceClose_HeartrateMeasure()强制关闭
+                    Log.e(TAG, "-----打开开始测量心率成功， 可以强制关闭");
+                    handler.sendEmptyMessageAtTime(0x12,60*1000);//一分钟没检测到强制关闭
+                }
+            }
+
+            @Override
+            public void OnClose(String EventStr) {
+                if (EventStr.equals(Health_HeartBldPrs.CLOSE)) {
+                    //测量关闭
+                    Log.e(TAG, "-----心率测量关闭");
+                    b30MeaureHeartValueTv.setText("--");
+                } else if (EventStr.equals(Health_HeartBldPrs.END)) {
+                    //测量结束
+                    Log.e(TAG, "-----心率测量结束");
+                }
+            }
+
+            @Override
+            public void OnData(String EventStr, String DataInfo) {
+                if (EventStr.equals(Health_HeartBldPrs.RESULTDATA)) {
+                    //测量成果，返回数据
+                    Log.e(TAG, "-----心率测量成功，返回结果 " + DataInfo);
+                    Message message = handler.obtainMessage();
+                    message.obj = DataInfo;
+                    message.what = 0x11;
+                    handler.sendMessage(message);
+                } else if (EventStr.equals(Health_HeartBldPrs.FAIL)) {
+                    //测量失败
+                    Log.e(TAG, "-----心率测量失败 " + DataInfo);
+                    b30MeaureHeartValueTv.setText("--");
+                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+                    isMeaure = false;
+                    stopAllAnimat(b30ScaleLin, b30cirImg);
+                    b30finishTv.setText("测量失败");
+                }
+            }
+        });
+    }
+
+
+    private void startAllAnimat(View view1, View view2) {
         startFlick(view1);  //开启缩放动画
         startAnimat(view2); //开启旋转动画
 
     }
 
     //停止所有动画
-    private void stopAllAnimat(View view1,View view2){
+    private void stopAllAnimat(View view1, View view2) {
         stopScanlAni(view1);
         stopRoateAnimt(view2);
     }
 
-    private void stopScanlAni(View view){
-        if(view != null){
+    private void stopScanlAni(View view) {
+        if (view != null) {
             view.clearAnimation();
         }
     }
 
 
-    private void stopRoateAnimt(View view){
-        if(view != null){
+    private void stopRoateAnimt(View view) {
+        if (view != null) {
             view.clearAnimation();
         }
 
@@ -182,7 +298,7 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
 
     //旋转动画
     private void startAnimat(View view) {
-        if(view == null){
+        if (view == null) {
             return;
         }
         animationRoate = new RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -206,10 +322,17 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (b30MeaureHeartStartBtn!=null)b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+        if (b30MeaureHeartStartBtn != null)
+            b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
         isMeaure = false;
-        stopAllAnimat(b30ScaleLin,b30cirImg);
+        stopAllAnimat(b30ScaleLin, b30cirImg);
         b30finishTv.setText("测量完毕");
-        MyApp.getInstance().getVpOperateManager().stopDetectHeart(iBleWriteResponse);
+        if (!WatchUtils.isEmpty(devicesType)&&devicesType.equals("b15p")){
+            //如果推出界面或者界面停止时心率还在测量，则强行关闭心率测量
+            Health_HeartBldPrs.ForceClose_HeartrateMeasure();
+        }else {
+            MyApp.getInstance().getVpOperateManager().stopDetectHeart(iBleWriteResponse);
+        }
+
     }
 }

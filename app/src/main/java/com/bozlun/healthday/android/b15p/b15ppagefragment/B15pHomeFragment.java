@@ -540,7 +540,8 @@ public class B15pHomeFragment extends LazyFragment
                     break;
                 case 0x04://获取睡眠
                     mHandler.sendEmptyMessageDelayed(0x88, 10 * 1000);//88 睡眠超时处理
-                    L4Command.GetSleep1();     //睡眠
+//                    L4Command.GetSleep1();     //睡眠
+                    L4Command.CommSleepTime(currDay,2000);
                     break;
                 case 0x05://获取心率
                     mHandler.sendEmptyMessageDelayed(0x99, 10 * 1000);//99 心率超时处理
