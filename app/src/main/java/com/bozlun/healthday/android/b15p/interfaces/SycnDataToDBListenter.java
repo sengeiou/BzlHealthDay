@@ -13,6 +13,8 @@ import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.tjdL4.tjdmain.L4M;
 
+import java.util.Arrays;
+
 public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
     private static final String TAG = "SycnDataToDBListenter";
     private static SycnDataToDBListenter sycnDataToDBListenter;
@@ -94,8 +96,10 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                         String[] bloops = {"bloop", strData};
                         new SaveDatas().execute(bloops);
                         break;
-                    case "PEDO_DAY"://天记步数据
-
+                    case "PEDO_DAY"://天记步数据 汇总
+                        //TypeInfo:PEDO_DAY  StrData:[,2019-05-13,164]
+                        String[] all_step = {"all_step", strData};
+                        new SaveDatas().execute(all_step);
                         break;
                     case "PEDO_TIME_HISTORY"://时间段记步数据
                         String[] steps = {"step", strData};
@@ -130,10 +134,29 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
         protected Void doInBackground(String... strings) {
             String strDataType = strings[0];
             switch (strDataType) {
+                case "all_step"://汇总步数
+                    String strDataAllStep = strings[1];
+                    //TypeInfo:PEDO_DAY  StrData:[,2019-05-13,164]
+                    String[] splitAllStep = strDataAllStep.substring(2, strDataAllStep.length() - 1).split(",");
+
+                    if (splitAllStep[0].substring(0, 10).equals(t)
+//                            || splitAllStep[0].substring(0, 10).equals(y)
+//                            || splitAllStep[0].substring(0, 10).equals(q)
+                            ) {
+
+                        Log.e(TAG, "线程中保存步数" + splitAllStep[0] + "   " + Integer.valueOf(splitAllStep[1]));
+                        //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
+                        if (!WatchUtils.isEmpty(mac)
+//                                && !splitStep[0].substring(11, 19).equals("00:00:00")
+                                &&(L4M.Get_Connect_flag() == 2))
+                            b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], Integer.valueOf(splitAllStep[1]));
+                    }
+                    break;
                 case "step":
                     String strDataStep = strings[1];
                     //[,2019-04-24 13:30:00,337]
                     String[] splitStep = strDataStep.substring(2, strDataStep.length() - 1).split(",");
+                    Log.e(TAG,"=保存前看时间==="+Arrays.toString(splitStep)+"今天 "+t+" 昨天 "+y+" 前天 "+q);
                     if (splitStep[0].substring(0, 10).equals(t)
                             || splitStep[0].substring(0, 10).equals(y)
                             || splitStep[0].substring(0, 10).equals(q)) {

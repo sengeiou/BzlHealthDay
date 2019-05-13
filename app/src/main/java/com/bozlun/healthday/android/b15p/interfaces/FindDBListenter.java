@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.bozlun.healthday.android.LogTestUtil;
+import com.bozlun.healthday.android.b15p.b15pdb.B15PAllStepDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PHeartDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PSleepDB;
@@ -48,6 +49,16 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 && !WatchUtils.isEmpty(date)) {
 
             switch (type) {
+                case "all_step":
+                    List<B15PAllStepDB> allStepAllDatas = B15PDBCommont.getInstance().findAllStepAllDatas(mac, date);
+                    List<Integer> allStepList = new ArrayList<>();
+                    allStepList.add(0,0);
+                    if (allStepAllDatas!=null&&!allStepAllDatas.isEmpty()){
+                        allStepList.set(0,allStepAllDatas.get(0).getStepItemNumber());
+                    }
+                    jsonString = "FFF" + JSON.toJSON(allStepList).toString();
+                    LogTestUtil.e(TAG, "==ALL_STEP  " + jsonString);
+                    break;
                 case "step":
                     List<B15PStepDB> allStepDatasList = (List<B15PStepDB>) B15PDBCommont.getInstance().findStepAllDatas(mac, date);
                     Log.e(TAG, " --- 步数查询 --- " + (allStepDatasList == null ? "查询步数为空" : allStepDatasList.toString()));
@@ -500,6 +511,14 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             String substring = ts.substring(0, 3);
             String reas = ts.substring(3, ts.length());
             switch (substring) {
+                case "FFF"://汇总步数
+                    List<Integer> allstepList = new Gson().fromJson(reas, new TypeToken<List<Integer>>() {
+                    }.getType());
+                    if (allstepList!=null&&!allstepList.isEmpty()){
+                        Integer integer = allstepList.get(0);
+                        changeDBListenter.updataAllStepDataToUIListenter(integer);
+                    }
+                    break;
                 case "AAA"://步数
                     List<Integer> stepList = new Gson().fromJson(reas, new TypeToken<List<Integer>>() {
                     }.getType());
@@ -525,6 +544,8 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 //        public abstract void updataDataToUIListenter(List<Object> ts);
 
         public void updataStepDataToUIListenter(List<Integer> ts) {
+        }
+        public void updataAllStepDataToUIListenter(int integer) {
         }
 
 

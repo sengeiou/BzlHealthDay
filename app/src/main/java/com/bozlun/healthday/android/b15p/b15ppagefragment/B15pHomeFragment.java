@@ -550,6 +550,21 @@ public class B15pHomeFragment extends LazyFragment
                 case 0x11:
                     if (!WatchUtils.isEmpty(mac)) {
 //                        Log.e(TAG, "  mac  " + mac);
+
+                        String[] Allsteps = {"all_step", mac, WatchUtils.obtainFormatDate(currDay)};
+                        new FindDBListenter(new FindDBListenter.ChangeDBListenter<Integer>() {
+
+                            @Override
+                            public void updataAllStepDataToUIListenter(int integer) {
+                                super.updataAllStepDataToUIListenter(integer);
+                                defaultSteps = integer;
+                                if (b30ProgressBar != null) {
+                                    b30ProgressBar.setMaxValue(goalStep);
+                                    b30ProgressBar.setValue(defaultSteps);
+                                }
+                            }
+                        }).execute(Allsteps);
+
                         String[] steps = {"step", mac, WatchUtils.obtainFormatDate(currDay)};
                         new FindDBListenter(new FindDBListenter.ChangeDBListenter<Integer>() {
 //                            @Override
@@ -563,15 +578,15 @@ public class B15pHomeFragment extends LazyFragment
                             @Override
                             public void updataStepDataToUIListenter(List<Integer> ts) {
 
-                                defaultSteps = 0;
-                                for (int i = 0; i < ts.size(); i++) {
-                                    defaultSteps += ts.get(i);
-                                }
-
-                                if (b30ProgressBar != null) {
-                                    b30ProgressBar.setMaxValue(goalStep);
-                                    b30ProgressBar.setValue(defaultSteps);
-                                }
+//                                defaultSteps = 0;
+//                                for (int i = 0; i < ts.size(); i++) {
+//                                    defaultSteps += ts.get(i);
+//                                }
+//
+//                                if (b30ProgressBar != null) {
+//                                    b30ProgressBar.setMaxValue(goalStep);
+//                                    b30ProgressBar.setValue(defaultSteps);
+//                                }
                                 showSportStepData(ts);
                             }
                         }).execute(steps);

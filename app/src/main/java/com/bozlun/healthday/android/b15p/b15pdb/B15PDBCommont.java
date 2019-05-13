@@ -2,6 +2,7 @@ package com.bozlun.healthday.android.b15p.b15pdb;
 
 import android.util.Log;
 
+import com.afa.tourism.greendao.gen.B15PAllStepDBDao;
 import com.afa.tourism.greendao.gen.B15PBloodDBDao;
 import com.afa.tourism.greendao.gen.B15PHeartDBDao;
 import com.afa.tourism.greendao.gen.B15PSleepDBDao;
@@ -38,6 +39,27 @@ public class B15PDBCommont {
         return b15PDBCommont;
     }
 
+
+
+    /**
+     * 查当天汇总步数
+     *
+     * @param mac
+     * @param timeDate
+     * @return
+     */
+    public List<B15PAllStepDB> findAllStepAllDatas(String mac, String timeDate) {
+        Log.e(TAG, "查询汇总步数  " + mac + "   " + timeDate);
+        B15PAllStepDBDao b15PStepDBDao = getDaoSession().getB15PAllStepDBDao();
+        if (b15PStepDBDao == null) return null;
+        List<B15PAllStepDB> list = b15PStepDBDao.queryBuilder().where(
+                B15PAllStepDBDao.Properties.DevicesMac.eq(mac),
+                B15PAllStepDBDao.Properties.StepDataTime.eq(timeDate)).list();
+//        List<B15PStepDB> list = LitePal.where("devicesMac = ? and stepData = ?", mac, timeDate).find(B15PStepDB.class);
+//        if (list == null) list = LitePal.findAll(B15PStepDB.class);
+//        Log.e(TAG,list.toString());
+        return list;
+    }
 
     /**
      * 查步数
@@ -145,6 +167,44 @@ public class B15PDBCommont {
     //--------------------------------------------------------------
     /****************************************************************/
     //--------------------------------------------------------------
+
+    /**
+     * 保存汇总步数数据到数据库
+     *
+     * @param sportValues
+     * @param dataTime    timeToday + " " + hourMapKey + ":00"
+     */
+    public void saveAllStepToDB(String mac, String dataTime, int sportValues) {
+
+        //TStrData:[,2019-05-13,164]
+        B15PAllStepDBDao b15PAllStepDBDao = getDaoSession().getB15PAllStepDBDao();
+        if (b15PAllStepDBDao != null) {
+            B15PAllStepDB b15PStepDB = b15PAllStepDBDao.queryBuilder()
+                    .where(
+                            B15PAllStepDBDao.Properties.StepDataTime.eq(dataTime.substring(0, 10)),
+                            B15PAllStepDBDao.Properties.DevicesMac.eq(mac)).unique();
+            Log.e(TAG, "AllStep保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  "  + (b15PStepDB == null ? dataTime + "  点的步数数据没有" : b15PStepDB.toString()));
+            if (b15PStepDB != null) {
+                if (sportValues > 0) {
+                    b15PStepDB.setDevicesMac(mac);
+                    //[,2019-04-22 26]
+                    b15PStepDB.setStepDataTime(dataTime.substring(0, 10));
+                    b15PStepDB.setStepItemNumber(sportValues);
+                    b15PStepDB.setIsUpdata(0);
+                    //Log.e(TAG, "==== 更新 日步数详细 " + b15PStepDB.toString());
+                    b15PDBCommont.getDaoSession().getB15PAllStepDBDao().update(b15PStepDB);
+                }
+            } else {
+                B15PAllStepDB newb15PStepDB = new B15PAllStepDB();
+                newb15PStepDB.setStepDataTime(dataTime.substring(0, 10));
+                newb15PStepDB.setDevicesMac(mac);
+                newb15PStepDB.setStepItemNumber(sportValues);
+                newb15PStepDB.setIsUpdata(0);
+                //Log.e(TAG, "==== 新增 日步数详细 " + newb15PStepDB.toString());
+                b15PDBCommont.getDaoSession().getB15PAllStepDBDao().insert(newb15PStepDB);
+            }
+        }
+    }
 
     /**
      * 保存步数数据到数据库
