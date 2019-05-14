@@ -169,7 +169,7 @@ public class B15pHomeFragment extends LazyFragment
                 @Override
                 public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                     Log.d(TAG, "手动刷新 ----- getBleDevicesDatas()   读取设备数据");
-                    mHandler.sendEmptyMessageDelayed(0x01, 200);//第一次链接自动获取数据
+                    mHandler.sendEmptyMessageDelayed(0x01, 100);//第一次链接自动获取数据
 
                 }
             });
@@ -275,7 +275,7 @@ public class B15pHomeFragment extends LazyFragment
 
                         //第一次链接自动获取数据
                         // 先获取电池在获取运动数据
-                        mHandler.sendEmptyMessageDelayed(0x01, 1000);
+                        mHandler.sendEmptyMessageDelayed(0x01, 100);
                     } else {
 
                         long currentTime = System.currentTimeMillis() / 1000;
@@ -284,7 +284,7 @@ public class B15pHomeFragment extends LazyFragment
                         long diffTime = (currentTime - Long.valueOf(tmpSaveTime)) / 60;
                         Log.e(TAG, "不是第一次链接--- 有 " + diffTime + "分钟没同步了");
                         if (diffTime > 5) {// 大于2分钟没更新再取数据
-                            mHandler.sendEmptyMessageDelayed(0x01, 500);
+                            mHandler.sendEmptyMessageDelayed(0x01, 100);
                         } else {
                             /**
                              *
@@ -367,10 +367,6 @@ public class B15pHomeFragment extends LazyFragment
             final Object TempObj = DataObj;
             Log.d(TAG, "电池电量    获取有返回了" + tTypeInfo + "  " + TempStr + "  " + TempObj);
 
-            if (!WatchUtils.isEmpty(TempStr) && TempStr.equals("5A1400FF0300004633350502000501544A4400C1") && TempObj == null) {
-                getBatter();
-                return;
-            }
             if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
                 Log.e(TAG, "--------------==  获取电量超时 ~~~~~~~~~~~~~~ 跳过去执行下一个指令");
                 mHandler.sendEmptyMessageDelayed(0x02, 100);
@@ -432,18 +428,16 @@ public class B15pHomeFragment extends LazyFragment
                     type++;
                     switch (type) {
                         case 1:
-                            mHandler.removeMessages(0x77);//取消 77 步数超时处理
+                            mHandler.removeMessages(0x77);//取消 77 步数超时等待处理
 
                             Log.e("L4UI_DATA_SyncProgress", "步数获取完成------去获取睡眠");
-                            mHandler.sendEmptyMessageDelayed(0x04, 1200);
+                            mHandler.sendEmptyMessageDelayed(0x04, 500);
                             break;
                         case 2:
                             mHandler.removeMessages(0x88);//取消 88 睡眠超时处理
 
                             Log.e("L4UI_DATA_SyncProgress", "睡眠获取完成------去获取心率");
-                            mHandler.sendEmptyMessageDelayed(0x05, 1200);
-
-                            mHandler.sendEmptyMessageDelayed(0x99, 10 * 1000);//超时处理
+                            mHandler.sendEmptyMessageDelayed(0x05, 500);
 
                             mHandler.sendEmptyMessageDelayed(0x55, 15 * 1000);
                             break;
@@ -451,7 +445,7 @@ public class B15pHomeFragment extends LazyFragment
                             mHandler.removeMessages(0x99);//取消 99 心率超时处理
 
                             Log.e("L4UI_DATA_SyncProgress", "心率获取完成------去获取所有数据显示");
-                            mHandler.sendEmptyMessageDelayed(0x00, 1200);
+                            mHandler.sendEmptyMessageDelayed(0x00, 100);
                             break;
                     }
                 }
@@ -476,30 +470,46 @@ public class B15pHomeFragment extends LazyFragment
                 /**
                  * 步数  睡眠  心率 的超时处理
                  */
-                case 0x77:
+                case 0x77://步数12秒等待超时
                     if (mHandler != null) {
                         mHandler.removeMessages(0x77);//删除超时等待
-//                        mHandler.sendEmptyMessageDelayed(0x11, 500);//获取数据库中的步数数据
-                        mHandler.sendEmptyMessage(0x00);//获取数据库中的心率数据
+                        Log.e("L4UI_DATA_SyncProgress", "步数获取超时------去获取睡眠");
+
+                        /**
+                         * 从数据库中读步数
+                         */
+//                        mHandler.sendEmptyMessage(0x11);
+                        mHandler.sendEmptyMessage(0x00);
 
                         mHandler.sendEmptyMessageDelayed(0x04, 500);//读取设备中的下一个睡眠数据
                     }
                     break;
-                case 0x88:
+                case 0x88://睡眠12秒等待超时
                     if (mHandler != null) {
                         mHandler.removeMessages(0x88);//删除超时等待
-//                        mHandler.sendEmptyMessageDelayed(0x12, 500);//获取数据库中的睡眠数据
-                        mHandler.sendEmptyMessage(0x00);//获取数据库中的心率数据
+                        Log.e("L4UI_DATA_SyncProgress", "睡眠获取超时------去获取心率");
+
+                        /**
+                         * 从数据库中读睡眠
+                         */
+//                        mHandler.sendEmptyMessage(0x12);
+                        mHandler.sendEmptyMessage(0x00);
 
                         mHandler.sendEmptyMessageDelayed(0x05, 500);//读取设备中的下一个心率数据
                     }
                     break;
-                case 0x99:
+                case 0x99://心率12秒等待超时
                     if (mHandler != null) {
                         mHandler.removeMessages(0x99);//删除超时等待
-                        mHandler.sendEmptyMessage(0x00);//获取数据库中的心率数据
+                        //mHandler.sendEmptyMessage(0x00);//获取数据库中的心率数据
 
-                        mHandler.sendEmptyMessageDelayed(0x13, 500);//获取数据库中的心率数据
+                        Log.e("L4UI_DATA_SyncProgress", "心率获取超时------去获取数据库");
+                        /**
+                         * 从数据库中读心率
+                         */
+//                        mHandler.sendEmptyMessage(0x13);
+                        mHandler.sendEmptyMessage(0x00);
+
                     }
                     break;
                 case 0x00:
@@ -507,8 +517,8 @@ public class B15pHomeFragment extends LazyFragment
 
                         //分别读取数据空中的数据
                         mHandler.sendEmptyMessageDelayed(0x11, 100);
-                        mHandler.sendEmptyMessageDelayed(0x12, 300);
-                        mHandler.sendEmptyMessageDelayed(0x13, 600);
+                        mHandler.sendEmptyMessageDelayed(0x12, 200);
+                        mHandler.sendEmptyMessageDelayed(0x13, 300);
                     }
 
                     break;
@@ -533,18 +543,18 @@ public class B15pHomeFragment extends LazyFragment
                     }
                     break;
                 case 0x03://获取步数
-                    mHandler.sendEmptyMessageDelayed(0x77, 10 * 1000);//77 步数超时处理
+                    mHandler.sendEmptyMessageDelayed(0x77, 12 * 1000);//77 步数6秒超时处理
                     L4Command.GetPedo1();
                     //获取步数+睡眠
 //                    L4Command.YsnALLData();
                     break;
                 case 0x04://获取睡眠
-                    mHandler.sendEmptyMessageDelayed(0x88, 10 * 1000);//88 睡眠超时处理
+                    mHandler.sendEmptyMessageDelayed(0x88, 12 * 1000);//88 睡眠超时处理
 //                    L4Command.GetSleep1();     //睡眠
-                    L4Command.CommSleepTime(currDay,2000);
+                    L4Command.CommSleepTime(currDay,3000);
                     break;
                 case 0x05://获取心率
-                    mHandler.sendEmptyMessageDelayed(0x99, 10 * 1000);//99 心率超时处理
+                    mHandler.sendEmptyMessageDelayed(0x99, 12 * 1000);//99 心率超时处理
                     L4Command.GetHeart1();
                     break;
                 case 0x11:
