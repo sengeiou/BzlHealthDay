@@ -23,7 +23,6 @@ import com.bozlun.healthday.android.b15p.activity.B15PHeartDetailActivity;
 import com.bozlun.healthday.android.b15p.activity.B15PManualMeaureBloadActivity;
 import com.bozlun.healthday.android.b15p.activity.B15PSleepDetailActivity;
 import com.bozlun.healthday.android.b15p.activity.B15PStepDetailActivity;
-import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
 import com.bozlun.healthday.android.b15p.common.B15PContentState;
 import com.bozlun.healthday.android.b15p.interfaces.ConntentStuteListenter;
 import com.bozlun.healthday.android.b15p.interfaces.FindDBListenter;
@@ -550,8 +549,8 @@ public class B15pHomeFragment extends LazyFragment
                     break;
                 case 0x04://获取睡眠
                     mHandler.sendEmptyMessageDelayed(0x88, 12 * 1000);//88 睡眠超时处理
-//                    L4Command.GetSleep1();     //睡眠
-                    L4Command.CommSleepTime(currDay,3000);
+                    L4Command.GetSleep1();     //睡眠
+//                    L4Command.CommSleepTime(currDay,5000);
                     break;
                 case 0x05://获取心率
                     mHandler.sendEmptyMessageDelayed(0x99, 12 * 1000);//99 心率超时处理
@@ -724,8 +723,19 @@ public class B15pHomeFragment extends LazyFragment
 //                            }
 
                             @Override
-                            public void updataHeartDataToUIListenter(List<Integer> ts) {
+                            public void updataHeartDataToUIListenter(List<Integer> ts,String latelyValues) {
                                 if (ts != null && !ts.isEmpty()) {
+
+                                    //设置最近心率----这里拿的是最后一条心率的数据和时间
+                                    if (!WatchUtils.isEmpty(latelyValues)){
+                                        String[] split = latelyValues.split("[#]");
+                                        if (!WatchUtils.isEmpty(split[0])){
+                                            lastTimeTv.setText(split[0]);
+                                        }
+                                        if (!WatchUtils.isEmpty(split[1])){
+                                            b30HeartValueTv.setText(split[1]);
+                                        }
+                                    }
                                     if (b30CusHeartView != null)
                                         b30CusHeartView.setRateDataList(ts);
                                 } else {

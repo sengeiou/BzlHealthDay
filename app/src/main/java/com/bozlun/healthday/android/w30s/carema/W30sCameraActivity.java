@@ -35,6 +35,8 @@ import com.bozlun.healthday.android.w30s.activity.W30sAlbumActivity;
 import com.bozlun.healthday.android.w30s.utils.CameraUtils;
 import com.suchengkeji.android.w30sblelibrary.W30SBLEServices;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
+import com.tjdL4.tjdmain.L4M;
+import com.tjdL4.tjdmain.contr.L4Command;
 import com.veepoo.protocol.listener.base.IBleWriteResponse;
 import com.veepoo.protocol.listener.data.ICameraDataListener;
 import com.veepoo.protocol.model.enums.ECameraStatus;
@@ -97,8 +99,8 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
         @Override
         public void handleMessage(Message msg) {
 
-            Log.e(TAG,"-----hand="+msg.what);
-            switch (msg.what){
+            Log.e(TAG, "-----hand=" + msg.what);
+            switch (msg.what) {
                 case FLAG_AUTO_FOCUS:   //闪光灯
                     if (mCamera != null && safeToTakePicture && !TextUtils.isEmpty(mCamera.getParameters().getFlashMode())) {
                         mCamera.startPreview();
@@ -114,7 +116,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
                     String filePath = msg.obj.toString();
                     Intent intent = new Intent(W30sCameraActivity.this, PreviewActivity.class);
                     Bitmap bitmapByUrl = getBitmapByUrl(filePath);
-                    Log.d("======图1==",filePath+"--"+bitmapByUrl);
+                    Log.d("======图1==", filePath + "--" + bitmapByUrl);
                     SharedPreferencesUtils.setParam(W30sCameraActivity.this, "camera", filePath);
                     xiangceIM.setImageBitmap(bitmapByUrl);
                     intent.putExtra("filePath", filePath);
@@ -158,7 +160,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e(TAG,"-----onCreate---");
+        Log.e(TAG, "-----onCreate---");
         // Hide the window title.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //隐藏状态栏
@@ -198,21 +200,58 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
         //startCamera();
 
 
-        if(MyCommandManager.DEVICENAME != null && (MyCommandManager.DEVICENAME.equals("B30")
-                || MyCommandManager.DEVICENAME.equals("B36") || MyCommandManager.DEVICENAME.equals("B31"))){
-            MyApp.getInstance().getVpOperateManager().startCamera(iBleWriteResponse, new ICameraDataListener() {
-                @Override
-                public void OnCameraDataChange(ECameraStatus coStatus) {
-                    if(coStatus == ECameraStatus.TAKEPHOTO_CAN){  //拍照
-                        if (isShow) {
-                            if (isShowCamera) {
-                                takePhonePic();
+        if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
+            if ((MyCommandManager.DEVICENAME.equals("B30")
+                    || MyCommandManager.DEVICENAME.equals("B36") || MyCommandManager.DEVICENAME.equals("B31"))) {
+                MyApp.getInstance().getVpOperateManager().startCamera(iBleWriteResponse, new ICameraDataListener() {
+                    @Override
+                    public void OnCameraDataChange(ECameraStatus coStatus) {
+                        if (coStatus == ECameraStatus.TAKEPHOTO_CAN) {  //拍照
+                            if (isShow) {
+                                if (isShowCamera) {
+                                    takePhonePic();
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            } else if (WatchUtils.verBleNameForSearch(MyCommandManager.DEVICENAME)) {
+                //监听
+                L4Command.CameraOn(new L4M.BTResultListenr() {
+                    @Override
+                    public void On_Result(String TypeInfo, String StrData, Object DataObj) {
+                        final String tTypeInfo = TypeInfo;
+                        final String TempStr = StrData;
+                        final Object TempObj = DataObj;
+                        Log.e(TAG, "inTempStr:" + TempStr);
+
+                        if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
+                            return;
+                        }
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (tTypeInfo.equals(L4M.RemoteCapOn) && TempStr.equals(L4M.OK)) {
+                                    Log.e(TAG, "   RemoteCapOn");
+                                }
+                                if (tTypeInfo.equals(L4M.RemoteCapOFF) && TempStr.equals(L4M.OK)) {
+                                    Log.e(TAG, "   RemoteCapOFF");
+                                }
+                                if (tTypeInfo.equals(L4M.RemoteCapTakeCap) && TempStr.equals(L4M.OK)) {
+                                    Log.e(TAG, "   RemoteCapTakeCap");
+                                    L4Command.CameraCap_Respone();//响应
+                                    takePhonePic();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+
         }
+
 
     }
 
@@ -226,7 +265,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e(TAG,"-----onStart---");
+        Log.e(TAG, "-----onStart---");
         //【重力感应处理】
         mScreenSwitchInstance.start(this);
         isShowCamera = true;
@@ -294,7 +333,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e(TAG,"-----onResume---");
+        Log.e(TAG, "-----onResume---");
         isShow = true;
 //        startCamera();
         //changeCameraTwo(isChange);
@@ -303,7 +342,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG,"-----onPause---");
+        Log.e(TAG, "-----onPause---");
         stopFocus();
         isShow = false;
         releaseCamera();
@@ -312,7 +351,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e(TAG,"-----onStop---");
+        Log.e(TAG, "-----onStop---");
         //【重力感应处理】
         isShow = false;
 
@@ -322,20 +361,27 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(TAG,"-----onDestroy---");
+        Log.e(TAG, "-----onDestroy---");
         isShow = false;
         releaseCamera();
         unregisterReceiver(myBroadcastReceiver);
         //退出拍照模式
-        if(MyCommandManager.DEVICENAME != null && (MyCommandManager.DEVICENAME.equals("B30")
-                || MyCommandManager.DEVICENAME.equals("B36")||MyCommandManager.DEVICENAME.equals("B31"))){
-            MyApp.getInstance().getVpOperateManager().stopCamera(iBleWriteResponse, new ICameraDataListener() {
-                @Override
-                public void OnCameraDataChange(ECameraStatus coStatus) {
+        if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
+            if ((MyCommandManager.DEVICENAME.equals("B30")
+                    || MyCommandManager.DEVICENAME.equals("B36") || MyCommandManager.DEVICENAME.equals("B31"))) {
+                MyApp.getInstance().getVpOperateManager().stopCamera(iBleWriteResponse, new ICameraDataListener() {
+                    @Override
+                    public void OnCameraDataChange(ECameraStatus coStatus) {
 
-                }
-            });
+                    }
+                });
+            } else if (WatchUtils.verBleNameForSearch(MyCommandManager.DEVICENAME)) {
+                //拍照结束时销毁
+                L4Command.CameraOff();
+                L4M.SetResultListener(null);
+            }
         }
+
     }
 
     @Override
@@ -352,7 +398,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.e(TAG,"---onRestart---");
+        Log.e(TAG, "---onRestart---");
     }
 
     /**
@@ -612,8 +658,8 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
         int cameraCount = 0;
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         cameraCount = Camera.getNumberOfCameras();//得到摄像头的个数
-        if (mCamera==null)return;
-        Log.e(TAG,"---cameraPosition="+cameraPosition);
+        if (mCamera == null) return;
+        Log.e(TAG, "---cameraPosition=" + cameraPosition);
         for (int i = 0; i < cameraCount; i++) {
             Camera.getCameraInfo(i, cameraInfo);//得到每一个摄像头的信息
             if (cameraPosition == 1) {
@@ -628,10 +674,10 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
                     releaseCamera();
                     mCamera = Camera.open(i);//打开当前选中的摄像头
                     tmpCamera = i;
-                    Log.e(TAG,"---22--tmp-="+tmpCamera+"--i="+i);
+                    Log.e(TAG, "---22--tmp-=" + tmpCamera + "--i=" + i);
                     try {
                         mCamera.setPreviewDisplay(mCameraPreview.getLouisSurfaceHolder());//通过surfaceview显示取景画面
-                         mCamera.setDisplayOrientation(90); //
+                        mCamera.setDisplayOrientation(90); //
                         mCameraPreview.setCamera(mCamera);
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
@@ -653,10 +699,10 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
                     releaseCamera();
                     mCamera = Camera.open(i);//打开当前选中的摄像头
                     tmpCamera = i;
-                    Log.e(TAG,"---22--tmp-="+tmpCamera+"--i="+i);
+                    Log.e(TAG, "---22--tmp-=" + tmpCamera + "--i=" + i);
                     try {
                         mCamera.setPreviewDisplay(mCameraPreview.getLouisSurfaceHolder());//通过surfaceview显示取景画面
-                         mCamera.setDisplayOrientation(90); //
+                        mCamera.setDisplayOrientation(90); //
                         mCameraPreview.setCamera(mCamera);
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
@@ -768,7 +814,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
         //Bitmap b = CameraUtils.Bytes2Bitmap(data);
 
         Bitmap b = CameraUtils.byteToBitmap(data);
-        Log.e(TAG,"----handleAndSaveBitmap--cameraPosition="+cameraPosition+"--="+orientationState);
+        Log.e(TAG, "----handleAndSaveBitmap--cameraPosition=" + cameraPosition + "--=" + orientationState);
         if (cameraPosition == 1) {
             //后置摄像头
             //rightBitmap = Utils.rotate(b, 0);
@@ -810,7 +856,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
                     break;
             }
         }
-        if(rightBitmap != null){
+        if (rightBitmap != null) {
             String filePath = saveImageToGallery(W30sCameraActivity.this, rightBitmap);
 //        String filePath = saveImageFile(W30sCameraActivity.this, rightBitmap);
             Message message = handler.obtainMessage();
@@ -870,7 +916,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
         }
         String fileName = System.currentTimeMillis() + ".jpg";
         File file = new File(appDir, fileName);
-        Log.d("======图==",file+"");
+        Log.d("======图==", file + "");
         try {
             FileOutputStream fos = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.JPEG, 70, fos);

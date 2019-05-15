@@ -2,6 +2,7 @@ package com.bozlun.healthday.android.b15p.interfaces;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.bozlun.healthday.android.LogTestUtil;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAllStepDB;
@@ -13,6 +14,7 @@ import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.suchengkeji.android.w30sblelibrary.bean.servicebean.W30S_SleepDataItem;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -52,9 +54,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 case "all_step":
                     List<B15PAllStepDB> allStepAllDatas = B15PDBCommont.getInstance().findAllStepAllDatas(mac, date);
                     List<Integer> allStepList = new ArrayList<>();
-                    allStepList.add(0,0);
-                    if (allStepAllDatas!=null&&!allStepAllDatas.isEmpty()){
-                        allStepList.set(0,allStepAllDatas.get(0).getStepItemNumber());
+                    allStepList.add(0, 0);
+                    if (allStepAllDatas != null && !allStepAllDatas.isEmpty()) {
+                        allStepList.set(0, allStepAllDatas.get(0).getStepItemNumber());
                     }
                     jsonString = "FFF" + JSON.toJSON(allStepList).toString();
                     LogTestUtil.e(TAG, "==ALL_STEP  " + jsonString);
@@ -90,12 +92,12 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                         }
                     }
                     jsonString = "AAA" + JSON.toJSON(allDataList).toString();
-                    LogTestUtil.e(TAG, "==STEP  " + jsonString);
+                    //LogTestUtil.e(TAG, "==STEP  " + jsonString);
 
                     break;
                 case "sleep":
                     List<B15PSleepDB> allSleepDatasList = (List<B15PSleepDB>) B15PDBCommont.getInstance().findSleepAllDatas(mac, date);
-                    LogTestUtil.e(TAG, " --- 睡眠查询 --- " + (allSleepDatasList == null ? "查询睡眠为空" : allSleepDatasList.toString()));
+                    //LogTestUtil.e(TAG, " --- 睡眠查询 --- " + (allSleepDatasList == null ? "查询睡眠为空" : allSleepDatasList.toString()));
                     List<W30S_SleepDataItem> allDataListSleep = new ArrayList<>();
                     if (allSleepDatasList != null && !allSleepDatasList.isEmpty()) {
                         allDataListSleep.clear();
@@ -110,7 +112,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                 if (sleepData.substring(0, 10).equals(date)
                                         || sleepData.substring(0, 10).equals(WatchUtils.obtainAroundDate(date, true))) {
 
-                                    Log.e(TAG, " 查询到的单个睡眠数据  " + sleepData + "   " + sleepTime + "  " + date);
+                                    //Log.e(TAG, " 查询到的单个睡眠数据  " + sleepData + "   " + sleepTime + "  " + date);
                                     if ((sleepData.substring(0, 10).equals(date) && Integer.valueOf(sleepTime.substring(0, 2)) <= 16)
                                             || (sleepData.substring(0, 10).equals(WatchUtils.obtainAroundDate(date, true)) && Integer.valueOf(sleepTime.substring(0, 2)) >= 21)) {
 
@@ -140,11 +142,11 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     }
 
                     jsonString = "BBB" + JSON.toJSON(allDataListSleep).toString();
-                    LogTestUtil.e(TAG, "==SLEEP  " + jsonString);
+                    //LogTestUtil.e(TAG, "==SLEEP  " + jsonString);
                     break;
                 case "heart":
                     List<B15PHeartDB> heartAllDatas = (List<B15PHeartDB>) B15PDBCommont.getInstance().findHeartAllDatas(mac, date);
-                    Log.e(TAG, " --- 心率查询 --- " + (heartAllDatas == null ? "查询心率为空" : heartAllDatas.toString()));
+                    //Log.e(TAG, " --- 心率查询 --- " + (heartAllDatas == null ? "查询心率为空" : heartAllDatas.toString()));
                     List<Integer> allDataListHeart = new ArrayList<>();
                     List<Integer> heartListNew = new ArrayList<>();
                     if (heartAllDatas != null && !heartAllDatas.isEmpty()) {
@@ -185,12 +187,12 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                     int heartNumber = b15PHeartDB.getHeartNumber();//心率值
 
                                     String[] split = heartTime.split("[:]");
-                                    Log.e(TAG, "===== heartTime " + heartTime + "   " +heartNumber);
-                                    if (heartMapFa.containsKey(split[0])){
+                                    //Log.e(TAG, "===== heartTime " + heartTime + "   " +heartNumber);
+                                    if (heartMapFa.containsKey(split[0])) {
 
                                         //判断---心率之取当天数据，获取数据（mac 时间）返回本身就是当天的，不用判断也可以
                                         if (heartMapHMTime.containsKey(split[0] + ":00")
-                                                &&(double) (Double.valueOf(split[1]) / 60.0) <= 0.5) {
+                                                && (double) (Double.valueOf(split[1]) / 60.0) <= 0.5) {
 
                                             valueCount1++;//1小时测量的次数---用于计算前半小时内的平均数
                                             allValues1 = allValues1 + heartNumber;//前半小时内的所有数据累加
@@ -201,10 +203,10 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                             } else {
                                                 heartMapHM.put(split[0] + ":00", 0);
                                             }
-                                            Log.e(TAG, "===== 正点 " + split[0] + ":00   " + (int) allValues1 / valueCount1);
+                                            // Log.e(TAG, "===== 正点 " + split[0] + ":00   " + (int) allValues1 / valueCount1);
 
                                         } else if (heartMapHMTime.containsKey(split[0] + ":30")
-                                                &&(double) (Double.valueOf(split[1]) / 60.0) > 0.5) {
+                                                && (double) (Double.valueOf(split[1]) / 60.0) > 0.5) {
 
                                             valueCount2++;//1小时测量的次数---用于计算后半小时内的平均数
                                             allValues2 = allValues2 + heartNumber;//后半小时内的所有数据累加
@@ -215,9 +217,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                             } else {
                                                 heartMapHM.put(split[0] + ":30", 0);
                                             }
-                                            Log.e(TAG, "===== 半点 " + split[0] + ":30   " + (int) allValues2 / valueCount2);
+                                            //Log.e(TAG, "===== 半点 " + split[0] + ":30   " + (int) allValues2 / valueCount2);
                                         } else {
-                                            Log.e(TAG, "===== 不包含 2 " + split[0] + "  " + (double) (Double.valueOf(split[1]) / 60.0));
+                                            //Log.e(TAG, "===== 不包含 2 " + split[0] + "  " + (double) (Double.valueOf(split[1]) / 60.0));
                                             if ((double) (Double.valueOf(split[1]) / 60.0) <= 0.5) {//分除60 小于等于0.5 那就是 前半小时
                                                 heartMapHMTime.put(split[0] + ":00", 0);
 
@@ -239,11 +241,10 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                         }
 
 
+                                    } else {
+                                        heartMapFa.put(split[0], 0);
 
-                                    }else {
-                                        heartMapFa.put(split[0],0);
-
-                                        Log.e(TAG, "===== 不包含 " + split[0] + "  " + (double) (Double.valueOf(split[1]) / 60.0));
+                                        //Log.e(TAG, "===== 不包含 " + split[0] + "  " + (double) (Double.valueOf(split[1]) / 60.0));
                                         if ((double) (Double.valueOf(split[1]) / 60.0) <= 0.5) {//分除60 小于等于0.5 那就是 前半小时
                                             heartMapHMTime.put(split[0] + ":00", 0);
 
@@ -352,7 +353,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                             }
                         }
 
-                        Log.e(TAG, "=AAS==SB=心率真实值设置完成 " + heartMapHM.size() + "   " + heartMapHM.toString());
+                        //Log.e(TAG, "=AAS==SB=心率真实值设置完成 " + heartMapHM.size() + "   " + heartMapHM.toString());
 
 
 //                        for (int j = 0; j < heartAllDatas.size(); j++) {
@@ -492,7 +493,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     }
 
                     jsonString = "CCC" + JSON.toJSON(allDataListHeart).toString();
-                    LogTestUtil.e(TAG, "==HEART  " + jsonString);
+                    //LogTestUtil.e(TAG, "==HEART  " + jsonString);
 
                     break;
             }
@@ -506,7 +507,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         super.onPostExecute(ts);
 //        if (ts == null) ts = new ArrayList<>();
         if (!WatchUtils.isEmpty(ts) && ts.length() > 3) {
-            Log.e(TAG, "数据返回的   " + ts);
+            Log.i(TAG, "数据返回的   " + ts);
 
             String substring = ts.substring(0, 3);
             String reas = ts.substring(3, ts.length());
@@ -514,7 +515,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 case "FFF"://汇总步数
                     List<Integer> allstepList = new Gson().fromJson(reas, new TypeToken<List<Integer>>() {
                     }.getType());
-                    if (allstepList!=null&&!allstepList.isEmpty()){
+                    if (allstepList != null && !allstepList.isEmpty()) {
                         Integer integer = allstepList.get(0);
                         changeDBListenter.updataAllStepDataToUIListenter(integer);
                     }
@@ -532,7 +533,16 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 case "CCC"://心率
                     List<Integer> heartList = new Gson().fromJson(reas, new TypeToken<List<Integer>>() {
                     }.getType());
-                    changeDBListenter.updataHeartDataToUIListenter(heartList);
+                    String LatelyValues = "";
+                    if (heartList != null && !heartList.isEmpty()) {
+                        for (int i = 0; i < heartList.size(); i++) {
+                            if (heartList.get(i) > 0) {
+                                LatelyValues = buidleHour(String.valueOf((float)i / 2f), heartList.get(i));
+                                Log.i(TAG, "最近心律 " + LatelyValues);
+                            }
+                        }
+                    }
+                    changeDBListenter.updataHeartDataToUIListenter(heartList,LatelyValues);
                     break;
             }
         }
@@ -540,12 +550,28 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
     }
 
 
+    private String buidleHour(String hour, int heartValue) {
+        String times = "00:00";
+        if (hour.contains(".")) {
+            String[] split = hour.split("[.]");
+            if (split != null && split.length > 0) {
+                if (!WatchUtils.isEmpty(split[0]))
+                    times = (split[0].length() == 2 ? split[0] : "0" + split[0])+":30";
+            }
+        }else {
+            times = (times.length()==2?times:"0"+times)+":00";
+        }
+        times = times + "#" + heartValue;
+        return times;
+    }
+
     public abstract static class ChangeDBListenter<T> {
 //        public abstract void updataDataToUIListenter(List<Object> ts);
 
-        public void updataStepDataToUIListenter(List<Integer> ts) {
-        }
         public void updataAllStepDataToUIListenter(int integer) {
+        }
+
+        public void updataStepDataToUIListenter(List<Integer> ts) {
         }
 
 
@@ -553,7 +579,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         }
 
 
-        public void updataHeartDataToUIListenter(List<Integer> ts) {
+        public void updataHeartDataToUIListenter(List<Integer> ts,String latelyValues) {
         }
 
     }
