@@ -162,7 +162,7 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="a0ac40c22a2581b222155a2a3592689c" />
+            android:value="fc74cd26c3716b14e151d274dc009819" />
 
         <activity
             android:name="com.bozlun.healthday.android.bzlmaps.gaodemaps.BzlGaoDeActivity"

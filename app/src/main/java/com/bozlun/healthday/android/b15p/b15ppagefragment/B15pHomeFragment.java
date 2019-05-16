@@ -31,6 +31,7 @@ import com.bozlun.healthday.android.b30.ManualMeaureHeartActivity;
 import com.bozlun.healthday.android.b30.b30view.B15PCusSleepView;
 import com.bozlun.healthday.android.b30.b30view.B30CusHeartView;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
+import com.bozlun.healthday.android.commdbserver.CommDBManager;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.github.mikephil.charting.charts.BarChart;
@@ -438,7 +439,7 @@ public class B15pHomeFragment extends LazyFragment
                             Log.e("L4UI_DATA_SyncProgress", "睡眠获取完成------去获取心率");
                             mHandler.sendEmptyMessageDelayed(0x05, 500);
 
-                            mHandler.sendEmptyMessageDelayed(0x55, 15 * 1000);
+//                            mHandler.sendEmptyMessageDelayed(0x55, 15 * 1000);
                             break;
                         case 3:
                             mHandler.removeMessages(0x99);//取消 99 心率超时处理
@@ -519,7 +520,6 @@ public class B15pHomeFragment extends LazyFragment
                         mHandler.sendEmptyMessageDelayed(0x12, 200);
                         mHandler.sendEmptyMessageDelayed(0x13, 300);
                     }
-
                     break;
                 /**
                  * 从设备获取数据
@@ -567,10 +567,13 @@ public class B15pHomeFragment extends LazyFragment
                             public void updataAllStepDataToUIListenter(int integer) {
                                 super.updataAllStepDataToUIListenter(integer);
                                 defaultSteps = integer;
-                                if (b30ProgressBar != null) {
-                                    b30ProgressBar.setMaxValue(goalStep);
-                                    b30ProgressBar.setValue(defaultSteps);
+                                if (getActivity() != null && !getActivity().isFinishing()) {
+                                    if (b30ProgressBar != null) {
+                                        b30ProgressBar.setMaxValue(goalStep);
+                                        b30ProgressBar.setValue(defaultSteps);
+                                    }
                                 }
+
                             }
                         }).execute(Allsteps);
 
@@ -617,91 +620,95 @@ public class B15pHomeFragment extends LazyFragment
                             @Override
                             public void updataSleepDataToUIListenter(List<W30S_SleepDataItem> sleepDataList) {
 
+                                if (getActivity() != null && !getActivity().isFinishing()) {
 
-                                String dateStr = WatchUtils.obtainFormatDate(currDay);
-                                if (!sleepDataList.isEmpty()) {
+
+                                    String dateStr = WatchUtils.obtainFormatDate(currDay);
+                                    if (!sleepDataList.isEmpty()) {
 //                        ALLTIME = 0;//睡眠总时间
-                                    AWAKE = 0;//清醒的次数
+                                        AWAKE = 0;//清醒的次数
 //                        DEEP = 0;//深睡
 //                        SHALLOW = 0;//浅睡
-                                    startSleepTime = "";
-                                    endSleepTime = "";
-                                    StringBuilder strSleep = new StringBuilder("");
-                                    for (int i = 0; i < sleepDataList.size() - 1; i++) {
-                                        String startTime = null;
-                                        String startTimeLater = null;
-                                        String sleep_type = null;
+                                        startSleepTime = "";
+                                        endSleepTime = "";
+                                        StringBuilder strSleep = new StringBuilder("");
+                                        for (int i = 0; i < sleepDataList.size() - 1; i++) {
+                                            String startTime = null;
+                                            String startTimeLater = null;
+                                            String sleep_type = null;
 //                                Log.e(TAG, "===睡眠=C= " + sleepDataList.get(i).getStartTime() + "======" +
 //                                        (sleepDataList.get(i).getSleep_type().equals("0") ? "===清醒" : sleepDataList.get(i).getSleep_type().equals("1") ? "---->>>浅睡" : "===>>深睡"));
 
-                                        if (i == 0)
-                                            startSleepTime = sleepDataList.get(i).getStartTime();
-                                        endSleepTime = sleepDataList.get(i).getStartTime();
-                                        if (i >= (sleepDataList.size() - 1)) {
-                                            startTime = sleepDataList.get(i).getStartTime();
-                                            startTimeLater = sleepDataList.get(i).getStartTime();
-                                            sleep_type = sleepDataList.get(i).getSleep_type();
-                                        } else {
-                                            startTime = sleepDataList.get(i).getStartTime();
-                                            startTimeLater = sleepDataList.get(i + 1).getStartTime();
-                                            sleep_type = sleepDataList.get(i).getSleep_type();
-                                        }
-                                        String[] starSplit = startTime.split("[:]");
-                                        String[] endSplit = startTimeLater.split("[:]");
-
-                                        int startHour = Integer.valueOf(!TextUtils.isEmpty(starSplit[0].replace(",", "")) ? starSplit[0].replace(",", "") : "0");
-                                        int endHour = Integer.valueOf(!TextUtils.isEmpty(endSplit[0].replace(",", "")) ? endSplit[0].replace(",", "") : "0");
-
-                                        int startMin = Integer.valueOf(!TextUtils.isEmpty(starSplit[1].replace(",", "")) ? starSplit[1].replace(",", "") : "0");
-                                        int endMin = (Integer.valueOf(!TextUtils.isEmpty(endSplit[1].replace(",", "")) ? endSplit[1].replace(",", "") : "0"));
-                                        if (startHour > endHour) {
-                                            endHour = endHour + 24;
-                                        }
-                                        int all_m = (endHour - startHour) * 60 + (endMin - startMin);
-                                        //B15P元数据   清醒  0    浅睡 1   深睡 2
-                                        //图标绘制时    浅睡  0    深睡 1   清醒 2
-                                        if (sleep_type.equals("0")) {
-                                            AWAKE++;
-//                                Log.e(TAG, "====0===" + all_m);
-                                            for (int j = 1; j <= all_m; j++) {
-                                                strSleep.append("2");
+                                            if (i == 0)
+                                                startSleepTime = sleepDataList.get(i).getStartTime();
+                                            endSleepTime = sleepDataList.get(i).getStartTime();
+                                            if (i >= (sleepDataList.size() - 1)) {
+                                                startTime = sleepDataList.get(i).getStartTime();
+                                                startTimeLater = sleepDataList.get(i).getStartTime();
+                                                sleep_type = sleepDataList.get(i).getSleep_type();
+                                            } else {
+                                                startTime = sleepDataList.get(i).getStartTime();
+                                                startTimeLater = sleepDataList.get(i + 1).getStartTime();
+                                                sleep_type = sleepDataList.get(i).getSleep_type();
                                             }
-                                        } else if (sleep_type.equals("1")) {
-                                            //潜水
+                                            String[] starSplit = startTime.split("[:]");
+                                            String[] endSplit = startTimeLater.split("[:]");
+
+                                            int startHour = Integer.valueOf(!TextUtils.isEmpty(starSplit[0].replace(",", "")) ? starSplit[0].replace(",", "") : "0");
+                                            int endHour = Integer.valueOf(!TextUtils.isEmpty(endSplit[0].replace(",", "")) ? endSplit[0].replace(",", "") : "0");
+
+                                            int startMin = Integer.valueOf(!TextUtils.isEmpty(starSplit[1].replace(",", "")) ? starSplit[1].replace(",", "") : "0");
+                                            int endMin = (Integer.valueOf(!TextUtils.isEmpty(endSplit[1].replace(",", "")) ? endSplit[1].replace(",", "") : "0"));
+                                            if (startHour > endHour) {
+                                                endHour = endHour + 24;
+                                            }
+                                            int all_m = (endHour - startHour) * 60 + (endMin - startMin);
+                                            //B15P元数据   清醒  0    浅睡 1   深睡 2
+                                            //图标绘制时    浅睡  0    深睡 1   清醒 2
+                                            if (sleep_type.equals("0")) {
+                                                AWAKE++;
+//                                Log.e(TAG, "====0===" + all_m);
+                                                for (int j = 1; j <= all_m; j++) {
+                                                    strSleep.append("2");
+                                                }
+                                            } else if (sleep_type.equals("1")) {
+                                                //潜水
 //                                SHALLOW = SHALLOW + all_m;
 //                                ALLTIME = ALLTIME + all_m;
 //                                Log.e(TAG, "====1===" + all_m);
-                                            for (int j = 1; j <= all_m; j++) {
-                                                strSleep.append("0");
-                                            }
-                                        } else if (sleep_type.equals("2")) {
-                                            //深水
+                                                for (int j = 1; j <= all_m; j++) {
+                                                    strSleep.append("0");
+                                                }
+                                            } else if (sleep_type.equals("2")) {
+                                                //深水
 //                                DEEP = DEEP + all_m;
 //                                ALLTIME = ALLTIME + all_m;
 //                                Log.e(TAG, "====2===" + all_m);
-                                            for (int j = 1; j <= all_m; j++) {
-                                                strSleep.append("1");
+                                                for (int j = 1; j <= all_m; j++) {
+                                                    strSleep.append("1");
+                                                }
                                             }
-                                        }
 
-                                    }
+                                        }
 
 //                            Log.e(TAG, "===睡眠=D=" + strSleep.toString());
 
 
-                                    if (!TextUtils.isEmpty(strSleep)) {
+                                        if (!TextUtils.isEmpty(strSleep)) {
 
 //                                Log.e(TAG, strSleep.toString().length() + " 睡眠 \n" + strSleep.toString());
-                                        /**
-                                         * 显示睡眠图标
-                                         */
-                                        showSleepData(strSleep.toString(), dateStr);
+                                            /**
+                                             * 显示睡眠图标
+                                             */
+                                            showSleepData(strSleep.toString(), dateStr);
+                                        }
+                                    } else {
+                                        if (b30CusSleepView != null) {
+                                            b30CusSleepView.setSeekBarShow(false);
+                                            b30CusSleepView.setSleepList(new ArrayList<Integer>());
+                                        }
                                     }
-                                } else {
-                                    if (b30CusSleepView != null) {
-                                        b30CusSleepView.setSeekBarShow(false);
-                                        b30CusSleepView.setSleepList(new ArrayList<Integer>());
-                                    }
+
                                 }
 
 
@@ -723,30 +730,39 @@ public class B15pHomeFragment extends LazyFragment
 //                            }
 
                             @Override
-                            public void updataHeartDataToUIListenter(List<Integer> ts,String latelyValues) {
-                                if (ts != null && !ts.isEmpty()) {
+                            public void updataHeartDataToUIListenter(List<Integer> ts, String latelyValues) {
 
-                                    //设置最近心率----这里拿的是最后一条心率的数据和时间
-                                    if (!WatchUtils.isEmpty(latelyValues)){
-                                        String[] split = latelyValues.split("[#]");
-                                        if (!WatchUtils.isEmpty(split[0])){
-                                            lastTimeTv.setText(split[0]);
+                                if (getActivity() != null && !getActivity().isFinishing()) {
+                                    /**
+                                     * 去上传数据
+                                     */
+                                    mHandler.sendEmptyMessageDelayed(0x55, 1000);
+
+                                    if (ts != null && !ts.isEmpty()) {
+
+                                        //设置最近心率----这里拿的是最后一条心率的数据和时间
+                                        if (!WatchUtils.isEmpty(latelyValues)) {
+                                            String[] split = latelyValues.split("[#]");
+                                            if (!WatchUtils.isEmpty(split[0])) {
+                                                lastTimeTv.setText(split[0]);
+                                            }
+                                            if (!WatchUtils.isEmpty(split[1])) {
+                                                b30HeartValueTv.setText(split[1]);
+                                            }
                                         }
-                                        if (!WatchUtils.isEmpty(split[1])){
-                                            b30HeartValueTv.setText(split[1]);
-                                        }
+                                        if (b30CusHeartView != null)
+                                            b30CusHeartView.setRateDataList(ts);
+                                    } else {
+                                        if (b30CusHeartView != null)
+                                            b30CusHeartView.setRateDataList(heartList);
                                     }
-                                    if (b30CusHeartView != null)
-                                        b30CusHeartView.setRateDataList(ts);
-                                } else {
-                                    if (b30CusHeartView != null)
-                                        b30CusHeartView.setRateDataList(heartList);
+
+
+                                    if (b30HomeSwipeRefreshLayout != null)
+                                        b30HomeSwipeRefreshLayout.finishRefresh();
+                                    setSysTextStute(false);
                                 }
 
-
-                                if (b30HomeSwipeRefreshLayout != null)
-                                    b30HomeSwipeRefreshLayout.finishRefresh();
-                                setSysTextStute(false);
                             }
                         }).execute(steps);
 
@@ -1010,7 +1026,6 @@ public class B15pHomeFragment extends LazyFragment
                 b30BarChart.invalidate();
             }
         }
-
     }
 
     //步数图表展示

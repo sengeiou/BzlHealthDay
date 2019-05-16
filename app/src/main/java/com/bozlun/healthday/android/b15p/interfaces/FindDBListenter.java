@@ -554,9 +554,15 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         String times = "00:00";
         if (hour.contains(".")) {
             String[] split = hour.split("[.]");
-            if (split != null && split.length > 0) {
-                if (!WatchUtils.isEmpty(split[0]))
-                    times = (split[0].length() == 2 ? split[0] : "0" + split[0])+":30";
+            if (split.length > 0) {
+                if (!WatchUtils.isEmpty(split[0])&&!WatchUtils.isEmpty(split[1])){
+                    if (Integer.valueOf(split[1])>0){
+                        times = (split[0].length() == 2 ? split[0] : "0" + split[0])+":30";
+                    }else {
+                        times = (split[0].length() == 2 ? split[0] : "0" + split[0])+":00";
+                    }
+
+                }
             }
         }else {
             times = (times.length()==2?times:"0"+times)+":00";
