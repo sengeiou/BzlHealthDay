@@ -327,7 +327,7 @@ public class UpdateManager {
             request.setMimeType("application/vnd.android.package-archive");
             //通知栏显示
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-            request.setTitle("健康天天检");
+            request.setTitle("Day Health");
             request.setDescription("Downloading ...");
             request.setVisibleInDownloadsUi(true);
         } catch (Exception e) {

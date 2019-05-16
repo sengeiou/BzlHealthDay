@@ -420,7 +420,7 @@ public class B30ConnStateService extends Service {
             manager.createNotificationChannel(channel);
             Notification.Builder builder = new Notification.Builder(this);
             builder.setSmallIcon(R.drawable.ic_noti_s);
-            builder.setContentText("健康天天检");
+            builder.setContentText("Day Health");
             builder.setContentTitle("天天检");
             //创建通知时指定channelID
             builder.setChannelId(channelID);
@@ -433,7 +433,7 @@ public class B30ConnStateService extends Service {
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
                 //Notification.Builder builder = new Notification.Builder(this,11);
                 builder.setSmallIcon(R.drawable.ic_noti_s);
-                builder.setContentText("健康天天检");
+                builder.setContentText("Day Health");
                 builder.setContentTitle("天天检");
                 // 设置通知的点击行为：自动取消/跳转等
                 builder.setAutoCancel(false);

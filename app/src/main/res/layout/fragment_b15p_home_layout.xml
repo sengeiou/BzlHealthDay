@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -22,6 +23,7 @@
         android:id="@+id/sycn_stute"
         android:padding="@dimen/size_3"
         android:gravity="center"
+        android:textSize="@dimen/sp_17"
         android:layout_below="@+id/v_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,16 +39,11 @@
         app:srlEnableLoadMore="false"
         app:srlEnablePreviewInEditMode="false"
         app:srlPrimaryColor="#ffffff">
-        <!-- srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色 -->
-        <!-- srlEnablePreviewInEditMode 可以开启和关闭下拉预览 -->
 
-        <!--<com.scwang.smartrefresh.header.StoreHouseHeader-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:shhText="loading" />-->
 
         <ScrollView
             android:layout_width="match_parent"
+            android:scrollbars="none"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -204,15 +201,15 @@
 
                 </LinearLayout>
 
-                <!--运动图表-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="#F2F2F2">
 
-                    <include layout="@layout/include_b30_barchart" />
-                </LinearLayout>
+                <!--HRV-->
+                <include layout="@layout/inclue_b31_home_hrv_layout"/>
+
+                <!--血氧-->
+                <include layout="@layout/include_b31_home_bpoxy_layout"/>
+
+                <!--运动图表-->
+                <include layout="@layout/include_b30_barchart" />
 
                 <!--睡眠图表-->
                 <include layout="@layout/include_b15p_sleep_view_layout" />
@@ -232,6 +229,74 @@
 
                     <!--<include layout="@layout/include_home_bottom_layout" />-->
                 </LinearLayout>
+
+
+                <!--模块1 血氧/呼吸暂停-->
+                <LinearLayout
+                    android:id="@+id/block_spo2h"
+                    style="@style/style_block"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/vpspo2h_bg_spo2h">
+
+                    <RelativeLayout
+                        android:id="@+id/block_title_spo2h"
+                        style="@style/style_block_toptitle">
+
+                        <TextView
+                            android:id="@+id/analysis_chartview_title_spo2h"
+                            style="@style/style_block_toptitle_tv"
+                            android:text="血氧/呼吸暂停体检" />
+
+                        <ImageView style="@style/style_block_toptitle_img" />
+
+                    </RelativeLayout>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/block_chartview_spo2h"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/block_chartview_height"
+                        android:layout_marginLeft="@dimen/block_chartview_maginleft"
+                        android:layout_marginRight="@dimen/block_chartview_maginleft" />
+
+                    <LinearLayout
+                        android:id="@+id/block_state_spo2h"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/block_state_maginleft"
+                        android:layout_marginRight="@dimen/block_state_maginleft"
+                        android:background="@color/block_backgroud_spo2h">
+
+                        <LinearLayout style="@style/style_block_bottom_state_left">
+
+                            <TextView
+                                style="@style/style_block_bottom_state_dot"
+                                android:textColor="@color/spo2h_dot_spo2h_1" />
+
+                            <TextView
+                                style="@style/style_block_bottom_state_tv"
+                                android:text="@string/vpspo2h_state_realtime" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/style_block_bottom_state_right">
+
+                            <TextView
+                                style="@style/style_block_bottom_state_dot"
+                                android:textColor="@color/spo2h_dot_spo2h_2" />
+
+                            <TextView
+                                style="@style/style_block_bottom_state_tv"
+                                android:text="@string/vpspo2h_state_breathbreak"
+                                android:textColor="@android:color/white" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/block_bottom_tip_spo2h"
+                        style="@style/style_block_bottom_tip" />
+                </LinearLayout>
+                <include layout="@layout/include_b31_spo2_charts_layout"/>
+
 
                 <include layout="@layout/include_home_bottom_layout" />
 
