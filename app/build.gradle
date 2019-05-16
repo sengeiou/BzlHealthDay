@@ -4,14 +4,14 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     signingConfigs {
         debug {
-            storeFile file('D:\\ProjectForAndroid\\AppBaleJar\\bzlhealth.jks')//签名文件路径
+            storeFile file('F:\\bzkey\\bzlhealth.jks')//签名文件路径
             storePassword "123456"
             keyAlias "bzlhealth"
             keyPassword "123456"  //签名密码
             println("====== signingConfigs.debug ======")
         }
         release {
-            storeFile file('D:\\ProjectForAndroid\\AppBaleJar\\bzlhealth.jks')//签名文件路径
+            storeFile file('F:\\bzkey\\bzlhealth.jks')//签名文件路径
             storePassword "123456"
             keyAlias "bzlhealth"
             keyPassword "123456"  //签名密码
@@ -31,8 +31,8 @@ android {
         applicationId "com.bozlun.healthday.android"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 8
-        versionName "1.0.7"
+        versionCode 1
+        versionName "1.0"
         flavorDimensions "versionName"
         manifestPlaceholders = [
                 qq_id: "101357650"
