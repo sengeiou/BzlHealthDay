@@ -58,20 +58,44 @@ public class CustomBlueAdapter extends RecyclerView.Adapter<CustomBlueAdapter.Cu
             String bleName = customBlueDeviceList.get(position).getBluetoothDevice().getName();
             if (!WatchUtils.isEmpty(bleName)) {
                 if (WatchUtils.verBleNameForSearch(bleName)){
-                    holder.img.setImageResource(R.mipmap.b15p_xiaotu);
+//                    holder.img.setImageResource(R.mipmap.b15p_xiaotu);
+                    //B、L、F、M、W
+                    if (bleName.length()>1&&!bleName.equals("F6")){
+                        if (bleName.substring(0,1).equals("B")){
+                            holder.img.setImageResource(R.mipmap.ic_series_b);
+                        }else if (bleName.substring(0,1).equals("L")){
+                            holder.img.setImageResource(R.mipmap.ic_series_l);
+                        }else if (bleName.substring(0,1).equals("F")){
+                            holder.img.setImageResource(R.mipmap.ic_series_f);
+                        }else if (bleName.substring(0,1).equals("M")){
+                            holder.img.setImageResource(R.mipmap.ic_series_m);
+                        }else if (bleName.substring(0,1).equals("W")){
+                            holder.img.setImageResource(R.mipmap.ic_series_w);
+                        }
+                    }else {
+                        holder.img.setImageResource(R.mipmap.img_f6);
+                    }
+
+//                    if (bleName.equals("F6")){
+//                        holder.img.setImageResource(R.mipmap.img_f6);
+//                    }else {
+//                        holder.img.setImageResource(R.mipmap.b15p_xiaotu);
+//                    }
+
                 }
 //                if ((bleName.length() >= 2 && bleName.equals("W3"))
 //                        || (bleName.length() >= 3 && bleName.equals("B15P"))) { //B15P手环
 //                    holder.img.setImageResource(R.mipmap.b15p_xiaotu);
 //                } else if ((bleName.length()>=2&&bleName.substring(0, 2).equals("H9"))) {    //H9手表
-//                    holder.img.setImageResource(R.mipmap.seach_h9);
+////                    holder.img.setImageResource(R.mipmap.seach_h9);
 //                }else if (bleName.length()>=4&&bleName.substring(0, 4).equals("W06X")) {    //H9手表----其他名字  W06X
 //                    holder.img.setImageResource(R.mipmap.seach_h9);
 //                } else if (bleName.length()>=3&&bleName.substring(0, 3).equals("W30")) {    //W30s手表
 //                    holder.img.setImageResource(R.mipmap.w30_searchlist_icon);
 //                } else if (bleName.length()>=2&&bleName.substring(0, 3).equals("B30")) { //B30手环
 //                    holder.img.setImageResource(R.mipmap.ic_b30_search);
-//                } else if (bleName.length()>=7&&bleName.equals("Ringmii")) {
+//                }
+// else if (bleName.length()>=7&&bleName.equals("Ringmii")) {
 //                    holder.img.setImageResource(R.mipmap.hx_search);
 //                } else if(bleName.substring(0,3).equals("B36")){  //B36
 //                    holder.img.setImageResource(R.mipmap.ic_b36_search);

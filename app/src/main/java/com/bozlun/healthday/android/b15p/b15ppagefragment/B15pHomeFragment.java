@@ -32,6 +32,7 @@ import com.bozlun.healthday.android.b30.b30view.B15PCusSleepView;
 import com.bozlun.healthday.android.b30.b30view.B30CusHeartView;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.commdbserver.CommDBManager;
+import com.bozlun.healthday.android.commdbserver.CommentDataActivity;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.github.mikephil.charting.charts.BarChart;
@@ -152,7 +153,35 @@ public class B15pHomeFragment extends LazyFragment
         b30TopDateTv.setText(WatchUtils.getCurrentDate());
         if (b30GoalStepTv != null)
             b30GoalStepTv.setText(getResources().getString(R.string.goal_step) + goalStep + getResources().getString(R.string.steps));
-        ivTop.setImageResource(R.mipmap.ic_home_top_b31);
+        //ivTop.setImageResource(R.mipmap.ic_home_top_b31);
+        if (!WatchUtils.isEmpty( MyCommandManager.DEVICENAME)) {
+//            if (WatchUtils.verBleNameForSearch( MyCommandManager.DEVICENAME)) {
+//                if ( MyCommandManager.DEVICENAME.equals("F6")) {
+//                    ivTop.setImageResource(R.mipmap.img_wirte_f6);
+//                } else {
+//                    ivTop.setImageResource(R.mipmap.ic_home_top_b31);
+//                }
+//            }
+            if (MyCommandManager.DEVICENAME.length()>1&&!MyCommandManager.DEVICENAME.equals("F6")){
+                if (MyCommandManager.DEVICENAME.substring(0,1).equals("B")){
+                    ivTop.setImageResource(R.mipmap.ic_series_w_b);
+                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("L")){
+                    ivTop.setImageResource(R.mipmap.ic_series_w_l);
+                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("F")){
+                    ivTop.setImageResource(R.mipmap.ic_series_w_f);
+                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("M")){
+                    ivTop.setImageResource(R.mipmap.ic_series_w_m);
+                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("W")){
+                    ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                }
+            }else {
+                ivTop.setImageResource(R.mipmap.img_wirte_f6);
+            }
+        }
+
+
+
+
         //进度圆显示默认的步数
         if (getActivity() != null && !getActivity().isFinishing() && b30ProgressBar != null) {
             getActivity().runOnUiThread(new Runnable() {
@@ -202,7 +231,7 @@ public class B15pHomeFragment extends LazyFragment
     protected void onFragmentVisibleChange(boolean isVisible) {
         super.onFragmentVisibleChange(isVisible);
 //        if (isVisible) {
-//            if (MyCommandManager.DEVICENAME != null) {
+//            if (MyB15PStepDetailActivityCommandManager.DEVICENAME != null) {
 //                long currentTime = System.currentTimeMillis() / 1000;
 //                //保存的时间
 //                String tmpSaveTime = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "saveDate", currentTime + "");
@@ -269,11 +298,29 @@ public class B15pHomeFragment extends LazyFragment
                     //设置每次回主界面，返回数据不清空的
                     clearDataStyle(0);
 
+                    if (!WatchUtils.isEmpty( MyCommandManager.DEVICENAME)) {
+                        if (MyCommandManager.DEVICENAME.length()>1&&!MyCommandManager.DEVICENAME.equals("F6")){
+                            if (MyCommandManager.DEVICENAME.substring(0,1).equals("B")){
+                                ivTop.setImageResource(R.mipmap.ic_series_w_b);
+                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("L")){
+                                ivTop.setImageResource(R.mipmap.ic_series_w_l);
+                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("F")){
+                                ivTop.setImageResource(R.mipmap.ic_series_w_f);
+                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("M")){
+                                ivTop.setImageResource(R.mipmap.ic_series_w_m);
+                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("W")){
+                                ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                            }
+                        }else {
+                            ivTop.setImageResource(R.mipmap.img_wirte_f6);
+                        }
+                    }
+
                     Log.d(TAG, "--是否是第一次链接   " + MyApp.b15pIsFirstConntent);
                     if (MyApp.b15pIsFirstConntent) {
                         MyApp.b15pIsFirstConntent = false;//第一次链接同步后改变第一次链接之后的状态
 
-                        //第一次链接自动获取数据
+                        // 第一次链接自动获取数据
                         // 先获取电池在获取运动数据
                         mHandler.sendEmptyMessageDelayed(0x01, 100);
                     } else {
@@ -827,7 +874,7 @@ public class B15pHomeFragment extends LazyFragment
 //                intent.putExtra("is18i", "B36");
 //                intent.putExtra("stepNum", defaultSteps + "");
 //                startActivity(intent);
-                //startActivity(new Intent(getActivity(), CommentDataActivity.class));
+                startActivity(new Intent(getActivity(), CommentDataActivity.class));
                 break;
         }
     }
@@ -936,7 +983,7 @@ public class B15pHomeFragment extends LazyFragment
 
     //开始上传本地缓存的数据
     private void startUploadDBService() {
-        // CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
+         CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
     }
 
 
@@ -1122,16 +1169,16 @@ public class B15pHomeFragment extends LazyFragment
          * @param waketime  清醒时间
          * @param wakeCount 清醒次数
          */
-//        CommDBManager.getCommDBManager().saveCommSleepDbData("B15P",
-//                WatchUtils.getSherpBleMac(MyApp.getContext()),
-//                dateStr,
-//                shen,
-//                qian,
-//                xing,
-//                allSleep + xing,
-//                startSleepTime,
-//                endSleepTime,
-//                AWAKE);
+        CommDBManager.getCommDBManager().saveCommSleepDbData((WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()),
+                WatchUtils.getSherpBleMac(MyApp.getContext()),
+                dateStr,
+                shen,
+                qian,
+                xing,
+                allSleep + xing,
+                startSleepTime,
+                endSleepTime,
+                AWAKE);
 //      Log.e(TAG, "====" + AWAKE + "   " + SHALLOW + "  " + DEEP);
 
 

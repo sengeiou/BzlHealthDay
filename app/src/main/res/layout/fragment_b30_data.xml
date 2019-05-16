@@ -10,7 +10,6 @@
 
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_marginBottom="61dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -105,6 +104,9 @@
 
             <include layout="@layout/include_b30_blood_data" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_10"/>
 
         </LinearLayout>
 

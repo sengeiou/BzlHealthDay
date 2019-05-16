@@ -165,13 +165,14 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                     }
                     //已连接
                     else if (L4M.Get_Connect_flag() == 2) {
+                        Log.e(TAG, "--B15P--已连接 " + "====" +"------"+L4M.GetConnecteddName());
                         SharedPreferencesUtils.saveObject(NewSearchActivity.this,
                                 Commont.BLENAME,
-                                "B15P");
+                                (WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()));
                         SharedPreferencesUtils.saveObject(NewSearchActivity.this,
                                 Commont.BLEMAC,
                                 bleMac);
-                        Log.d(TAG, "--B15P--已连接");
+                        MyCommandManager.DEVICENAME = (WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName());
                         MyApp.b15pIsFirstConntent = true;//是第一次链接
                         isScanConn = true;
                         startActivity(new Intent(NewSearchActivity.this, B15pHomeActivity.class));

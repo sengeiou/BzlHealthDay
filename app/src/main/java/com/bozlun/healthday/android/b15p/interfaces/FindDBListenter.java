@@ -5,17 +5,21 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.bozlun.healthday.android.LogTestUtil;
+import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAllStepDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PHeartDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PSleepDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PStepDB;
+import com.bozlun.healthday.android.commdbserver.CommDBManager;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.suchengkeji.android.w30sblelibrary.bean.servicebean.W30S_SleepDataItem;
+import com.tjdL4.tjdmain.L4M;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -81,10 +85,11 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                         if (timeString[i].equals(stepTime.substring(0, 2))) {
                                             hourStep += b15PStepDB.getStepItemNumber();
                                         }
-//                                        //保存总步数  数据面板的显示
-//                                        CommDBManager.getCommDBManager().saveCommCountStepDate("B15P", mac,
-//                                                date,
-//                                                defaultSteps);
+                                        //保存总步数  数据面板的显示
+                                        CommDBManager.getCommDBManager().saveCommCountStepDate((WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()),
+                                                mac,
+                                                date,
+                                                defaultSteps);
                                     }
                                 }
                             }
@@ -476,18 +481,19 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                 }
                             }
 
-//                            /**
-//                             * 保存心率数据
-//                             *
-//                             * @param bleName  蓝牙名字
-//                             * @param bleMac   蓝牙mac地址
-//                             * @param dataStr  日期
-//                             * @param avgHeart 平均心率
-//                             */
-//                            if (!heartListNew.isEmpty()) {
-//                                CommDBManager.getCommDBManager().saveCommHeartData("B15P", WatchUtils.getSherpBleMac(MyApp.getContext()), date,
-//                                        Collections.max(heartListNew), Collections.min(heartListNew), (int) noZeroAvgCount / noZeroCount);
-//                            }
+                            /**
+                             * 保存心率数据
+                             *
+                             * @param bleName  蓝牙名字
+                             * @param bleMac   蓝牙mac地址
+                             * @param dataStr  日期
+                             * @param avgHeart 平均心率
+                             */
+                            if (!heartListNew.isEmpty()) {
+                                CommDBManager.getCommDBManager().saveCommHeartData((WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()),
+                                        WatchUtils.getSherpBleMac(MyApp.getContext()), date,
+                                        Collections.max(heartListNew), Collections.min(heartListNew), (int) noZeroAvgCount / noZeroCount);
+                            }
                         }
 
                     }

@@ -1329,6 +1329,15 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
 
+        <!--数据面板界面-->
+        <activity
+            android:name=".commdbserver.CommentDataActivity"
+            android:configChanges="keyboard"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
 
 
 
@@ -1338,6 +1347,7 @@
         <service android:name="com.bozlun.healthday.android.b30.service.NewDateUploadService" />
         <service android:name="com.bozlun.healthday.android.b30.service.CommVpDateUploadService"/>
         <service android:name="com.bozlun.healthday.android.b31.bpoxy.ReadHRVAnSpo2DatatService"/>
+        <service android:name="com.bozlun.healthday.android.commdbserver.UploadCommDbServices" />
 
 
         <!-- SOS电话的广播 -->

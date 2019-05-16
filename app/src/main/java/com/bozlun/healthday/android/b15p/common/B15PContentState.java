@@ -17,6 +17,7 @@ import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.tjdL4.tjdmain.Dev;
 import com.tjdL4.tjdmain.L4M;
+import com.tjdL4.tjdmain.contr.L4Command;
 
 public class B15PContentState {
     public String TAG = "B15PContentState";
@@ -184,8 +185,8 @@ public class B15PContentState {
         else if (L4M.Get_Connect_flag() == 2) {
             String s = L4M.GetConnectedMAC();
             SharedPreferencesUtils.saveObject(MyApp.getInstance(), Commont.BLEMAC, s);
-            Log.e(TAG, "--B15P--已连接 " + "====" + s);
-            MyCommandManager.DEVICENAME = "B15P";
+            Log.e(TAG, "--B15P--已连接 " + "====" + s+"------"+L4M.GetConnecteddName());
+            MyCommandManager.DEVICENAME = (WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName());
             b15PContentState.b15p_Connection_State(2);
         }
         //未连接

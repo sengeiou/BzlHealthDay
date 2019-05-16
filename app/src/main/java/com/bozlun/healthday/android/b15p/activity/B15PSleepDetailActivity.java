@@ -101,6 +101,7 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
         commentB30TitleTv.setText(getResources().getString(R.string.sleep));
 //        commentB30ShareImg.setVisibility(View.VISIBLE);
         detailSleepQuitRatingBar.setMax(5);
+        detailSleepQuitRatingBar.setRating(5);
         // detailSleepQuitRatingBar.setRating(100);
         listValue = new ArrayList<>();
         gson = new Gson();
@@ -141,10 +142,28 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
             } else {
                 if (detailCusSleepView != null)
                     detailCusSleepView.setSleepList(new ArrayList<Integer>());
+                if (detailSleepQuitRatingBar!=null){
+                    detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+                }
+                if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
+                if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
+                if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
+                if (detailAwakeTimeTv != null) detailAwakeTimeTv.setText("--");//苏醒时间
+                if (detailDeepTv != null) detailDeepTv.setText("--");//深度睡眠
+                if (detailHightSleepTv != null) detailHightSleepTv.setText("--");// 浅度睡眠
             }
         } else {
             if (detailCusSleepView != null)
                 detailCusSleepView.setSleepList(new ArrayList<Integer>());
+            if (detailSleepQuitRatingBar!=null){
+                detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+            }
+            if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
+            if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
+            if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
+            if (detailAwakeTimeTv != null) detailAwakeTimeTv.setText("--");//苏醒时间
+            if (detailDeepTv != null) detailDeepTv.setText("--");//深度睡眠
+            if (detailHightSleepTv != null) detailHightSleepTv.setText("--");// 浅度睡眠
         }
 
 //
@@ -267,6 +286,9 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
             } else {
                 if (detailCusSleepView != null)
                     detailCusSleepView.setSleepList(new ArrayList<Integer>());
+                if (detailSleepQuitRatingBar!=null){
+                    detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+                }
                 if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
                 if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
                 if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
@@ -277,6 +299,9 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
         } else {
             if (detailCusSleepView != null)
                 detailCusSleepView.setSleepList(new ArrayList<Integer>());
+            if (detailSleepQuitRatingBar!=null){
+                detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+            }
             if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
             if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
             if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
@@ -311,6 +336,32 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
                         "小时  深睡： " + shen + "分钟 == " + S +
                         "小时  浅睡： " + qian + "分钟 == " + Q +
                         "小时  清醒次数： " + AWAKE + " 次");
+
+
+        double sleep_times = Double.valueOf(S);
+        if (detailSleepQuitRatingBar!=null){
+            detailSleepQuitRatingBar.setVisibility(View.VISIBLE);
+            detailSleepQuitRatingBar.setEnabled(false);
+            if(0<sleep_times&&sleep_times<=0.8){
+                detailSleepQuitRatingBar.setNumStars(1);
+
+            }else if (0.8<sleep_times&&sleep_times<=1.6){
+                detailSleepQuitRatingBar.setNumStars(2);
+
+            }else if (1.6<sleep_times&&sleep_times<=2.4){
+                detailSleepQuitRatingBar.setNumStars(3);
+
+            }else if (2.4<sleep_times&&sleep_times<=3.2){
+                detailSleepQuitRatingBar.setNumStars(4);
+
+            }else if (3.2<sleep_times){
+                detailSleepQuitRatingBar.setNumStars(5);
+
+            }else {
+                detailSleepQuitRatingBar.setNumStars(0);
+            }
+        }
+
 
 
         String time = (allSleep == 0 ? "--" : ((allSleep / 60) + "H" + (allSleep % 60) + "m"));

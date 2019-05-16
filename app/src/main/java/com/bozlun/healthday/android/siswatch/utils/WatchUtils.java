@@ -41,6 +41,8 @@ import com.veepoo.protocol.model.settings.CustomSetting;
 import com.veepoo.protocol.model.settings.CustomSettingData;
 
 import org.apache.commons.lang.StringUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -128,7 +130,8 @@ public class WatchUtils {
      * @return
      */
     public static boolean verBleNameForSearch(String bleName) {
-        String []FilterNamas=new String[]{"B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7","F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
+        String []FilterNamas= new String[]
+                {"B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7", "F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
         Set<String> set = new HashSet<>(Arrays.asList(FilterNamas));
         if (set.contains(bleName)){
             return true;
@@ -1746,5 +1749,25 @@ public class WatchUtils {
         }
     };
 
+
+    /**
+     * 判断请求返回是否成功200成功
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isNetRequestSuccess(String str) {
+        boolean isSuccess = false;
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+            int resultCode = jsonObject.getInt("code");
+            if (resultCode == 200)
+                isSuccess = true;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return isSuccess;
+    }
 
 }

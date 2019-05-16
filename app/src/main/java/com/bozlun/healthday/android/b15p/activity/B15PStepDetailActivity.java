@@ -356,7 +356,7 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
         BigDecimal setScaleK = bdK.setScale(1, RoundingMode.DOWN);
 
         BigDecimal bdD = new BigDecimal((double) (calorieWithSteps / 1000.00));
-        BigDecimal setScaleD = bdD.setScale(1, RoundingMode.DOWN);
+        BigDecimal setScaleD = bdD.setScale(0, RoundingMode.DOWN);
 
         disValue = setScaleK.toString();
         calValue = setScaleD.toString();
