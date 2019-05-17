@@ -154,7 +154,7 @@ public class B15pHomeFragment extends LazyFragment
         if (b30GoalStepTv != null)
             b30GoalStepTv.setText(getResources().getString(R.string.goal_step) + goalStep + getResources().getString(R.string.steps));
         //ivTop.setImageResource(R.mipmap.ic_home_top_b31);
-        if (!WatchUtils.isEmpty( MyCommandManager.DEVICENAME)) {
+        if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
 //            if (WatchUtils.verBleNameForSearch( MyCommandManager.DEVICENAME)) {
 //                if ( MyCommandManager.DEVICENAME.equals("F6")) {
 //                    ivTop.setImageResource(R.mipmap.img_wirte_f6);
@@ -162,24 +162,22 @@ public class B15pHomeFragment extends LazyFragment
 //                    ivTop.setImageResource(R.mipmap.ic_home_top_b31);
 //                }
 //            }
-            if (MyCommandManager.DEVICENAME.length()>1&&!MyCommandManager.DEVICENAME.equals("F6")){
-                if (MyCommandManager.DEVICENAME.substring(0,1).equals("B")){
+            if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
+                if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
                     ivTop.setImageResource(R.mipmap.ic_series_w_b);
-                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("L")){
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
                     ivTop.setImageResource(R.mipmap.ic_series_w_l);
-                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("F")){
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
                     ivTop.setImageResource(R.mipmap.ic_series_w_f);
-                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("M")){
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
                     ivTop.setImageResource(R.mipmap.ic_series_w_m);
-                }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("W")){
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
                     ivTop.setImageResource(R.mipmap.ic_series_w_w);
                 }
-            }else {
+            } else {
                 ivTop.setImageResource(R.mipmap.img_wirte_f6);
             }
         }
-
-
 
 
         //进度圆显示默认的步数
@@ -298,20 +296,20 @@ public class B15pHomeFragment extends LazyFragment
                     //设置每次回主界面，返回数据不清空的
                     clearDataStyle(0);
 
-                    if (!WatchUtils.isEmpty( MyCommandManager.DEVICENAME)) {
-                        if (MyCommandManager.DEVICENAME.length()>1&&!MyCommandManager.DEVICENAME.equals("F6")){
-                            if (MyCommandManager.DEVICENAME.substring(0,1).equals("B")){
+                    if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
+                        if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
+                            if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
                                 ivTop.setImageResource(R.mipmap.ic_series_w_b);
-                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("L")){
+                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
                                 ivTop.setImageResource(R.mipmap.ic_series_w_l);
-                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("F")){
+                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
                                 ivTop.setImageResource(R.mipmap.ic_series_w_f);
-                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("M")){
+                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
                                 ivTop.setImageResource(R.mipmap.ic_series_w_m);
-                            }else if (MyCommandManager.DEVICENAME.substring(0,1).equals("W")){
+                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
                                 ivTop.setImageResource(R.mipmap.ic_series_w_w);
                             }
-                        }else {
+                        } else {
                             ivTop.setImageResource(R.mipmap.img_wirte_f6);
                         }
                     }
@@ -664,6 +662,25 @@ public class B15pHomeFragment extends LazyFragment
 ////                                setSleep(sleepAllDatas);
 //                            }
 
+
+                            /**
+                             * HRV  和  SPO  的虚拟数据
+                             * -----这个这个数据是从子线程直接返回的，所以要切换到主线程
+                             */
+                            @Override
+                            public void updataHrvSpoDataToUIListenter() {
+                                super.updataHrvSpoDataToUIListenter();
+                                if (getActivity() != null && !getActivity().isFinishing()) {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+
+                                            Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
+                                        }
+                                    });
+                                }
+                            }
+
                             @Override
                             public void updataSleepDataToUIListenter(List<W30S_SleepDataItem> sleepDataList) {
 
@@ -983,7 +1000,7 @@ public class B15pHomeFragment extends LazyFragment
 
     //开始上传本地缓存的数据
     private void startUploadDBService() {
-         CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
+        CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
     }
 
 
@@ -1169,7 +1186,7 @@ public class B15pHomeFragment extends LazyFragment
          * @param waketime  清醒时间
          * @param wakeCount 清醒次数
          */
-        CommDBManager.getCommDBManager().saveCommSleepDbData((WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()),
+        CommDBManager.getCommDBManager().saveCommSleepDbData((WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName()),
                 WatchUtils.getSherpBleMac(MyApp.getContext()),
                 dateStr,
                 shen,

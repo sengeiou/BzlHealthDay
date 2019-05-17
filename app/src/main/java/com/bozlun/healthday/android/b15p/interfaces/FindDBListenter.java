@@ -86,7 +86,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                             hourStep += b15PStepDB.getStepItemNumber();
                                         }
                                         //保存总步数  数据面板的显示
-                                        CommDBManager.getCommDBManager().saveCommCountStepDate((WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()),
+                                        CommDBManager.getCommDBManager().saveCommCountStepDate((WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName()),
                                                 mac,
                                                 date,
                                                 defaultSteps);
@@ -105,6 +105,12 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     //LogTestUtil.e(TAG, " --- 睡眠查询 --- " + (allSleepDatasList == null ? "查询睡眠为空" : allSleepDatasList.toString()));
                     List<W30S_SleepDataItem> allDataListSleep = new ArrayList<>();
                     if (allSleepDatasList != null && !allSleepDatasList.isEmpty()) {
+
+                        /**
+                         * 有睡眠书据-------设置血氧HRV假数据
+                         */
+                        setHrvSpoDatas();
+
                         allDataListSleep.clear();
                         List<String> timesList = new ArrayList<>();
                         for (int i = 0; i < allSleepDatasList.size(); i++) {
@@ -490,7 +496,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                              * @param avgHeart 平均心率
                              */
                             if (!heartListNew.isEmpty()) {
-                                CommDBManager.getCommDBManager().saveCommHeartData((WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName()),
+                                CommDBManager.getCommDBManager().saveCommHeartData((WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName()),
                                         WatchUtils.getSherpBleMac(MyApp.getContext()), date,
                                         Collections.max(heartListNew), Collections.min(heartListNew), (int) noZeroAvgCount / noZeroCount);
                             }
@@ -505,6 +511,20 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             }
         }
         return jsonString;
+    }
+
+
+    /**
+     * 设置模拟数据-----在这里可以模拟数据
+     */
+    private void setHrvSpoDatas() {
+        //模拟数据可以在这里，之后再回调出去回去
+
+
+        /**
+         * 更新虚拟数据
+         */
+        changeDBListenter.updataHrvSpoDataToUIListenter();
     }
 
 
@@ -543,12 +563,12 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     if (heartList != null && !heartList.isEmpty()) {
                         for (int i = 0; i < heartList.size(); i++) {
                             if (heartList.get(i) > 0) {
-                                LatelyValues = buidleHour(String.valueOf((float)i / 2f), heartList.get(i));
+                                LatelyValues = buidleHour(String.valueOf((float) i / 2f), heartList.get(i));
                                 Log.i(TAG, "最近心律 " + LatelyValues);
                             }
                         }
                     }
-                    changeDBListenter.updataHeartDataToUIListenter(heartList,LatelyValues);
+                    changeDBListenter.updataHeartDataToUIListenter(heartList, LatelyValues);
                     break;
             }
         }
@@ -556,22 +576,29 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
     }
 
 
+    /**
+     * 返回 每一个点的心率的时间和心率值
+     *
+     * @param hour
+     * @param heartValue
+     * @return
+     */
     private String buidleHour(String hour, int heartValue) {
         String times = "00:00";
         if (hour.contains(".")) {
             String[] split = hour.split("[.]");
             if (split.length > 0) {
-                if (!WatchUtils.isEmpty(split[0])&&!WatchUtils.isEmpty(split[1])){
-                    if (Integer.valueOf(split[1])>0){
-                        times = (split[0].length() == 2 ? split[0] : "0" + split[0])+":30";
-                    }else {
-                        times = (split[0].length() == 2 ? split[0] : "0" + split[0])+":00";
+                if (!WatchUtils.isEmpty(split[0]) && !WatchUtils.isEmpty(split[1])) {
+                    if (Integer.valueOf(split[1]) > 0) {
+                        times = (split[0].length() == 2 ? split[0] : "0" + split[0]) + ":30";
+                    } else {
+                        times = (split[0].length() == 2 ? split[0] : "0" + split[0]) + ":00";
                     }
 
                 }
             }
-        }else {
-            times = (times.length()==2?times:"0"+times)+":00";
+        } else {
+            times = (times.length() == 2 ? times : "0" + times) + ":00";
         }
         times = times + "#" + heartValue;
         return times;
@@ -591,8 +618,16 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         }
 
 
-        public void updataHeartDataToUIListenter(List<Integer> ts,String latelyValues) {
+        public void updataHeartDataToUIListenter(List<Integer> ts, String latelyValues) {
         }
 
+
+        /**
+         * 自定义HRV和SPO的 假数据
+         *
+         * @param
+         */
+        public void updataHrvSpoDataToUIListenter() {
+        }
     }
 }
