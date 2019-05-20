@@ -30,18 +30,30 @@ import com.bozlun.healthday.android.b15p.interfaces.SycnDataToDBListenter;
 import com.bozlun.healthday.android.b30.ManualMeaureHeartActivity;
 import com.bozlun.healthday.android.b30.b30view.B15PCusSleepView;
 import com.bozlun.healthday.android.b30.b30view.B30CusHeartView;
+import com.bozlun.healthday.android.b31.bpoxy.B31BpOxyAnysisActivity;
+import com.bozlun.healthday.android.b31.bpoxy.ShowSpo2DetailActivity;
+import com.bozlun.healthday.android.b31.bpoxy.util.ChartViewUtil;
+import com.bozlun.healthday.android.b31.bpoxy.util.VpSpo2hUtil;
+import com.bozlun.healthday.android.b31.hrv.B31HrvDetailActivity;
+import com.bozlun.healthday.android.b31.model.B31HRVBean;
+import com.bozlun.healthday.android.b31.model.B31Spo2hBean;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.commdbserver.CommDBManager;
 import com.bozlun.healthday.android.commdbserver.CommentDataActivity;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
+import com.bozlun.healthday.android.util.Constant;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.google.gson.Gson;
 import com.littlejie.circleprogress.circleprogress.WaveProgress;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -52,6 +64,12 @@ import com.tjdL4.tjdmain.Dev;
 import com.tjdL4.tjdmain.L4M;
 import com.tjdL4.tjdmain.contr.BracltBatLevel;
 import com.tjdL4.tjdmain.contr.L4Command;
+import com.veepoo.protocol.model.datas.HRVOriginData;
+import com.veepoo.protocol.model.datas.Spo2hOriginData;
+import com.veepoo.protocol.model.enums.ESpo2hDataType;
+import com.veepoo.protocol.util.HRVOriginUtil;
+import com.veepoo.protocol.util.HrvScoreUtil;
+import com.veepoo.protocol.util.Spo2hOriginUtil;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -65,6 +83,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+
+import static com.bozlun.healthday.android.b31.bpoxy.enums.Constants.CHART_MAX_HRV;
+import static com.bozlun.healthday.android.b31.bpoxy.enums.Constants.CHART_MAX_SPO2H;
+import static com.bozlun.healthday.android.b31.bpoxy.enums.Constants.CHART_MIN_HRV;
+import static com.bozlun.healthday.android.b31.bpoxy.enums.Constants.CHART_MIN_SPO2H;
+import static com.veepoo.protocol.model.enums.ESpo2hDataType.TYPE_BEATH_BREAK;
+import static com.veepoo.protocol.model.enums.ESpo2hDataType.TYPE_HRV;
+import static com.veepoo.protocol.model.enums.ESpo2hDataType.TYPE_SPO2H;
 
 public class B15pHomeFragment extends LazyFragment
         implements ConntentStuteListenter {
@@ -115,6 +141,36 @@ public class B15pHomeFragment extends LazyFragment
     //运动图表最大步数
     @BindView(R.id.sycn_stute)
     TextView sycnStute;
+
+    //血氧的图表
+    @BindView(R.id.homeSpo2LinChartView)
+    LineChart homeSpo2LinChartView;
+    @BindView(R.id.b31Spo2AveTv)
+    TextView b31Spo2AveTv;
+
+    //心脏健康指数
+    @BindView(R.id.hrvHeartSocreTv)
+    TextView hrvHeartSocreTv;
+    //HRV的图表
+    @BindView(R.id.b31HomeHrvChart)
+    LineChart b31HomeHrvChart;
+
+
+    VpSpo2hUtil vpSpo2hUtil;
+    @BindView(R.id.block_chartview_spo2h)
+    LineChart mChartViewSpo2h;  //呼吸暂停图表
+    @BindView(R.id.block_chartview_heart)
+    LineChart mChartViewHeart;  //心脏负荷图表
+    @BindView(R.id.block_chartview_sleep)
+    LineChart mChartViewSleep;  //睡眠活动图表
+    @BindView(R.id.block_chartview_breath)
+    LineChart mChartViewBreath; //呼吸率图表
+    @BindView(R.id.block_chartview_lowspo2h)
+    LineChart mChartViewLowspo2h;   //低氧时间图表
+
+    private List<Spo2hOriginData> data0To8 = new ArrayList<>();
+    private List<HRVOriginData> datahrv = new ArrayList<>();
+    private Gson gson = new Gson();
 
     @Nullable
     @Override
@@ -211,6 +267,8 @@ public class B15pHomeFragment extends LazyFragment
         b30ChartList = new ArrayList<>();
         tmpB30StepList = new ArrayList<>();
         tmpIntegerList = new ArrayList<>();
+
+        initSpo2hUtil();
     }
 
 
@@ -663,19 +721,58 @@ public class B15pHomeFragment extends LazyFragment
 //                            }
 
 
+
+
+
                             /**
-                             * HRV  和  SPO  的虚拟数据
+                             *  HRV  的虚拟数据
                              * -----这个这个数据是从子线程直接返回的，所以要切换到主线程
                              */
                             @Override
-                            public void updataHrvSpoDataToUIListenter() {
-                                super.updataHrvSpoDataToUIListenter();
+                            public void updataHrvDataToUIListenter(final List<B31HRVBean> hrvBeanList) {
+
                                 if (getActivity() != null && !getActivity().isFinishing()) {
                                     getActivity().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                            //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
+                                            if (hrvBeanList != null && !hrvBeanList.isEmpty()) {
 
-                                            Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
+                                                datahrv.clear();
+                                                for (B31HRVBean hBean : hrvBeanList) {
+                                                    // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
+                                                    datahrv.add(gson.fromJson(hBean.getHrvDataStr(), HRVOriginData.class));
+                                                }
+
+                                                if (datahrv != null) showHrvData(datahrv);
+                                            }
+
+                                        }
+                                    });
+                                }
+                            }
+
+                            /**
+                             *  SPO  的虚拟数据
+                             * -----这个这个数据是从子线程直接返回的，所以要切换到主线程
+                             */
+                            @Override
+                            public void updataSpo2DataToUIListenter(final List<B31Spo2hBean> b31Spo2hBeanList) {
+                                if (getActivity() != null && !getActivity().isFinishing()) {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
+                                            if (b31Spo2hBeanList != null && !b31Spo2hBeanList.isEmpty()) {
+                                                data0To8.clear();
+                                                for (B31Spo2hBean hBean : b31Spo2hBeanList) {
+                                                   // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
+                                                    data0To8.add(gson.fromJson(hBean.getSpo2hOriginData(), Spo2hOriginData.class));
+                                                }
+
+                                                if (data0To8 != null) updateSpo2View(data0To8);
+                                            }
+
                                         }
                                     });
                                 }
@@ -847,7 +944,8 @@ public class B15pHomeFragment extends LazyFragment
     @OnClick({R.id.b30SportChartLin1, R.id.b30BarChart, R.id.b30CusHeartLin,
             R.id.b30CusBloadLin, R.id.b30MeaureHeartImg, R.id.b30MeaureBloadImg,
             R.id.b30SleepLin, R.id.homeTodayTv, R.id.homeYestTodayTv, R.id.homeBeYestdayTv,
-            R.id.battery_watchRecordShareImg})//, R.id.b36WomenStatusLin, R.id.b36WomenPrivacyImg})
+            R.id.battery_watchRecordShareImg,
+            R.id.b31BpOxyLin,R.id.b31HrvView,R.id.block_spo2h,R.id.block_heart,R.id.block_sleep,R.id.block_breath,R.id.block_lowspo2h})//, R.id.b36WomenStatusLin, R.id.b36WomenPrivacyImg})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.b30SportChartLin1: // 运动数据详情
@@ -893,7 +991,39 @@ public class B15pHomeFragment extends LazyFragment
 //                startActivity(intent);
                 startActivity(new Intent(getActivity(), CommentDataActivity.class));
                 break;
+
+
+            case R.id.b31BpOxyLin:  //血氧分析
+                B31BpOxyAnysisActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
+                break;
+            case R.id.b31HrvView:    //HRV
+                B31HrvDetailActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
+                break;
+            case R.id.block_spo2h:  //血氧
+                startToSpo2Detail("0", getResources().getString(R.string.vpspo2h_spo2h));
+                break;
+            case R.id.block_heart:  //心脏负荷
+                startToSpo2Detail("1", getResources().getString(R.string.vpspo2h_toptitle_heart));
+                break;
+            case R.id.block_sleep:      //睡眠活动
+                startToSpo2Detail("2", getResources().getString(R.string.vpspo2h_toptitle_sleep));
+                break;
+            case R.id.block_breath:     //呼吸率
+                startToSpo2Detail("3", getResources().getString(R.string.vpspo2h_toptitle_breath));
+                break;
+            case R.id.block_lowspo2h:   //低氧时间
+                startToSpo2Detail("4", getResources().getString(R.string.vpspo2h_toptitle_lowspo2h));
+                break;
         }
+    }
+
+    //跳转至详情页面
+    private void startToSpo2Detail(String tag, String titleTxt) {
+        Intent intent = new Intent(getActivity(), ShowSpo2DetailActivity.class);
+        intent.putExtra("spo2_tag", tag);
+        intent.putExtra("title", titleTxt);
+        intent.putExtra(Constant.DETAIL_DATE, WatchUtils.obtainFormatDate(currDay));
+        getActivity().startActivity(intent);
     }
 
 
@@ -1230,4 +1360,161 @@ public class B15pHomeFragment extends LazyFragment
         }
     }
 
+
+    //显示HRV的数据
+    private void showHrvData(List<HRVOriginData> dataList) {
+        //Log.e(TAG,"----显示HRV="+dataList.size());
+        if(dataList.size()>420)
+            return;
+        List<HRVOriginData> data0to8 = getMoringData(dataList);
+        HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
+        HrvScoreUtil hrvScoreUtil = new HrvScoreUtil();
+        int heartSocre = hrvScoreUtil.getSocre(dataList);
+        hrvHeartSocreTv.setText(getResources().getString(R.string.heart_health_sorce) + "\n" + heartSocre);
+        final List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
+        //主界面
+        showHomeView(tenMinuteData);
+    }
+
+    //显示HRV的数据
+    private void showHomeView(List<Map<String, Float>> tenMinuteData) {
+
+        //Log.e(TAG,"-----HRV-SPO  "+tenMinuteData.toString());
+        ChartViewUtil chartViewUtilHome = new ChartViewUtil(b31HomeHrvChart, null, true,
+                CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV);
+        b31HomeHrvChart.getAxisLeft().removeAllLimitLines();
+        b31HomeHrvChart.getAxisLeft().setDrawLabels(false);
+        chartViewUtilHome.setxColor(R.color.head_text);
+        chartViewUtilHome.setNoDataColor(R.color.head_text);
+        chartViewUtilHome.drawYLable(false, 1);
+        chartViewUtilHome.updateChartView(tenMinuteData);
+        LineData data = b31HomeHrvChart.getData();
+        if (data == null)
+            return;
+        LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
+        if (dataSetByIndex != null) {
+            dataSetByIndex.setDrawFilled(false);
+            dataSetByIndex.setColor(Color.parseColor("#EC1A3B"));
+        }
+    }
+
+
+
+
+
+
+
+    //显示血氧的图
+    private void updateSpo2View(List<Spo2hOriginData> dataList) {
+
+        //Log.e(TAG, "----------血氧展示=" + dataList.size());
+
+        List<Spo2hOriginData> data0To8 = getSpo2MoringData(dataList);
+        Spo2hOriginUtil spo2hOriginUtil = new Spo2hOriginUtil(data0To8);
+        //获取处理完的血氧数据
+        final List<Map<String, Float>> tenMinuteDataBreathBreak = spo2hOriginUtil.getTenMinuteData(TYPE_BEATH_BREAK);
+        final List<Map<String, Float>> tenMinuteDataSpo2h = spo2hOriginUtil.getTenMinuteData(TYPE_SPO2H);
+
+        //Log.e(TAG, "-----HRV-SPO  A  " + tenMinuteDataBreathBreak.toString());
+        //Log.e(TAG, "-----HRV-SPO  B  " + tenMinuteDataSpo2h.toString());
+        //平均值
+        int onedayDataArr[] = spo2hOriginUtil.getOnedayDataArr(ESpo2hDataType.TYPE_SPO2H);
+        if (getActivity() == null)
+            return;
+        b31Spo2AveTv.setText(getResources().getString(R.string.ave_value) + "\n" + onedayDataArr[2]);
+        initSpo2hUtil();
+        if (vpSpo2hUtil != null) {
+            vpSpo2hUtil.setData(dataList);
+            vpSpo2hUtil.showAllChartView();
+        }
+
+        ChartViewUtil spo2ChartViewUtilHomes = new ChartViewUtil(homeSpo2LinChartView, null, true,
+                CHART_MAX_SPO2H, CHART_MIN_SPO2H, "No Data", TYPE_SPO2H);
+        spo2ChartViewUtilHomes.setxColor(R.color.head_text);
+        spo2ChartViewUtilHomes.setNoDataColor(R.color.head_text);
+        //更新血氧数据的图表
+        spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
+        spo2ChartViewUtilHomes.updateChartView(tenMinuteDataSpo2h);
+        spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
+
+        homeSpo2LinChartView.getAxisLeft().removeAllLimitLines();
+        homeSpo2LinChartView.getAxisLeft().setDrawLabels(false);
+
+        LineData data = homeSpo2LinChartView.getData();
+        if (data == null)
+            return;
+        LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
+        if (dataSetByIndex != null) {
+            dataSetByIndex.setDrawFilled(false);
+            dataSetByIndex.setColor(Color.parseColor("#17AAE2"));
+        }
+    }
+
+
+    /**
+     * 获取0点-8点之间的数据
+     *
+     * @param originSpo2hList
+     * @return
+     */
+    @NonNull
+    private List<HRVOriginData> getMoringData(List<HRVOriginData> originSpo2hList) {
+        List<HRVOriginData> moringData = new ArrayList<>();
+        try{
+            if (originSpo2hList == null || originSpo2hList.isEmpty())
+                return moringData;
+            for (HRVOriginData hRVOriginData : originSpo2hList) {
+                if (hRVOriginData.getmTime().getHMValue() < 8 * 60) {
+                    moringData.add(hRVOriginData);
+                }
+            }
+            return moringData;
+        }catch (Exception e){
+            e.printStackTrace();
+            moringData.clear();
+            return moringData;
+        }
+
+
+    }
+
+    /**
+     * 获取0点-8点之间的数据
+     *
+     * @param originSpo2hList
+     * @return
+     */
+    @NonNull
+    private List<Spo2hOriginData> getSpo2MoringData(List<Spo2hOriginData> originSpo2hList) {
+        List<Spo2hOriginData> spo2Data = new ArrayList<>();
+        try {
+            if (originSpo2hList == null || originSpo2hList.isEmpty())
+                return spo2Data;
+            for (Spo2hOriginData spo2hOriginData : originSpo2hList) {
+                if (spo2hOriginData != null && spo2hOriginData.getmTime() != null) {
+                    Log.e(TAG, "----assa---  " + spo2hOriginData.getmTime().getHMValue());
+                    if (spo2hOriginData.getmTime().getHMValue() < 8 * 60) {
+                        spo2Data.add(spo2hOriginData);
+                    }
+                }
+            }
+            return spo2Data;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return spo2Data;
+        }
+
+    }
+
+
+    /**
+     * 设置相关属性
+     */
+    private void initSpo2hUtil() {
+        vpSpo2hUtil = new VpSpo2hUtil();
+        vpSpo2hUtil.setLinearChart(mChartViewSpo2h, mChartViewHeart,
+                mChartViewSleep, mChartViewBreath, mChartViewLowspo2h);
+        vpSpo2hUtil.setMarkView(MyApp.getContext(), R.layout.vpspo2h_markerview);
+        vpSpo2hUtil.setModelIs24(false);
+    }
 }

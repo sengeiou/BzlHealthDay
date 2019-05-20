@@ -227,7 +227,7 @@ public class B31BpOxyAnysisActivity extends WatchBaseActivity {
 
 
         readSpo2Data(currDay);
-        readSpo2Detect();
+        //readSpo2Detect();
 
         initHeartBreakDesc();
 

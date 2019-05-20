@@ -252,7 +252,7 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
                         timeData.setDay(Integer.valueOf(times.substring(8, 10).trim()));
                         timeData.setHour(Integer.valueOf(bloodTime.substring(0, 2).trim()));
                         timeData.setMinute(Integer.valueOf(bloodTime.substring(3, 5).trim()));
-                        timeData.setSecond(Integer.valueOf(bloodTime.substring(6, 8).trim()));
+                        timeData.setSecond(0);
                         HalfHourBpData halfHourBpData = new HalfHourBpData(timeData, b15PBloodDB.getBloodNumberH(), b15PBloodDB.getBloodNumberL());
                         Log.e(TAG, "血压详细" + b15PBloodDB.getBloodData() + " - " + b15PBloodDB.getBloodNumberH() + " - " + b15PBloodDB.getBloodNumberL());
                         if (!dataList.contains(halfHourBpData)) dataList.add(halfHourBpData);

@@ -88,8 +88,8 @@ public class NewGuidActivity extends WatchBaseActivity {
                 .start();
     }
 
-    private final int[] imageIds = {R.mipmap.beraceiocn, R.mipmap.beraceiocn
-            ,R.mipmap.beraceiocn};
+    private final int[] imageIds = {R.drawable.ic_logo_day, R.drawable.ic_logo_day
+            ,R.drawable.ic_logo_day};
 
     @NonNull
     private List<View> createPageList() {

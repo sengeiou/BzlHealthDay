@@ -65,12 +65,12 @@ public class CommDBManager {
     public void saveCommCountStepDate(String bleName, String bleMac, String dataStr, int countStep) {
         if (WatchUtils.isEmpty(bleName) || WatchUtils.isEmpty(bleMac) || WatchUtils.isEmpty(dataStr))
             return;
-        Log.e(TAG, "-----------参数=" + bleName + "-=" + bleMac + "-=" + dataStr + "-=" + countStep);
+//        Log.e(TAG, "-----------参数=" + bleName + "-=" + bleMac + "-=" + dataStr + "-=" + countStep);
         //保存时先查询是否存在，若存在判断保存的步数是否大于现在的步数，防止重复
         CommStepCountDb lt = findCountStepForUpload(bleMac, dataStr);
         if (lt != null) { //有数据
             int saveStepNumber = lt.getStepnumber();
-            Log.e(TAG, "---------saveStepNumber=" + saveStepNumber+"---="+lt.isUpload());
+//            Log.e(TAG, "---------saveStepNumber=" + saveStepNumber+"---="+lt.isUpload());
             if (saveStepNumber < countStep) {
                 CommStepCountDb commStepCountDb = new CommStepCountDb();
                 commStepCountDb.setUserid(userId);
@@ -98,7 +98,7 @@ public class CommDBManager {
             //int currStep = LitePal.where(whereStr).limit(0).find(CommStepCountDb.class).get(0).getStepnumber();
             //有就修改，没有就保存
             boolean isSave = commStepCountDb.save();
-            Log.e(TAG, "-----22-----isSave=" + isSave);
+//            Log.e(TAG, "-----22-----isSave=" + isSave);
         }
 
 
@@ -138,7 +138,7 @@ public class CommDBManager {
     public CommStepCountDb findCountStepForUpload(String bMac, String dateStr) {
         List<CommStepCountDb> commStepCountDbList = LitePal.where(stepWhereStr, userId, bMac, dateStr).find(CommStepCountDb.class);
         if (commStepCountDbList == null || commStepCountDbList.isEmpty()) {
-            Log.e(TAG, "-----------为null了------");
+//            Log.e(TAG, "-----------为null了------");
             return null;
         } else {
             return commStepCountDbList.get(0);
@@ -154,7 +154,7 @@ public class CommDBManager {
      * @return
      */
     public List<CommStepCountDb> findCountStepForUpload(String bMac, String startDay, String endDay) {
-        Log.e(TAG, "------start=" + startDay + "--end=" + endDay);
+//        Log.e(TAG, "------start=" + startDay + "--end=" + endDay);
         String where = "userid = ? and devicecode = ? and dateStr  between ? and ?";
         List<CommStepCountDb> commStepCountDbList = LitePal.where(where, userId, bMac, startDay, endDay).find(CommStepCountDb.class);
         return commStepCountDbList == null || commStepCountDbList.isEmpty() ? null : commStepCountDbList;
@@ -181,7 +181,7 @@ public class CommDBManager {
     public void saveCommHeartData(String bleName, String bleMac, String dataStr, int maxHeart, int mineHeart, int avgHeart) {
         if (WatchUtils.isEmpty(bleName) || WatchUtils.isEmpty(bleMac) || WatchUtils.isEmpty(dataStr))
             return;
-        Log.e(TAG, "----------心率=" + bleName + "-bleMac=" + bleMac + "--dateStr=" + dataStr + "--maxHeart=" + maxHeart + "--minHeart=" + mineHeart + "--avgHeart=" + avgHeart);
+//        Log.e(TAG, "----------心率=" + bleName + "-bleMac=" + bleMac + "--dateStr=" + dataStr + "--maxHeart=" + maxHeart + "--minHeart=" + mineHeart + "--avgHeart=" + avgHeart);
         CommHeartDb commHeartDb = new CommHeartDb();
         commHeartDb.setBleName(bleName);
         commHeartDb.setUserid(userId);
@@ -195,15 +195,15 @@ public class CommDBManager {
         if (saveHeartListData == null) {
             commHeartDb.setUpload(false);
             boolean isHeartSave = commHeartDb.save();
-            Log.e(TAG, "-----11---心率保存=" + isHeartSave);
+//            Log.e(TAG, "-----11---心率保存=" + isHeartSave);
         } else {
             for (CommHeartDb cb : saveHeartListData) {
-                Log.e(TAG, "---------cd=" + commHeartDb.toString());
+//                Log.e(TAG, "---------cd=" + commHeartDb.toString());
             }
             commHeartDb.setUpload(saveHeartListData.get(0).isUpload());
             boolean isSave = commHeartDb.saveOrUpdate(stepWhereStr, userId, bleMac, dataStr);
 
-            Log.e(TAG, "----22----心率保存=" + isSave);
+//            Log.e(TAG, "----22----心率保存=" + isSave);
 
         }
 
@@ -270,7 +270,7 @@ public class CommDBManager {
         if (WatchUtils.isEmpty(bleName) || WatchUtils.isEmpty(bleMac) || WatchUtils.isEmpty(dateStr))
             return;
 
-        Log.e(TAG, "-----------保存睡眠=" + bleName + "-=" + bleMac + "-=" + dateStr + "-=" + deep);
+//        Log.e(TAG, "-----------保存睡眠=" + bleName + "-=" + bleMac + "-=" + dateStr + "-=" + deep);
 
         CommSleepDb commSleepDb = new CommSleepDb();
         //先查询一下睡眠
@@ -290,14 +290,14 @@ public class CommDBManager {
 
         if (saveSleepList == null) {
             commSleepDb.setUpload(false);
-            Log.e(TAG, "-----11----睡眠数据----=====" + commSleepDb.toString());
+//            Log.e(TAG, "-----11----睡眠数据----=====" + commSleepDb.toString());
             boolean isSleepSave = commSleepDb.save();
-            Log.e(TAG, "-----11----睡眠保存=" + isSleepSave);
+//            Log.e(TAG, "-----11----睡眠保存=" + isSleepSave);
         } else {
             commSleepDb.setUpload(saveSleepList.get(0).isUpload());
-            Log.e(TAG, "------22---睡眠数据----=====" + commSleepDb.toString());
+//            Log.e(TAG, "------22---睡眠数据----=====" + commSleepDb.toString());
             boolean isSleepSave = commSleepDb.saveOrUpdate("userid = ? and devicecode = ? and dateStr = ?", userId, bleMac, dateStr);
-            Log.e(TAG, "------22---睡眠保存=" + isSleepSave);
+//            Log.e(TAG, "------22---睡眠保存=" + isSleepSave);
         }
 
     }
@@ -333,7 +333,7 @@ public class CommDBManager {
      * @return
      */
     public List<CommSleepDb> findCommSleepForUpload(String bMac, String startDay, String endDay) {
-        Log.e(TAG, "-------satrtDay=" + startDay + "--endDay=" + endDay);
+//        Log.e(TAG, "-------satrtDay=" + startDay + "--endDay=" + endDay);
         String where = "devicecode = ? and dateStr  between ? and ?";
         List<CommSleepDb> commSleepDbList = LitePal.where("userid = ? and devicecode = ? and dateStr between ? and ?", userId, bMac, startDay, endDay).find(CommSleepDb.class);
 
@@ -369,11 +369,11 @@ public class CommDBManager {
         if (saveCommBloodList == null) {
             commBloodDb.setUpload(false);
             boolean isSave = commBloodDb.save();
-            Log.e(TAG, "--------111血氧保存=" + isSave);
+//            Log.e(TAG, "--------111血氧保存=" + isSave);
         } else {
             commBloodDb.setUpload(saveCommBloodList.get(0).isUpload());
             boolean isBloodSave = commBloodDb.saveOrUpdate("userid = ? and devicecode = ? and rtc = ?", userId, bleMac, dateStr);
-            Log.e(TAG, "--------22血压保存=" + isBloodSave);
+//            Log.e(TAG, "--------22血压保存=" + isBloodSave);
         }
 
 

@@ -1,29 +1,42 @@
 package com.bozlun.healthday.android.b15p.interfaces;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
+import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.LogTestUtil;
 import com.bozlun.healthday.android.MyApp;
+import com.bozlun.healthday.android.activity.MyPersonalActivity;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAllStepDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PHeartDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PSleepDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PStepDB;
+import com.bozlun.healthday.android.b31.model.B31HRVBean;
+import com.bozlun.healthday.android.b31.model.B31Spo2hBean;
 import com.bozlun.healthday.android.commdbserver.CommDBManager;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.suchengkeji.android.w30sblelibrary.bean.servicebean.W30S_SleepDataItem;
+import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.tjdL4.tjdmain.L4M;
+import com.veepoo.protocol.model.datas.HRVOriginData;
+import com.veepoo.protocol.model.datas.Spo2hOriginData;
+import com.veepoo.protocol.model.datas.TimeData;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class FindDBListenter extends AsyncTask<String, Void, String> {
     private static final String TAG = "FindDBListenter";
@@ -107,9 +120,13 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     if (allSleepDatasList != null && !allSleepDatasList.isEmpty()) {
 
                         /**
-                         * 有睡眠书据-------设置血氧HRV假数据
+                         * 有睡眠书据-------设置血氧假数据
                          */
-                        setHrvSpoDatas();
+                        setSpo2Datas(mac, date);
+                        /**
+                         * 有睡眠书据-------设置HRV假数据
+                         */
+                        setHRvDatas(mac, date);
 
                         allDataListSleep.clear();
                         List<String> timesList = new ArrayList<>();
@@ -513,18 +530,320 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         return jsonString;
     }
 
+    /**
+     * 设置模拟数据-----在这里可以模拟数据  HRV
+     *
+     * @param mac
+     * @param date
+     */
+    private void setHRvDatas(String mac, String date) {
+        // B31HRVBean{dateStr='2019-05-18', bleMac='E9:37:C4:E7:28:D8',
+        // hrvDataStr='
+        // {"allCurrentPackNumber":420,
+        // "currentPackNumber":420,
+        // "date":"2019-05-18",
+        // "hrvType":0,
+        // "hrvValue":86,
+        // "mTime":{"day":18,"hour":6,"minute":59,"month":5,"second":0,"weekDay":0,"year":2019},
+        // "rate":"100,98,99,107,106,100,103,103,99,103",
+        // "tempOne":10}'}
+
+        String where = "bleMac = ? and dateStr = ?";
+        /**
+         * 测试时加上这句
+         */
+        LitePal.deleteAll(B31HRVBean.class);
+        List<B31HRVBean> hrvBeanList = LitePal.where(where, mac, date).find(B31HRVBean.class);
+        Log.e(TAG, "=====HRV  数据是否为空  " + ((hrvBeanList == null || hrvBeanList.isEmpty()) ? "是" : "否"));
+        if (hrvBeanList == null || hrvBeanList.isEmpty()) {
+            if (hrvBeanList == null) hrvBeanList = new ArrayList<>();
+
+
+            //模拟数据可以在这里，之后再回调出去回去
+            //模拟数据的工具
+            Random random = new Random();
+            Calendar calendar = Calendar.getInstance();  //获取当前时间，作为图标的名字
+            int hour = 0;
+            Map<String, List<B31HRVBean>> hrvMap = new HashMap<>();
+            /**
+             * 随机选择HRV图的绘制范围
+             */
+            int ra = random.nextInt(2);
+
+            /**
+             * 随机选择心率取值的范围
+             */
+            int raH = random.nextInt(10);
+
+            for (int i = 0; i < 420; i++) {
+                HRVOriginData mHRVOriginData = new HRVOriginData();
+                mHRVOriginData.setAllCurrentPackNumber(420);//所有数据包的总和
+                mHRVOriginData.setCurrentPackNumber(420);//当前数据包的位置
+                mHRVOriginData.setDate(WatchUtils.getCurrentDate());
+                mHRVOriginData.setHrvType(0);
+
+
+                /**
+                 * 模拟心率数据
+                 */
+                int rDHrvValue = getNum(random, 60, 95);
+                String m = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.USER_SEX, "M");
+                switch (raH) {
+                    case 0://正常情况下的心率
+                        if (!WatchUtils.isEmpty(m)) {
+                            if (m.equals("M") || m.equals("男")) {
+                                rDHrvValue = getNum(random, 60, 80);
+                            } else {
+                                rDHrvValue = getNum(random, 70, 80);
+                            }
+                        }
+                        break;
+                    case 1://偏高
+                        if (!WatchUtils.isEmpty(m)) {
+                            if (m.equals("M") || m.equals("男")) {
+                                rDHrvValue = getNum(random, 70, 95);
+                            } else {
+                                rDHrvValue = getNum(random, 75, 95);
+                            }
+                        }
+                        break;
+                    case 2://偏低
+                        if (!WatchUtils.isEmpty(m)) {
+                            if (m.equals("M") || m.equals("男")) {
+                                rDHrvValue = getNum(random, 50, 70);
+                            } else {
+                                rDHrvValue = getNum(random, 55, 70);
+                            }
+                        }
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9://正常情况下的心率-----这些增加正常的高几率
+                        if (!WatchUtils.isEmpty(m)) {
+                            if (m.equals("M") || m.equals("男")) {
+                                rDHrvValue = getNum(random, 60, 80);
+                            } else {
+                                rDHrvValue = getNum(random, 70, 80);
+                            }
+                        }
+                        break;
+                }
+
+                mHRVOriginData.setHrvValue(rDHrvValue);
+                TimeData timeData = new TimeData();
+                timeData.setYear(calendar.get(Calendar.YEAR));
+                timeData.setMonth(calendar.get(Calendar.MONTH) + 1);
+                timeData.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+                if (i % 60 == 0) {
+                    hour = i / 60;
+                }
+                int minute = i % 60;
+                timeData.setHour(hour);
+                timeData.setMinute(minute);
+                timeData.setSecond(0);
+                mHRVOriginData.setmTime(timeData);
+
+
+                String ratr = "";
+                switch (ra) {
+                    case 0:
+                        int rDRate11 = getNum(random, 60, 70);
+                        int rDRate21 = getNum(random, 65, 78);
+                        int rDRate31 = getNum(random, 70, 86);
+                        int rDRate41 = getNum(random, 75, 94);
+                        int rDRate51 = getNum(random, 80, 100);
+                        int rDRate61 = getNum(random, 80, 100);
+                        int rDRate71 = getNum(random, 75, 94);
+                        int rDRate81 = getNum(random, 70, 86);
+                        int rDRate91 = getNum(random, 65, 78);
+                        int rDRate101 = getNum(random, 60, 70);
+                        ratr = rDRate11 + "," + rDRate21 + "," + rDRate31 + "," + rDRate41 + "," + rDRate51 + ","
+                                + rDRate61 + "," + rDRate71 + "," + rDRate81 + "," + rDRate91 + "," + rDRate101;
+                        break;
+                    case 1:
+                        int rDRate12 = getNum(random, 60, 70);
+                        int rDRate22 = getNum(random, 60, 78);
+                        int rDRate32 = getNum(random, 60, 86);
+                        int rDRate42 = getNum(random, 60, 94);
+                        int rDRate52 = getNum(random, 60, 100);
+                        int rDRate62 = getNum(random, 60, 100);
+                        int rDRate72 = getNum(random, 60, 94);
+                        int rDRate82 = getNum(random, 60, 86);
+                        int rDRate92 = getNum(random, 60, 78);
+                        int rDRate102 = getNum(random, 60, 70);
+                        ratr = rDRate12 + "," + rDRate22 + "," + rDRate32 + "," + rDRate42 + "," + rDRate52 + ","
+                                + rDRate62 + "," + rDRate72 + "," + rDRate82 + "," + rDRate92 + "," + rDRate102;
+                        break;
+                        default:
+                            int rDRate13 = getNum(random, 60, 70);
+                            int rDRate23 = getNum(random, 60, 78);
+                            int rDRate33 = getNum(random, 60, 86);
+                            int rDRate43 = getNum(random, 60, 94);
+                            int rDRate53 = getNum(random, 60, 100);
+                            int rDRate63 = getNum(random, 60, 100);
+                            int rDRate73 = getNum(random, 60, 94);
+                            int rDRate83 = getNum(random, 60, 86);
+                            int rDRate93 = getNum(random, 60, 78);
+                            int rDRate103 = getNum(random, 60, 70);
+                            ratr = rDRate13 + "," + rDRate23 + "," + rDRate33 + "," + rDRate43 + "," + rDRate53 + ","
+                                    + rDRate63 + "," + rDRate73 + "," + rDRate83 + "," + rDRate93 + "," + rDRate103;
+                            break;
+                }
+                Log.e(TAG, "====EEE " + ratr);
+                mHRVOriginData.setRate(ratr);
+//                String ratr = "";
+//                for (int j = 0; j < 10; j++) {
+//                    int rDRate = getNum(random, 60, 95);
+//                    ratr += rDRate + ",";
+//                }
+//                Log.e(TAG, "====EEE " + ratr.substring(0, ratr.length() - 1));
+//                mHRVOriginData.setRate(ratr.substring(0, ratr.length() - 1));
+
+                /**
+                 * 模拟温度，原始数据里面只出现  9   和 10
+                 */
+                int rDTempOne = getNum(random, 9, 10);
+                mHRVOriginData.setTempOne(rDTempOne);
+
+                B31HRVBean b31Spo2hBean = new B31HRVBean();
+                b31Spo2hBean.setBleMac(MyApp.getInstance().getMacAddress());
+                b31Spo2hBean.setDateStr(mHRVOriginData.getDate());
+                b31Spo2hBean.setHrvDataStr(gson.toJson(mHRVOriginData));
+                hrvBeanList.add(b31Spo2hBean);
+            }
+            hrvMap.put("today", hrvBeanList);
+            saveHRVToDBServer(hrvMap);
+        }
+
+        changeDBListenter.updataHrvDataToUIListenter(hrvBeanList);
+    }
+
+
+    Gson gson = new Gson();
 
     /**
-     * 设置模拟数据-----在这里可以模拟数据
+     * 设置模拟数据-----在这里可以模拟数据  SPO2
+     *
+     * @param mac
+     * @param date
      */
-    private void setHrvSpoDatas() {
-        //模拟数据可以在这里，之后再回调出去回去
+    private void setSpo2Datas(String mac, String date) {
+
+        String where = "bleMac = ? and dateStr = ?";
+        /**
+         * 测试时加上这句
+         */
+        LitePal.deleteAll(B31Spo2hBean.class);
+        List<B31Spo2hBean> b31Spo2hBeanList = LitePal.where(where, mac, date).find(B31Spo2hBean.class);
+        Log.e(TAG, "=====SPO2  数据是否为空  " + ((b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) ? "是" : "否"));
+        if (b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) {
+            if (b31Spo2hBeanList == null) b31Spo2hBeanList = new ArrayList<>();
 
 
+            //模拟数据可以在这里，之后再回调出去回去
+            //模拟数据的工具
+            Random random = new Random();
+            Calendar calendar = Calendar.getInstance();  //获取当前时间，作为图标的名字
+            int hour = 0;
+
+            Map<String, List<B31Spo2hBean>> spo2Map = new HashMap<>();
+            for (int i = 0; i < 420; i++) {
+                Spo2hOriginData mSpo2hOriginData = new Spo2hOriginData();
+                mSpo2hOriginData.setAllPackNumner(420);//所有数据包的总和
+                mSpo2hOriginData.setApneaResult(0);//呼吸衰竭
+                /**
+                 * 模拟心脏负荷数据
+                 */
+                int rDCardiacLoad = setRandomCardiacLoad(random);
+                Log.e(TAG, "随机生成的心脏负荷是  " + rDCardiacLoad);
+                mSpo2hOriginData.setCardiacLoad(rDCardiacLoad);//心脏负荷  （轻度：0-20  正常：21-40  异常：>=41）
+
+
+                mSpo2hOriginData.setCurrentPackNumber(420);//当前数据包的位置
+                mSpo2hOriginData.setDate(WatchUtils.getCurrentDate());
+                mSpo2hOriginData.sethRVariation(86);//心率变异性
+                mSpo2hOriginData.setHeartValue(129);//心值
+                mSpo2hOriginData.setHypopnea(0);//呼吸不足
+
+
+                /**
+                 * 模拟缺氧时间
+                 * 呼吸暂停点
+                 */
+                int[] rOHypoxiaTime = setRandomHypoxiaTimeAndHypoxia(random);
+                mSpo2hOriginData.setHypoxiaTime(rOHypoxiaTime[0]);//设定缺氧时间 （正常：0-20    异常：21-300）
+                mSpo2hOriginData.setIsHypoxia(rOHypoxiaTime[1]);//低氧--- 呼吸暂停点
+
+
+                TimeData timeData = new TimeData();
+                timeData.setYear(calendar.get(Calendar.YEAR));
+                timeData.setMonth(calendar.get(Calendar.MONTH) + 1);
+                timeData.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+
+                if (i % 60 == 0) {
+                    hour = i / 60;
+                }
+                int minute = i % 60;
+
+                timeData.setHour(hour);
+                timeData.setMinute(minute);
+                timeData.setSecond(0);
+
+                mSpo2hOriginData.setmTime(timeData);
+
+                int spo2 = getNum(random, 95, 99);//模拟生成氧值
+                mSpo2hOriginData.setOxygenValue(spo2);//氧值 （正常：95-99）
+
+                /**
+                 * 模拟生成呼呼吸率
+                 */
+                int rDSRespirationRate = setRandomRespirationRate(random);
+                mSpo2hOriginData.setRespirationRate(rDSRespirationRate);//呼吸速率（正常：0-26    异常：27-50）
+                mSpo2hOriginData.setSportValue(0);//运动值
+                mSpo2hOriginData.setStepValue(0);//步数值
+                mSpo2hOriginData.setTemp1(4);
+
+
+                B31Spo2hBean b31Spo2hBean = new B31Spo2hBean();
+                b31Spo2hBean.setBleMac(MyApp.getInstance().getMacAddress());
+                b31Spo2hBean.setDateStr(mSpo2hOriginData.getDate());
+                b31Spo2hBean.setSpo2hOriginData(gson.toJson(mSpo2hOriginData));
+                b31Spo2hBeanList.add(b31Spo2hBean);
+            }
+            spo2Map.put("today", b31Spo2hBeanList);
+            saveSpo2Data(spo2Map);
+        }
         /**
          * 更新虚拟数据
          */
-        changeDBListenter.updataHrvSpoDataToUIListenter();
+        changeDBListenter.updataSpo2DataToUIListenter(b31Spo2hBeanList);
+    }
+
+
+    //保存HRV
+    private void saveHRVToDBServer(Map<String, List<B31HRVBean>> resultHrvMap) {
+        if (resultHrvMap != null && !resultHrvMap.isEmpty()) {
+            //今天的 直接保存
+            List<B31HRVBean> todayHrvList = resultHrvMap.get("today");
+
+            if (todayHrvList != null && !todayHrvList.isEmpty())
+                LitePal.saveAll(todayHrvList);
+        }
+    }
+
+    //保存spo2数据
+    private void saveSpo2Data(Map<String, List<B31Spo2hBean>> resultMap) {
+        if (resultMap != null && !resultMap.isEmpty()) {
+            //今天
+            List<B31Spo2hBean> todayLt = resultMap.get("today");
+            if (todayLt != null && !todayLt.isEmpty()) {
+                LitePal.saveAll(todayLt);
+            }
+        }
     }
 
 
@@ -623,11 +942,211 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 
 
         /**
-         * 自定义HRV和SPO的 假数据
+         * SPO的 假数据
          *
          * @param
          */
-        public void updataHrvSpoDataToUIListenter() {
+        public void updataSpo2DataToUIListenter(List<B31Spo2hBean> b31Spo2hBeanList) {
+        }
+
+        /**
+         * HRV
+         *
+         * @param hrvBeanList
+         */
+        public void updataHrvDataToUIListenter(List<B31HRVBean> hrvBeanList) {
         }
     }
+
+
+    //-------------------------------------------以下是关于模拟数据的----------------------------------------
+
+
+    /**
+     * 模拟生成呼呼吸率
+     * （正常：0-26    异常：27-50）
+     *
+     * @param random
+     * @return
+     */
+    private int setRandomRespirationRate(Random random) {
+        //判断模拟生成缺氧时间的那一部分数据（1，2，3）
+        int rDS = random.nextInt(9);//0-3的随机数，包含0，不包含3
+        int rDSRespirationRate = getNum(random, 0, 26);//模拟生成呼吸速率
+        //1.正常
+        //2.异常
+        //3.正常+异常
+        switch (rDS) {
+            case 0:
+                rDSRespirationRate = getNum(random, 0, 26);//模拟生成呼吸速率
+                break;
+            case 1:
+                rDSRespirationRate = getNum(random, 27, 50);//模拟生成呼吸速率
+                break;
+            case 2:
+                rDSRespirationRate = getNum(random, 0, 50);//模拟生成呼吸速率
+                break;
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                rDSRespirationRate = getNum(random, 0, 26);//模拟生成呼吸速率
+                break;
+        }
+        return rDSRespirationRate;
+    }
+
+
+    /**
+     * 心脏负荷 模拟数据
+     * （轻度：0-20  正常：21-40  异常：>=41）
+     *
+     * @param random
+     * @return
+     */
+    private int setRandomCardiacLoad(Random random) {
+        //判断模拟生成心脏负荷的那一部分数据（1，2，3，4）
+        int rDH = random.nextInt(14);//0-16的随机数，包含0，不包含16
+
+        int rDCardiacLoad = getNum(random, 21, 40);//心脏负荷  （轻度：0-20  正常：21-40  异常：>=41）
+        //1. 正常
+        //2. 轻度
+        //3. 异常
+        //4. 轻度+正常
+        //5. 异常+正常
+        //6. 轻度+正常+异常
+        switch (rDH) {
+            case 0:
+                //正常范围----   21-40
+                rDCardiacLoad = getNum(random, 21, 40);
+                break;
+            case 1:
+                //轻度范围----   0-20
+                rDCardiacLoad = getNum(random, 0, 20);
+                break;
+            case 2:
+                //异常范围----   >=41
+                rDCardiacLoad = 41;
+                break;
+            case 3:
+                //轻度+正常范围----  0-20   21-40  ===== 0-40
+                rDCardiacLoad = getNum(random, 0, 40);
+                break;
+            case 4:
+                //异常+正常范围----  21-40   >=41 ===== 21-41
+                rDCardiacLoad = getNum(random, 21, 41);
+                break;
+            case 5:
+                //轻度+正常+异常范围---   0-41
+                rDCardiacLoad = getNum(random, 0, 41);
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+                //正常范围----   21-40
+                rDCardiacLoad = getNum(random, 21, 40);
+                break;
+        }
+
+        return rDCardiacLoad;
+    }
+
+    /**
+     * 模拟缺氧时间
+     * 呼吸暂停点
+     * （正常：0-20    异常：21-300）
+     *
+     * @param random
+     * @return
+     */
+    public int[] setRandomHypoxiaTimeAndHypoxia(Random random) {
+
+        //判断模拟生成缺氧时间的那一部分数据（1，2，3）
+        /**
+         * 将出现异常的几率降低到32分之1.5左右
+         */
+        int rDO = random.nextInt(32);//0-10的随机数，包含0，不包含10
+        int rOHypoxiaTime = getNum(random, 0, 20);//设定缺氧时间 （正常：0-20    异常：21-300）
+        int rOHypoxia = 0;
+        int[] ran = {rOHypoxiaTime, rOHypoxia};
+        //1.正常
+        //2.异常
+        //3.正常+异常
+        switch (rDO) {
+            case 0:
+                rOHypoxiaTime = getNum(random, 0, 20);
+                rOHypoxia = 0;
+                break;
+            case 1:
+                rOHypoxiaTime = getNum(random, 21, 300);
+                rOHypoxia = 1;
+                break;
+            case 2:
+                rOHypoxiaTime = getNum(random, 0, 300);
+                if (rOHypoxiaTime >= 21) {
+                    rOHypoxia = 1;
+                } else {
+                    rOHypoxia = 0;
+                }
+                break;
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+            case 24:
+            case 25:
+            case 26:
+            case 27:
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+                rOHypoxiaTime = getNum(random, 0, 20);
+                rOHypoxia = 0;
+                break;
+        }
+        ran[0] = rOHypoxiaTime;
+        ran[1] = rOHypoxia;
+        return ran;
+    }
+
+
+    /**
+     * 生成一个startNum 到 endNum之间的随机数(包含endNum的随机数)
+     *
+     * @param startNum
+     * @param endNum
+     * @return
+     */
+    public int getNum(Random random, int startNum, int endNum) {
+        if ((endNum + 1) > startNum) {
+            return random.nextInt((endNum + 1) - startNum) + startNum;
+        }
+        return 0;
+    }
+
+
 }

@@ -142,6 +142,7 @@ public class B31HrvDetailActivity extends WatchBaseActivity {
                     break;
                 case 1002:
                     initLinChartData(tmpHRVlist);
+                    Log.e(TAG,"HRV  AS = "+tmpHRVlist.toString());
                     lorezChartView.updateData(tmpHRVlist);
                     listMap.clear();
                     hrvListDataAdapter.notifyDataSetChanged();
@@ -320,7 +321,7 @@ public class B31HrvDetailActivity extends WatchBaseActivity {
                     return;
                 }
                 for (B31HRVBean hrvBean : reList) {
-                   // Log.e(TAG,"----------hrvBean="+hrvBean.toString());
+                    Log.e(TAG,"----------hrvBean="+hrvBean.toString());
                     tmpHRVlist.add(gson.fromJson(hrvBean.getHrvDataStr(), HRVOriginData.class));
                 }
 

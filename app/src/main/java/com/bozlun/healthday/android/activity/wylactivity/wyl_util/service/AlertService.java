@@ -128,7 +128,9 @@ public class AlertService extends MyNotificationListenerService {
                     // 获取通知内容
                     content = extras.getString(Notification.EXTRA_TEXT, "");
                 }
-
+//                if (!WatchUtils.isEmpty(title)&&!WatchUtils.isEmpty(content)){
+//                    Log.e(TAG,"==== "+title+"   "+content);
+//                }
                 //line
                 if (packageName.equals(LINE_PACKAGENAME)) {
                     boolean isLine = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISLINE, false);
@@ -136,18 +138,20 @@ public class AlertService extends MyNotificationListenerService {
                         sendB30Msg(ESocailMsg.LINE, "Line", msgCont);
 
                     int pushMsg_Line = AppIC.SData().getIntData("pushMsg_Line");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_Line==1){   //B15P
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_Line == 1) {   //B15P
                         //pushtype 1 qq 2 微信 3 facebook 4 twitter 5 whatsapp  6 line 7 kakaoTalk
-                        L4Command.SendPushContent(6,title,content);
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendPushContent(6, title, content);
                     }
                 }
                 //QQ
                 else if (packageName.equals(QQ_PACKAGENAME)) {
 
                     int pushMsg_qq = AppIC.SData().getIntData("pushMsg_QQ");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_qq==1){   //B15P
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_qq == 1) {   //B15P
                         //pushtype 1 qq 2 微信 3 facebook 4 twitter 5 whatsapp  6 line 7 kakaoTalk
-                        L4Command.SendPushContent(1,title,content);
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendPushContent(1, title, content);
                     }
 
                     boolean isQQ = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISQQ, false);
@@ -156,9 +160,10 @@ public class AlertService extends MyNotificationListenerService {
                     // 微信
                 } else if (packageName.equals(WECHAT_PACKAGENAME)) {
                     int pushMsg_Wx = AppIC.SData().getIntData("pushMsg_Wx");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_Wx==1){   //B15P
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_Wx == 1) {   //B15P
                         //pushtype 1 qq 2 微信 3 facebook 4 twitter 5 whatsapp  6 line 7 kakaoTalk
-                        L4Command.SendPushContent(2,title,content);
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendPushContent(2, title, content);
                     }
 
 
@@ -170,9 +175,10 @@ public class AlertService extends MyNotificationListenerService {
                 //facebook
                 else if (packageName.equals(FACEBOOK_PACKAGENAME) || packageName.equals(FACEBOOK_PACKAGENAME1)) {
                     int pushMsg_FaceBook = AppIC.SData().getIntData("pushMsg_FaceBook");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_FaceBook==1){   //B15P
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_FaceBook == 1) {   //B15P
                         //pushtype 1 qq 2 微信 3 facebook 4 twitter 5 whatsapp  6 line 7 kakaoTalk
-                        L4Command.SendPushContent(3,title,content);
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendPushContent(3, title, content);
                     }
 
                     boolean isFaceBook = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISFacebook, false);
@@ -182,9 +188,10 @@ public class AlertService extends MyNotificationListenerService {
                 //Twitter
                 else if (packageName.equals(TWITTER_PACKAGENAME)) {
                     int pushMsg_TwitTer = AppIC.SData().getIntData("pushMsg_TwitTer");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_TwitTer==1){   //B15P
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_TwitTer == 1) {   //B15P
                         //pushtype 1 qq 2 微信 3 facebook 4 twitter 5 whatsapp  6 line 7 kakaoTalk
-                        L4Command.SendPushContent(4,title,content);
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendPushContent(4, title, content);
                     }
 
                     boolean isTwitter = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISTwitter, false);
@@ -194,9 +201,10 @@ public class AlertService extends MyNotificationListenerService {
                 //Whats
                 else if (packageName.equals(WHATS_PACKAGENAME)) {
                     int pushMsg_WhatsApp = AppIC.SData().getIntData("pushMsg_WhatsApp");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_WhatsApp==1){   //B15P
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_WhatsApp == 1) {   //B15P
                         //pushtype 1 qq 2 微信 3 facebook 4 twitter 5 whatsapp  6 line 7 kakaoTalk
-                        L4Command.SendPushContent(5,title,content);
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendPushContent(5, title, content);
                     }
 
 
@@ -220,8 +228,9 @@ public class AlertService extends MyNotificationListenerService {
                         || packageName.equals(SAMSUNG_MSG_SRVERPCKNAME)) {
 
                     int pushMsg_Sms = AppIC.SData().getIntData("pushMsg_Sms");
-                    if(WatchUtils.verBleNameForSearch(saveBleName)&&pushMsg_Sms==1){   //B15P
-                        L4Command.SendSMSInstruction(title,content);
+                    if (WatchUtils.verBleNameForSearch(saveBleName) && pushMsg_Sms == 1) {   //B15P
+                        if (!WatchUtils.isEmpty(title) && !WatchUtils.isEmpty(content))
+                            L4Command.SendSMSInstruction(title, content);
                     }
 
                     sendB30Mesage(ESocailMsg.SMS, "MMS", msgCont);
@@ -245,7 +254,7 @@ public class AlertService extends MyNotificationListenerService {
     //推送B30的消息提醒
     private void sendB30Msg(ESocailMsg b30msg, String appName, String context) {
         Log.e(TAG, "------name=" + MyCommandManager.DEVICENAME);
-        if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)&&WatchUtils.isVPBleDevice(MyCommandManager.DEVICENAME)) {
+        if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME) && WatchUtils.isVPBleDevice(MyCommandManager.DEVICENAME)) {
             ContentSocailSetting contentSocailSetting = new ContentSocailSetting(b30msg, appName, context);
             //ContentSetting contentSetting = new ContentSocailSetting(b30msg, 0, 20, appName, context);
             MyApp.getInstance().getVpOperateManager().sendSocialMsgContent(iBleWriteResponse, contentSocailSetting);

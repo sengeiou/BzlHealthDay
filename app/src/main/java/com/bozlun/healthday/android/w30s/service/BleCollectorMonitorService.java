@@ -66,9 +66,9 @@ public class BleCollectorMonitorService extends Service {
         //使用兼容版本
         NotificationCompat.Builder builder=new NotificationCompat.Builder(this);
         //设置状态栏的通知图标
-        builder.setSmallIcon(R.mipmap.beraceiocn);
+        builder.setSmallIcon(R.drawable.ic_logo_day);
         //设置通知栏横条的图标
-        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.beraceiocn));
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_logo_day));
         //禁止用户点击删除按钮删除
         builder.setAutoCancel(false);
         //禁止滑动删除
@@ -76,7 +76,7 @@ public class BleCollectorMonitorService extends Service {
         //右上角的时间显示
         builder.setShowWhen(true);
         //设置通知栏的标题内容
-        builder.setContentTitle("RaceFitPro");
+        builder.setContentTitle("检一检");
         //创建通知
         Notification notification = builder.build();
         //设置为前台服务

@@ -220,7 +220,7 @@ public class B15PDBCommont {
             B15PStepDB b15PStepDB = b15PStepDBDao.queryBuilder()
                     .where(
                             B15PStepDBDao.Properties.StepData.eq(dataTime.substring(0, 10)),
-                            B15PStepDBDao.Properties.StepTime.eq(dataTime.substring(11, 19)),
+                            B15PStepDBDao.Properties.StepTime.eq(dataTime.substring(11, 16)),
                             B15PStepDBDao.Properties.DevicesMac.eq(mac)).unique();
             Log.e(TAG, "Step保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PStepDB == null ? dataTime + "  点的步数数据没有" : b15PStepDB.toString()));
             if (b15PStepDB != null) {
@@ -228,7 +228,7 @@ public class B15PDBCommont {
                     b15PStepDB.setDevicesMac(mac);
                     //[,2019-04-22 04:00:00,26]
                     b15PStepDB.setStepData(dataTime.substring(0, 10));
-                    b15PStepDB.setStepTime(dataTime.substring(11, 19));
+                    b15PStepDB.setStepTime(dataTime.substring(11, 16));
                     b15PStepDB.setStepItemNumber(sportValues);
                     b15PStepDB.setIsUpdata(0);
                     //Log.e(TAG, "==== 更新 日步数详细 " + b15PStepDB.toString());
@@ -238,7 +238,7 @@ public class B15PDBCommont {
                 B15PStepDB newb15PStepDB = new B15PStepDB();
                 newb15PStepDB.setStepData(dataTime.substring(0, 10));
                 newb15PStepDB.setDevicesMac(mac);
-                newb15PStepDB.setStepTime(dataTime.substring(11, 19));
+                newb15PStepDB.setStepTime(dataTime.substring(11, 16));
                 newb15PStepDB.setStepItemNumber(sportValues);
                 newb15PStepDB.setIsUpdata(0);
                 //Log.e(TAG, "==== 新增 日步数详细 " + newb15PStepDB.toString());
@@ -255,14 +255,14 @@ public class B15PDBCommont {
         if (b15PSleepDBDao != null) {
             B15PSleepDB b15PSleepDB = b15PSleepDBDao.queryBuilder()
                     .where(B15PSleepDBDao.Properties.SleepData.eq(dataTime.substring(0, 10)),
-                            B15PSleepDBDao.Properties.SleepTime.eq(dataTime.substring(11, 19)),
+                            B15PSleepDBDao.Properties.SleepTime.eq(dataTime.substring(11, 16)),
                             B15PSleepDBDao.Properties.DevicesMac.eq(mac)).unique();
             Log.e(TAG, "Sleep保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PSleepDB == null ? dataTime + "  点的睡眠数据没有" : b15PSleepDB.toString()));
             if (b15PSleepDB != null) {
                 b15PSleepDB.setDevicesMac(mac);
                 //[,2019-04-22 04:00:00,26]
                 b15PSleepDB.setSleepData(dataTime.substring(0, 10));
-                b15PSleepDB.setSeepTime(dataTime.substring(11, 19));
+                b15PSleepDB.setSeepTime(dataTime.substring(11, 16));
                 b15PSleepDB.setSleepType(sleepType);
                 b15PSleepDB.setIsUpdata(0);
                 //Log.e(TAG, "==== 更新 日睡眠详细 " + b15PSleepDB.toString());
@@ -271,7 +271,7 @@ public class B15PDBCommont {
                 B15PSleepDB newb15PSleepDB = new B15PSleepDB();
                 newb15PSleepDB.setDevicesMac(mac);
                 newb15PSleepDB.setSleepData(dataTime.substring(0, 10));
-                newb15PSleepDB.setSeepTime(dataTime.substring(11, 19));
+                newb15PSleepDB.setSeepTime(dataTime.substring(11, 16));
                 newb15PSleepDB.setSleepType(sleepType);
                 newb15PSleepDB.setIsUpdata(0);
                 //Log.e(TAG, "==== 更新 日睡眠详细 " + newb15PSleepDB.toString());
@@ -288,14 +288,14 @@ public class B15PDBCommont {
             B15PHeartDB b15PHeartDB = b15PHeartDBDao.queryBuilder()
                     .where(
                             B15PHeartDBDao.Properties.HeartData.eq(dataTime.substring(0, 10)),
-                            B15PHeartDBDao.Properties.HeartTime.eq(dataTime.substring(11, 19)),
+                            B15PHeartDBDao.Properties.HeartTime.eq(dataTime.substring(11, 16)),
                             B15PHeartDBDao.Properties.DevicesMac.eq(mac)).unique();
             Log.e(TAG, "Heart保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PHeartDB == null ? dataTime + "  点的心率数据没有" : b15PHeartDB.toString()));
             if (b15PHeartDB != null) {
                 b15PHeartDB.setDevicesMac(mac);
                 //[,2019-04-22 04:00:00,26]
                 b15PHeartDB.setHeartData(dataTime.substring(0, 10));
-                b15PHeartDB.setHeartTime(dataTime.substring(11, 19));
+                b15PHeartDB.setHeartTime(dataTime.substring(11, 16));
                 b15PHeartDB.setHeartNumber(heartValue);
                 b15PHeartDB.setIsUpdata(0);
                 //Log.e(TAG, "==== 更新 日心率详细 " + b15PHeartDB.toString());
@@ -304,7 +304,7 @@ public class B15PDBCommont {
                 B15PHeartDB newb15PHeartDB = new B15PHeartDB();
                 newb15PHeartDB.setDevicesMac(mac);
                 newb15PHeartDB.setHeartData(dataTime.substring(0, 10));
-                newb15PHeartDB.setHeartTime(dataTime.substring(11, 19));
+                newb15PHeartDB.setHeartTime(dataTime.substring(11, 16));
                 newb15PHeartDB.setHeartNumber(heartValue);
                 newb15PHeartDB.setIsUpdata(0);
                 //Log.e(TAG, "==== 更新 日心率详细 " + newb15PHeartDB.toString());
@@ -321,14 +321,14 @@ public class B15PDBCommont {
             B15PBloodDB b15PBloodDB = b15PBloodDBDao.queryBuilder()
                     .where(
                             B15PBloodDBDao.Properties.BloodData.eq(dataTime.substring(0, 10)),
-                            B15PBloodDBDao.Properties.BloodTime.eq(dataTime.substring(11, 19)),
+                            B15PBloodDBDao.Properties.BloodTime.eq(dataTime.substring(11, 16)),
                             B15PBloodDBDao.Properties.DevicesMac.eq(mac)).unique();
             Log.e(TAG, "Bloop保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PBloodDB == null ? dataTime + "  点的血压数据没有" : b15PBloodDB.toString()));
             if (b15PBloodDB != null) {
                 b15PBloodDB.setDevicesMac(mac);
                 //[,2019-04-22 04:00:00,26]
                 b15PBloodDB.setBloodData(dataTime.substring(0, 10));
-                b15PBloodDB.setBloodTime(dataTime.substring(11, 19));
+                b15PBloodDB.setBloodTime(dataTime.substring(11, 16));
                 b15PBloodDB.setBloodNumberH(bloopValueH);
                 b15PBloodDB.setBloodNumberL(bloopValueL);
                 b15PBloodDB.setIsUpdata(0);
@@ -338,7 +338,7 @@ public class B15PDBCommont {
                 B15PBloodDB newb15PBloopDB = new B15PBloodDB();
                 newb15PBloopDB.setDevicesMac(mac);
                 newb15PBloopDB.setBloodData(dataTime.substring(0, 10));
-                newb15PBloopDB.setBloodTime(dataTime.substring(11, 19));
+                newb15PBloopDB.setBloodTime(dataTime.substring(11, 16));
                 newb15PBloopDB.setBloodNumberH(bloopValueH);
                 newb15PBloopDB.setBloodNumberL(bloopValueL);
                 newb15PBloopDB.setIsUpdata(0);
