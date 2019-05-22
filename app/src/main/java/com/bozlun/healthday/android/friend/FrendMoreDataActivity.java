@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
@@ -27,7 +26,6 @@ import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.bean.WatchDataDatyBean;
 import com.bozlun.healthday.android.siswatch.data.BarXFormartValue;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
-import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.bozlun.healthday.android.util.URLs;
 import com.bozlun.healthday.android.w30s.utils.httputils.RequestPressent;
 import com.bozlun.healthday.android.w30s.utils.httputils.RequestView;
@@ -40,10 +38,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +49,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.LogTestUtil;
 import com.bozlun.healthday.android.MyApp;
@@ -21,7 +20,6 @@ import com.bozlun.healthday.android.friend.bean.FrendDataBean;
 import com.bozlun.healthday.android.friend.bean.FrendSleepBean;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
-import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.bozlun.healthday.android.util.URLs;
 import com.bozlun.healthday.android.w30s.utils.W30BasicUtils;
 import com.bozlun.healthday.android.w30s.utils.httputils.RequestPressent;
@@ -29,10 +27,9 @@ import com.bozlun.healthday.android.w30s.utils.httputils.RequestView;
 import com.bozlun.healthday.android.w30s.views.W30S_SleepChart;
 import com.google.gson.Gson;
 import com.suchengkeji.android.w30sblelibrary.bean.servicebean.W30S_SleepDataItem;
-
+import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DateFormat;
@@ -80,7 +77,7 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
     private int SHALLOW = 0;//浅睡
     private int ALLTIME = 0;//浅睡
 
-    private List<W30S_SleepDataItem> beanList = null;
+    private List<W30S_SleepDataItem> beanList = new ArrayList<>();
     private Handler mHandler;
     private RequestPressent requestPressent;
     @SuppressLint("SimpleDateFormat")
@@ -103,7 +100,7 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
         applicant = intent.getStringExtra("applicant");
         stringJson = intent.getStringExtra("stringJson");
         initHandler();
-        initData();
+        //initData();
         initViews();
         initData();
     }
@@ -169,6 +166,8 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
     }
 
     private void setTextData(List<W30S_SleepDataItem> w30S_sleepDataItems) {
+        if(w30S_sleepDataItems.isEmpty() || w30S_sleepDataItems.size() == 0)
+            return;
         SHALLOW = 0;
         DEEP = 0;
         AWAKE = 0;
@@ -374,7 +373,7 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
             if (!WatchUtils.isEmpty(applicant)) sleepJson.put("applicant", applicant);
             sleepJson.put("rtc", rtc);
 
-            Log.d("-----------朋友--", "获取好友详日细步数参数--" + sleepJson.toString());
+            //Log.d("-----------朋友--", "获取好友详睡眠参数--" + sleepJson.toString());
         } catch (JSONException e1) {
             e1.printStackTrace();
         }
@@ -423,10 +422,9 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
 
     @Override
     public void successData(int what, Object object, int daystag) {
-        closeLoadingDialog();
+        //closeLoadingDialog();
         if (mHandler != null) mHandler.sendEmptyMessage(0x02);
         if (object == null || TextUtils.isEmpty(object.toString().trim())) return;
-        LogTestUtil.e("-----------朋友--", "获取好友详日细睡眠返回--" + object.toString());
         Message message = new Message();
         message.what = what;
         message.arg1 = daystag;
@@ -474,7 +472,7 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
                                             item.getSleep_type() + "".trim(),
                                             item.getStartTime()));
                                 }
-                                if (!beanList.isEmpty()) {
+                                if (!beanList.isEmpty() && beanList.size()>0) {
                                     detailCusSleepView.setVisibility(View.VISIBLE);
                                     text_sleep_nodata.setVisibility(View.GONE);
                                     showSleepChartView(beanList);
@@ -522,6 +520,8 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
                                         }
                                     }
 
+                                    closeLoadingDialog();
+
                                 }
                             }
                         }
@@ -531,6 +531,7 @@ public class FrendSleepActivity extends WatchBaseActivity implements RequestView
                         break;
                 }
             } catch (Error e) {
+                e.printStackTrace();
             }
 
             return false;

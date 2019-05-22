@@ -33,15 +33,16 @@ public class FrendHaretBean {
          * heartRate : 78
          */
 
-        private String rtc;
+        private String time;
         private int heartRate;
 
-        public String getRtc() {
-            return rtc;
+
+        public String getTime() {
+            return time;
         }
 
-        public void setRtc(String rtc) {
-            this.rtc = rtc;
+        public void setTime(String time) {
+            this.time = time;
         }
 
         public int getHeartRate() {
