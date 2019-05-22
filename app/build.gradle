@@ -4,14 +4,14 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     signingConfigs {
         debug {
-            storeFile file('F:\\bzkey\\bzlhealth.jks')//签名文件路径
+            storeFile file('D:\\ProjectForAndroid\\AppBaleJar\\bzlhealth.jks')//签名文件路径
             storePassword "123456"
             keyAlias "bzlhealth"
             keyPassword "123456"  //签名密码
             println("====== signingConfigs.debug ======")
         }
         release {
-            storeFile file('F:\\bzkey\\bzlhealth.jks')//签名文件路径
+            storeFile file('D:\\ProjectForAndroid\\AppBaleJar\\bzlhealth.jks')//签名文件路径
             storePassword "123456"
             keyAlias "bzlhealth"
             keyPassword "123456"  //签名密码
@@ -64,7 +64,7 @@ android {
 
     }
     greendao {
-        schemaVersion 2
+        schemaVersion 1
         daoPackage 'com.afa.tourism.greendao.gen'
         targetGenDir 'src/main/java'
     }

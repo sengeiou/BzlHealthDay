@@ -80,7 +80,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     break;
                 case "step":
                     List<B15PStepDB> allStepDatasList = (List<B15PStepDB>) B15PDBCommont.getInstance().findStepAllDatas(mac, date);
-                    Log.e(TAG, " --- 步数查询 --- " + (allStepDatasList == null ? "查询步数为空" : allStepDatasList.toString()));
+//                    Log.e(TAG, " --- 步数查询 --- " + (allStepDatasList == null ? "查询步数为空" : allStepDatasList.toString()));
                     List<Integer> allDataList = new ArrayList<>();
                     if (allStepDatasList != null && !allStepDatasList.isEmpty()) {
                         int hourStep = 0;
@@ -116,8 +116,12 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 case "sleep":
                     List<B15PSleepDB> allSleepDatasList = (List<B15PSleepDB>) B15PDBCommont.getInstance().findSleepAllDatas(mac, date);
                     //LogTestUtil.e(TAG, " --- 睡眠查询 --- " + (allSleepDatasList == null ? "查询睡眠为空" : allSleepDatasList.toString()));
-                    List<W30S_SleepDataItem> allDataListSleep = new ArrayList<>();
-                    if (allSleepDatasList != null && !allSleepDatasList.isEmpty()) {
+                    boolean sleepIsNull = B15PDBCommont.getInstance().findSleepIsNull(mac, date);
+
+                    /**
+                     * 判断当存在正常睡眠数据的时候就回执显示HRV和血氧
+                     */
+                    if (sleepIsNull){
 
                         /**
                          * 有睡眠书据-------设置血氧假数据
@@ -127,6 +131,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                          * 有睡眠书据-------设置HRV假数据
                          */
                         setHRvDatas(mac, date);
+                    }
+                    List<W30S_SleepDataItem> allDataListSleep = new ArrayList<>();
+                    if (allSleepDatasList != null && !allSleepDatasList.isEmpty()) {
 
                         allDataListSleep.clear();
                         List<String> timesList = new ArrayList<>();
@@ -153,7 +160,6 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                         }
                                     }
                                 }
-
 //                                if ((sleepData.substring(0, 10).equals(date)
 //                                        && Integer.valueOf(sleepTime.substring(0, 2)) <= 16)
 //                                        || (sleepData.substring(0, 10).equals(WatchUtils.obtainAroundDate(date, true))
@@ -255,7 +261,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                                 valueCount1 = 1;
                                                 heartMapHM.put(split[0] + ":00", (int) allValues1 / valueCount1);
 
-                                                Log.e(TAG, "===== 添加正点 2 " + split[0] + ":00   " + (int) allValues1 / valueCount1);
+//                                                Log.e(TAG, "===== 添加正点 2 " + split[0] + ":00   " + (int) allValues1 / valueCount1);
                                             } else {//后半小时
                                                 heartMapHMTime.put(split[0] + ":30", 0);
 
@@ -263,7 +269,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                                 valueCount2 = 1;
                                                 heartMapHM.put(split[0] + ":30", (int) allValues2 / valueCount2);
 
-                                                Log.e(TAG, "===== 添加半点 2  " + split[0] + ":30   " + (int) allValues2 / valueCount2);
+//                                                Log.e(TAG, "===== 添加半点 2  " + split[0] + ":30   " + (int) allValues2 / valueCount2);
                                             }
 
                                         }
@@ -280,7 +286,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                             valueCount1 = 1;
                                             heartMapHM.put(split[0] + ":00", (int) allValues1 / valueCount1);
 
-                                            Log.e(TAG, "===== 添加正点 " + split[0] + ":00   " + (int) allValues1 / valueCount1);
+//                                            Log.e(TAG, "===== 添加正点 " + split[0] + ":00   " + (int) allValues1 / valueCount1);
                                         } else {//后半小时
                                             heartMapHMTime.put(split[0] + ":30", 0);
 
@@ -288,7 +294,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                                             valueCount2 = 1;
                                             heartMapHM.put(split[0] + ":30", (int) allValues2 / valueCount2);
 
-                                            Log.e(TAG, "===== 添加半点 " + split[0] + ":30   " + (int) allValues2 / valueCount2);
+//                                            Log.e(TAG, "===== 添加半点 " + split[0] + ":30   " + (int) allValues2 / valueCount2);
                                         }
                                     }
                                 }
@@ -552,9 +558,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         /**
          * 测试时加上这句
          */
-        LitePal.deleteAll(B31HRVBean.class);
+        //LitePal.deleteAll(B31HRVBean.class);
         List<B31HRVBean> hrvBeanList = LitePal.where(where, mac, date).find(B31HRVBean.class);
-        Log.e(TAG, "=====HRV  数据是否为空  " + ((hrvBeanList == null || hrvBeanList.isEmpty()) ? "是" : "否"));
+//        Log.e(TAG, "=====HRV  数据是否为空  " + ((hrvBeanList == null || hrvBeanList.isEmpty()) ? "是" : "否"));
         if (hrvBeanList == null || hrvBeanList.isEmpty()) {
             if (hrvBeanList == null) hrvBeanList = new ArrayList<>();
 
@@ -568,7 +574,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             /**
              * 随机选择HRV图的绘制范围
              */
-            int ra = random.nextInt(2);
+            int ra = random.nextInt(3);
 
             /**
              * 随机选择心率取值的范围
@@ -591,12 +597,12 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 switch (raH) {
                     case 0://正常情况下的心率
                         if (!WatchUtils.isEmpty(m)) {
-                            if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 60, 80);
-                            } else {
-                                rDHrvValue = getNum(random, 70, 80);
-                            }
+                        if (m.equals("M") || m.equals("男")) {
+                            rDHrvValue = getNum(random, 60, 80);
+                        } else {
+                            rDHrvValue = getNum(random, 70, 80);
                         }
+                    }
                         break;
                     case 1://偏高
                         if (!WatchUtils.isEmpty(m)) {
@@ -678,22 +684,27 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                         ratr = rDRate12 + "," + rDRate22 + "," + rDRate32 + "," + rDRate42 + "," + rDRate52 + ","
                                 + rDRate62 + "," + rDRate72 + "," + rDRate82 + "," + rDRate92 + "," + rDRate102;
                         break;
-                        default:
-                            int rDRate13 = getNum(random, 60, 70);
-                            int rDRate23 = getNum(random, 60, 78);
-                            int rDRate33 = getNum(random, 60, 86);
-                            int rDRate43 = getNum(random, 60, 94);
-                            int rDRate53 = getNum(random, 60, 100);
-                            int rDRate63 = getNum(random, 60, 100);
-                            int rDRate73 = getNum(random, 60, 94);
-                            int rDRate83 = getNum(random, 60, 86);
-                            int rDRate93 = getNum(random, 60, 78);
-                            int rDRate103 = getNum(random, 60, 70);
-                            ratr = rDRate13 + "," + rDRate23 + "," + rDRate33 + "," + rDRate43 + "," + rDRate53 + ","
-                                    + rDRate63 + "," + rDRate73 + "," + rDRate83 + "," + rDRate93 + "," + rDRate103;
-                            break;
+                    case 2:
+                        int rDRate13 = getNum(random, 50, 90);
+                        int rDRate23 = getNum(random, 50, 90);
+                        int rDRate33 = getNum(random, 60, 90);
+                        int rDRate43 = getNum(random, 60, 90);
+                        int rDRate53 = getNum(random, 70, 90);
+                        int rDRate63 = getNum(random, 70, 90);
+                        int rDRate73 = getNum(random, 70, 90);
+                        int rDRate83 = getNum(random, 70, 90);
+                        int rDRate93 = getNum(random, 50, 70);
+                        int rDRate103 = getNum(random, 50, 70);
+
+                        ratr = rDRate13 + "," + rDRate23 + "," + rDRate33 + "," + rDRate43 + "," + rDRate53 + ","
+                                + rDRate63 + "," + rDRate73 + "," + rDRate83 + "," + rDRate93 + "," + rDRate103;
+                        break;
                 }
-                Log.e(TAG, "====EEE " + ratr);
+
+
+
+
+//                Log.e(TAG, "====EEE " + ratr);
                 mHRVOriginData.setRate(ratr);
 //                String ratr = "";
 //                for (int j = 0; j < 10; j++) {
@@ -737,9 +748,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         /**
          * 测试时加上这句
          */
-        LitePal.deleteAll(B31Spo2hBean.class);
+        //LitePal.deleteAll(B31Spo2hBean.class);
         List<B31Spo2hBean> b31Spo2hBeanList = LitePal.where(where, mac, date).find(B31Spo2hBean.class);
-        Log.e(TAG, "=====SPO2  数据是否为空  " + ((b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) ? "是" : "否"));
+//        Log.e(TAG, "=====SPO2  数据是否为空  " + ((b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) ? "是" : "否"));
         if (b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) {
             if (b31Spo2hBeanList == null) b31Spo2hBeanList = new ArrayList<>();
 
@@ -759,7 +770,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                  * 模拟心脏负荷数据
                  */
                 int rDCardiacLoad = setRandomCardiacLoad(random);
-                Log.e(TAG, "随机生成的心脏负荷是  " + rDCardiacLoad);
+//                Log.e(TAG, "随机生成的心脏负荷是  " + rDCardiacLoad);
                 mSpo2hOriginData.setCardiacLoad(rDCardiacLoad);//心脏负荷  （轻度：0-20  正常：21-40  异常：>=41）
 
 
@@ -852,7 +863,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         super.onPostExecute(ts);
 //        if (ts == null) ts = new ArrayList<>();
         if (!WatchUtils.isEmpty(ts) && ts.length() > 3) {
-            Log.i(TAG, "数据返回的   " + ts);
+//            Log.i(TAG, "数据返回的   " + ts);
 
             String substring = ts.substring(0, 3);
             String reas = ts.substring(3, ts.length());
@@ -883,7 +894,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                         for (int i = 0; i < heartList.size(); i++) {
                             if (heartList.get(i) > 0) {
                                 LatelyValues = buidleHour(String.valueOf((float) i / 2f), heartList.get(i));
-                                Log.i(TAG, "最近心律 " + LatelyValues);
+//                                Log.i(TAG, "最近心律 " + LatelyValues);
                             }
                         }
                     }
@@ -1070,9 +1081,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 
         //判断模拟生成缺氧时间的那一部分数据（1，2，3）
         /**
-         * 将出现异常的几率降低到32分之1.5左右
+         * 将出现异常的几率降低到40分之1
          */
-        int rDO = random.nextInt(32);//0-10的随机数，包含0，不包含10
+        int rDO = random.nextInt(41);//0-10的随机数，包含0，不包含10
         int rOHypoxiaTime = getNum(random, 0, 20);//设定缺氧时间 （正常：0-20    异常：21-300）
         int rOHypoxia = 0;
         int[] ran = {rOHypoxiaTime, rOHypoxia};
@@ -1089,13 +1100,13 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 rOHypoxia = 1;
                 break;
             case 2:
-                rOHypoxiaTime = getNum(random, 0, 300);
-                if (rOHypoxiaTime >= 21) {
-                    rOHypoxia = 1;
-                } else {
-                    rOHypoxia = 0;
-                }
-                break;
+//                rOHypoxiaTime = getNum(random, 0, 300);
+//                if (rOHypoxiaTime >= 21) {
+//                    rOHypoxia = 1;
+//                } else {
+//                    rOHypoxia = 0;
+//                }
+//                break;
             case 3:
             case 4:
             case 5:
@@ -1124,6 +1135,15 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             case 29:
             case 30:
             case 31:
+            case 32:
+            case 33:
+            case 34:
+            case 35:
+            case 36:
+            case 37:
+            case 38:
+            case 39:
+            case 40:
                 rOHypoxiaTime = getNum(random, 0, 20);
                 rOHypoxia = 0;
                 break;

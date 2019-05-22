@@ -10,6 +10,7 @@ import com.afa.tourism.greendao.gen.B15PTestBloopDBDao;
 import com.afa.tourism.greendao.gen.DaoSession;
 import com.afa.tourism.greendao.gen.B15PStepDBDao;
 import com.bozlun.healthday.android.MyApp;
+import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 
 
 import java.util.List;
@@ -38,7 +39,6 @@ public class B15PDBCommont {
         }
         return b15PDBCommont;
     }
-
 
 
     /**
@@ -102,6 +102,33 @@ public class B15PDBCommont {
 //        if (list == null) list = LitePal.findAll(B15PSleepDB.class);
 //        Log.e(TAG,list.toString());
         return list;
+    }
+
+
+    /**
+     * 查判断今天是否有睡眠数据
+     *
+     * @param mac
+     * @param timeDate
+     * @return
+     */
+    public boolean findSleepIsNull(String mac, String timeDate) {
+        Log.e(TAG, "查询睡眠  " + mac + "   " + timeDate);
+        B15PSleepDBDao b15PSleepDBDao = getDaoSession().getB15PSleepDBDao();
+        if (b15PSleepDBDao == null) return false;
+        String oldDay = WatchUtils.obtainAroundDate(timeDate, true);
+        List<B15PSleepDB> lists_today = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac),
+                B15PSleepDBDao.Properties.SleepData.eq(timeDate)).list();
+
+        List<B15PSleepDB> lists_yestoday = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac),
+                B15PSleepDBDao.Properties.SleepData.eq(oldDay)).list();
+
+        if (lists_today != null && !lists_today.isEmpty()
+                && lists_yestoday != null && !lists_yestoday.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -183,7 +210,7 @@ public class B15PDBCommont {
                     .where(
                             B15PAllStepDBDao.Properties.StepDataTime.eq(dataTime.substring(0, 10)),
                             B15PAllStepDBDao.Properties.DevicesMac.eq(mac)).unique();
-            Log.e(TAG, "AllStep保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  "  + (b15PStepDB == null ? dataTime + "  点的步数数据没有" : b15PStepDB.toString()));
+            Log.e(TAG, "AllStep保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + (b15PStepDB == null ? dataTime + "  点的步数数据没有" : b15PStepDB.toString()));
             if (b15PStepDB != null) {
                 if (sportValues > 0) {
                     b15PStepDB.setDevicesMac(mac);

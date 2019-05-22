@@ -468,7 +468,7 @@ public class B15pHomeFragment extends LazyFragment
             final String tTypeInfo = TypeInfo;
             final String TempStr = StrData;
             final Object TempObj = DataObj;
-            Log.d(TAG, "电池电量    获取有返回了" + tTypeInfo + "  " + TempStr + "  " + TempObj);
+            //Log.d(TAG, "电池电量    获取有返回了" + tTypeInfo + "  " + TempStr + "  " + TempObj);
 
             if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
                 Log.e(TAG, "--------------==  获取电量超时 ~~~~~~~~~~~~~~ 跳过去执行下一个指令");
@@ -1492,7 +1492,7 @@ public class B15pHomeFragment extends LazyFragment
                 return spo2Data;
             for (Spo2hOriginData spo2hOriginData : originSpo2hList) {
                 if (spo2hOriginData != null && spo2hOriginData.getmTime() != null) {
-                    Log.e(TAG, "----assa---  " + spo2hOriginData.getmTime().getHMValue());
+                    //Log.e(TAG, "----assa---  " + spo2hOriginData.getmTime().getHMValue());
                     if (spo2hOriginData.getmTime().getHMValue() < 8 * 60) {
                         spo2Data.add(spo2hOriginData);
                     }
