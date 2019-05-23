@@ -166,10 +166,9 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
                     if (b15PStepDB != null) {
                         String stepData = b15PStepDB.getStepData();
                         String stepTime = b15PStepDB.getStepTime();
-                        step = step + b15PStepDB.getStepItemNumber();
-
                         //根据日期判断去当天的值
                         if (stepData.substring(0, 10).equals(currDay)) {
+                            step = step + b15PStepDB.getStepItemNumber();
                             Log.e("====", "===步数计算时间对比==" + stepData.substring(0, 10) + "  " + currDay + "  " + b15PStepDB.getStepItemNumber());
                             if (timeString[i].equals(stepTime.substring(0, 2))) {
                                 hourStep += b15PStepDB.getStepItemNumber();

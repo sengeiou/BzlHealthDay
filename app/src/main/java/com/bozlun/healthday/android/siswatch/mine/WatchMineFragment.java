@@ -84,7 +84,7 @@ public class WatchMineFragment extends LazyFragment {
     private String bleName = null;
 
     //更新
-    private UpdateManager updateManager;
+//    private UpdateManager updateManager;
     String userId = "9278cc399ab147d0ad3ef164ca156bf0";
 
     @Override
@@ -274,8 +274,8 @@ public class WatchMineFragment extends LazyFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        if (updateManager != null)
-            updateManager.destoryUpdateBroad();
+//        if (updateManager != null)
+//            updateManager.destoryUpdateBroad();
     }
 
 

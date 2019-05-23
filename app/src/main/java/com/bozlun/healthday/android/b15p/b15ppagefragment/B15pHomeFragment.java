@@ -77,6 +77,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -253,7 +254,6 @@ public class B15pHomeFragment extends LazyFragment
                 public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                     Log.d(TAG, "手动刷新 ----- getBleDevicesDatas()   读取设备数据");
                     mHandler.sendEmptyMessageDelayed(0x01, 100);//第一次链接自动获取数据
-
                 }
             });
 
@@ -269,6 +269,8 @@ public class B15pHomeFragment extends LazyFragment
         tmpIntegerList = new ArrayList<>();
 
         initSpo2hUtil();
+
+        L4M.SetResultListener(mBTResultListenr);
     }
 
 
@@ -377,7 +379,7 @@ public class B15pHomeFragment extends LazyFragment
                         MyApp.b15pIsFirstConntent = false;//第一次链接同步后改变第一次链接之后的状态
 
                         // 第一次链接自动获取数据
-                        // 先获取电池在获取运动数据
+                        // 先获根据系统语言设置语言------之后去获取电池电量
                         mHandler.sendEmptyMessageDelayed(0x01, 100);
                     } else {
 
@@ -416,6 +418,8 @@ public class B15pHomeFragment extends LazyFragment
     public void onDestroy() {
         super.onDestroy();
         unRegisterListenter();
+
+        L4M.SetResultListener(null);
     }
 
     @Override
@@ -451,6 +455,33 @@ public class B15pHomeFragment extends LazyFragment
     }
 
 
+    void getLanguage() {
+//        L4M.SetResultListener(mBTResultListenr);
+        String localelLanguage = Locale.getDefault().getLanguage();
+        Log.e(TAG, "----------localelLanguage=" + localelLanguage);
+
+        if (!WatchUtils.isEmpty(localelLanguage) && localelLanguage.equals("zh"))
+            L4Command.LanguageZH();//中文
+        else L4Command.LanguageEN();//英文
+
+        mHandler.sendEmptyMessageDelayed(0xab, 3000);
+    }
+
+    L4M.BTResultListenr mBTResultListenr = new L4M.BTResultListenr() {
+        @Override
+        public void On_Result(String TypeInfo, String StrData, Object DataObj) {
+
+            if (TypeInfo.equals(L4M.SetLanguage) && StrData.equals(L4M.OK)) {
+                if (StrData.equals("OK")) {
+                    B15PContentState.isSycnLanguage = true;
+                }
+                //mHandler.removeMessages(0xab);
+                getBatter();
+                Log.e(TAG, "Language:" + StrData + "------语言设置成功与否都去获取电池电量");
+            }
+        }
+    };
+
     /**
      * 地一步
      * 获取设备电池电量
@@ -461,6 +492,7 @@ public class B15pHomeFragment extends LazyFragment
 
         L4Command.BatLevel(btResultListenr);
     }
+
 
     L4M.BTResultListenr btResultListenr = new L4M.BTResultListenr() {
         @Override
@@ -491,6 +523,7 @@ public class B15pHomeFragment extends LazyFragment
 
                 mHandler.sendEmptyMessageDelayed(0x02, 100);
             }
+
         }
     };
 
@@ -564,6 +597,9 @@ public class B15pHomeFragment extends LazyFragment
         public boolean handleMessage(Message message) {
             mac = (String) SharedPreferencesUtils.readObject(MyApp.getInstance(), Commont.BLEMAC);
             switch (message.what) {
+                case 0xab:
+                    getBatter();
+                    break;
                 case 0x55:
                     /**
                      * 同步完成上传数据
@@ -627,9 +663,14 @@ public class B15pHomeFragment extends LazyFragment
                 /**
                  * 从设备获取数据
                  */
-                case 0x01:// 获取电池电量
-                    Log.d(TAG, "手动刷新 ----- 先获取电池电量");
-                    getBatter();
+                case 0x01:// 先获根据系统语言设置语言
+                    Log.d(TAG, "手动刷新 ----- 先获根据系统语言设置语言");
+                    if (B15PContentState.isSycnLanguage) {
+                        getBatter();
+                    } else {
+                        getLanguage();
+                    }
+
                     break;
                 case 0x02://同步数据
                     //链接成功了
@@ -721,9 +762,6 @@ public class B15pHomeFragment extends LazyFragment
 //                            }
 
 
-
-
-
                             /**
                              *  HRV  的虚拟数据
                              * -----这个这个数据是从子线程直接返回的，所以要切换到主线程
@@ -736,7 +774,7 @@ public class B15pHomeFragment extends LazyFragment
                                         @Override
                                         public void run() {
                                             //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
-                                            if (hrvBeanList != null && !hrvBeanList.isEmpty()) {
+                                            if (hrvBeanList != null) {
 
                                                 datahrv.clear();
                                                 for (B31HRVBean hBean : hrvBeanList) {
@@ -763,10 +801,10 @@ public class B15pHomeFragment extends LazyFragment
                                         @Override
                                         public void run() {
                                             //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
-                                            if (b31Spo2hBeanList != null && !b31Spo2hBeanList.isEmpty()) {
+                                            if (b31Spo2hBeanList != null) {
                                                 data0To8.clear();
                                                 for (B31Spo2hBean hBean : b31Spo2hBeanList) {
-                                                   // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
+                                                    // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
                                                     data0To8.add(gson.fromJson(hBean.getSpo2hOriginData(), Spo2hOriginData.class));
                                                 }
 
@@ -945,7 +983,8 @@ public class B15pHomeFragment extends LazyFragment
             R.id.b30CusBloadLin, R.id.b30MeaureHeartImg, R.id.b30MeaureBloadImg,
             R.id.b30SleepLin, R.id.homeTodayTv, R.id.homeYestTodayTv, R.id.homeBeYestdayTv,
             R.id.battery_watchRecordShareImg,
-            R.id.b31BpOxyLin,R.id.b31HrvView,R.id.block_spo2h,R.id.block_heart,R.id.block_sleep,R.id.block_breath,R.id.block_lowspo2h})//, R.id.b36WomenStatusLin, R.id.b36WomenPrivacyImg})
+            R.id.b31BpOxyLin, R.id.b31HrvView, R.id.block_spo2h, R.id.block_heart, R.id.block_sleep, R.id.block_breath, R.id.block_lowspo2h})
+//, R.id.b36WomenStatusLin, R.id.b36WomenPrivacyImg})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.b30SportChartLin1: // 运动数据详情
@@ -1101,6 +1140,7 @@ public class B15pHomeFragment extends LazyFragment
 //        sycnDataListenterHeart.setDateStr(date);
         //handler.sendEmptyMessageDelayed(0x11, 200);
 
+        setSysTextStute(true);
         mHandler.sendEmptyMessage(0x00);
     }
 
@@ -1364,7 +1404,7 @@ public class B15pHomeFragment extends LazyFragment
     //显示HRV的数据
     private void showHrvData(List<HRVOriginData> dataList) {
         //Log.e(TAG,"----显示HRV="+dataList.size());
-        if(dataList.size()>420)
+        if (dataList.size() > 420)
             return;
         List<HRVOriginData> data0to8 = getMoringData(dataList);
         HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
@@ -1397,11 +1437,6 @@ public class B15pHomeFragment extends LazyFragment
             dataSetByIndex.setColor(Color.parseColor("#EC1A3B"));
         }
     }
-
-
-
-
-
 
 
     //显示血氧的图
@@ -1460,7 +1495,7 @@ public class B15pHomeFragment extends LazyFragment
     @NonNull
     private List<HRVOriginData> getMoringData(List<HRVOriginData> originSpo2hList) {
         List<HRVOriginData> moringData = new ArrayList<>();
-        try{
+        try {
             if (originSpo2hList == null || originSpo2hList.isEmpty())
                 return moringData;
             for (HRVOriginData hRVOriginData : originSpo2hList) {
@@ -1469,7 +1504,7 @@ public class B15pHomeFragment extends LazyFragment
                 }
             }
             return moringData;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             moringData.clear();
             return moringData;

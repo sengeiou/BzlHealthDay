@@ -16,6 +16,7 @@ import com.afa.tourism.greendao.gen.DaoMaster;
 import com.afa.tourism.greendao.gen.DaoSession;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.bozlun.healthday.android.b15p.common.B15PContentState;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.bzlmaps.PhoneSosOrDisPhone;
 import com.bozlun.healthday.android.db.DBManager;
@@ -151,6 +152,7 @@ public class MyApp extends LitePalApplication {
                      */
                     L4M.InitData(instance, 1, 0);
                     Looper.loop();
+                    B15PContentState.isSycnLanguage = false;//将这个每次设置为false，通过这个每次APP中只设置语言一次
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
