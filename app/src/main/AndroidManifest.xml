@@ -1337,6 +1337,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <!--好友血压详细数据页面-->
+        <activity android:name=".friend.NewFriendBpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--好友睡眠详细数据页面-->
+        <activity android:name=".friend.NewFriendSleepActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
 
 
