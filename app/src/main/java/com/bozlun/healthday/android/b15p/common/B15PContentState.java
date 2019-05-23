@@ -28,6 +28,7 @@ public class B15PContentState {
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothManager bluetoothManager;
     public boolean isContentioning = false;//是否在连接中
+    public static boolean isSycnLanguage = false;
 
 
     public void setB15PContentState(ConntentStuteListenter b15PContentState) {

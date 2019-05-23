@@ -2,6 +2,7 @@ package com.bozlun.healthday.android.b15p.interfaces;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
@@ -29,6 +30,8 @@ import com.veepoo.protocol.model.datas.TimeData;
 
 import org.litepal.LitePal;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -116,22 +119,6 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 case "sleep":
                     List<B15PSleepDB> allSleepDatasList = (List<B15PSleepDB>) B15PDBCommont.getInstance().findSleepAllDatas(mac, date);
                     //LogTestUtil.e(TAG, " --- 睡眠查询 --- " + (allSleepDatasList == null ? "查询睡眠为空" : allSleepDatasList.toString()));
-                    boolean sleepIsNull = B15PDBCommont.getInstance().findSleepIsNull(mac, date);
-
-                    /**
-                     * 判断当存在正常睡眠数据的时候就回执显示HRV和血氧
-                     */
-                    if (sleepIsNull){
-
-                        /**
-                         * 有睡眠书据-------设置血氧假数据
-                         */
-                        setSpo2Datas(mac, date);
-                        /**
-                         * 有睡眠书据-------设置HRV假数据
-                         */
-                        setHRvDatas(mac, date);
-                    }
                     List<W30S_SleepDataItem> allDataListSleep = new ArrayList<>();
                     if (allSleepDatasList != null && !allSleepDatasList.isEmpty()) {
 
@@ -173,6 +160,24 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 //                                }
                             }
                         }
+                    }
+
+                    if (!allDataListSleep.isEmpty()) {
+                        List<W30S_SleepDataItem> sleepList = new Gson().fromJson(JSON.toJSON(allDataListSleep).toString(), new TypeToken<List<W30S_SleepDataItem>>() {
+                        }.getType());
+                        int count = SleepJ(sleepList);//睡眠中的清醒次数
+                        /**
+                         * 有睡眠书据-------设置血氧假数据
+                         */
+                        setSpo2Datas(mac, date, count);
+                        /**
+                         * 有睡眠书据-------设置HRV假数据
+                         */
+                        setHRvDatas(mac, date);
+                    } else {
+                        changeDBListenter.updataHrvDataToUIListenter(new ArrayList<B31HRVBean>());
+
+                        changeDBListenter.updataSpo2DataToUIListenter(new ArrayList<B31Spo2hBean>());
                     }
 
                     jsonString = "BBB" + JSON.toJSON(allDataListSleep).toString();
@@ -558,7 +563,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         /**
          * 测试时加上这句
          */
-        //LitePal.deleteAll(B31HRVBean.class);
+        LitePal.deleteAll(B31HRVBean.class);
         List<B31HRVBean> hrvBeanList = LitePal.where(where, mac, date).find(B31HRVBean.class);
 //        Log.e(TAG, "=====HRV  数据是否为空  " + ((hrvBeanList == null || hrvBeanList.isEmpty()) ? "是" : "否"));
         if (hrvBeanList == null || hrvBeanList.isEmpty()) {
@@ -566,9 +571,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 
 
             //模拟数据可以在这里，之后再回调出去回去
+            String[] split = date.split("[-]");
             //模拟数据的工具
             Random random = new Random();
-            Calendar calendar = Calendar.getInstance();  //获取当前时间，作为图标的名字
             int hour = 0;
             Map<String, List<B31HRVBean>> hrvMap = new HashMap<>();
             /**
@@ -585,31 +590,31 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 HRVOriginData mHRVOriginData = new HRVOriginData();
                 mHRVOriginData.setAllCurrentPackNumber(420);//所有数据包的总和
                 mHRVOriginData.setCurrentPackNumber(420);//当前数据包的位置
-                mHRVOriginData.setDate(WatchUtils.getCurrentDate());
+                mHRVOriginData.setDate(date);
                 mHRVOriginData.setHrvType(0);
 
 
                 /**
                  * 模拟心率数据
                  */
-                int rDHrvValue = getNum(random, 60, 95);
+                int rDHrvValue = getNum(random, 55, 80);
                 String m = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.USER_SEX, "M");
                 switch (raH) {
                     case 0://正常情况下的心率
                         if (!WatchUtils.isEmpty(m)) {
-                        if (m.equals("M") || m.equals("男")) {
-                            rDHrvValue = getNum(random, 60, 80);
-                        } else {
-                            rDHrvValue = getNum(random, 70, 80);
+                            if (m.equals("M") || m.equals("男")) {
+                                rDHrvValue = getNum(random, 55, 80);
+                            } else {
+                                rDHrvValue = getNum(random, 50, 80);
+                            }
                         }
-                    }
                         break;
                     case 1://偏高
                         if (!WatchUtils.isEmpty(m)) {
                             if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 70, 95);
+                                rDHrvValue = getNum(random, 60, 80);
                             } else {
-                                rDHrvValue = getNum(random, 75, 95);
+                                rDHrvValue = getNum(random, 55, 80);
                             }
                         }
                         break;
@@ -618,7 +623,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                             if (m.equals("M") || m.equals("男")) {
                                 rDHrvValue = getNum(random, 50, 70);
                             } else {
-                                rDHrvValue = getNum(random, 55, 70);
+                                rDHrvValue = getNum(random, 45, 60);
                             }
                         }
                         break;
@@ -631,9 +636,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     case 9://正常情况下的心率-----这些增加正常的高几率
                         if (!WatchUtils.isEmpty(m)) {
                             if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 60, 80);
+                                rDHrvValue = getNum(random, 55, 80);
                             } else {
-                                rDHrvValue = getNum(random, 70, 80);
+                                rDHrvValue = getNum(random, 50, 80);
                             }
                         }
                         break;
@@ -641,9 +646,9 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 
                 mHRVOriginData.setHrvValue(rDHrvValue);
                 TimeData timeData = new TimeData();
-                timeData.setYear(calendar.get(Calendar.YEAR));
-                timeData.setMonth(calendar.get(Calendar.MONTH) + 1);
-                timeData.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+                timeData.setYear(!WatchUtils.isEmpty(split[0]) ? Integer.valueOf(split[0]) : 0);
+                timeData.setMonth(!WatchUtils.isEmpty(split[1]) ? Integer.valueOf(split[1]) : 0);
+                timeData.setDay(!WatchUtils.isEmpty(split[2]) ? Integer.valueOf(split[2]) : 0);
                 if (i % 60 == 0) {
                     hour = i / 60;
                 }
@@ -702,8 +707,6 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 }
 
 
-
-
 //                Log.e(TAG, "====EEE " + ratr);
                 mHRVOriginData.setRate(ratr);
 //                String ratr = "";
@@ -741,14 +744,15 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
      *
      * @param mac
      * @param date
+     * @param count
      */
-    private void setSpo2Datas(String mac, String date) {
+    private void setSpo2Datas(String mac, String date, int count) {
 
         String where = "bleMac = ? and dateStr = ?";
         /**
          * 测试时加上这句
          */
-        //LitePal.deleteAll(B31Spo2hBean.class);
+        LitePal.deleteAll(B31Spo2hBean.class);
         List<B31Spo2hBean> b31Spo2hBeanList = LitePal.where(where, mac, date).find(B31Spo2hBean.class);
 //        Log.e(TAG, "=====SPO2  数据是否为空  " + ((b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) ? "是" : "否"));
         if (b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) {
@@ -758,10 +762,11 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             //模拟数据可以在这里，之后再回调出去回去
             //模拟数据的工具
             Random random = new Random();
-            Calendar calendar = Calendar.getInstance();  //获取当前时间，作为图标的名字
             int hour = 0;
-
+            String[] split = date.split("[-]");
             Map<String, List<B31Spo2hBean>> spo2Map = new HashMap<>();
+
+            isBulidDating = false;
             for (int i = 0; i < 420; i++) {
                 Spo2hOriginData mSpo2hOriginData = new Spo2hOriginData();
                 mSpo2hOriginData.setAllPackNumner(420);//所有数据包的总和
@@ -775,25 +780,56 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 
 
                 mSpo2hOriginData.setCurrentPackNumber(420);//当前数据包的位置
-                mSpo2hOriginData.setDate(WatchUtils.getCurrentDate());
-                mSpo2hOriginData.sethRVariation(86);//心率变异性
-                mSpo2hOriginData.setHeartValue(129);//心值
-                mSpo2hOriginData.setHypopnea(0);//呼吸不足
+                mSpo2hOriginData.setDate(date);
 
 
                 /**
-                 * 模拟缺氧时间
-                 * 呼吸暂停点
+                 * 模拟心率变异性
                  */
-                int[] rOHypoxiaTime = setRandomHypoxiaTimeAndHypoxia(random);
-                mSpo2hOriginData.setHypoxiaTime(rOHypoxiaTime[0]);//设定缺氧时间 （正常：0-20    异常：21-300）
-                mSpo2hOriginData.setIsHypoxia(rOHypoxiaTime[1]);//低氧--- 呼吸暂停点
+                int hrv = getNum(random, 50, 80);
+                mSpo2hOriginData.sethRVariation(hrv);//心率变异性
+
+
+                /**
+                 * 模拟心值
+                 */
+                int heart = getNum(random, 50, 130);
+                mSpo2hOriginData.setHeartValue(heart);//心值
+                mSpo2hOriginData.setHypopnea(0);//呼吸不足
+
+                /**
+                 * 模拟生成呼呼吸率
+                 */
+                int rDSRespirationRate = setRandomRespirationRate(random);
+                mSpo2hOriginData.setRespirationRate(rDSRespirationRate);//呼吸速率（正常：0-26    异常：27-50）
+
+
+                int rOHypoxiaTime = 0;
+                /**
+                 * 为了模拟呼吸率异常的时候 呼吸暂停
+                 */
+                if (rDSRespirationRate > 26) {
+                    /**
+                     * 模拟缺氧时间
+                     * 呼吸暂停点
+                     */
+                    rOHypoxiaTime = setRandomHypoxiaTimeAndHypoxia(random, true);
+                } else {
+                    /**
+                     * 模拟缺氧时间
+                     * 呼吸暂停点
+                     */
+                    rOHypoxiaTime = setRandomHypoxiaTimeAndHypoxia(random, false);
+                }
+
+                mSpo2hOriginData.setHypoxiaTime(rOHypoxiaTime);//设定缺氧时间 （正常：0-20    异常：21-300）
+                mSpo2hOriginData.setIsHypoxia(rOHypoxiaTime > 20 ? 1 : 0);//低氧--- 呼吸暂停点
 
 
                 TimeData timeData = new TimeData();
-                timeData.setYear(calendar.get(Calendar.YEAR));
-                timeData.setMonth(calendar.get(Calendar.MONTH) + 1);
-                timeData.setDay(calendar.get(Calendar.DAY_OF_MONTH));
+                timeData.setYear(!WatchUtils.isEmpty(split[0]) ? Integer.valueOf(split[0]) : 0);
+                timeData.setMonth(!WatchUtils.isEmpty(split[1]) ? Integer.valueOf(split[1]) : 0);
+                timeData.setDay(!WatchUtils.isEmpty(split[2]) ? Integer.valueOf(split[2]) : 0);
 
                 if (i % 60 == 0) {
                     hour = i / 60;
@@ -803,18 +839,20 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                 timeData.setHour(hour);
                 timeData.setMinute(minute);
                 timeData.setSecond(0);
-
                 mSpo2hOriginData.setmTime(timeData);
 
+                /**
+                 * 模拟生成血氧
+                 */
                 int spo2 = getNum(random, 95, 99);//模拟生成氧值
                 mSpo2hOriginData.setOxygenValue(spo2);//氧值 （正常：95-99）
 
+
                 /**
-                 * 模拟生成呼呼吸率
+                 * 睡眠活动数据模拟-----根据睡眠清醒次数模拟
                  */
-                int rDSRespirationRate = setRandomRespirationRate(random);
-                mSpo2hOriginData.setRespirationRate(rDSRespirationRate);//呼吸速率（正常：0-26    异常：27-50）
-                mSpo2hOriginData.setSportValue(0);//运动值
+                int sp = setRandomSportValue(random, count);
+                mSpo2hOriginData.setSportValue(sp);//运动值
                 mSpo2hOriginData.setStepValue(0);//步数值
                 mSpo2hOriginData.setTemp1(4);
 
@@ -974,6 +1012,71 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
 
 
     /**
+     * 模拟生产睡眠躁动的值
+     *
+     * @param random
+     * @param count
+     * @return
+     */
+    boolean isBulidDating = true;//睡眠躁动是否模拟过了
+    int sleepCount = 0;
+
+    private int setRandomSportValue(Random random, int count) {
+        int rDSSport = 0;//模拟生成呼吸速率
+        /**
+         * 根据睡眠清醒次数设置睡眠躁动
+         */
+
+        if (!isBulidDating) {
+            isBulidDating = true;
+            if (count > 2 && count <= 4) {
+                rDSSport = getNum(random, 20, 30);
+            } else if (count > 4 && count <= 6) {
+                rDSSport = getNum(random, 30, 50);
+            } else if (count > 6) {
+                sleepCount++;
+                rDSSport = getNum(random, 10, 50);
+                if (sleepCount == 4) {
+                    sleepCount = 0;
+                    isBulidDating = false;
+                }
+            } else if (count != 0) {
+                rDSSport = getNum(random, 0, 15);
+            }
+
+
+        }
+
+
+//        int rDS = random.nextInt(16);//0-3的随机数，包含0，不包含3
+//        //1.正常
+//        //2.异常
+//        //3.正常+异常
+//        switch (rDS) {
+//            case 0:
+//                rDSSport = getNum(random, 0, 5);
+//                break;
+//            case 1:
+//            case 2:
+//            case 3:
+//            case 4:
+//            case 5:
+//            case 6:
+//            case 7:
+//            case 8:
+//            case 9:
+//            case 10:
+//            case 11:
+//            case 12:
+//            case 13:
+//            case 14:
+//            case 15:
+//                break;
+//        }
+        return rDSSport;
+    }
+
+    /**
      * 模拟生成呼呼吸率
      * （正常：0-26    异常：27-50）
      *
@@ -982,20 +1085,21 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
      */
     private int setRandomRespirationRate(Random random) {
         //判断模拟生成缺氧时间的那一部分数据（1，2，3）
-        int rDS = random.nextInt(9);//0-3的随机数，包含0，不包含3
+        //呼吸速率（正常：0-26    异常：27-50）
+        int rDS = random.nextInt(16);//0-3的随机数，包含0，不包含3
         int rDSRespirationRate = getNum(random, 0, 26);//模拟生成呼吸速率
         //1.正常
         //2.异常
         //3.正常+异常
         switch (rDS) {
             case 0:
-                rDSRespirationRate = getNum(random, 0, 26);//模拟生成呼吸速率
+                rDSRespirationRate = getNum(random, 9, 15);//模拟生成呼吸速率
                 break;
             case 1:
-                rDSRespirationRate = getNum(random, 27, 50);//模拟生成呼吸速率
+                rDSRespirationRate = getNum(random, 9, 27);//模拟生成呼吸速率
                 break;
             case 2:
-                rDSRespirationRate = getNum(random, 0, 50);//模拟生成呼吸速率
+//                rDSRespirationRate = getNum(random, 20, 27);//模拟生成呼吸速率,
                 break;
             case 3:
             case 4:
@@ -1003,7 +1107,14 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             case 6:
             case 7:
             case 8:
-                rDSRespirationRate = getNum(random, 0, 26);//模拟生成呼吸速率
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+                rDSRespirationRate = getNum(random, 12, 15);//模拟生成呼吸速率
                 break;
         }
         return rDSRespirationRate;
@@ -1019,7 +1130,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
      */
     private int setRandomCardiacLoad(Random random) {
         //判断模拟生成心脏负荷的那一部分数据（1，2，3，4）
-        int rDH = random.nextInt(14);//0-16的随机数，包含0，不包含16
+        int rDH = random.nextInt(16);//0-16的随机数，包含0，不包含16
 
         int rDCardiacLoad = getNum(random, 21, 40);//心脏负荷  （轻度：0-20  正常：21-40  异常：>=41）
         //1. 正常
@@ -1061,8 +1172,10 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             case 11:
             case 12:
             case 13:
-                //正常范围----   21-40
-                rDCardiacLoad = getNum(random, 21, 40);
+            case 14:
+            case 15:
+                //一般正常
+                rDCardiacLoad = getNum(random, 30, 35);
                 break;
         }
 
@@ -1077,80 +1190,26 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
      * @param random
      * @return
      */
-    public int[] setRandomHypoxiaTimeAndHypoxia(Random random) {
+    private int setRandomHypoxiaTimeAndHypoxia(Random random, boolean isErr) {
 
         //判断模拟生成缺氧时间的那一部分数据（1，2，3）
         /**
-         * 将出现异常的几率降低到40分之1
+         * 将出现异常的几率降低到3分之1内的20分之一
          */
-        int rDO = random.nextInt(41);//0-10的随机数，包含0，不包含10
-        int rOHypoxiaTime = getNum(random, 0, 20);//设定缺氧时间 （正常：0-20    异常：21-300）
-        int rOHypoxia = 0;
-        int[] ran = {rOHypoxiaTime, rOHypoxia};
-        //1.正常
-        //2.异常
-        //3.正常+异常
-        switch (rDO) {
-            case 0:
+        if (isErr) {//呼吸率出现异常----血氧或者呼吸暂停必须对应一场一次
+            return getNum(random, 21, 50);
+        } else {
+            int rDO = random.nextInt(48);//0-10的随机数，包含0，不包含10
+            int rOHypoxiaTime = 0;//设定缺氧时间 （正常：0-20    异常：21-300）
+            //1.正常
+            //2.异常
+            //3.正常+异常
+            if (rDO == 0) {
                 rOHypoxiaTime = getNum(random, 0, 20);
-                rOHypoxia = 0;
-                break;
-            case 1:
-                rOHypoxiaTime = getNum(random, 21, 300);
-                rOHypoxia = 1;
-                break;
-            case 2:
-//                rOHypoxiaTime = getNum(random, 0, 300);
-//                if (rOHypoxiaTime >= 21) {
-//                    rOHypoxia = 1;
-//                } else {
-//                    rOHypoxia = 0;
-//                }
-//                break;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 17:
-            case 18:
-            case 19:
-            case 20:
-            case 21:
-            case 22:
-            case 24:
-            case 25:
-            case 26:
-            case 27:
-            case 28:
-            case 29:
-            case 30:
-            case 31:
-            case 32:
-            case 33:
-            case 34:
-            case 35:
-            case 36:
-            case 37:
-            case 38:
-            case 39:
-            case 40:
-                rOHypoxiaTime = getNum(random, 0, 20);
-                rOHypoxia = 0;
-                break;
+            }
+            return rOHypoxiaTime;
         }
-        ran[0] = rOHypoxiaTime;
-        ran[1] = rOHypoxia;
-        return ran;
+
     }
 
 
@@ -1161,7 +1220,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
      * @param endNum
      * @return
      */
-    public int getNum(Random random, int startNum, int endNum) {
+    private int getNum(Random random, int startNum, int endNum) {
         if ((endNum + 1) > startNum) {
             return random.nextInt((endNum + 1) - startNum) + startNum;
         }
@@ -1169,4 +1228,63 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
     }
 
 
+    /**
+     * 计算睡眠清醒的次数，根据次数设置睡眠躁动
+     *
+     * @param sleepDataList
+     * @return
+     */
+    private int SleepJ(List<W30S_SleepDataItem> sleepDataList) {
+        int AWAKE = 0;//清醒的次数
+        if (sleepDataList != null && !sleepDataList.isEmpty()) {
+            AWAKE = 0;//清醒的次数
+            StringBuilder strSleep = new StringBuilder("");
+            for (int i = 0; i < sleepDataList.size() - 1; i++) {
+                String startTime = null;
+                String startTimeLater = null;
+                String sleep_type = null;
+                if (i >= (sleepDataList.size() - 1)) {
+                    startTime = sleepDataList.get(i).getStartTime();
+                    startTimeLater = sleepDataList.get(i).getStartTime();
+                    sleep_type = sleepDataList.get(i).getSleep_type();
+                } else {
+                    startTime = sleepDataList.get(i).getStartTime();
+                    startTimeLater = sleepDataList.get(i + 1).getStartTime();
+                    sleep_type = sleepDataList.get(i).getSleep_type();
+                }
+                String[] starSplit = startTime.split("[:]");
+                String[] endSplit = startTimeLater.split("[:]");
+
+                int startHour = Integer.valueOf(!TextUtils.isEmpty(starSplit[0].replace(",", "")) ? starSplit[0].replace(",", "") : "0");
+                int endHour = Integer.valueOf(!TextUtils.isEmpty(endSplit[0].replace(",", "")) ? endSplit[0].replace(",", "") : "0");
+
+                int startMin = Integer.valueOf(!TextUtils.isEmpty(starSplit[1].replace(",", "")) ? starSplit[1].replace(",", "") : "0");
+                int endMin = (Integer.valueOf(!TextUtils.isEmpty(endSplit[1].replace(",", "")) ? endSplit[1].replace(",", "") : "0"));
+                if (startHour > endHour) {
+                    endHour = endHour + 24;
+                }
+                int all_m = (endHour - startHour) * 60 + (endMin - startMin);
+                //B15P元数据   清醒  0    浅睡 1   深睡 2
+                //图标绘制时    浅睡  0    深睡 1   清醒 2
+                if (sleep_type.equals("0")) {
+                    AWAKE++;
+//                                Log.e(TAG, "====0===" + all_m);
+                    for (int j = 1; j <= all_m; j++) {
+                        strSleep.append("2");
+                    }
+                } else if (sleep_type.equals("1")) {
+                    //潜水
+                    for (int j = 1; j <= all_m; j++) {
+                        strSleep.append("0");
+                    }
+                } else if (sleep_type.equals("2")) {
+                    //深水
+                    for (int j = 1; j <= all_m; j++) {
+                        strSleep.append("1");
+                    }
+                }
+            }
+        }
+        return AWAKE;
+    }
 }

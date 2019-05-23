@@ -15,7 +15,6 @@ import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.adpter.FragmentAdapter;
 import com.bozlun.healthday.android.b15p.b15ppagefragment.B15pHomeFragment;
 import com.bozlun.healthday.android.b15p.common.B15PContentState;
-import com.bozlun.healthday.android.b15p.interfaces.SycnDataToDBListenter;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.mine.WatchMineFragment;
 import com.bozlun.healthday.android.siswatch.run.W30sNewRunFragment;
@@ -164,7 +163,7 @@ public class B15pHomeActivity extends WatchBaseActivity {
             final String TempStr = StrData;
             final Object TempObj = DataObj;
 
-            Log.e(TAG, "inTempStr:" + TempStr);
+            Log.e("====On_Result=", "inTempStr:" + TempStr);
             if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
                 return;
             }

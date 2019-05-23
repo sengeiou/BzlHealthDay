@@ -106,32 +106,6 @@ public class B15PDBCommont {
 
 
     /**
-     * 查判断今天是否有睡眠数据
-     *
-     * @param mac
-     * @param timeDate
-     * @return
-     */
-    public boolean findSleepIsNull(String mac, String timeDate) {
-        Log.e(TAG, "查询睡眠  " + mac + "   " + timeDate);
-        B15PSleepDBDao b15PSleepDBDao = getDaoSession().getB15PSleepDBDao();
-        if (b15PSleepDBDao == null) return false;
-        String oldDay = WatchUtils.obtainAroundDate(timeDate, true);
-        List<B15PSleepDB> lists_today = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac),
-                B15PSleepDBDao.Properties.SleepData.eq(timeDate)).list();
-
-        List<B15PSleepDB> lists_yestoday = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac),
-                B15PSleepDBDao.Properties.SleepData.eq(oldDay)).list();
-
-        if (lists_today != null && !lists_today.isEmpty()
-                && lists_yestoday != null && !lists_yestoday.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * 查心率
      *
      * @param mac
