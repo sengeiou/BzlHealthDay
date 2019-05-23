@@ -9,6 +9,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.adpter.FragmentAdapter;
@@ -180,4 +181,19 @@ public class B15pHomeActivity extends WatchBaseActivity {
 
         }
     };
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 过滤按键动作
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
+
+        } else if (keyCode == KeyEvent.KEYCODE_MENU) {
+            moveTaskToBack(true);
+        } else if (keyCode == KeyEvent.KEYCODE_HOME) {
+            moveTaskToBack(true);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

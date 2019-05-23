@@ -14,18 +14,23 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
+import com.bozlun.healthday.android.b15p.MessageHelpActivity;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.tjdL4.tjdmain.AppIC;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RequestExecutor;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -78,6 +83,8 @@ public class B15PMessAlertActivity extends WatchBaseActivity {
     LinearLayout google_gmail;
     @BindView(R.id.google_gmail_line)
     View google_gmail_line;
+    @BindView(R.id.newSearchRightImg1)
+    ImageView newSearchRightImg1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -380,6 +387,7 @@ public class B15PMessAlertActivity extends WatchBaseActivity {
     }
 
     private void initViews() {
+        newSearchRightImg1.setVisibility(View.VISIBLE);
         newSearchTitleTv.setText(getResources().getString(R.string.string_ocial_message));//社交小心哦
         b30SkypeTogg.setOnCheckedChangeListener(new ToggCheckChanageListener());
         b30WhatsAppTogg.setOnCheckedChangeListener(new ToggCheckChanageListener());
@@ -406,7 +414,7 @@ public class B15PMessAlertActivity extends WatchBaseActivity {
                 finish();
                 break;
             case R.id.newSearchRightImg1:
-
+                startActivity(MessageHelpActivity.class);
                 break;
             case R.id.msgOpenNitBtn:    //打开通知
                 Intent intentr = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);

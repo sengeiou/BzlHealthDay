@@ -1,4 +1,31 @@
 <resources>
+
+    <string name="string_msg_basic_requ">实现消息提醒的基本要求</string>
+    <string name="string_basic_cont1">1.确认 RaceFit 处于运行状态并与设备连接</string>
+    <string name="string_basic_cont2">2.确认 RaceFit 已设置耗电保护</string>
+    <string name="string_basic_cont3">3.确认 RaceFit 已设置自动启动权限</string>
+    <string name="string_basic_cont4">4.确认 RaceFit 已设置系统或手机管家白名单保护</string>
+    <string name="string_apps_alert_title">Q:Facebook、QQ、Wechat等应用没有消息提醒?</string>
+    <string name="string_apps_cont1">1.确认FaceBook、QQ、Wechat等应用允许在通知栏上显示消息</string>
+    <string name="string_apps_cont2">2.关闭 RaceFit 通知使用权限后重新打开</string>
+    <string name="string_to_restart">去重启</string>
+    <string name="string_call_phone_alert">Q:来电没有提醒?</string>
+    <string name="string_call_phone_cont1">1.确认开启了联系人/通讯录权限</string>
+    <string name="string_call_phone_cont2">2.确认开启了电话权限</string>
+    <string name="string_call_phone_cont3">3.确认开启了通话记录权限</string>
+    <string name="string_smg_alert_title">Q:短信没有提醒?</string>
+    <string name="string_smg_alert_content1">2.确认开启了短信权限</string>
+    <string name="string_enable">已获取</string>
+    <string name="string_disable">未获取</string>
+
+
+
+
+
+
+
+
+
     <string name="string_systolic">systolic pressure</string>
     <string name="string_diastolic">diastolic pressure</string>
     <string name="string_bloop_di">Hypotension</string>

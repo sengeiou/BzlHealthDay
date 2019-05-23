@@ -1346,7 +1346,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
+        <!--帮助页面-->
+        <activity android:name=".b15p.MessageHelpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
 
         <!-- 下载的serveir -->
