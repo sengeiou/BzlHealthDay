@@ -44,7 +44,7 @@ public class B30SysSettingActivity extends WatchBaseActivity {
     @BindView(R.id.version_tv)
     TextView versionTv;
 
-    UpdateManager updateManager;
+//    UpdateManager updateManager;
 
 
     @Override
@@ -124,17 +124,17 @@ public class B30SysSettingActivity extends WatchBaseActivity {
 
     //更新APP
     private void updateApp(){
-        updateManager =
-                new UpdateManager(this, URLs.HTTPs + URLs.bozlun_health_url);
-        updateManager.checkForUpdate(true);
+//        updateManager =
+//                new UpdateManager(this, URLs.HTTPs + URLs.bozlun_health_url);
+//        updateManager.checkForUpdate(true);
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(updateManager != null)
-            updateManager.destoryUpdateBroad();
+//        if(updateManager != null)
+//            updateManager.destoryUpdateBroad();
     }
 
     public String getVersionName() throws Exception {

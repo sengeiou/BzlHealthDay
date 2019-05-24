@@ -4,7 +4,7 @@
     android:id="@+id/b30CusHeartLin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginTop="@dimen/size_10"
     android:background="@drawable/b30_sport_chart_select"
     android:orientation="vertical">
 
@@ -13,49 +13,54 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="-15dp">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/size_10"
-            android:gravity="center"
-            android:text="今日 心率统计"
-            android:textColor="#61D9F5"
-            android:textSize="17sp" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/tmp_heartLin"
-            android:background="@mipmap/ic_b30_sport_heart" />
-
         <LinearLayout
             android:id="@+id/tmp_heartLin"
+            android:layout_margin="@dimen/size_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_margin="@dimen/size_5"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/size_60"
+                android:layout_height="@dimen/size_40"
+                android:src="@mipmap/ic_b30_sport_heart" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="今日 心率统计"
+                android:textColor="#FF949496"
+                android:textSize="17sp" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="0dp"/>
 
             <TextView
                 android:id="@+id/lastTimeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="最近 --:--"
-                android:textColor="#61D9F5" />
+                android:text="最近 --:-- "
+                android:textColor="#FF949496" />
 
             <TextView
                 android:id="@+id/b30HeartValueTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="--"
-                android:textColor="#61D9F5" />
+                android:text=""
+                android:textColor="#FF949496" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="0dp"/>
 
         </LinearLayout>
 
@@ -69,8 +74,8 @@
         android:paddingLeft="@dimen/size_5"
         android:paddingRight="@dimen/size_5"
         app:parentHeight="180dp"
-        app:pointColor="#FF307E"
-        app:heartLineColor="#F5BED3"
+        app:pointColor="#e53f52"
+        app:heartLineColor="#ecb1ba"
         app:radioStroke="@dimen/size_3"
         app:recfColor="#DCEDF5" />
     <!--app:timeStroke="@dimen/text_size_30"-->
@@ -90,7 +95,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="00:00"
-            android:textColor="#61D9F5"
+            android:textColor="#17AAE2"
             android:textSize="@dimen/sp_12" />
 
         <TextView

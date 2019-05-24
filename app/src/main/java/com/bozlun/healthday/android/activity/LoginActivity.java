@@ -146,12 +146,12 @@ public class LoginActivity extends BaseActivity implements Callback, PlatformAct
 
     @BindView(R.id.username)
     EditText username;
-    @BindView(R.id.username_input_logon)
-    TextInputLayout usernameInput;
+//    @BindView(R.id.username_input_logon)
+//    TextInputLayout usernameInput;
     @BindView(R.id.password_logon)
     EditText password;
-    @BindView(R.id.textinput_password)
-    TextInputLayout textinputPassword;
+//    @BindView(R.id.textinput_password)
+//    TextInputLayout textinputPassword;
     @BindView(R.id.xinlang_iv)
     RelativeLayout weiboIv;
     @BindView(R.id.qq_iv)
@@ -260,7 +260,7 @@ public class LoginActivity extends BaseActivity implements Callback, PlatformAct
 //        }
 //        guiwai.setVisibility(View.VISIBLE);
 //        guolei.setVisibility(View.GONE);
-        usernameInput.setHint(getResources().getString(R.string.input_email));
+        //usernameInput.setHint(getResources().getString(R.string.input_email));
         //请求读写SD卡的权限
         AndPermission.with(LoginActivity.this)
                 .runtime()

@@ -260,7 +260,7 @@
             -->
             <meta-data
                 android:name="AuthorizeAdapter"
-                android:value="com.bozlun.health.android.adpter.MyAdapter" />
+                android:value="com.bozlun.healthday.android.adpter.MyAdapter" />
 
             <!--
                QZoneWebShareAdapter表示一个继承自cn.sharesdk.tencent.qzone.QZoneWebShareAdapter

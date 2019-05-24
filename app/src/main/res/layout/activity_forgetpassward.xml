@@ -118,8 +118,7 @@
                         android:drawablePadding="@dimen/size_10"
                         android:hint="@string/input_name"
                         android:maxLines="1"
-                        android:singleLine="true"
-                        android:textColorHint="@color/colorAccent" />
+                        android:singleLine="true" />
 
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
@@ -174,7 +173,7 @@
                     android:padding="@dimen/size_5"
                     android:textAllCaps="false"
                     android:text="@string/send_code"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/new_colorAccent" />
 
             </RelativeLayout>
 

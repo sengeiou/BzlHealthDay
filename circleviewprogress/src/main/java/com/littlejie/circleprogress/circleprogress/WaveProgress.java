@@ -171,7 +171,7 @@ public class WaveProgress extends View {
         // 设置绘制文字大小
         mHintPaint.setTextSize(MiscUtil.dipToPx(context,20));
         // 设置画笔颜色
-        mHintPaint.setColor(Color.WHITE);
+        mHintPaint.setColor(Color.BLACK);
         // 从中间向两边绘制，不需要再次计算文字
         mHintPaint.setTextAlign(Paint.Align.CENTER);
 

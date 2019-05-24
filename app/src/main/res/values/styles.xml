@@ -247,9 +247,10 @@
     <style name="style_block">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">200dp</item>
-        <item name="android:layout_marginBottom">15dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">@dimen/size_10</item>
+        <!--<item name="android:layout_marginBottom">15dp</item>-->
+        <!--<item name="android:layout_marginLeft">10dp</item>-->
+        <!--<item name="android:layout_marginRight">10dp</item>-->
         <item name="android:orientation">vertical</item>
     </style>
 
@@ -270,16 +271,16 @@
         <item name="android:singleLine">true</item>
         <item name="android:textSize">17sp</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">#FF949496</item>
     </style>
 
     <!--块内容中头部标题中最右边的图片样式-->
     <style name="style_block_toptitle_img">
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_width">@dimen/size_150</item>
-        <item name="android:layout_height">@dimen/sp_25</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">26dp</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:src">@drawable/icon_click_into</item>
+        <item name="android:src">@mipmap/icon_click_into</item>
     </style>
 
     <!--块内容中底部左侧状态样式，对应(轻度，安静....)-->
@@ -303,15 +304,15 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:textSize">10dp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:singleLine">true</item>
         <item name="android:text">●</item>
     </style>
     <!--块内容中底部状态样式中文本样式，对应（轻度，安静，正常，多动，异常，躁动...）-->
     <style name="style_block_bottom_state_tv" parent="style_block_bottom_state_dot">
         <item name="android:layout_marginLeft">3dp</item>
-        <item name="android:textSize">12dp</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#FF949496</item>
     </style>
     <!--块内容中底部的Tip样式，对应（[0-20]轻度 ....）-->
     <style name="style_block_bottom_tip">
@@ -324,6 +325,7 @@
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:padding">3dp</item>
+        <item name="android:textColor">#FF949496</item>
         <item name="android:singleLine">true</item>
         <item name="android:textSize">10sp</item>
         <item name="android:visibility">visible</item>

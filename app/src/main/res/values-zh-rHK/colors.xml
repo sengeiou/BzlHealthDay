@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="b30_sport">#f2f2f2</color>
+    <color name="b30_sport">#eff1f4</color>
     <color name="dark_red">#ee7c040f</color>
     <color name="sec_time_color">#24accc</color>
 
@@ -40,7 +40,7 @@
     <color name="btn_txt_background">#2b2b2b</color>
     <color name="linear_border">#CCCCCC</color>
     <color name="blue_bg">#F2F2F2</color><!-- 灰蓝 -->
-    <color name="new_colorAccent">#17E1EB</color>
+    <color name="new_colorAccent">#FF207F6F</color><!-- 17E1EB-->
     <color name="new_deep_colorAccent">#1ca3c6</color>
     <color name="mpc_start_color">#65cce7</color>
     <color name="mpc_end_color">#1ca3c6</color>

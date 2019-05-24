@@ -14,6 +14,7 @@
 
 
         <LinearLayout
+            android:background="@color/b30_sport"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/size_10"
@@ -24,7 +25,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#eeeeee"
                 android:paddingLeft="@dimen/size_10"
                 android:paddingTop="@dimen/size_5"
                 android:paddingBottom="@dimen/size_5"
@@ -33,8 +33,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <RelativeLayout
                 android:id="@+id/b31DeviceMsgRel"
@@ -67,8 +66,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <RelativeLayout
                 android:id="@+id/b31DeviceAlarmRel"
@@ -101,14 +99,18 @@
             <View
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1"/>
 
 
-            <View
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_25"
-                android:background="#eeeeee" />
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/size_10"
+                android:paddingTop="@dimen/size_5"
+                android:paddingBottom="@dimen/size_5"
+                android:text="设置"
+                android:textSize="@dimen/sp_14" />
 
             <RelativeLayout
                 android:id="@+id/b31DeviceSportRel"
@@ -152,8 +154,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1"/>
 
             <RelativeLayout
                 android:id="@+id/b31DeviceSleepRel"
@@ -197,8 +198,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <RelativeLayout
                 android:id="@+id/b31DeviceUnitRel"
@@ -242,8 +242,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <LinearLayout
                 style="@style/B30DeviceRelStyle"
@@ -321,7 +320,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#eeeeee"
                 android:paddingLeft="@dimen/size_10"
                 android:paddingTop="@dimen/size_5"
                 android:paddingBottom="@dimen/size_5"
@@ -330,8 +328,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
 
 
@@ -366,8 +363,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <RelativeLayout
                 android:id="@+id/b31DevicePtoRel"
@@ -399,8 +395,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <RelativeLayout
                 android:id="@+id/set_findeDevice"
@@ -434,8 +429,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
 
             <!--  不需要的-->
@@ -471,8 +465,7 @@
             <View
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/chang_white" />
+                android:layout_height="1dp"/>
 
 
             <RelativeLayout
@@ -507,8 +500,7 @@
             <View
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
             <RelativeLayout
                 android:id="@+id/b31DeviceDfuRel"
@@ -540,8 +532,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
 
             <RelativeLayout
@@ -575,8 +566,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_1"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_1" />
 
 
             <RelativeLayout
@@ -622,7 +612,6 @@
                 android:textColor="@color/white" />
 
             <View
-                android:background="#eeeeee"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_20" />
 

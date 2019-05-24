@@ -130,9 +130,9 @@ public class SPMarkerView extends MarkerView {
         circlePaint.setAntiAlias(true);
         circlePaint.setColor(Color.WHITE);
         circlePaint.setStrokeWidth(3f);
-        canvas.drawCircle(posX, posY, 12, circlePaint);
+        canvas.drawCircle(posX, posY, 13, circlePaint);
         circlePaint.setColor(getRoundColor(type, yValue, timeValue));
-        canvas.drawCircle(posX, posY, 8, circlePaint);
+        canvas.drawCircle(posX, posY, 9, circlePaint);
     }
 
     public void setData(List<Map<String, Float>> listData) {

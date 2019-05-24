@@ -156,10 +156,12 @@
                 android:orientation="horizontal">
 
 
+                <!--android:background="#ECA83D"-->
                 <TextView
-                    android:background="#ECA83D"
+                    android:background="@color/new_colorAccent"
                     android:id="@+id/herLerzeoTv"
                     android:layout_width="0dp"
+                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"

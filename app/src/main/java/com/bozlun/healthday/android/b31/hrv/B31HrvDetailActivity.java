@@ -352,6 +352,9 @@ public class B31HrvDetailActivity extends WatchBaseActivity {
 
         ChartViewUtil chartViewUtil = new ChartViewUtil(b31HrvDetailTopChart, mMarkviewHrv, true,
                 CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV);
+
+        chartViewUtil.setxColor(Color.parseColor("#FF949496"));
+        chartViewUtil.setNoDataColor(Color.parseColor("#FF949496"));
         chartViewUtil.updateChartView(tenMinuteData);
         mMarkviewHrv.setData(tenMinuteData);
         closeLoadingDialog();
@@ -466,13 +469,15 @@ public class B31HrvDetailActivity extends WatchBaseActivity {
         clearAll();
         switch (code) {
             case 0:
-                herLerzeoTv.setBackgroundColor(Color.parseColor("#ECA83D"));
+//                herLerzeoTv.setBackgroundColor(Color.parseColor("#ECA83D"));
+                herLerzeoTv.setBackgroundColor(getResources().getColor(R.color.new_colorAccent));
                 herLerzeoTv.setTextColor(Color.WHITE);
                 hrvLerozenLin.setVisibility(View.VISIBLE);
                 hrvListDataConLy.setVisibility(View.GONE);
                 break;
             case 1:
-                herDataTv.setBackgroundColor(Color.parseColor("#ECA83D"));
+//                herDataTv.setBackgroundColor(Color.parseColor("#ECA83D"));
+                herLerzeoTv.setBackgroundColor(getResources().getColor(R.color.new_colorAccent));
                 herDataTv.setTextColor(Color.WHITE);
                 hrvLerozenLin.setVisibility(View.GONE);
                 hrvListDataConLy.setVisibility(View.VISIBLE);

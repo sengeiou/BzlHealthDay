@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBEBEB"
+    android:background="@color/b30_sport"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/ic_run_gps_tpo">
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:background="@color/new_colorAccent">
+        <!--android:background="@mipmap/ic_run_gps_tpo"-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_60"
+            android:layout_alignParentBottom="true"
+            android:alpha="0.4"
+            android:background="@mipmap/icon_b18i_minetop_botm" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,6 +135,8 @@
             android:padding="@dimen/size_5"
             android:src="@mipmap/image_his_data"
             android:visibility="gone" />
+
+
     </RelativeLayout>
 
 
@@ -204,25 +215,55 @@
         android:background="#999999"
         tools:ignore="Suspicious0dp" />
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/watch_runSwipe"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/today_data_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/image_nomal_today" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/commentRunRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/size_62"
+                android:visibility="visible" />
+
+        </FrameLayout>
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="62dp"
-        android:layout_weight="1"
-        android:background="@color/chang_white"
+        android:layout_weight="1.5"
         android:orientation="vertical">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/watch_runSwipe"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/chang_white"
+                android:background="@color/white"
                 android:gravity="center">
 
 
@@ -237,6 +278,7 @@
                     android:id="@+id/commentRunRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/size_62"
                     android:visibility="visible" />
 
             </FrameLayout>
@@ -245,7 +287,7 @@
         </android.support.v4.widget.SwipeRefreshLayout>
 
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </LinearLayout>

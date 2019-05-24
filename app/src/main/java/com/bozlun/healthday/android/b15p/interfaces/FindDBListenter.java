@@ -1,15 +1,12 @@
 package com.bozlun.healthday.android.b15p.interfaces;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
-import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.LogTestUtil;
 import com.bozlun.healthday.android.MyApp;
-import com.bozlun.healthday.android.activity.MyPersonalActivity;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAllStepDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PHeartDB;
@@ -22,7 +19,6 @@ import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.suchengkeji.android.w30sblelibrary.bean.servicebean.W30S_SleepDataItem;
-import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.tjdL4.tjdmain.L4M;
 import com.veepoo.protocol.model.datas.HRVOriginData;
 import com.veepoo.protocol.model.datas.Spo2hOriginData;
@@ -30,10 +26,11 @@ import com.veepoo.protocol.model.datas.TimeData;
 
 import org.litepal.LitePal;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -541,6 +538,66 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         return jsonString;
     }
 
+
+    /**
+     * 获取 资源文件中的json数据
+     *
+     * @param context
+     * @return
+     */
+    public static List<B31HRVBean> getStates(Context context, String jsonFileName) {
+        StringBuilder newstringBuilder = new StringBuilder();
+        InputStream inputStream = null;
+        try {
+            inputStream = context.getResources().getAssets().open(jsonFileName + ".json");
+            InputStreamReader isr = new InputStreamReader(inputStream);
+            BufferedReader reader = new BufferedReader(isr);
+            String jsonLine;
+            while ((jsonLine = reader.readLine()) != null) {
+                newstringBuilder.append(jsonLine);
+            }
+            reader.close();
+            isr.close();
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String result = newstringBuilder.toString();
+        return new Gson().fromJson(result, new TypeToken<List<B31HRVBean>>() {
+        }.getType());
+
+
+//        InputStream is = null;
+//        ByteArrayOutputStream bos = null;
+//        try {
+//            is = context.getAssets().open("area.json");
+//            bos = new ByteArrayOutputStream();
+//            byte[] bytes = new byte[4 * 1024];
+//            int len = 0;
+//            while ((len = is.read(bytes)) != -1) {
+//                bos.write(bytes, 0, len);
+//            }
+//            final String json = new String(bos.toByteArray());
+//            final Areas areas = JSON.parseObject(json, Areas.class);
+//            final List<State> states = areas.getStates();
+//
+//            return states;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (is != null)
+//                    is.close();
+//                if (bos != null)
+//                    bos.close();
+//            } catch (IOException e) {
+//                Log.e(TAG, "getStates", e);
+//            }
+//        }
+//        return null;
+    }
+
+
     /**
      * 设置模拟数据-----在这里可以模拟数据  HRV
      *
@@ -548,6 +605,102 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
      * @param date
      */
     private void setHRvDatas(String mac, String date) {
+
+        List<B31HRVBean> b15p_hrv = null;
+        Random random = new Random();
+
+
+        String where = "bleMac = ? and dateStr = ?";
+        /**
+         * 测试时加上这句
+         */
+        //LitePal.deleteAll(B31HRVBean.class);
+        List<B31HRVBean> hrvBeanList = LitePal.where(where, mac, date).find(B31HRVBean.class);
+
+        if (hrvBeanList == null || hrvBeanList.isEmpty()) {
+            if (hrvBeanList == null) hrvBeanList = new ArrayList<>();
+            int rDHearts = random.nextInt(8);
+            switch (rDHearts) {
+                case 0:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_01");
+                    break;
+                case 1:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_02");
+                    break;
+                case 2:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_03");
+                    break;
+                case 3:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_04");
+                    break;
+                case 4:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_05");
+                    break;
+                case 5:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_06");
+                    break;
+                case 6:
+                    b15p_hrv = getStates(MyApp.getContext(), "b15p_hrv_07");
+                    break;
+            }
+
+
+            if (b15p_hrv != null && !b15p_hrv.isEmpty()) {
+
+                int hour = 0;
+                //模拟数据可以在这里，之后再回调出去回去
+                String[] split = date.split("[-]");
+                Map<String, List<B31HRVBean>> hrvMap = new HashMap<>();
+
+                for (int i = 0; i < b15p_hrv.size(); i++) {
+                    B31HRVBean oldb31HRVBean = b15p_hrv.get(i);
+
+                    //Log.e(TAG, "  数据 改变前   " + oldb31HRVBean.toString());
+                    if (oldb31HRVBean != null) {
+                        String hrvDataStr = oldb31HRVBean.getHrvDataStr();
+
+                        HRVOriginData hrvOriginData = gson.fromJson(hrvDataStr, HRVOriginData.class);
+                        HRVOriginData newHrvOriginData = new HRVOriginData();
+                        newHrvOriginData.setDate(date);
+                        TimeData timeData = new TimeData();
+                        timeData.setYear(!WatchUtils.isEmpty(split[0]) ? Integer.valueOf(split[0]) : 0);
+                        timeData.setMonth(!WatchUtils.isEmpty(split[1]) ? Integer.valueOf(split[1]) : 0);
+                        timeData.setDay(!WatchUtils.isEmpty(split[2]) ? Integer.valueOf(split[2]) : 0);
+                        if (i % 60 == 0) {
+                            hour = i / 60;
+                        }
+                        int minute = i % 60;
+                        timeData.setHour(hour);
+                        timeData.setMinute(minute);
+                        timeData.setSecond(0);
+                        newHrvOriginData.setmTime(timeData);
+                        newHrvOriginData.setCurrentPackNumber(hrvOriginData.getCurrentPackNumber());
+                        newHrvOriginData.setAllCurrentPackNumber(hrvOriginData.getAllCurrentPackNumber());
+                        newHrvOriginData.setRate(hrvOriginData.getRate());
+                        newHrvOriginData.setHrvValue(hrvOriginData.getHrvValue());
+                        newHrvOriginData.setTempOne(hrvOriginData.getTempOne());
+                        newHrvOriginData.setHrvType(hrvOriginData.getHrvType());
+
+
+                        B31HRVBean newB31HRVBean = new B31HRVBean();
+                        newB31HRVBean.setDateStr(date);
+                        newB31HRVBean.setBleMac(mac);
+                        newB31HRVBean.setHrvDataStr(gson.toJson(newHrvOriginData));
+
+
+                        //Log.e(TAG, "  数据 改变后   " + newB31HRVBean.toString());
+                        hrvBeanList.add(newB31HRVBean);
+                    }
+                }
+
+                hrvMap.put("today", hrvBeanList);
+                saveHRVToDBServer(hrvMap);
+                //LogTestUtil.e(TAG, "  HRV  完整数据  " + new_b15p_hrv);
+            }
+        }
+
+        changeDBListenter.updataHrvDataToUIListenter(hrvBeanList);
+
         // B31HRVBean{dateStr='2019-05-18', bleMac='E9:37:C4:E7:28:D8',
         // hrvDataStr='
         // {"allCurrentPackNumber":420,
@@ -559,181 +712,181 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         // "rate":"100,98,99,107,106,100,103,103,99,103",
         // "tempOne":10}'}
 
-        String where = "bleMac = ? and dateStr = ?";
-        /**
-         * 测试时加上这句
-         */
-        LitePal.deleteAll(B31HRVBean.class);
-        List<B31HRVBean> hrvBeanList = LitePal.where(where, mac, date).find(B31HRVBean.class);
-//        Log.e(TAG, "=====HRV  数据是否为空  " + ((hrvBeanList == null || hrvBeanList.isEmpty()) ? "是" : "否"));
-        if (hrvBeanList == null || hrvBeanList.isEmpty()) {
-            if (hrvBeanList == null) hrvBeanList = new ArrayList<>();
-
-
-            //模拟数据可以在这里，之后再回调出去回去
-            String[] split = date.split("[-]");
-            //模拟数据的工具
-            Random random = new Random();
-            int hour = 0;
-            Map<String, List<B31HRVBean>> hrvMap = new HashMap<>();
-            /**
-             * 随机选择HRV图的绘制范围
-             */
-            int ra = random.nextInt(3);
-
-            /**
-             * 随机选择心率取值的范围
-             */
-            int raH = random.nextInt(10);
-
-            for (int i = 0; i < 420; i++) {
-                HRVOriginData mHRVOriginData = new HRVOriginData();
-                mHRVOriginData.setAllCurrentPackNumber(420);//所有数据包的总和
-                mHRVOriginData.setCurrentPackNumber(420);//当前数据包的位置
-                mHRVOriginData.setDate(date);
-                mHRVOriginData.setHrvType(0);
-
-
-                /**
-                 * 模拟心率数据
-                 */
-                int rDHrvValue = getNum(random, 55, 80);
-                String m = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.USER_SEX, "M");
-                switch (raH) {
-                    case 0://正常情况下的心率
-                        if (!WatchUtils.isEmpty(m)) {
-                            if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 55, 80);
-                            } else {
-                                rDHrvValue = getNum(random, 50, 80);
-                            }
-                        }
-                        break;
-                    case 1://偏高
-                        if (!WatchUtils.isEmpty(m)) {
-                            if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 60, 80);
-                            } else {
-                                rDHrvValue = getNum(random, 55, 80);
-                            }
-                        }
-                        break;
-                    case 2://偏低
-                        if (!WatchUtils.isEmpty(m)) {
-                            if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 50, 70);
-                            } else {
-                                rDHrvValue = getNum(random, 45, 60);
-                            }
-                        }
-                        break;
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9://正常情况下的心率-----这些增加正常的高几率
-                        if (!WatchUtils.isEmpty(m)) {
-                            if (m.equals("M") || m.equals("男")) {
-                                rDHrvValue = getNum(random, 55, 80);
-                            } else {
-                                rDHrvValue = getNum(random, 50, 80);
-                            }
-                        }
-                        break;
-                }
-
-                mHRVOriginData.setHrvValue(rDHrvValue);
-                TimeData timeData = new TimeData();
-                timeData.setYear(!WatchUtils.isEmpty(split[0]) ? Integer.valueOf(split[0]) : 0);
-                timeData.setMonth(!WatchUtils.isEmpty(split[1]) ? Integer.valueOf(split[1]) : 0);
-                timeData.setDay(!WatchUtils.isEmpty(split[2]) ? Integer.valueOf(split[2]) : 0);
-                if (i % 60 == 0) {
-                    hour = i / 60;
-                }
-                int minute = i % 60;
-                timeData.setHour(hour);
-                timeData.setMinute(minute);
-                timeData.setSecond(0);
-                mHRVOriginData.setmTime(timeData);
-
-
-                String ratr = "";
-                switch (ra) {
-                    case 0:
-                        int rDRate11 = getNum(random, 60, 70);
-                        int rDRate21 = getNum(random, 65, 78);
-                        int rDRate31 = getNum(random, 70, 86);
-                        int rDRate41 = getNum(random, 75, 94);
-                        int rDRate51 = getNum(random, 80, 100);
-                        int rDRate61 = getNum(random, 80, 100);
-                        int rDRate71 = getNum(random, 75, 94);
-                        int rDRate81 = getNum(random, 70, 86);
-                        int rDRate91 = getNum(random, 65, 78);
-                        int rDRate101 = getNum(random, 60, 70);
-                        ratr = rDRate11 + "," + rDRate21 + "," + rDRate31 + "," + rDRate41 + "," + rDRate51 + ","
-                                + rDRate61 + "," + rDRate71 + "," + rDRate81 + "," + rDRate91 + "," + rDRate101;
-                        break;
-                    case 1:
-                        int rDRate12 = getNum(random, 60, 70);
-                        int rDRate22 = getNum(random, 60, 78);
-                        int rDRate32 = getNum(random, 60, 86);
-                        int rDRate42 = getNum(random, 60, 94);
-                        int rDRate52 = getNum(random, 60, 100);
-                        int rDRate62 = getNum(random, 60, 100);
-                        int rDRate72 = getNum(random, 60, 94);
-                        int rDRate82 = getNum(random, 60, 86);
-                        int rDRate92 = getNum(random, 60, 78);
-                        int rDRate102 = getNum(random, 60, 70);
-                        ratr = rDRate12 + "," + rDRate22 + "," + rDRate32 + "," + rDRate42 + "," + rDRate52 + ","
-                                + rDRate62 + "," + rDRate72 + "," + rDRate82 + "," + rDRate92 + "," + rDRate102;
-                        break;
-                    case 2:
-                        int rDRate13 = getNum(random, 50, 90);
-                        int rDRate23 = getNum(random, 50, 90);
-                        int rDRate33 = getNum(random, 60, 90);
-                        int rDRate43 = getNum(random, 60, 90);
-                        int rDRate53 = getNum(random, 70, 90);
-                        int rDRate63 = getNum(random, 70, 90);
-                        int rDRate73 = getNum(random, 70, 90);
-                        int rDRate83 = getNum(random, 70, 90);
-                        int rDRate93 = getNum(random, 50, 70);
-                        int rDRate103 = getNum(random, 50, 70);
-
-                        ratr = rDRate13 + "," + rDRate23 + "," + rDRate33 + "," + rDRate43 + "," + rDRate53 + ","
-                                + rDRate63 + "," + rDRate73 + "," + rDRate83 + "," + rDRate93 + "," + rDRate103;
-                        break;
-                }
-
-
-//                Log.e(TAG, "====EEE " + ratr);
-                mHRVOriginData.setRate(ratr);
-//                String ratr = "";
-//                for (int j = 0; j < 10; j++) {
-//                    int rDRate = getNum(random, 60, 95);
-//                    ratr += rDRate + ",";
+//        String where = "bleMac = ? and dateStr = ?";
+//        /**
+//         * 测试时加上这句
+//         */
+//        LitePal.deleteAll(B31HRVBean.class);
+//        List<B31HRVBean> hrvBeanList = LitePal.where(where, mac, date).find(B31HRVBean.class);
+////        Log.e(TAG, "=====HRV  数据是否为空  " + ((hrvBeanList == null || hrvBeanList.isEmpty()) ? "是" : "否"));
+//        if (hrvBeanList == null || hrvBeanList.isEmpty()) {
+//            if (hrvBeanList == null) hrvBeanList = new ArrayList<>();
+//
+//
+//            //模拟数据可以在这里，之后再回调出去回去
+//            String[] split = date.split("[-]");
+//            //模拟数据的工具
+//            Random random = new Random();
+//            int hour = 0;
+//            Map<String, List<B31HRVBean>> hrvMap = new HashMap<>();
+//            /**
+//             * 随机选择HRV图的绘制范围
+//             */
+//            int ra = random.nextInt(3);
+//
+//            /**
+//             * 随机选择心率取值的范围
+//             */
+//            int raH = random.nextInt(10);
+//
+//            for (int i = 0; i < 420; i++) {
+//                HRVOriginData mHRVOriginData = new HRVOriginData();
+//                mHRVOriginData.setAllCurrentPackNumber(420);//所有数据包的总和
+//                mHRVOriginData.setCurrentPackNumber(420);//当前数据包的位置
+//                mHRVOriginData.setDate(date);
+//                mHRVOriginData.setHrvType(0);
+//
+//
+//                /**
+//                 * 模拟心率数据
+//                 */
+//                int rDHrvValue = getNum(random, 55, 80);
+//                String m = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.USER_SEX, "M");
+//                switch (raH) {
+//                    case 0://正常情况下的心率
+//                        if (!WatchUtils.isEmpty(m)) {
+//                            if (m.equals("M") || m.equals("男")) {
+//                                rDHrvValue = getNum(random, 55, 80);
+//                            } else {
+//                                rDHrvValue = getNum(random, 50, 80);
+//                            }
+//                        }
+//                        break;
+//                    case 1://偏高
+//                        if (!WatchUtils.isEmpty(m)) {
+//                            if (m.equals("M") || m.equals("男")) {
+//                                rDHrvValue = getNum(random, 60, 80);
+//                            } else {
+//                                rDHrvValue = getNum(random, 55, 80);
+//                            }
+//                        }
+//                        break;
+//                    case 2://偏低
+//                        if (!WatchUtils.isEmpty(m)) {
+//                            if (m.equals("M") || m.equals("男")) {
+//                                rDHrvValue = getNum(random, 50, 70);
+//                            } else {
+//                                rDHrvValue = getNum(random, 45, 60);
+//                            }
+//                        }
+//                        break;
+//                    case 3:
+//                    case 4:
+//                    case 5:
+//                    case 6:
+//                    case 7:
+//                    case 8:
+//                    case 9://正常情况下的心率-----这些增加正常的高几率
+//                        if (!WatchUtils.isEmpty(m)) {
+//                            if (m.equals("M") || m.equals("男")) {
+//                                rDHrvValue = getNum(random, 55, 80);
+//                            } else {
+//                                rDHrvValue = getNum(random, 50, 80);
+//                            }
+//                        }
+//                        break;
 //                }
-//                Log.e(TAG, "====EEE " + ratr.substring(0, ratr.length() - 1));
-//                mHRVOriginData.setRate(ratr.substring(0, ratr.length() - 1));
-
-                /**
-                 * 模拟温度，原始数据里面只出现  9   和 10
-                 */
-                int rDTempOne = getNum(random, 9, 10);
-                mHRVOriginData.setTempOne(rDTempOne);
-
-                B31HRVBean b31Spo2hBean = new B31HRVBean();
-                b31Spo2hBean.setBleMac(MyApp.getInstance().getMacAddress());
-                b31Spo2hBean.setDateStr(mHRVOriginData.getDate());
-                b31Spo2hBean.setHrvDataStr(gson.toJson(mHRVOriginData));
-                hrvBeanList.add(b31Spo2hBean);
-            }
-            hrvMap.put("today", hrvBeanList);
-            saveHRVToDBServer(hrvMap);
-        }
-
-        changeDBListenter.updataHrvDataToUIListenter(hrvBeanList);
+//
+//                mHRVOriginData.setHrvValue(rDHrvValue);
+//                TimeData timeData = new TimeData();
+//                timeData.setYear(!WatchUtils.isEmpty(split[0]) ? Integer.valueOf(split[0]) : 0);
+//                timeData.setMonth(!WatchUtils.isEmpty(split[1]) ? Integer.valueOf(split[1]) : 0);
+//                timeData.setDay(!WatchUtils.isEmpty(split[2]) ? Integer.valueOf(split[2]) : 0);
+//                if (i % 60 == 0) {
+//                    hour = i / 60;
+//                }
+//                int minute = i % 60;
+//                timeData.setHour(hour);
+//                timeData.setMinute(minute);
+//                timeData.setSecond(0);
+//                mHRVOriginData.setmTime(timeData);
+//
+//
+//                String ratr = "";
+//                switch (ra) {
+//                    case 0:
+//                        int rDRate11 = getNum(random, 60, 70);
+//                        int rDRate21 = getNum(random, 65, 78);
+//                        int rDRate31 = getNum(random, 70, 86);
+//                        int rDRate41 = getNum(random, 75, 94);
+//                        int rDRate51 = getNum(random, 80, 100);
+//                        int rDRate61 = getNum(random, 80, 100);
+//                        int rDRate71 = getNum(random, 75, 94);
+//                        int rDRate81 = getNum(random, 70, 86);
+//                        int rDRate91 = getNum(random, 65, 78);
+//                        int rDRate101 = getNum(random, 60, 70);
+//                        ratr = rDRate11 + "," + rDRate21 + "," + rDRate31 + "," + rDRate41 + "," + rDRate51 + ","
+//                                + rDRate61 + "," + rDRate71 + "," + rDRate81 + "," + rDRate91 + "," + rDRate101;
+//                        break;
+//                    case 1:
+//                        int rDRate12 = getNum(random, 60, 70);
+//                        int rDRate22 = getNum(random, 60, 78);
+//                        int rDRate32 = getNum(random, 60, 86);
+//                        int rDRate42 = getNum(random, 60, 94);
+//                        int rDRate52 = getNum(random, 60, 100);
+//                        int rDRate62 = getNum(random, 60, 100);
+//                        int rDRate72 = getNum(random, 60, 94);
+//                        int rDRate82 = getNum(random, 60, 86);
+//                        int rDRate92 = getNum(random, 60, 78);
+//                        int rDRate102 = getNum(random, 60, 70);
+//                        ratr = rDRate12 + "," + rDRate22 + "," + rDRate32 + "," + rDRate42 + "," + rDRate52 + ","
+//                                + rDRate62 + "," + rDRate72 + "," + rDRate82 + "," + rDRate92 + "," + rDRate102;
+//                        break;
+//                    case 2:
+//                        int rDRate13 = getNum(random, 50, 90);
+//                        int rDRate23 = getNum(random, 50, 90);
+//                        int rDRate33 = getNum(random, 60, 90);
+//                        int rDRate43 = getNum(random, 60, 90);
+//                        int rDRate53 = getNum(random, 70, 90);
+//                        int rDRate63 = getNum(random, 70, 90);
+//                        int rDRate73 = getNum(random, 70, 90);
+//                        int rDRate83 = getNum(random, 70, 90);
+//                        int rDRate93 = getNum(random, 50, 70);
+//                        int rDRate103 = getNum(random, 50, 70);
+//
+//                        ratr = rDRate13 + "," + rDRate23 + "," + rDRate33 + "," + rDRate43 + "," + rDRate53 + ","
+//                                + rDRate63 + "," + rDRate73 + "," + rDRate83 + "," + rDRate93 + "," + rDRate103;
+//                        break;
+//                }
+//
+//
+////                Log.e(TAG, "====EEE " + ratr);
+//                mHRVOriginData.setRate(ratr);
+////                String ratr = "";
+////                for (int j = 0; j < 10; j++) {
+////                    int rDRate = getNum(random, 60, 95);
+////                    ratr += rDRate + ",";
+////                }
+////                Log.e(TAG, "====EEE " + ratr.substring(0, ratr.length() - 1));
+////                mHRVOriginData.setRate(ratr.substring(0, ratr.length() - 1));
+//
+//                /**
+//                 * 模拟温度，原始数据里面只出现  9   和 10
+//                 */
+//                int rDTempOne = getNum(random, 9, 10);
+//                mHRVOriginData.setTempOne(rDTempOne);
+//
+//                B31HRVBean b31Spo2hBean = new B31HRVBean();
+//                b31Spo2hBean.setBleMac(MyApp.getInstance().getMacAddress());
+//                b31Spo2hBean.setDateStr(mHRVOriginData.getDate());
+//                b31Spo2hBean.setHrvDataStr(gson.toJson(mHRVOriginData));
+//                hrvBeanList.add(b31Spo2hBean);
+//            }
+//            hrvMap.put("today", hrvBeanList);
+//            saveHRVToDBServer(hrvMap);
+//        }
+//
+//        changeDBListenter.updataHrvDataToUIListenter(hrvBeanList);
     }
 
 
@@ -752,7 +905,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
         /**
          * 测试时加上这句
          */
-        LitePal.deleteAll(B31Spo2hBean.class);
+        //LitePal.deleteAll(B31Spo2hBean.class);
         List<B31Spo2hBean> b31Spo2hBeanList = LitePal.where(where, mac, date).find(B31Spo2hBean.class);
 //        Log.e(TAG, "=====SPO2  数据是否为空  " + ((b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) ? "是" : "否"));
         if (b31Spo2hBeanList == null || b31Spo2hBeanList.isEmpty()) {
@@ -876,20 +1029,33 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
     //保存HRV
     private void saveHRVToDBServer(Map<String, List<B31HRVBean>> resultHrvMap) {
         if (resultHrvMap != null && !resultHrvMap.isEmpty()) {
-            //今天的 直接保存
-            List<B31HRVBean> todayHrvList = resultHrvMap.get("today");
 
-            if (todayHrvList != null && !todayHrvList.isEmpty())
+
+            String where = "bleMac = ? and dateStr = ?";
+            String bleMac = WatchUtils.getSherpBleMac(MyApp.getContext());
+            String currDayStr = WatchUtils.getCurrentDate();
+
+            List<B31HRVBean> todayHrvList = resultHrvMap.get("today");
+            List<B31HRVBean> currHrvLt = LitePal.where(where, bleMac, currDayStr).find(B31HRVBean.class);
+            //Log.e(TAG,"-------今天currHrvLtsez="+currHrvLt.size());
+            if (currHrvLt == null || currHrvLt.isEmpty()) {
                 LitePal.saveAll(todayHrvList);
+            }
+
         }
     }
 
     //保存spo2数据
     private void saveSpo2Data(Map<String, List<B31Spo2hBean>> resultMap) {
         if (resultMap != null && !resultMap.isEmpty()) {
-            //今天
+            String where = "bleMac = ? and dateStr = ?";
+            String bleMac = WatchUtils.getSherpBleMac(MyApp.getContext());
+            String currDayStr = WatchUtils.getCurrentDate();
+
             List<B31Spo2hBean> todayLt = resultMap.get("today");
-            if (todayLt != null && !todayLt.isEmpty()) {
+            //查询一下是否存在
+            List<B31Spo2hBean> currList = LitePal.where(where, bleMac, currDayStr).find(B31Spo2hBean.class);
+            if (currList == null || currList.isEmpty()) {
                 LitePal.saveAll(todayLt);
             }
         }

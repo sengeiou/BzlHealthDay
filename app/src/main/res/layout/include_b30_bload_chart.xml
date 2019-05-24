@@ -24,24 +24,49 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:background="@mipmap/ic_b30_chart_bload"
-                android:layout_height="wrap_content" />
-
+                android:layout_width="@dimen/size_60"
+                android:src="@mipmap/ic_b30_chart_bload"
+                android:layout_height="@dimen/size_40" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="@string/bloodpressure"
+                android:text="今日血压统计"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="@dimen/sp_15"
-                android:textColor="#ffc27a"
+                android:textSize="17sp"
+                android:textColor="#FF949496"
                 android:layout_marginLeft="@dimen/size_10"
                 android:layout_height="wrap_content" />
 
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="0dp"/>
+
+            <TextView
+                android:id="@+id/bloadLastTimeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最近 --:-- "
+                android:textColor="#FF949496" />
+
+            <TextView
+                android:id="@+id/b30BloadValueTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF949496" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="0dp"/>
+
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_centerVertical="true"
@@ -65,17 +90,17 @@
                 android:textColor="#ffc27a"
                 android:layout_height="wrap_content" />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
     </RelativeLayout>
 
     <com.bozlun.healthday.android.b30.b30view.B30CusBloadView
         android:id="@+id/b30HomeBloadChart"
         android:layout_width="match_parent"
-        app:linPaintColor="#ffc27a"
-        app:timeColor="#ffc27a"
-        app:lowPointColor="#ffc27a"
-        app:highPointColor="#ffc27a"
+        app:linPaintColor="#f7a17b"
+        app:timeColor="#9a999a"
+        app:lowPointColor="#fd5201"
+        app:highPointColor="#fd5201"
         android:layout_height="@dimen/size_180" />
 
 

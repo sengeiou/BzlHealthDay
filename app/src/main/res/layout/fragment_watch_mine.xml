@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/b30_sport"
     android:orientation="vertical"
     android:scrollbars="none">
 
@@ -18,9 +18,13 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1.5"
-            android:background="@mipmap/h8_mine_bg"
+            android:background="@color/new_colorAccent"
             android:gravity="center"
             android:orientation="vertical">
+
+            <!--android:background="@mipmap/h8_mine_bg"-->
+            <!--@color/new_colorAccent-->
+
 
             <LinearLayout
                 android:layout_width="match_parent"

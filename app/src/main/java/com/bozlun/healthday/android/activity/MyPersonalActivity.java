@@ -1243,7 +1243,7 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
         Uri imageuri;
         if (Build.VERSION.SDK_INT >= 24) {
             imageuri = FileProvider.getUriForFile(MyPersonalActivity.this,
-                    "com.bozlun.health.android.fileprovider_racefitpro", //可以是任意字符串
+                    "com.bozlun.healthday.android.fileprovider_racefitpro", //可以是任意字符串
                     outputfile);
 //            imageuri = FileProvider.getUriForFile(MyPersonalActivity.this,
 //                    "com.guider.ringmiihx.fileprovider", //可以是任意字符串
@@ -1287,7 +1287,7 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
             if (Build.VERSION.SDK_INT >= 24) {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 imageUri = FileProvider.getUriForFile(MyPersonalActivity.this,
-                        "com.bozlun.health.android.fileprovider_racefitpro",
+                        "com.bozlun.healthday.android.fileprovider_racefitpro",
                         camerafile);
 //                imageUri = FileProvider.getUriForFile(MyPersonalActivity.this,
 //                        "com.guider.ringmiihx.fileprovider",

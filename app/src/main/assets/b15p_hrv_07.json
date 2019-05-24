@@ -1,0 +1,2522 @@
+[
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":1,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":83,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"49,72,72,72,77,81,82,77,79,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":2,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"81,86,79,79,76,76,82,83,82,78\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":3,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":70,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,80,79,80,78,79,78,78,78,79\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":4,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,78,78,80,80,91,91,118,79,79\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":5,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":70,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"79,81,79,79,81,80,77,75,72,78\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":6,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":55,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"75,80,76,77,87,92,94,80,78,78\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":7,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"81,79,80,80,75,73,75,82,66,57\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":8,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"70,80,81,80,116,90,77,68,72,64\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":9,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,80,78,76,92,108,87,79,84,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":10,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,84,84,84,84,84,72,76,84,79\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":11,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":98,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,88,85,85,82,84,92,78,76,77\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":12,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"68,68,77,102,102,112,101,80,92,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":13,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"75,80,99,105,71,73,79,82,78,80\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":14,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"73,73,74,73,74,66,82,85,85,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":15,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":95,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"77,82,81,83,83,83,71,71,71,71\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":16,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":71,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"72,80,78,83,80,68,68,51,60,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":17,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"76,64,66,67,69,69,64,65,66,72\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":18,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":83,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,80,64,66,77,83,83,82,82,68\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":19,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"65,65,65,117,105,88,72,83,80,78\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":20,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,103,84,82,83,81,84,79,79,80\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":21,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":135,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"71,69,69,70,86,97,92,106,101,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":22,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,82,82,77,78,73,78,89,82,79\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":23,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":96,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"71,71,71,63,63,63,63,70,74,74\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":24,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":92,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"78,59,82,61,64,50,51,82,82,82\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":25,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":81,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"60,64,72,77,94,94,84,80,86,81\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":26,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,89,89,95,116,110,105,116,90,81\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":27,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"56,74,73,73,78,95,91,73,77,80\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":28,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":100,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,84,75,75,75,75,75,81,87,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":29,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":98,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"71,80,82,81,82,82,79,84,82,82\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":30,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":52,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,97,97,97,100,100,112,112,100,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":31,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":88,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,87,84,83,82,76,83,85,86,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":32,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,90,86,90,91,88,82,85,92,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":33,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,88,92,91,91,94,86,91,92,81\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":34,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"78,84,83,82,82,82,83,90,89,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":35,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":76,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,80,80,88,81,90,86,82,81,76\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":36,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"79,85,83,83,79,80,92,90,82,86\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":37,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":66,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,91,86,80,85,80,80,88,86,85\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":38,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":58,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,85,87,94,84,88,88,88,88,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":39,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":72,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,84,84,87,80,92,82,84,84,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":40,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,86,71,71,80,83,86,86,86,79\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":41,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":59,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"77,88,88,88,93,91,87,88,85,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":42,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":68,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,85,82,79,80,88,90,90,88,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":43,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":86,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"85,84,90,120,126,118,82,87,87,81\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":44,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":76,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,87,85,88,89,82,86,86,86,75\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":45,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":67,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,88,90,84,84,80,79,85,86,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":46,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,80,82,82,94,94,93,92,90,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":47,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":51,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,91,91,90,89,84,90,87,88,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":48,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":70,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,92,93,88,85,81,78,95,98,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":49,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"83,88,85,74,64,64,64,86,91,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":50,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":86,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"71,72,72,76,75,81,81,84,86,86\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":51,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":58,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,72,63,63,67,67,69,107,105,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":52,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":94,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,81,84,82,82,86,93,76,54,54\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":53,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":121,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"69,84,67,76,78,88,86,90,91,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":54,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":70,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"111,108,108,89,85,87,80,66,63,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":55,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,103,103,97,98,79,84,99,95,111\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":56,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":117,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,95,92,57,67,84,127,127,148,132\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":57,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":71,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"132,93,78,76,76,79,83,83,88,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":58,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,90,88,89,91,92,90,90,90,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":59,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":68,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,76,82,91,88,89,92,88,86,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":60,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":0,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,84,86,90,86,83,88,84,90,83\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":61,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,86,90,86,85,89,89,92,90,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":62,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,89,90,87,88,88,84,90,92,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":63,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":53,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"66,92,92,83,89,87,89,85,84,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":64,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"79,113,106,87,88,83,86,90,90,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":65,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":50,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,87,87,88,88,84,88,86,89,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":66,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":45,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,87,86,93,93,88,91,87,85,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":67,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":66,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,84,91,88,94,88,86,91,91,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":68,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":77,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,91,90,91,94,89,91,88,86,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":69,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,90,86,86,90,92,92,87,89,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":70,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":71,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,98,98,96,92,91,102,95,92,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":71,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":91,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,90,84,87,97,90,90,87,90,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":72,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,91,96,97,88,94,95,95,90,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":73,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,88,91,92,91,93,92,88,92,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":74,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":83,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,90,88,93,97,92,90,91,88,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":75,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,91,90,92,89,92,90,93,92,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":76,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":91,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,94,92,89,84,90,91,90,92,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":77,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":86,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,90,89,90,92,88,90,89,90,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":78,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":92,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,90,91,88,92,89,96,90,92,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":79,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":86,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,99,94,89,90,89,90,91,90,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":80,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,96,91,93,92,90,90,89,98,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":81,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,90,91,91,91,91,93,91,93,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":82,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,91,86,91,93,92,94,94,90,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":83,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,93,93,90,98,93,90,89,90,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":84,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,90,94,93,90,93,91,91,88,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":85,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":68,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,90,94,88,91,92,89,90,91,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":86,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":79,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,92,88,88,92,92,90,93,92,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":87,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":66,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,88,89,94,88,91,89,95,90,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":88,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,91,91,88,88,90,87,95,88,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":89,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,88,88,85,91,88,89,88,87,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":90,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,88,86,86,87,72,60,75,86,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":91,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":42,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,90,91,90,93,92,93,92,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":92,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":28,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,94,90,88,91,93,88,90,92,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":93,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":50,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,89,90,90,92,90,88,89,88,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":94,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":28,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,89,92,91,91,89,90,91,93,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":95,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":35,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,92,90,90,91,90,92,92,90,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":96,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":44,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,88,90,88,90,91,88,90,94,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":97,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":41,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,89,90,92,88,88,90,90,90,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":98,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":42,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,89,87,86,90,90,87,93,91,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":99,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":49,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,90,88,96,90,92,96,88,88,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":100,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":52,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,89,93,90,89,88,92,90,88,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":101,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":47,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,88,87,90,91,92,89,87,96,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":102,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":50,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,88,90,92,90,90,88,88,92,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":103,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":44,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,94,87,88,89,93,91,90,88,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":104,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":49,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,88,90,88,88,88,89,89,88,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":105,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":50,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,89,89,88,87,90,88,89,96,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":106,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":0,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,91,91,91,91,91,91,91,91,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":107,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":43,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,91,91,72,72,72,69,65,69,72\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":108,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":40,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"76,76,76,76,76,76,76,76,76,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":109,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":0,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,98,98,98,98,98,98,98,98,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":110,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":133,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,98,103,102,102,102,102,102,97,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":111,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":59,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,90,85,86,92,92,87,90,88,85\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":112,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":60,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,83,84,86,90,91,89,91,92,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":113,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":51,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,84,89,91,85,87,85,82,82,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":114,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":52,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,80,86,81,85,82,87,82,86,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":115,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":55,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"72,76,75,74,84,83,83,84,89,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":116,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":53,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"85,86,84,96,93,91,86,84,91,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":117,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,88,88,88,89,89,78,80,96,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":118,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,83,84,102,92,89,85,87,87,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":119,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"85,82,84,94,91,88,85,84,89,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":120,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":51,\"mTime\":{\"day\":24,\"hour\":1,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"69,66,71,73,66,64,64,73,86,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":121,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,93,94,93,92,94,96,90,89,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":122,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,92,91,90,94,89,90,88,86,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":123,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":79,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,89,87,91,89,89,92,90,92,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":124,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,88,92,100,93,89,88,87,89,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":125,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,97,95,92,90,90,89,90,91,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":126,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"79,96,92,92,92,91,95,93,91,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":127,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":66,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,92,93,90,90,88,92,91,88,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":128,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":61,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,87,93,90,90,89,89,89,88,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":129,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":56,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,92,94,91,88,90,93,92,88,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":130,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,92,88,92,93,88,96,94,93,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":131,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":67,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,91,89,92,93,89,88,90,93,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":132,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":72,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,94,93,90,92,90,89,90,91,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":133,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":59,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,98,91,90,88,90,89,90,90,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":134,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,91,88,90,91,94,92,91,94,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":135,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":65,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,88,88,86,91,89,90,91,92,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":136,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,100,90,83,138,151,155,123,89,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":137,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,97,102,96,99,96,92,101,101,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":138,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":49,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,93,92,90,91,98,94,91,92,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":139,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":52,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,89,92,90,88,98,105,95,92,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":140,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":48,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,88,91,94,94,89,92,88,89,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":141,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":43,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,91,92,92,91,92,96,93,92,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":142,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":49,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,94,90,91,90,98,92,93,93,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":143,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":49,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,98,97,91,91,92,92,90,95,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":144,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,96,93,92,98,98,92,93,95,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":145,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":67,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,93,92,92,89,91,95,102,97,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":146,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,91,91,94,99,102,102,102,68\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":147,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":95,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"68,68,86,89,97,96,93,94,92,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":148,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":115,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,92,94,97,100,96,98,97,96,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":149,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":104,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,95,94,94,92,92,97,96,92,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":150,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":109,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,92,98,94,90,92,96,94,92,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":151,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":118,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,94,92,92,96,91,93,94,93,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":152,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":121,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,93,93,91,92,90,93,92,94,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":153,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":115,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,94,95,90,90,93,90,93,94,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":154,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":80,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,92,92,92,89,98,92,92,91,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":155,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":124,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,90,100,98,99,92,94,90,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":156,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,93,93,93,95,94,92,97,94,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":157,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":132,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,91,89,99,96,91,94,90,92,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":158,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":105,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,95,95,92,92,93,99,90,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":159,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":139,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,96,90,95,96,97,93,94,93,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":160,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":146,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,94,90,94,90,88,93,91,95,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":161,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":99,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,90,98,94,93,93,90,100,93,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":162,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":130,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,92,90,93,90,95,93,94,89,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":163,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":131,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,96,92,95,96,93,93,91,90,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":164,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":116,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,90,92,92,92,96,91,89,93,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":165,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":137,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,102,100,94,93,92,94,92,91,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":166,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":111,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,94,97,94,96,99,96,92,91,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":167,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,96,98,98,93,94,90,96,94,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":168,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":120,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,92,91,93,92,92,98,92,90,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":169,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":131,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,93,94,98,91,100,105,93,95,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":170,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":129,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,96,93,92,90,90,91,92,92,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":171,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,90,91,88,96,91,104,99,99,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":172,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":95,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,103,92,96,102,96,93,99,92,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":173,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":114,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,96,90,96,100,98,90,92,94,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":174,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":108,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,90,91,90,92,96,90,93,92,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":175,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":108,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,94,90,94,92,92,91,96,98,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":176,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":120,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,96,91,92,88,92,92,92,91,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":177,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":119,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,96,91,94,92,95,92,91,97,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":178,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,90,92,90,93,94,99,98,98,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":179,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":120,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,93,95,97,86,95,97,94,94,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":180,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":117,\"mTime\":{\"day\":24,\"hour\":2,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,96,90,92,91,91,100,95,96,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":181,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":117,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,94,95,96,91,97,96,96,98,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":182,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":113,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,93,96,94,94,92,94,98,94,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":183,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,93,99,93,83,77,65,74,84,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":184,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,98,96,97,90,87,88,97,94,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":185,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,106,97,94,92,93,93,92,95,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":186,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":57,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,84,87,85,89,93,91,91,87,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":187,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":77,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,96,94,93,93,92,90,80,80,72\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":188,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,88,64,87,89,88,84,101,94,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":189,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":105,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,87,87,88,94,97,94,90,93,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":190,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":92,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,91,88,91,89,85,92,90,90,86\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":191,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":117,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,82,82,84,80,84,91,86,80,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":192,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":118,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,91,80,79,84,86,87,84,83,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":193,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":132,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,81,81,83,84,85,83,81,83,82\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":194,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":116,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"72,84,81,82,85,87,89,78,78,80\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":195,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":118,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,82,82,80,83,81,83,81,80,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":196,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":59,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,93,92,89,87,82,85,85,62,68\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":197,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"78,91,89,86,85,95,92,88,86,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":198,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,83,88,86,90,90,88,90,90,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":199,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":88,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,89,88,86,85,86,74,79,89,86\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":200,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,92,95,96,93,92,90,90,84,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":201,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,86,85,85,85,85,86,86,86,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":202,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":70,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,85,84,88,86,85,86,88,83,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":203,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,86,84,85,88,85,93,87,89,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":204,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,90,92,89,88,88,84,96,90,86\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":205,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"89,89,74,78,77,77,84,84,86,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":206,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,91,90,95,98,102,92,90,97,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":207,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,102,98,95,94,94,103,103,103,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":208,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,90,90,90,90,88,91,98,93,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":209,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":61,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,92,92,94,95,92,94,93,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":210,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":79,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,90,92,94,106,109,105,96,90,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":211,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":79,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,93,93,91,95,95,94,92,91,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":212,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":72,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,94,94,97,97,98,98,96,91,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":213,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":71,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,94,94,97,98,102,104,99,95,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":214,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":72,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,92,97,97,96,94,93,96,95,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":215,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":66,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,81,91,100,96,93,93,94,107,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":216,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":66,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,92,91,88,87,89,93,90,89,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":217,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,95,92,104,92,90,90,84,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":218,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,92,90,90,90,107,95,94,97,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":219,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":81,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,93,90,88,90,94,88,94,86,86\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":220,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":98,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,98,88,88,84,93,95,92,93,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":221,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":108,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,98,93,103,94,92,89,92,93,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":222,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":113,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,96,90,91,94,89,92,94,89,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":223,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,95,93,93,92,93,94,92,90,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":224,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":130,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,103,99,95,92,93,103,98,93,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":225,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":124,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,94,94,93,92,91,90,92,93,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":226,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,92,90,94,93,89,100,114,99,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":227,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,95,90,101,94,92,84,84,93,111\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":228,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":137,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,94,99,100,98,98,96,91,93,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":229,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":138,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,92,92,100,97,98,93,94,94,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":230,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":122,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,96,97,93,94,95,95,93,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":231,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":94,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"85,93,92,99,97,99,98,98,100,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":232,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":118,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,96,92,96,97,94,94,96,92,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":233,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,94,91,94,95,101,98,93,103,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":234,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":114,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,101,99,97,96,93,96,95,94,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":235,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":121,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,98,90,93,93,96,89,91,91,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":236,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,94,93,104,94,95,99,101,100,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":237,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":109,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,95,96,103,96,96,92,102,100,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":238,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":130,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,92,93,89,95,100,100,95,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":239,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":105,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,99,94,98,91,92,91,90,97,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":240,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":136,\"mTime\":{\"day\":24,\"hour\":3,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,94,92,96,94,91,90,97,91,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":241,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":126,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,94,94,97,90,94,98,96,93,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":242,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":139,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,88,88,93,100,96,94,96,93,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":243,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":127,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,93,91,94,82,82,89,102,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":244,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,96,94,94,97,101,96,96,96,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":245,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":132,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,93,100,100,97,93,92,94,100,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":246,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":145,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,98,95,92,94,88,96,96,92,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":247,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":133,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,94,90,94,90,94,92,93,96,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":248,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":115,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,91,94,99,93,93,95,99,93,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":249,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":117,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,96,90,95,93,92,92,95,99,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":250,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":129,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,90,90,94,92,95,91,89,98,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":251,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":88,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,93,101,96,91,96,98,92,99,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":252,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":99,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,96,94,91,96,94,101,93,90,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":253,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":107,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,97,93,93,95,96,92,93,94,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":254,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,90,91,98,96,95,94,90,97,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":255,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":118,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,95,94,94,89,98,97,90,101,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":256,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":83,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,99,98,94,94,96,99,95,96,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":257,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":89,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,94,92,93,102,90,108,93,97,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":258,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":105,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,94,90,94,96,95,88,96,101,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":259,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":90,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,91,89,92,96,96,95,103,97,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":260,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":112,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,94,96,97,96,90,99,96,94,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":261,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,93,102,94,94,94,93,96,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":262,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":112,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,92,98,100,98,91,94,98,98,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":263,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":114,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,94,92,94,95,97,96,101,94,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":264,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,88,87,94,92,97,100,93,91,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":265,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,96,94,92,89,100,94,90,96,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":266,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,96,92,92,95,95,98,93,92,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":267,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,90,90,93,101,96,93,92,94,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":268,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":88,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,94,104,98,95,90,90,91,93,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":269,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":118,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,90,87,92,97,95,93,92,93,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":270,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":113,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,90,91,100,98,99,98,92,109,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":271,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":112,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,91,95,96,95,96,90,96,99,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":272,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":117,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,96,90,94,90,92,100,94,96,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":273,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":104,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,91,93,100,94,92,96,96,93,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":274,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,96,95,92,95,93,96,100,99,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":275,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,92,99,94,93,92,93,94,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":276,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":124,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,98,96,90,90,94,88,98,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":277,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"82,70,82,68,96,84,83,97,104,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":278,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":129,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,106,105,102,97,97,98,99,98,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":279,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,100,100,96,97,102,100,100,98,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":280,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":134,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,96,96,94,100,92,94,94,98,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":281,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":145,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,93,98,97,94,99,99,97,96,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":282,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":130,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,90,100,93,97,96,90,97,98,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":283,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":116,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,94,97,97,96,96,95,92,92,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":284,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":119,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,90,93,95,93,91,98,95,87,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":285,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":112,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,86,87,84,86,91,92,91,90,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":286,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":136,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"84,79,83,82,76,78,80,80,79,77\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":287,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"81,85,86,81,82,86,85,86,83,80\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":288,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":41,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"76,84,88,93,93,91,92,96,96,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":289,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":51,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,88,88,84,85,94,92,91,128,128\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":290,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":35,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"128,128,128,128,128,128,128,87,84,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":291,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,103,103,99,102,103,104,101,100,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":292,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":83,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,102,100,105,100,98,96,93,92,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":293,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,102,95,96,92,97,94,91,94,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":294,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":90,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,93,92,91,90,89,96,92,91,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":295,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":75,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,90,86,93,90,94,90,95,88,85\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":296,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":59,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"78,78,101,98,92,102,96,91,97,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":297,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,92,88,85,90,88,84,98,98,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":298,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":57,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,94,93,87,84,81,70,54,54,65\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":299,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,101,98,100,98,97,94,95,90,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":300,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":53,\"mTime\":{\"day\":24,\"hour\":4,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,95,91,94,101,96,90,90,88,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":301,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":50,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,98,100,99,94,92,94,92,96,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":302,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":47,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,93,90,89,95,91,90,91,92,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":303,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":47,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,94,90,94,91,90,86,87,90,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":304,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":47,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,94,91,92,91,86,85,89,85,87\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":305,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":50,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,93,91,89,86,94,94,90,90,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":306,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":53,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"79,86,82,80,82,78,84,89,87,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":307,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":42,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,83,91,87,92,98,89,85,88,88\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":308,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":47,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"88,90,86,88,92,94,96,93,91,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":309,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":38,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,91,92,97,99,95,94,92,90,89\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":310,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":65,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,88,96,94,93,96,88,87,86,84\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":311,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":48,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,101,98,100,98,98,94,95,96,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":312,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,100,98,94,92,94,92,98,98,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":313,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":61,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,96,99,95,93,92,91,96,94,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":314,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,94,88,91,92,94,95,100,106,93\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":315,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,96,97,95,96,101,96,92,98,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":316,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":67,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,106,109,100,94,106,99,98,92,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":317,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":91,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,89,95,96,95,89,90,98,99,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":318,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":77,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,99,101,95,95,96,100,102,98,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":319,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":80,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,104,105,100,106,104,102,100,100,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":320,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":70,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,91,97,109,97,95,96,96,98,106\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":321,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":67,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,103,100,106,99,102,114,112,103,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":322,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,98,98,73,73,73,78,102,93,90\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":323,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":58,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"86,88,96,100,97,96,101,101,101,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":324,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":77,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,90,94,95,92,93,97,97,96,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":325,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":58,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,94,98,94,94,92,90,90,96,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":326,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":77,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,94,92,92,99,103,102,97,99,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":327,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,99,98,94,92,92,88,79,62,68\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":328,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":98,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,102,104,103,99,99,101,101,100,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":329,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":108,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"93,95,100,102,100,96,96,98,102,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":330,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":79,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"95,92,91,94,96,97,95,96,99,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":331,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,99,91,90,94,88,78,94,102,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":332,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":72,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,98,97,107,104,103,94,92,78,78\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":333,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,104,102,102,104,109,102,102,101,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":334,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,97,97,96,100,94,101,101,102,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":335,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":94,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,98,98,92,97,96,99,105,100,92\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":336,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,93,92,92,95,100,107,98,98,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":337,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":90,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"90,94,96,93,100,100,99,96,96,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":338,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,99,100,99,96,106,94,99,102,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":339,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":125,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,101,101,97,96,98,100,96,99,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":340,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":105,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,99,103,97,107,102,97,102,101,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":341,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,105,97,103,105,97,98,96,96,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":342,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":85,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,93,123,118,110,103,99,101,103,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":343,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":112,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"105,100,100,97,97,102,104,100,98,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":344,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,101,100,106,102,103,101,98,98,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":345,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":119,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,106,101,100,104,97,93,101,117,112\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":346,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":123,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,100,101,100,106,102,101,105,102,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":347,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":107,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"107,104,103,94,98,103,102,99,106,109\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":348,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":112,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,100,101,100,95,101,104,100,116,108\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":349,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"112,104,102,106,102,98,102,98,100,107\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":350,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":116,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,100,101,103,102,102,102,103,104,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":351,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":102,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,101,98,97,102,99,104,103,103,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":352,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,100,102,98,98,99,103,100,103,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":353,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":93,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,99,94,96,109,105,98,97,104,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":354,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":107,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,97,98,113,101,94,103,97,112,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":355,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":99,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,102,100,102,101,100,101,99,100,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":356,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":109,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,97,109,101,98,105,103,102,102,96\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":357,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":99,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,102,102,103,96,109,102,101,100,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":358,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":94,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"113,106,99,107,110,100,102,104,102,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":359,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,102,101,102,101,98,102,105,103,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":360,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":69,\"mTime\":{\"day\":24,\"hour\":5,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,100,115,106,98,98,99,98,102,94\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":361,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":86,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":0,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,102,98,104,111,104,101,101,99,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":362,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":91,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":1,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,102,100,104,100,96,95,95,104,106\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":363,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":2,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"105,105,104,103,99,101,98,102,105,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":364,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":95,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":3,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,103,99,102,107,99,101,110,104,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":365,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":123,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":4,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,100,101,97,100,110,104,99,100,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":366,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":120,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":5,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,101,103,101,101,100,101,99,106,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":367,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":6,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,104,102,105,101,100,96,102,106,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":368,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":98,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":7,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,104,110,99,101,101,100,100,101,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":369,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":94,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":8,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,100,102,100,98,104,100,99,105,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":370,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":98,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":9,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,98,99,106,99,102,101,104,97,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":371,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":91,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":10,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,96,96,104,112,100,110,104,101,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":372,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":107,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":11,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,102,101,107,97,97,100,103,100,108\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":373,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":91,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":12,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"94,109,104,100,100,99,103,98,110,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":374,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":13,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"106,100,100,100,104,97,96,105,94,95\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":375,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":105,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":14,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,97,92,98,105,112,110,102,100,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":376,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":15,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,100,100,100,98,96,103,106,104,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":377,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":100,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":16,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,103,105,103,101,100,99,106,100,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":378,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":88,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":17,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"115,108,100,100,99,105,99,100,111,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":379,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":100,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":18,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,97,102,104,107,99,101,99,96,97\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":380,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":19,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,104,100,100,102,99,98,102,96,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":381,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":95,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":20,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,101,104,104,100,100,100,102,98,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":382,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":96,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":21,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"107,100,102,102,100,105,100,101,97,108\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":383,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":97,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":22,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,104,99,98,95,97,99,104,102,102\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":384,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":82,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":23,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,101,102,103,102,116,104,100,100,108\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":385,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":94,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":24,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"112,103,99,102,98,98,102,100,99,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":386,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":104,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":25,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"97,96,110,105,100,102,102,102,100,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":387,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":107,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":26,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,94,98,94,106,103,97,100,111,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":388,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":90,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":27,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,105,110,100,102,103,102,99,101,108\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":389,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":104,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":28,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,104,95,104,98,102,105,106,104,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":390,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":127,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":29,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,99,96,98,98,101,101,102,102,109\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":391,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":113,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":30,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"98,104,100,98,101,100,108,104,99,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":392,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":31,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,104,102,108,103,103,98,101,100,103\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":393,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":32,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,97,107,112,103,105,99,98,104,107\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":394,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":33,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,104,107,100,101,102,100,108,103,106\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":395,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":99,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":34,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"96,105,109,100,99,106,104,101,95,110\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":396,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":106,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":35,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,111,103,95,100,106,106,100,106,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":397,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":36,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"100,100,103,114,104,101,104,100,101,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":398,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":103,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":37,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,102,102,104,98,101,104,105,100,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":399,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":100,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":38,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,106,109,104,105,104,100,100,101,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":400,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":101,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":39,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"102,104,105,98,114,107,106,103,101,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":401,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":71,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":40,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,62,70,96,106,104,106,109,111,111\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":402,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":60,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":41,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"112,105,112,110,107,106,109,101,121,120\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":403,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":80,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":42,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"104,108,104,121,110,107,101,100,106,105\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":404,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":43,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,102,106,102,107,101,116,112,110,106\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":405,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":71,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":44,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"106,103,112,104,98,96,106,120,112,108\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":406,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":62,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":45,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,105,104,98,106,117,104,100,97,99\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":407,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":63,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":46,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,101,96,94,95,93,95,98,100,98\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":408,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":64,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":47,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"108,107,103,110,104,103,104,105,100,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":409,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":76,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":48,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"91,93,113,106,98,94,97,98,100,101\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":410,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":78,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":49,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"99,102,99,88,86,99,102,106,103,107\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":411,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":88,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":50,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"87,89,90,102,108,111,114,116,115,112\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":412,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":110,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":51,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"113,116,114,113,108,123,110,115,113,100\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":413,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":43,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":52,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"92,105,105,101,106,107,102,110,105,106\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":414,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":37,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":53,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"103,105,106,96,94,97,97,97,100,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":415,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":38,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":54,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"101,96,114,112,107,99,102,102,104,104\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":416,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":87,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":55,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"116,108,93,82,69,64,68,85,103,0\",\"tempOne\":9}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":417,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":56,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"110,108,108,104,109,107,110,106,105,91\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":418,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":76,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":57,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"118,118,111,109,114,110,107,105,104,116\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":419,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":74,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":58,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"110,105,99,98,110,102,100,100,93,114\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  },
+  {
+    "dateStr": "2019-05-24",
+    "saved": true,
+    "hrvDataStr": "{\"allCurrentPackNumber\":420,\"currentPackNumber\":420,\"date\":\"2019-05-24\",\"hrvType\":0,\"hrvValue\":83,\"mTime\":{\"day\":24,\"hour\":6,\"minute\":59,\"month\":5,\"second\":0,\"weekDay\":0,\"year\":2019},\"rate\":\"109,112,110,106,104,111,107,106,106,109\",\"tempOne\":10}",
+    "bleMac": "C4:F3:AF:CB:D9:12"
+  }
+]

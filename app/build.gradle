@@ -202,7 +202,7 @@ dependencies {
     implementation 'org.litepal.android:java:3.0.0'
     //recyclerView动画效果
     //implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
-   // implementation files('libs/gson-2.8.5.jar')
-
+    // implementation files('libs/gson-2.8.5.jar')
+    implementation 'com.yinglan.shadowimageview:shadowimageview:1.0.4'
     implementation files('libs/lib0_tjdL4.jar')
 }

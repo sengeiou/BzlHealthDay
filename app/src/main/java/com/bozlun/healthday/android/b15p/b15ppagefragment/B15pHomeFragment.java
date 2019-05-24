@@ -196,6 +196,7 @@ public class B15pHomeFragment extends LazyFragment
      * @param rootView
      */
     private void init(View rootView) {
+        initTipTv(rootView);
         b15PContentState = B15PContentState.getInstance();
         b15PContentState.setB15PContentState(this);
         b15PContentState.bleIsContent();
@@ -456,15 +457,17 @@ public class B15pHomeFragment extends LazyFragment
 
 
     void getLanguage() {
-//        L4M.SetResultListener(mBTResultListenr);
+        L4M.SetResultListener(mBTResultListenr);
         String localelLanguage = Locale.getDefault().getLanguage();
-        Log.e(TAG, "----------localelLanguage=" + localelLanguage);
 
-        if (!WatchUtils.isEmpty(localelLanguage) && localelLanguage.equals("zh"))
-            L4Command.LanguageZH();//中文
-        else L4Command.LanguageEN();//英文
+        String param = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "Languages", "EN");
 
-        mHandler.sendEmptyMessageDelayed(0xab, 3000);
+        Log.e(TAG, "----------localelLanguage=" + localelLanguage + "   " + param);
+        if (!WatchUtils.isEmpty(param) && !param.equalsIgnoreCase(localelLanguage)) {
+            if (!WatchUtils.isEmpty(localelLanguage) && localelLanguage.equals("zh"))
+                L4Command.LanguageZH();//中文
+            else L4Command.LanguageEN();//英文
+        }
     }
 
     L4M.BTResultListenr mBTResultListenr = new L4M.BTResultListenr() {
@@ -474,10 +477,9 @@ public class B15pHomeFragment extends LazyFragment
             if (TypeInfo.equals(L4M.SetLanguage) && StrData.equals(L4M.OK)) {
                 if (StrData.equals("OK")) {
                     B15PContentState.isSycnLanguage = true;
+                    String param = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "Languages", "EN");
+                    SharedPreferencesUtils.setParam(MyApp.getContext(), "Languages", (!WatchUtils.isEmpty(param) && param.equals("ZH")) ? "ZH" : "EN");
                 }
-                //mHandler.removeMessages(0xab);
-                getBatter();
-                Log.e(TAG, "Language:" + StrData + "------语言设置成功与否都去获取电池电量");
             }
         }
     };
@@ -597,9 +599,6 @@ public class B15pHomeFragment extends LazyFragment
         public boolean handleMessage(Message message) {
             mac = (String) SharedPreferencesUtils.readObject(MyApp.getInstance(), Commont.BLEMAC);
             switch (message.what) {
-                case 0xab:
-                    getBatter();
-                    break;
                 case 0x55:
                     /**
                      * 同步完成上传数据
@@ -665,12 +664,7 @@ public class B15pHomeFragment extends LazyFragment
                  */
                 case 0x01:// 先获根据系统语言设置语言
                     Log.d(TAG, "手动刷新 ----- 先获根据系统语言设置语言");
-                    if (B15PContentState.isSycnLanguage) {
-                        getBatter();
-                    } else {
-                        getLanguage();
-                    }
-
+                    getBatter();
                     break;
                 case 0x02://同步数据
                     //链接成功了
@@ -709,7 +703,6 @@ public class B15pHomeFragment extends LazyFragment
 
                             @Override
                             public void updataAllStepDataToUIListenter(int integer) {
-                                super.updataAllStepDataToUIListenter(integer);
                                 defaultSteps = integer;
                                 if (getActivity() != null && !getActivity().isFinishing()) {
                                     if (b30ProgressBar != null) {
@@ -946,7 +939,7 @@ public class B15pHomeFragment extends LazyFragment
                                                 lastTimeTv.setText(split[0]);
                                             }
                                             if (!WatchUtils.isEmpty(split[1])) {
-                                                b30HeartValueTv.setText(split[1]);
+                                                b30HeartValueTv.setText("  " + split[1] + "bpm");
                                             }
                                         }
                                         if (b30CusHeartView != null)
@@ -959,6 +952,10 @@ public class B15pHomeFragment extends LazyFragment
 
                                     if (b30HomeSwipeRefreshLayout != null)
                                         b30HomeSwipeRefreshLayout.finishRefresh();
+
+                                    if (!B15PContentState.isSycnLanguage) {
+                                        getLanguage();
+                                    }
                                     setSysTextStute(false);
                                 }
 
@@ -1011,15 +1008,15 @@ public class B15pHomeFragment extends LazyFragment
                 break;
             case R.id.homeTodayTv:  //今天
                 clearDataStyle(0);
-                mHandler.sendEmptyMessage(0x00);
+                //mHandler.sendEmptyMessage(0x00);
                 break;
             case R.id.homeYestTodayTv:  //昨天
                 clearDataStyle(1);
-                mHandler.sendEmptyMessage(0x00);
+                //mHandler.sendEmptyMessage(0x00);
                 break;
             case R.id.homeBeYestdayTv:  //前天
                 clearDataStyle(2);
-                mHandler.sendEmptyMessage(0x00);
+                //mHandler.sendEmptyMessage(0x00);
                 break;
             case R.id.battery_watchRecordShareImg:  //分享----现在是数据面板
                 if (getActivity() == null || getActivity().isFinishing())
@@ -1252,11 +1249,15 @@ public class B15pHomeFragment extends LazyFragment
             if (b30SportMaxNumTv != null)
                 b30SportMaxNumTv.setText(Collections.max(tmpIntegerList) + getResources().getString(R.string.steps));
             initBarChart(b30ChartList);
-            if (b30BarChart != null) b30BarChart.invalidate();
+            if (b30BarChart != null) {
+                b30BarChart.setNoDataTextColor(Color.parseColor("#FF949496"));
+                b30BarChart.invalidate();
+            }
         } else {
             initBarChart(b30ChartList);
             if (b30BarChart != null) {
-                b30BarChart.setNoDataTextColor(Color.WHITE);
+//                b30BarChart.setNoDataTextColor(Color.WHITE);
+                b30BarChart.setNoDataTextColor(Color.parseColor("#FF949496"));
                 b30BarChart.invalidate();
             }
         }
@@ -1268,7 +1269,8 @@ public class B15pHomeFragment extends LazyFragment
         BarDataSet barDataSet = new BarDataSet(pointbar, "");
         barDataSet.setDrawValues(false);//是否显示柱子上面的数值
         //barDataSet.setColor(Color.parseColor("#fa8072"));//设置第一组数据颜色
-        barDataSet.setColor(Color.parseColor("#88d785"));//设置第一组数据颜色
+//        barDataSet.setColor(Color.parseColor("#88d785"));//设置第一组数据颜色
+        barDataSet.setColor(Color.parseColor("#FF207F6F"));//设置第一组数据颜色
 
         if (b30BarChart == null) return;
         Legend mLegend = b30BarChart.getLegend();
@@ -1410,7 +1412,7 @@ public class B15pHomeFragment extends LazyFragment
         HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
         HrvScoreUtil hrvScoreUtil = new HrvScoreUtil();
         int heartSocre = hrvScoreUtil.getSocre(dataList);
-        hrvHeartSocreTv.setText(getResources().getString(R.string.heart_health_sorce) + "\n" + heartSocre);
+        hrvHeartSocreTv.setText(getResources().getString(R.string.heart_health_sorce) + ":" + heartSocre);
         final List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
         //主界面
         showHomeView(tenMinuteData);
@@ -1424,8 +1426,10 @@ public class B15pHomeFragment extends LazyFragment
                 CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV);
         b31HomeHrvChart.getAxisLeft().removeAllLimitLines();
         b31HomeHrvChart.getAxisLeft().setDrawLabels(false);
-        chartViewUtilHome.setxColor(R.color.head_text);
-        chartViewUtilHome.setNoDataColor(R.color.head_text);
+//        chartViewUtilHome.setxColor(R.color.head_text);
+//        chartViewUtilHome.setNoDataColor(R.color.head_text);
+        chartViewUtilHome.setxColor(Color.parseColor("#FF949496"));
+        chartViewUtilHome.setNoDataColor(Color.parseColor("#FF949496"));
         chartViewUtilHome.drawYLable(false, 1);
         chartViewUtilHome.updateChartView(tenMinuteData);
         LineData data = b31HomeHrvChart.getData();
@@ -1434,7 +1438,8 @@ public class B15pHomeFragment extends LazyFragment
         LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
         if (dataSetByIndex != null) {
             dataSetByIndex.setDrawFilled(false);
-            dataSetByIndex.setColor(Color.parseColor("#EC1A3B"));
+//            dataSetByIndex.setColor(Color.parseColor("#EC1A3B"));
+            dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
         }
     }
 
@@ -1456,7 +1461,7 @@ public class B15pHomeFragment extends LazyFragment
         int onedayDataArr[] = spo2hOriginUtil.getOnedayDataArr(ESpo2hDataType.TYPE_SPO2H);
         if (getActivity() == null)
             return;
-        b31Spo2AveTv.setText(getResources().getString(R.string.ave_value) + "\n" + onedayDataArr[2]);
+        b31Spo2AveTv.setText(getResources().getString(R.string.ave_value) + ":" + onedayDataArr[2]);
         initSpo2hUtil();
         if (vpSpo2hUtil != null) {
             vpSpo2hUtil.setData(dataList);
@@ -1465,8 +1470,10 @@ public class B15pHomeFragment extends LazyFragment
 
         ChartViewUtil spo2ChartViewUtilHomes = new ChartViewUtil(homeSpo2LinChartView, null, true,
                 CHART_MAX_SPO2H, CHART_MIN_SPO2H, "No Data", TYPE_SPO2H);
-        spo2ChartViewUtilHomes.setxColor(R.color.head_text);
-        spo2ChartViewUtilHomes.setNoDataColor(R.color.head_text);
+//        spo2ChartViewUtilHomes.setxColor(R.color.head_text);
+//        spo2ChartViewUtilHomes.setNoDataColor(R.color.head_text);
+        spo2ChartViewUtilHomes.setxColor(Color.parseColor("#FF949496"));
+        spo2ChartViewUtilHomes.setNoDataColor(Color.parseColor("#FF949496"));
         //更新血氧数据的图表
         spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
         spo2ChartViewUtilHomes.updateChartView(tenMinuteDataSpo2h);
@@ -1481,7 +1488,8 @@ public class B15pHomeFragment extends LazyFragment
         LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
         if (dataSetByIndex != null) {
             dataSetByIndex.setDrawFilled(false);
-            dataSetByIndex.setColor(Color.parseColor("#17AAE2"));
+//            dataSetByIndex.setColor(Color.parseColor("#17AAE2"));
+            dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
         }
     }
 
@@ -1551,5 +1559,26 @@ public class B15pHomeFragment extends LazyFragment
                 mChartViewSleep, mChartViewBreath, mChartViewLowspo2h);
         vpSpo2hUtil.setMarkView(MyApp.getContext(), R.layout.vpspo2h_markerview);
         vpSpo2hUtil.setModelIs24(false);
+    }
+
+    private void initTipTv(View rootView) {
+        TextView tipSpo2h = (TextView) rootView.findViewById(R.id.block_bottom_tip_spo2h);
+        TextView tipHeart = (TextView) rootView.findViewById(R.id.block_bottom_tip_heart);
+        TextView tipSleep = (TextView) rootView.findViewById(R.id.block_bottom_tip_sleep);
+        TextView tipBeath = (TextView) rootView.findViewById(R.id.block_bottom_tip_beath);
+        TextView tipLowsp = (TextView) rootView.findViewById(R.id.block_bottom_tip_lowspo2h);
+
+        String stateNormal = getResources().getString(R.string.vpspo2h_state_normal);
+        String stateLittle = getResources().getString(R.string.vpspo2h_state_little);
+        String stateCalm = getResources().getString(R.string.vpspo2h_state_calm);
+        String stateError = getResources().getString(R.string.vpspo2h_state_error);
+        String stateMulSport = getResources().getString(R.string.vpspo2h_state_mulsport);
+        String stateMulMulSport = getResources().getString(R.string.vpspo2h_state_mulmulsport);
+
+        tipSpo2h.setText("[95-99]" + stateNormal);
+        tipHeart.setText("[0-20]" + stateLittle + "\t\t[21-40]" + stateNormal + "\t\t[≥41]" + stateError);
+        tipSleep.setText("[0-20]" + stateCalm + "\t\t[21-50]" + stateMulSport + "\t\t[51-80]" + stateMulMulSport);
+        tipBeath.setText("[0-26]" + stateNormal + "\t\t[27-50]" + stateError);
+        tipLowsp.setText("[0-20]" + stateNormal + "\t\t[21-300]" + stateError);
     }
 }

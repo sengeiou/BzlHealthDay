@@ -101,7 +101,7 @@ public class B15PCusSleepView extends View {
         awakePaint.setStrokeWidth(5f);
 
         emptyPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        emptyPaint.setColor(Color.parseColor("#6074BF"));
+        emptyPaint.setColor(Color.parseColor("#9a999a"));
         emptyPaint.setStrokeWidth(5);
         emptyPaint.setTextSize(sleepEmptyData);
 

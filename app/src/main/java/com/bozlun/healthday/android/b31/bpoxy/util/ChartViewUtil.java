@@ -55,9 +55,9 @@ public class ChartViewUtil {
     int spo2hDotColor = Color.RED;
 
     //x轴的颜色
-    private int xColor = Color.WHITE;
+    private int xColor = Color.parseColor("#FF949496");
     //无数据显示的颜色
-    private int noDataColor = Color.WHITE;
+    private int noDataColor = Color.parseColor("#FF207F6F");
 
 
 
@@ -154,8 +154,10 @@ public class ChartViewUtil {
         leftAxis.setDrawAxisLine(false);
         leftAxis.setDrawLabels(true);
         leftAxis.setDrawGridLines(false);
-        leftAxis.setGridColor(Color.WHITE);
-        leftAxis.setTextColor(Color.WHITE);
+//        leftAxis.setGridColor(Color.WHITE);
+//        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setGridColor(Color.parseColor("#90207F6F"));
+        leftAxis.setTextColor(Color.parseColor("#FF207F6F"));
         leftAxis.setDrawLimitLinesBehindData(false);
 
         chartView.getAxisRight().setEnabled(false);
@@ -270,7 +272,8 @@ public class ChartViewUtil {
         limitLine.setLineWidth(1f);
         limitLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
         limitLine.setTextSize(10f);
-        limitLine.setLineColor(Color.argb(70, 255, 255, 255));
+//        limitLine.setLineColor(Color.argb(70, 255, 255, 255));
+        limitLine.setLineColor(Color.parseColor("#50207F6F"));
         limitLine.setTextColor(Color.RED);
         return limitLine;
 
@@ -279,7 +282,7 @@ public class ChartViewUtil {
     private LineDataSet createSet(int[] colors) {
         LineDataSet set1 = new LineDataSet(null, "");
         set1.setDrawIcons(false);
-        set1.setColor(Color.WHITE);
+        set1.setColor(Color.parseColor("#FF207F6F"));
         set1.setCircleRadius(2f);
         if (type == TYPE_SPO2H) {
             set1.setCircleColors(colors);
@@ -293,7 +296,8 @@ public class ChartViewUtil {
         set1.setHighlightLineWidth(2f);
         set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
         set1.setLineWidth(2.0f);
-        set1.setFillColor(Color.argb(255, 255, 255, 255));
+//        set1.setFillColor(Color.argb(255, 255, 255, 255));
+        set1.setFillColor(Color.parseColor("#FF207F6F"));
         set1.setFillAlpha(40);
         set1.setDrawFilled(true);
         set1.setDrawCircleHole(false);

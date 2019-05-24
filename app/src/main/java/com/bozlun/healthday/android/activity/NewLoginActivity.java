@@ -83,12 +83,12 @@ public class NewLoginActivity extends BaseActivity implements LoginListenter {
 //    LoginWaveView loginWaveView;
     @BindView(R.id.username)
     EditText username;
-    @BindView(R.id.username_input_logon)
-    TextInputLayout usernameInputLogon;
+//    @BindView(R.id.username_input_logon)
+//    TextInputLayout usernameInputLogon;
     @BindView(R.id.password_logon)
     EditText passwordLogon;
-    @BindView(R.id.textinput_password)
-    TextInputLayout textinputPassword;
+//    @BindView(R.id.textinput_password)
+//    TextInputLayout textinputPassword;
     @BindView(R.id.login_visitorTv)
     TextView loginVisitorTv;
     @BindView(R.id.forget_tv)
