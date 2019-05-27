@@ -1,5 +1,6 @@
 package com.bozlun.healthday.android.b15p.b15ppagefragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -173,6 +174,34 @@ public class B15pHomeFragment extends LazyFragment
     private List<HRVOriginData> datahrv = new ArrayList<>();
     private Gson gson = new Gson();
 
+
+    private Context mContext;
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        b15PContentState = B15PContentState.getInstance();
+        b15PContentState.setB15PContentState(this);
+        b15PContentState.bleIsContent();
+        registerListenter();
+
+//        //b15p 有血压   血压测试和心率测试，所以显示
+//        b30HomeB30Lin.setVisibility(View.VISIBLE);
+//        batteryWatchRecordShareImg.setVisibility(View.GONE);//原来的分享---》》现在是数据面板
+
+
+        goalStep = (int) SharedPreferencesUtils.getParam(getmContext(), "b30Goal", 0);
+
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -197,17 +226,7 @@ public class B15pHomeFragment extends LazyFragment
      */
     private void init(View rootView) {
         initTipTv(rootView);
-        b15PContentState = B15PContentState.getInstance();
-        b15PContentState.setB15PContentState(this);
-        b15PContentState.bleIsContent();
-        registerListenter();
 
-//        //b15p 有血压   血压测试和心率测试，所以显示
-//        b30HomeB30Lin.setVisibility(View.VISIBLE);
-//        batteryWatchRecordShareImg.setVisibility(View.GONE);//原来的分享---》》现在是数据面板
-
-
-        goalStep = (int) SharedPreferencesUtils.getParam(getContext(), "b30Goal", 0);
         b30TopDateTv.setText(WatchUtils.getCurrentDate());
         if (b30GoalStepTv != null)
             b30GoalStepTv.setText(getResources().getString(R.string.goal_step) + goalStep + getResources().getString(R.string.steps));
@@ -259,6 +278,13 @@ public class B15pHomeFragment extends LazyFragment
             });
 
     }
+
+
+    private Context getmContext(){
+        return mContext == null ? MyApp.getContext():mContext;
+    }
+
+
 
     private void initData() {
         sleepList = new ArrayList<>();
@@ -348,7 +374,7 @@ public class B15pHomeFragment extends LazyFragment
                     if (sycnStute != null)
                         sycnStute.setText(getResources().getString(R.string.connted));
 
-                    int param = (int) SharedPreferencesUtils.getParam(getContext(), Commont.BATTERNUMBER, 0);
+                    int param = (int) SharedPreferencesUtils.getParam(getmContext(), Commont.BATTERNUMBER, 0);
                     if (param > 0) {
                         //设置每次会来电电池电量
                         showBatterStute(param);
@@ -386,7 +412,7 @@ public class B15pHomeFragment extends LazyFragment
 
                         long currentTime = System.currentTimeMillis() / 1000;
                         //保存的时间
-                        String tmpSaveTime = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "saveDate", currentTime + "");
+                        String tmpSaveTime = (String) SharedPreferencesUtils.getParam(getmContext(), "saveDate", currentTime + "");
                         long diffTime = (currentTime - Long.valueOf(tmpSaveTime)) / 60;
                         Log.e(TAG, "不是第一次链接--- 有 " + diffTime + "分钟没同步了");
                         if (diffTime > 5) {// 大于2分钟没更新再取数据
@@ -460,7 +486,7 @@ public class B15pHomeFragment extends LazyFragment
         L4M.SetResultListener(mBTResultListenr);
         String localelLanguage = Locale.getDefault().getLanguage();
 
-        String param = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "Languages", "EN");
+        String param = (String) SharedPreferencesUtils.getParam(getmContext(), "Languages", "EN");
 
         Log.e(TAG, "----------localelLanguage=" + localelLanguage + "   " + param);
         if (!WatchUtils.isEmpty(param) && !param.equalsIgnoreCase(localelLanguage)) {
@@ -477,7 +503,7 @@ public class B15pHomeFragment extends LazyFragment
             if (TypeInfo.equals(L4M.SetLanguage) && StrData.equals(L4M.OK)) {
                 if (StrData.equals("OK")) {
                     B15PContentState.isSycnLanguage = true;
-                    String param = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "Languages", "EN");
+                    String param = (String) SharedPreferencesUtils.getParam(getmContext(), "Languages", "EN");
                     SharedPreferencesUtils.setParam(MyApp.getContext(), "Languages", (!WatchUtils.isEmpty(param) && param.equals("ZH")) ? "ZH" : "EN");
                 }
             }
@@ -513,11 +539,11 @@ public class B15pHomeFragment extends LazyFragment
             if (tTypeInfo.equals(L4M.GetBatLevel) && TempStr.equals(L4M.Data)) {
                 BracltBatLevel.BatLevel myBatLevel = (BracltBatLevel.BatLevel) TempObj;
                 int batlevel = myBatLevel.batlevel;
-                SharedPreferencesUtils.setParam(getContext(), Commont.BATTERNUMBER, batlevel);
+                SharedPreferencesUtils.setParam(getmContext(), Commont.BATTERNUMBER, batlevel);
                 Log.e(TAG, "==  获取到的电量  " + batlevel);
 
 
-                int param = (int) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.BATTERNUMBER, 0);
+                int param = (int) SharedPreferencesUtils.getParam(getmContext(), Commont.BATTERNUMBER, 0);
                 if (param > 0) {
                     //设置每次会来电电池电量
                     showBatterStute(param);
@@ -593,11 +619,11 @@ public class B15pHomeFragment extends LazyFragment
         }
     };
 
-    String mac = (String) SharedPreferencesUtils.readObject(MyApp.getInstance(), Commont.BLEMAC);
+    String mac = (String) SharedPreferencesUtils.readObject(getmContext(), Commont.BLEMAC);
     Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            mac = (String) SharedPreferencesUtils.readObject(MyApp.getInstance(), Commont.BLEMAC);
+            mac = (String) SharedPreferencesUtils.readObject(getmContext(), Commont.BLEMAC);
             switch (message.what) {
                 case 0x55:
                     /**
@@ -674,7 +700,7 @@ public class B15pHomeFragment extends LazyFragment
                                 b30HomeSwipeRefreshLayout.setEnableRefresh(true);
                         }
 
-                        int bt = (int) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.BATTERNUMBER, 0);
+                        int bt = (int) SharedPreferencesUtils.getParam(getmContext(), Commont.BATTERNUMBER, 0);
                         showBatterStute(bt);
                         getBleDevicesDatas();
                     }
@@ -986,24 +1012,24 @@ public class B15pHomeFragment extends LazyFragment
         switch (view.getId()) {
             case R.id.b30SportChartLin1: // 运动数据详情
             case R.id.b30BarChart: // 运动数据详情
-                B15PStepDetailActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
+                B15PStepDetailActivity.startAndParams(getmContext(), WatchUtils.obtainFormatDate(currDay));
                 break;
             case R.id.b30CusHeartLin:   //心率详情
-                B15PHeartDetailActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
+                B15PHeartDetailActivity.startAndParams(getmContext(), WatchUtils.obtainFormatDate(currDay));
                 break;
             case R.id.b30CusBloadLin:   //血压详情
                 //B30BloadDetailActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
                 break;
             case R.id.b30MeaureHeartImg:    //手动测量心率
-                startActivity(new Intent(getActivity(), ManualMeaureHeartActivity.class)
+                startActivity(new Intent(getmContext(), ManualMeaureHeartActivity.class)
                         .putExtra("what", "b15p"));
                 break;
             case R.id.b30MeaureBloadImg:    //手动测量血压
 //                startActivity(new Intent(getActivity(), ManualMeaureBloadActivity.class));
-                startActivity(new Intent(getActivity(), B15PManualMeaureBloadActivity.class));
+                startActivity(new Intent(getmContext(), B15PManualMeaureBloadActivity.class));
                 break;
             case R.id.b30SleepLin:      //睡眠详情
-                B15PSleepDetailActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate
+                B15PSleepDetailActivity.startAndParams(getmContext(), WatchUtils.obtainFormatDate
                         (currDay));
                 break;
             case R.id.homeTodayTv:  //今天
@@ -1025,15 +1051,15 @@ public class B15pHomeFragment extends LazyFragment
 //                intent.putExtra("is18i", "B36");
 //                intent.putExtra("stepNum", defaultSteps + "");
 //                startActivity(intent);
-                startActivity(new Intent(getActivity(), CommentDataActivity.class));
+                startActivity(new Intent(getmContext(), CommentDataActivity.class));
                 break;
 
 
             case R.id.b31BpOxyLin:  //血氧分析
-                B31BpOxyAnysisActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
+                B31BpOxyAnysisActivity.startAndParams(getmContext(), WatchUtils.obtainFormatDate(currDay));
                 break;
             case R.id.b31HrvView:    //HRV
-                B31HrvDetailActivity.startAndParams(getActivity(), WatchUtils.obtainFormatDate(currDay));
+                B31HrvDetailActivity.startAndParams(getmContext(), WatchUtils.obtainFormatDate(currDay));
                 break;
             case R.id.block_spo2h:  //血氧
                 startToSpo2Detail("0", getResources().getString(R.string.vpspo2h_spo2h));
@@ -1055,11 +1081,11 @@ public class B15pHomeFragment extends LazyFragment
 
     //跳转至详情页面
     private void startToSpo2Detail(String tag, String titleTxt) {
-        Intent intent = new Intent(getActivity(), ShowSpo2DetailActivity.class);
+        Intent intent = new Intent(getmContext(), ShowSpo2DetailActivity.class);
         intent.putExtra("spo2_tag", tag);
         intent.putExtra("title", titleTxt);
         intent.putExtra(Constant.DETAIL_DATE, WatchUtils.obtainFormatDate(currDay));
-        getActivity().startActivity(intent);
+        getmContext().startActivity(intent);
     }
 
 
@@ -1153,9 +1179,10 @@ public class B15pHomeFragment extends LazyFragment
         }
         try {
             //保存的时间
-            SharedPreferencesUtils.setParam(MyApp.getContext(), "saveDate", (System.currentTimeMillis() / 1000) + "");
+            SharedPreferencesUtils.setParam(getmContext(), "saveDate", (System.currentTimeMillis() / 1000) + "");
             mHandler.sendEmptyMessage(0x03);//获取步数
         } catch (Error e) {
+            e.printStackTrace();
         }
     }
 
@@ -1167,7 +1194,7 @@ public class B15pHomeFragment extends LazyFragment
 
     //开始上传本地缓存的数据
     private void startUploadDBService() {
-        CommDBManager.getCommDBManager().startUploadDbService(MyApp.getContext());
+        CommDBManager.getCommDBManager().startUploadDbService(getmContext());
     }
 
 
@@ -1359,7 +1386,7 @@ public class B15pHomeFragment extends LazyFragment
          * @param wakeCount 清醒次数
          */
         CommDBManager.getCommDBManager().saveCommSleepDbData((WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName()),
-                WatchUtils.getSherpBleMac(MyApp.getContext()),
+                WatchUtils.getSherpBleMac(getmContext()),
                 dateStr,
                 shen,
                 qian,

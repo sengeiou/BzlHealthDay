@@ -79,7 +79,7 @@
                         <TextView
                             style="@style/style_block_bottom_state_tv"
                             android:text="@string/vpspo2h_state_breathbreak"
-                            android:textColor="@android:color/white" />
+                            android:textColor="#FF949496" />
                     </LinearLayout>
                 </LinearLayout>
 
