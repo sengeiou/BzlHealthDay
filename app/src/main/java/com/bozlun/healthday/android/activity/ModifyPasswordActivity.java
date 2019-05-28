@@ -5,7 +5,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.base.BaseActivity;
@@ -18,12 +17,11 @@ import com.bozlun.healthday.android.util.ToastUtil;
 import com.bozlun.healthday.android.util.URLs;
 import com.google.gson.Gson;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import butterknife.BindView;
-import static com.bozlun.healthday.android.util.Common.userInfo;
+
 
 /**
  * Created by thinkpad on 2017/3/9.
@@ -54,9 +52,6 @@ public class ModifyPasswordActivity extends BaseActivity {
                     JSONObject jsonObject = new JSONObject(result);
                     String resultCode = jsonObject.getString("resultCode");
                     if ("001".equals(resultCode)) {
-                        String confrimPass = confrimPassword.getText().toString();
-                        userInfo.setPassword(Md5Util.Md532(confrimPass));
-//                        MyApp.getApplication().getDaoSession().getBlueUserDao().insertOrReplace(userInfo);
                         ToastUtil.showShort(ModifyPasswordActivity.this, getString(R.string.modify_success));
                         finish();
                     } else {

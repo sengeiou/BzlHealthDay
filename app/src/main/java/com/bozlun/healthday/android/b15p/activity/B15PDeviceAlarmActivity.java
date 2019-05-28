@@ -138,6 +138,8 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
      * @param position 闹钟列表下标
      */
     private void updateAlarm(int position) {
+        if(mAlarmList.size()==0)
+            return;
         B15PAlarmSetting alarm2Setting = mAlarmList.get(position);
         Log.d("----zza--要改变的-", alarm2Setting.toString());
 

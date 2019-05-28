@@ -793,7 +793,7 @@ public class B15pHomeFragment extends LazyFragment
                                         @Override
                                         public void run() {
                                             //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
-                                            if (hrvBeanList != null) {
+                                            if (hrvBeanList != null && hrvBeanList.size()>0) {
 
                                                 datahrv.clear();
                                                 for (B31HRVBean hBean : hrvBeanList) {
@@ -820,7 +820,7 @@ public class B15pHomeFragment extends LazyFragment
                                         @Override
                                         public void run() {
                                             //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
-                                            if (b31Spo2hBeanList != null) {
+                                            if (b31Spo2hBeanList != null && b31Spo2hBeanList.size()>0) {
                                                 data0To8.clear();
                                                 for (B31Spo2hBean hBean : b31Spo2hBeanList) {
                                                     // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
@@ -1439,7 +1439,7 @@ public class B15pHomeFragment extends LazyFragment
         HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
         HrvScoreUtil hrvScoreUtil = new HrvScoreUtil();
         int heartSocre = hrvScoreUtil.getSocre(dataList);
-        hrvHeartSocreTv.setText(getResources().getString(R.string.heart_health_sorce) + ":" + heartSocre);
+        hrvHeartSocreTv.setText(getmContext().getResources().getString(R.string.heart_health_sorce) + ":" + heartSocre);
         final List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
         //主界面
         showHomeView(tenMinuteData);
