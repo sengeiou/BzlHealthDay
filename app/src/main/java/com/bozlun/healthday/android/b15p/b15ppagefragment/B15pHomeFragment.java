@@ -1433,91 +1433,104 @@ public class B15pHomeFragment extends LazyFragment
     //显示HRV的数据
     private void showHrvData(List<HRVOriginData> dataList) {
         //Log.e(TAG,"----显示HRV="+dataList.size());
-        if (dataList.size() > 420)
-            return;
-        List<HRVOriginData> data0to8 = getMoringData(dataList);
-        HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
-        HrvScoreUtil hrvScoreUtil = new HrvScoreUtil();
-        int heartSocre = hrvScoreUtil.getSocre(dataList);
-        hrvHeartSocreTv.setText(getmContext().getResources().getString(R.string.heart_health_sorce) + ":" + heartSocre);
-        final List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
-        //主界面
-        showHomeView(tenMinuteData);
+
+        try {
+            if (dataList.size() > 420)
+                return;
+            List<HRVOriginData> data0to8 = getMoringData(dataList);
+            HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
+            HrvScoreUtil hrvScoreUtil = new HrvScoreUtil();
+            int heartSocre = hrvScoreUtil.getSocre(dataList);
+            hrvHeartSocreTv.setText(getmContext().getResources().getString(R.string.heart_health_sorce) + ":" + heartSocre);
+            final List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
+            //主界面
+            showHomeView(tenMinuteData);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     //显示HRV的数据
     private void showHomeView(List<Map<String, Float>> tenMinuteData) {
-
-        //Log.e(TAG,"-----HRV-SPO  "+tenMinuteData.toString());
-        ChartViewUtil chartViewUtilHome = new ChartViewUtil(b31HomeHrvChart, null, true,
-                CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV);
-        b31HomeHrvChart.getAxisLeft().removeAllLimitLines();
-        b31HomeHrvChart.getAxisLeft().setDrawLabels(false);
+        try {
+            //Log.e(TAG,"-----HRV-SPO  "+tenMinuteData.toString());
+            ChartViewUtil chartViewUtilHome = new ChartViewUtil(b31HomeHrvChart, null, true,
+                    CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV);
+            b31HomeHrvChart.getAxisLeft().removeAllLimitLines();
+            b31HomeHrvChart.getAxisLeft().setDrawLabels(false);
 //        chartViewUtilHome.setxColor(R.color.head_text);
 //        chartViewUtilHome.setNoDataColor(R.color.head_text);
-        chartViewUtilHome.setxColor(Color.parseColor("#FF949496"));
-        chartViewUtilHome.setNoDataColor(Color.parseColor("#FF949496"));
-        chartViewUtilHome.drawYLable(false, 1);
-        chartViewUtilHome.updateChartView(tenMinuteData);
-        LineData data = b31HomeHrvChart.getData();
-        if (data == null)
-            return;
-        LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
-        if (dataSetByIndex != null) {
-            dataSetByIndex.setDrawFilled(false);
+            chartViewUtilHome.setxColor(Color.parseColor("#FF949496"));
+            chartViewUtilHome.setNoDataColor(Color.parseColor("#FF949496"));
+            chartViewUtilHome.drawYLable(false, 1);
+            chartViewUtilHome.updateChartView(tenMinuteData);
+            LineData data = b31HomeHrvChart.getData();
+            if (data == null)
+                return;
+            LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
+            if (dataSetByIndex != null) {
+                dataSetByIndex.setDrawFilled(false);
 //            dataSetByIndex.setColor(Color.parseColor("#EC1A3B"));
-            dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
+                dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
 
     //显示血氧的图
     private void updateSpo2View(List<Spo2hOriginData> dataList) {
-
         //Log.e(TAG, "----------血氧展示=" + dataList.size());
+        try {
+            List<Spo2hOriginData> data0To8 = getSpo2MoringData(dataList);
+            Spo2hOriginUtil spo2hOriginUtil = new Spo2hOriginUtil(data0To8);
+            //获取处理完的血氧数据
+            final List<Map<String, Float>> tenMinuteDataBreathBreak = spo2hOriginUtil.getTenMinuteData(TYPE_BEATH_BREAK);
+            final List<Map<String, Float>> tenMinuteDataSpo2h = spo2hOriginUtil.getTenMinuteData(TYPE_SPO2H);
 
-        List<Spo2hOriginData> data0To8 = getSpo2MoringData(dataList);
-        Spo2hOriginUtil spo2hOriginUtil = new Spo2hOriginUtil(data0To8);
-        //获取处理完的血氧数据
-        final List<Map<String, Float>> tenMinuteDataBreathBreak = spo2hOriginUtil.getTenMinuteData(TYPE_BEATH_BREAK);
-        final List<Map<String, Float>> tenMinuteDataSpo2h = spo2hOriginUtil.getTenMinuteData(TYPE_SPO2H);
+            //Log.e(TAG, "-----HRV-SPO  A  " + tenMinuteDataBreathBreak.toString());
+            //Log.e(TAG, "-----HRV-SPO  B  " + tenMinuteDataSpo2h.toString());
+            //平均值
+            int onedayDataArr[] = spo2hOriginUtil.getOnedayDataArr(ESpo2hDataType.TYPE_SPO2H);
+            if (getActivity() == null)
+                return;
+            b31Spo2AveTv.setText(getResources().getString(R.string.ave_value) + ":" + onedayDataArr[2]);
+            initSpo2hUtil();
+            if (vpSpo2hUtil != null) {
+                vpSpo2hUtil.setData(dataList);
+                vpSpo2hUtil.showAllChartView();
+            }
 
-        //Log.e(TAG, "-----HRV-SPO  A  " + tenMinuteDataBreathBreak.toString());
-        //Log.e(TAG, "-----HRV-SPO  B  " + tenMinuteDataSpo2h.toString());
-        //平均值
-        int onedayDataArr[] = spo2hOriginUtil.getOnedayDataArr(ESpo2hDataType.TYPE_SPO2H);
-        if (getActivity() == null)
-            return;
-        b31Spo2AveTv.setText(getResources().getString(R.string.ave_value) + ":" + onedayDataArr[2]);
-        initSpo2hUtil();
-        if (vpSpo2hUtil != null) {
-            vpSpo2hUtil.setData(dataList);
-            vpSpo2hUtil.showAllChartView();
-        }
-
-        ChartViewUtil spo2ChartViewUtilHomes = new ChartViewUtil(homeSpo2LinChartView, null, true,
-                CHART_MAX_SPO2H, CHART_MIN_SPO2H, "No Data", TYPE_SPO2H);
+            ChartViewUtil spo2ChartViewUtilHomes = new ChartViewUtil(homeSpo2LinChartView, null, true,
+                    CHART_MAX_SPO2H, CHART_MIN_SPO2H, "No Data", TYPE_SPO2H);
 //        spo2ChartViewUtilHomes.setxColor(R.color.head_text);
 //        spo2ChartViewUtilHomes.setNoDataColor(R.color.head_text);
-        spo2ChartViewUtilHomes.setxColor(Color.parseColor("#FF949496"));
-        spo2ChartViewUtilHomes.setNoDataColor(Color.parseColor("#FF949496"));
-        //更新血氧数据的图表
-        spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
-        spo2ChartViewUtilHomes.updateChartView(tenMinuteDataSpo2h);
-        spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
+            spo2ChartViewUtilHomes.setxColor(Color.parseColor("#FF949496"));
+            spo2ChartViewUtilHomes.setNoDataColor(Color.parseColor("#FF949496"));
+            //更新血氧数据的图表
+            spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
+            spo2ChartViewUtilHomes.updateChartView(tenMinuteDataSpo2h);
+            spo2ChartViewUtilHomes.setBeathBreakData(tenMinuteDataBreathBreak);
 
-        homeSpo2LinChartView.getAxisLeft().removeAllLimitLines();
-        homeSpo2LinChartView.getAxisLeft().setDrawLabels(false);
+            homeSpo2LinChartView.getAxisLeft().removeAllLimitLines();
+            homeSpo2LinChartView.getAxisLeft().setDrawLabels(false);
 
-        LineData data = homeSpo2LinChartView.getData();
-        if (data == null)
-            return;
-        LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
-        if (dataSetByIndex != null) {
-            dataSetByIndex.setDrawFilled(false);
+            LineData data = homeSpo2LinChartView.getData();
+            if (data == null)
+                return;
+            LineDataSet dataSetByIndex = (LineDataSet) data.getDataSetByIndex(0);
+            if (dataSetByIndex != null) {
+                dataSetByIndex.setDrawFilled(false);
 //            dataSetByIndex.setColor(Color.parseColor("#17AAE2"));
-            dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
+                dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
 

@@ -40,9 +40,9 @@ public class UploadCommDbServices extends IntentService {
     //userId
     private static String userId = (String) SharedPreferencesUtils.readObject(MyApp.getContext(), Commont.USER_ID_DATA);
     //结束日期
-    private String endDay = WatchUtils.obtainFormatDate(1);  //昨天的，今天的数据今天不上传
+    private String endDay = WatchUtils.obtainFormatDate(0);  //昨天的，今天的数据今天不上传
     //开始日期
-    private String startDay = WatchUtils.obtainFormatDate(3); //前天的
+    private String startDay = WatchUtils.obtainFormatDate(2); //前天的
 
 
     //从服务器所下载的数据
@@ -88,17 +88,46 @@ public class UploadCommDbServices extends IntentService {
         if (uploadStepList != null) {
             Log.e(TAG,"---------间隔大小="+uploadStepList.size());
             List<Map<String, String>> parmListMap = new ArrayList<>();
+
+            //用户的身高
+            String userHeight = (String) SharedPreferencesUtils.getParam(this, Commont.USER_HEIGHT, "170");
+            if(WatchUtils.isEmpty(userHeight))
+                userHeight = "170";
+            int uHeight = Integer.valueOf(userHeight.trim());
+            //目标步数
+            int goalStep = (int) SharedPreferencesUtils.getParam(this,"b30Goal",8000);
+
+            Map<String, String> mp = new HashMap<>();
             for (CommStepCountDb countDb : uploadStepList) {
-                //Log.e(TAG,"--------查询需要上传的步数="+countDb.toString());
-                if (!countDb.isUpload()) {
-                    Map<String, String> mp = new HashMap<>();
+                //计算里程
+                String dis = WatchUtils.getDistants(countDb.getStepnumber(),uHeight)+"";
+                //卡路里
+                String kcal = WatchUtils.getKcal(countDb.getStepnumber(),uHeight)+"";
+                if(countDb.getDateStr().equals(endDay)){    //当天的上传
                     mp.put("userid", countDb.getUserid());
                     mp.put("stepnumber", countDb.getStepnumber() + "");
                     mp.put("date", countDb.getDateStr());
                     mp.put("devicecode", countDb.getDevicecode());
                     mp.put("count", countDb.getCount() + "");
+                    mp.put("distance",dis);
+                    mp.put("calorie",kcal);
+                    mp.put("reach",(goalStep<=countDb.getStepnumber()?1:0)+"");
                     parmListMap.add(mp);
+
+                }else{
+                    if (!countDb.isUpload()) {
+                        mp.put("userid", countDb.getUserid());
+                        mp.put("stepnumber", countDb.getStepnumber() + "");
+                        mp.put("date", countDb.getDateStr());
+                        mp.put("devicecode", countDb.getDevicecode());
+                        mp.put("count", countDb.getCount() + "");
+                        mp.put("reach",(goalStep<=countDb.getStepnumber()?1:0)+"");
+                        mp.put("distance",dis);
+                        mp.put("calorie",kcal);
+                        parmListMap.add(mp);
+                    }
                 }
+
 
             }
             Log.e(TAG,"--parmListMap--size="+parmListMap.size());
@@ -168,8 +197,8 @@ public class UploadCommDbServices extends IntentService {
         List<Map<String, String>> list = new ArrayList<>();
         for (CommHeartDb commHeartDb : commHeartDbList) {
 //            Log.e(TAG, "---------遍历心率=" + commHeartDb.toString());
-            if (!commHeartDb.isUpload()) {
-                Map<String, String> mp = new HashMap<>();
+            Map<String, String> mp = new HashMap<>();
+            if(commHeartDb.getDateStr().equals(WatchUtils.getCurrentDate())){
                 mp.put("userid", commHeartDb.getUserid());
                 mp.put("devicecode", commHeartDb.getDevicecode());
                 mp.put("maxheartrate", commHeartDb.getMaxheartrate() + "");
@@ -177,6 +206,16 @@ public class UploadCommDbServices extends IntentService {
                 mp.put("avgheartrate", commHeartDb.getAvgheartrate() + "");
                 mp.put("rtc", commHeartDb.getDateStr());
                 list.add(mp);
+            }else{
+                if (!commHeartDb.isUpload()) {
+                    mp.put("userid", commHeartDb.getUserid());
+                    mp.put("devicecode", commHeartDb.getDevicecode());
+                    mp.put("maxheartrate", commHeartDb.getMaxheartrate() + "");
+                    mp.put("minheartrate", commHeartDb.getMinheartrate() + "");
+                    mp.put("avgheartrate", commHeartDb.getAvgheartrate() + "");
+                    mp.put("rtc", commHeartDb.getDateStr());
+                    list.add(mp);
+                }
             }
 
         }
