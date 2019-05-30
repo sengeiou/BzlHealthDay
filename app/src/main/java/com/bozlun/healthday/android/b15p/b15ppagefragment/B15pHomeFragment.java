@@ -227,6 +227,7 @@ public class B15pHomeFragment extends LazyFragment
     private void init(View rootView) {
         initTipTv(rootView);
 
+        b30CusHeartView.setxLineTextColor(Color.parseColor("#FF949496"));
         b30TopDateTv.setText(WatchUtils.getCurrentDate());
         if (b30GoalStepTv != null)
             b30GoalStepTv.setText(getResources().getString(R.string.goal_step) + goalStep + getResources().getString(R.string.steps));

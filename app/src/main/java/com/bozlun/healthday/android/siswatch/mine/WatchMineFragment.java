@@ -11,9 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bozlun.healthday.android.b15p.activity.B15PDeviceActivity;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
@@ -29,8 +26,11 @@ import com.bozlun.healthday.android.rxandroid.SubscriberOnNextListener;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
 import com.bozlun.healthday.android.siswatch.NewSearchActivity;
 import com.bozlun.healthday.android.siswatch.WatchDeviceActivity;
-import com.bozlun.healthday.android.siswatch.utils.UpdateManager;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.bozlun.healthday.android.util.ToastUtil;
 import com.bozlun.healthday.android.util.URLs;
@@ -240,15 +240,20 @@ public class WatchMineFragment extends LazyFragment {
                                 if (!WatchUtils.isEmpty(imgHead)) {
                                     //头像
 
-                                    RequestOptions mRequestOptions = RequestOptions.circleCropTransform().diskCacheStrategy(DiskCacheStrategy.NONE)
-                                            .skipMemoryCache(true);
+                                    //设置图片圆角角度
+                                    RoundedCorners roundedCorners= new RoundedCorners(27);
+                                    //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
+                                    RequestOptions options=RequestOptions.bitmapTransform(roundedCorners).override(300, 300);
 
+
+                                    /*RequestOptions mRequestOptions = RequestOptions.circleCropTransform().diskCacheStrategy(DiskCacheStrategy.NONE)
+                                            .skipMemoryCache(true);
+                                    */
 //                                    Glide.with(getActivity()).load(myInfoJsonObject.getString("image"))
 //                                            .bitmapTransform(new CropCircleTransformation(getActivity())).placeholder(R.mipmap.ic_default_himg).into(watchMineUserheadImg);    //头像
 
-
                                     Glide.with(getActivity()).load(myInfoJsonObject.getString("image"))
-                                            .apply(mRequestOptions).into(watchMineUserheadImg);    //头像
+                                            .apply(options).into(watchMineUserheadImg);    //头像
                                 }
                                 userId = myInfoJsonObject.getString("userId");
                                 String userHeight = myInfoJsonObject.getString("height");

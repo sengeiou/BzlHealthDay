@@ -139,16 +139,16 @@ public class B15PCusSleepView extends View {
             for(int i = 0;i<sleepList.size();i++){
                 if(sleepList.get(i) == 0){  //浅睡
                     RectF rectF = new RectF(i*mCurrentWidth,
-                            -dp2px(130),(1+i)*mCurrentWidth,
+                            -dp2px(110),(1+i)*mCurrentWidth,
                             0);
                     canvas.drawRect(rectF,hightPaint);
                 }
                 else if(sleepList.get(i) == 1){    //深睡
-                    RectF rectF = new RectF(i*mCurrentWidth,-dp2px(80),(1+i)*mCurrentWidth,0);
+                    RectF rectF = new RectF(i*mCurrentWidth,-dp2px(60),(1+i)*mCurrentWidth,0);
                     canvas.drawRect(rectF,deepPaint);
 
                 }else if(sleepList.get(i) == 2){    //清醒
-                    RectF rectF = new RectF(i*mCurrentWidth,-dp2px(160),
+                    RectF rectF = new RectF(i*mCurrentWidth,-dp2px(150),
                             (i+1)*mCurrentWidth,0);
                     canvas.drawRect(rectF,awakePaint);
 
@@ -156,7 +156,7 @@ public class B15PCusSleepView extends View {
 
                 if(isSeekBarShow){
                     //绘制一条白线
-                    RectF linRectF = new RectF(seekX * mCurrentWidth,-dp2px(160),seekX * mCurrentWidth+10,0);
+                    RectF linRectF = new RectF(seekX * mCurrentWidth,-dp2px(150),seekX * mCurrentWidth+10,0);
                     canvas.drawRect(linRectF,linPaint);
 
                     linPaint.setTextSize(30f);

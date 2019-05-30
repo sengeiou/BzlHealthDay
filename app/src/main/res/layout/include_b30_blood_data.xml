@@ -5,8 +5,10 @@
     android:layout_height="230dp"
     android:id="@+id/b30BloadChartLin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
-    android:background="#FF8E0D">
+    android:layout_marginBottom="@dimen/size_10"
+    android:layout_marginTop="@dimen/size_10"
+    android:background="#289A86">
+    <!--#FF8E0D-->
 
 
     <LinearLayout

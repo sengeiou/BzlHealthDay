@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/b30_sport"
     android:orientation="vertical">
 
 
@@ -28,11 +29,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
-                    android:layout_marginRight="@dimen/size_15"
                     android:background="@drawable/mybackground_off"
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
+                    <!--android:layout_marginLeft="@dimen/size_15"-->
+                    <!--android:layout_marginRight="@dimen/size_15"-->
                     <!--android:background="@drawable/newh9data_top_shap"-->
 
                     <TextView
@@ -40,9 +41,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@drawable/newh9data_selecte_text_shap"
+                        android:background="@drawable/newh9data_selecte_text_shap_l"
                         android:gravity="center"
                         android:padding="6dp"
                         android:text="@string/weeks"
@@ -51,17 +51,14 @@
 
                     <View
                         android:layout_width="1dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/chang_white" />
+                        android:background="@color/new_colorAccent" />
 
                     <TextView
                         android:id="@+id/b30DataMonthTv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:background="@drawable/newh9data_selecte_text_shap"
                         android:gravity="center"
@@ -71,20 +68,17 @@
                         android:textSize="@dimen/text_size_17" />
 
                     <View
-                        android:layout_marginTop="1dp"
-                        android:layout_marginBottom="1dp"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/chang_white" />
+                        android:background="@color/new_colorAccent" />
 
                     <TextView
                         android:id="@+id/b30DataYearTv"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@drawable/newh9data_selecte_text_shap"
+                        android:background="@drawable/newh9data_selecte_text_shap_r"
                         android:gravity="center"
                         android:padding="6dp"
                         android:text="@string/year"

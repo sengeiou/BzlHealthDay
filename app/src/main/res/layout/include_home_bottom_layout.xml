@@ -20,6 +20,15 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
+            android:src="@mipmap/ic_heart_test" />
+
+
+        <!--<ImageView
+            android:id="@+id/b30MeaureHeartImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:background="@mipmap/ic_meaure_heart_bottom" />
 
         <TextView
@@ -31,7 +40,7 @@
             android:padding="@dimen/size_3"
             android:layout_below="@+id/b30MeaureHeartImg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
 
     </RelativeLayout>
 
@@ -42,6 +51,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/b30MeaureBloadImg"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_bloop_test" />
+      <!--  <ImageView
             android:id="@+id/b30MeaureBloadImg"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
@@ -58,7 +74,7 @@
             android:gravity="center"
             android:layout_below="@+id/b30MeaureBloadImg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
 
     </RelativeLayout>
 

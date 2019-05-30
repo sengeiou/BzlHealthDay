@@ -71,20 +71,20 @@ public class RegisterActivity extends BaseActivity {
     TextView tvTitle;
     @BindView(R.id.register_agreement_my)
     TextView registerAgreement;
-    @BindView(R.id.username_input)
-    TextInputLayout usernameInput;
-    @BindView(R.id.textinput_password_regster)
-    TextInputLayout textinputPassword;
-    @BindView(R.id.code_et_regieg)
-    EditText codeEt;
+//    @BindView(R.id.username_input)
+//    TextInputLayout usernameInput;
+//    @BindView(R.id.textinput_password_regster)
+//    TextInputLayout textinputPassword;
+//    @BindView(R.id.code_et_regieg)
+//    EditText codeEt;
     @BindView(R.id.username_regsiter)
     EditText username;
     @BindView(R.id.password_logonregigter)
     EditText password;
-    @BindView(R.id.send_btn)
-    Button sendBtn;
-    @BindView(R.id.textinput_code)
-    TextInputLayout textinput_code;
+//    @BindView(R.id.send_btn)
+//    Button sendBtn;
+//    @BindView(R.id.textinput_code)
+//    TextInputLayout textinput_code;
     private DialogSubscriber dialogSubscriber;
     private Subscriber subscriber;
     private SubscriberOnNextListener<String> subscriberOnNextListener;
@@ -106,11 +106,11 @@ public class RegisterActivity extends BaseActivity {
 //            textinput_code.setVisibility(View.GONE);
 //        }
 
-        usernameInput.setHint(getResources().getString(R.string.input_email));
-        sendBtn.setVisibility(View.GONE);
-        textinput_code.setVisibility(View.GONE);
+        //usernameInput.setHint(getResources().getString(R.string.input_email));
+        //sendBtn.setVisibility(View.GONE);
+        //textinput_code.setVisibility(View.GONE);
 
-        codeEt.setHintTextColor(getResources().getColor(R.color.white));
+        //codeEt.setHintTextColor(getResources().getColor(R.color.white));
         subscriberOnNextListener = new SubscriberOnNextListener<String>() {
             @Override
             public void onNext(String result) {
@@ -163,7 +163,7 @@ public class RegisterActivity extends BaseActivity {
         };
         spanStatement.setSpan(clickStatement, 0, INSURANCE_STATEMENT.length(),
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        spanStatement.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent)), 0,
+        spanStatement.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.red)), 0,
                 INSURANCE_STATEMENT.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         registerAgreement.setText(R.string.agree_agreement);
         registerAgreement.append(spanStatement);
@@ -176,7 +176,7 @@ public class RegisterActivity extends BaseActivity {
         return R.layout.activity_regsiter;
     }
 
-    private void initTime() {
+    /*private void initTime() {
         final int countTime = 60;
         sendBtn.setText(getResources().getString(R.string.resend)+"(" + countTime + "s)");
         sendBtn.setClickable(false);
@@ -211,9 +211,10 @@ public class RegisterActivity extends BaseActivity {
                 })
                 .take(countTime + 1)
                 .subscribe(subscriber);
-    }
+    }*/
 
-    @OnClick({R.id.login_btn_reger, R.id.send_btn})
+//    @OnClick({R.id.login_btn_reger, R.id.send_btn})
+@OnClick({R.id.login_btn_reger})
     public void onClick(View view) {
         final String phoneTxt = username.getText().toString().trim();
         switch (view.getId()) {
@@ -229,7 +230,7 @@ public class RegisterActivity extends BaseActivity {
                     if (WatchUtils.isEmpty(phoneTxt)) {
                         ToastUtil.showShort(RegisterActivity.this, getResources().getString(R.string.format_is_wrong));
                     } else {
-                        initTime();
+                        //initTime();
                         SMSSDK.getVerificationCode("86", phoneTxt);
                     }
 

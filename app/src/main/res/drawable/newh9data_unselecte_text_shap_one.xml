@@ -5,6 +5,5 @@
 
     <corners
         android:topLeftRadius="@dimen/size_3"
-        android:radius="3dp"
         android:bottomLeftRadius="@dimen/size_3"/>
 </shape>

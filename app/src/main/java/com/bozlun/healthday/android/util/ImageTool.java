@@ -27,6 +27,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 
 public class ImageTool {
@@ -357,4 +359,26 @@ public class ImageTool {
         return new BitmapDrawable(null, newbmp);
     }
 
+
+
+    /**
+     * @param urlpath
+     * @return Bitmap
+     * 根据url获取布局背景的对象
+     */
+    public static Drawable getDrawable(String urlpath){
+        Drawable d = null;
+        try {
+            URL url = new URL(urlpath);
+            URLConnection conn = url.openConnection();
+            conn.connect();
+            InputStream in;
+            in = conn.getInputStream();
+            d = Drawable.createFromStream(in, "background.jpg");
+            // TODO Auto-generated catch block
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return d;
+    }
 }

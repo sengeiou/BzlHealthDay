@@ -71,10 +71,10 @@ public class RegisterActivity2 extends BaseActivity {
     ListView lv_register;
     @BindView(R.id.register_agreement_my)
     TextView registerAgreement;
-    @BindView(R.id.username_input)
-    TextInputLayout usernameInput;
-    @BindView(R.id.textinput_password_regster)
-    TextInputLayout textinputPassword;
+//    @BindView(R.id.username_input)
+//    TextInputLayout usernameInput;
+//    @BindView(R.id.textinput_password_regster)
+//    TextInputLayout textinputPassword;
     @BindView(R.id.code_et_regieg)
     EditText codeEt;
     @BindView(R.id.username_regsiter)
@@ -83,8 +83,8 @@ public class RegisterActivity2 extends BaseActivity {
     EditText password;
     @BindView(R.id.send_btn)
     Button sendBtn;
-    @BindView(R.id.textinput_code)
-    TextInputLayout textinput_code;
+//    @BindView(R.id.textinput_code)
+//    TextInputLayout textinput_code;
     private DialogSubscriber dialogSubscriber,dialogSubscriber2;
     private Subscriber subscriber;
     private SubscriberOnNextListener<String> subscriberOnNextListener,subscriberOnNextListener2;
@@ -138,7 +138,7 @@ public class RegisterActivity2 extends BaseActivity {
 
 //        boolean lauage= VerifyUtil.isZh(RegisterActivity2.this);
 //        if(lauage){
-            usernameInput.setHint(getResources().getString(R.string.input_name));
+//            usernameInput.setHint(getResources().getString(R.string.input_name));
 //        }else{
 //            usernameInput.setHint(getResources().getString(R.string.input_email));
 //            sendBtn.setVisibility(View.GONE);
@@ -229,7 +229,7 @@ public class RegisterActivity2 extends BaseActivity {
         };
         spanStatement.setSpan(clickStatement, 0, INSURANCE_STATEMENT.length(),
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        spanStatement.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent)), 0,
+        spanStatement.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.red)), 0,
                 INSURANCE_STATEMENT.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         registerAgreement.setText(R.string.agree_agreement);
         registerAgreement.append(spanStatement);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hrvLerozenLin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:visibility="visible"
-    android:id="@+id/hrvLerozenLin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:visibility="visible">
 
 
     <com.veepoo.protocol.view.LorenzChartView
@@ -308,20 +308,17 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
-
 
 
     </HorizontalScrollView>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:layout_marginTop="10dp"
+        android:background="@color/white"
         android:orientation="vertical">
 
 
@@ -336,15 +333,13 @@
 
         <TextView
             android:id="@+id/hrvNoLeroDescTv"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="@string/vphrv_repo_1_00"
             android:textColor="@color/contents_text"
-            android:textSize="15sp" />
-
-
+            android:textSize="15sp"
+            android:visibility="gone" />
 
 
         <ListView

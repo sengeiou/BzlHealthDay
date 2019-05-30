@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -300,19 +301,36 @@ public class W30sNewRunFragment extends BaseFragment implements SwipeRefreshLayo
 //        commentRunRecyclerView.setAdapter(outDoorSportAdapter);
         watchRunSwipe.setOnRefreshListener(this);
         clearClickTvStyle();
-        w30sRunTv.setTextColor(getResources().getColor(R.color.white));
-        w30sRunTv.setBackgroundResource(R.drawable.newh9data_unselecte_text_shap);
-
         imageHistory.setVisibility(View.VISIBLE);
+
+        w30sRunTv.setTextColor(getResources().getColor(R.color.new_colorAccent));
+        //w30sRunTv.setBackgroundResource(R.drawable.newh9data_unselecte_text_shap);
+        Drawable drawableBottom = getResources().getDrawable(
+                R.mipmap.ic_xian);
+        w30sRunTv.setCompoundDrawablesWithIntrinsicBounds(null,
+                null, null, drawableBottom);
     }
 
     private void clearClickTvStyle() {
         try {
-            w30sRunTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap);
-            w30sRunTv.setTextColor(Color.parseColor("#333333"));
+            w30sRunTv.setTextColor(getResources().getColor(R.color.new_colorAccent));
+            Drawable drawableBottomR = getResources().getDrawable(
+                    R.mipmap.ic_xian_w);
+            w30sRunTv.setCompoundDrawablesWithIntrinsicBounds(null,
+                    null, null, drawableBottomR);
 
-            w30sCycleTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap);
-            w30sCycleTv.setTextColor(Color.parseColor("#333333"));
+
+            w30sCycleTv.setTextColor(getResources().getColor(R.color.new_colorAccent));
+            Drawable drawableBottomL = getResources().getDrawable(
+                    R.mipmap.ic_xian_w);
+            w30sCycleTv.setCompoundDrawablesWithIntrinsicBounds(null,
+                    null, null, drawableBottomL);
+
+//            w30sRunTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap);
+//            w30sRunTv.setTextColor(Color.parseColor("#333333"));
+//
+//            w30sCycleTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap);
+//            w30sCycleTv.setTextColor(Color.parseColor("#333333"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -519,8 +537,16 @@ public class W30sNewRunFragment extends BaseFragment implements SwipeRefreshLayo
             case R.id.w30sRunTv:    //跑步切换
                 w30sMonthTv.setText(getResources().getString(R.string.string_sport_all_data));
                 clearClickTvStyle();
-                w30sRunTv.setTextColor(getResources().getColor(R.color.white));
-                w30sRunTv.setBackgroundResource(R.drawable.newh9data_unselecte_text_shap);
+
+                w30sRunTv.setTextColor(getResources().getColor(R.color.new_colorAccent));
+                Drawable drawableBottomR = getResources().getDrawable(
+                        R.mipmap.ic_xian);
+                w30sRunTv.setCompoundDrawablesWithIntrinsicBounds(null,
+                        null, null, drawableBottomR);
+
+
+//                w30sRunTv.setTextColor(getResources().getColor(R.color.white));
+//                w30sRunTv.setBackgroundResource(R.drawable.newh9data_unselecte_text_shap);
                 runTags = 0;
 //                getRunMapListData(runTags);    //获取地图的历史记录
                 getRunLiatDataDB(runTags, df.format(new Date()));
@@ -528,8 +554,15 @@ public class W30sNewRunFragment extends BaseFragment implements SwipeRefreshLayo
             case R.id.w30sCycleTv:  //骑行切换
                 w30sMonthTv.setText(getResources().getString(R.string.string_run_all_data));
                 clearClickTvStyle();
-                w30sCycleTv.setTextColor(getResources().getColor(R.color.white));
-                w30sCycleTv.setBackgroundResource(R.drawable.newh9data_unselecte_text_shap);
+
+                w30sCycleTv.setTextColor(getResources().getColor(R.color.new_colorAccent));
+                Drawable drawableBottomL = getResources().getDrawable(
+                        R.mipmap.ic_xian);
+                w30sCycleTv.setCompoundDrawablesWithIntrinsicBounds(null,
+                        null, null, drawableBottomL);
+
+//                w30sCycleTv.setTextColor(getResources().getColor(R.color.white));
+//                w30sCycleTv.setBackgroundResource(R.drawable.newh9data_unselecte_text_shap);
                 runTags = 1;
 //                getRunMapListData(runTags);    //获取地图的历史记录
                 getRunLiatDataDB(runTags, df.format(new Date()));

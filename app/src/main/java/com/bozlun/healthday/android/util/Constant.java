@@ -7,9 +7,19 @@ package com.bozlun.healthday.android.util;
 public class Constant {
 
     /**
+     *
+     * KM  ---  MI
      * 公制转英制的倍率
      */
-    public static final float METRIC_MILE = 0.621f;
+    public static final double METRIC_MILE = 0.6213712;
+
+
+    /**
+     *
+     * M  -- FT
+     * 公制转英制的倍率
+     */
+    public static final double METRIC_FT = 3.2808399;
     /**
      * 跳转页面附带的参数: 日期
      */

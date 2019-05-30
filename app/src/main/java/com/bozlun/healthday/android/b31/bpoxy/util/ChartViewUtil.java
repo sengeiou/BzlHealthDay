@@ -59,6 +59,11 @@ public class ChartViewUtil {
     //无数据显示的颜色
     private int noDataColor = Color.parseColor("#FF207F6F");
 
+    private int GridColor = Color.parseColor("#90207F6F");
+    private int TextColor = Color.parseColor("#FF207F6F");
+    private int LineColor = Color.parseColor("#50207F6F");
+    private int FillColor = Color.parseColor("#FF207F6F");
+
 
 
     public ChartViewUtil(LineChart chartView, SPMarkerView markerView, boolean modelIs24,
@@ -70,6 +75,22 @@ public class ChartViewUtil {
         this.minvalue = minvalue;
         this.strNodata = strNodata;
         this.type = type;
+        initChartView();
+        addLimmitLines(type);
+    }
+
+    public ChartViewUtil(LineChart chartView, SPMarkerView markerView, boolean modelIs24,
+                         float maxvalue, float minvalue, String strNodata, ESpo2hDataType type
+            ,int lineColor,int FillColor) {
+        this.chartView = chartView;
+        this.modelIs24 = modelIs24;
+        this.markerView = markerView;
+        this.maxvalue = maxvalue;
+        this.minvalue = minvalue;
+        this.strNodata = strNodata;
+        this.type = type;
+        this.LineColor = lineColor;
+        this.FillColor = FillColor;
         initChartView();
         addLimmitLines(type);
     }
@@ -122,6 +143,19 @@ public class ChartViewUtil {
         setChartView();
     }
 
+    public void setGridColor(int gridColor) {
+        this.GridColor = gridColor;
+        setYview();
+    }
+
+    public void setTextColor(int textColor) {
+        this.TextColor = textColor;
+        setYview();
+    }
+
+
+
+
     private void setXview() {
         XAxis xAxis = chartView.getXAxis();
         xAxis.setDrawGridLines(false);
@@ -156,8 +190,10 @@ public class ChartViewUtil {
         leftAxis.setDrawGridLines(false);
 //        leftAxis.setGridColor(Color.WHITE);
 //        leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setGridColor(Color.parseColor("#90207F6F"));
-        leftAxis.setTextColor(Color.parseColor("#FF207F6F"));
+//        leftAxis.setGridColor(Color.parseColor("#90207F6F"));
+//        leftAxis.setTextColor(Color.parseColor("#FF207F6F"));
+        leftAxis.setGridColor(GridColor);
+        leftAxis.setTextColor(TextColor);
         leftAxis.setDrawLimitLinesBehindData(false);
 
         chartView.getAxisRight().setEnabled(false);
@@ -273,7 +309,8 @@ public class ChartViewUtil {
         limitLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
         limitLine.setTextSize(10f);
 //        limitLine.setLineColor(Color.argb(70, 255, 255, 255));
-        limitLine.setLineColor(Color.parseColor("#50207F6F"));
+//        limitLine.setLineColor(Color.parseColor("#50207F6F"));
+        limitLine.setLineColor(LineColor);
         limitLine.setTextColor(Color.RED);
         return limitLine;
 
@@ -282,7 +319,8 @@ public class ChartViewUtil {
     private LineDataSet createSet(int[] colors) {
         LineDataSet set1 = new LineDataSet(null, "");
         set1.setDrawIcons(false);
-        set1.setColor(Color.parseColor("#FF207F6F"));
+//        set1.setColor(Color.parseColor("#FF207F6F"));
+        set1.setColor(FillColor);
         set1.setCircleRadius(2f);
         if (type == TYPE_SPO2H) {
             set1.setCircleColors(colors);
@@ -297,7 +335,8 @@ public class ChartViewUtil {
         set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
         set1.setLineWidth(2.0f);
 //        set1.setFillColor(Color.argb(255, 255, 255, 255));
-        set1.setFillColor(Color.parseColor("#FF207F6F"));
+//        set1.setFillColor(Color.parseColor("#FF207F6F"));
+        set1.setFillColor(FillColor);
         set1.setFillAlpha(40);
         set1.setDrawFilled(true);
         set1.setDrawCircleHole(false);

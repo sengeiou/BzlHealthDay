@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
-        android:background="@color/b30_sport"
+        android:background="#E63F52"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
     <!--android:background="#ECA83D"-->

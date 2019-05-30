@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
         android:padding="3dp"
-        android:text="09:00"
+        android:text="09:00-10:00"
+        android:textColor="#959595"
         android:textSize="@dimen/sp_16" />
 
     <ImageView
@@ -27,7 +28,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:padding="3dp"
-        android:src="@mipmap/item_step_small" />
+        android:src="@mipmap/item_step_small"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/itemB30StepDetailKcalTv"
@@ -35,10 +37,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/size_8"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_weight="1.5"
+        android:drawableStart="@mipmap/ic_deatil_tep"
+        android:gravity="center|end"
+        android:lines="1"
         android:padding="3dp"
-        android:text="09:00"
+        android:text="0"
+        android:textColor="#959595"
         android:textSize="@dimen/sp_18" />
 
 </LinearLayout>
