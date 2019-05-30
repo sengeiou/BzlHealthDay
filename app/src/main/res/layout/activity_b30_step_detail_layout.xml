@@ -2,24 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/b30_sport"
     android:orientation="vertical">
 
     <include layout="@layout/comment_b30_title_layout" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#2594EE"
+            android:background="#6DCB99"
             android:orientation="vertical">
 
             <LinearLayout
@@ -33,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:src="@drawable/arrow_white_left"/>
+                    android:src="@drawable/arrow_white_left" />
 
                 <TextView
                     android:id="@+id/stepCurrDateTv"
@@ -48,12 +45,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:src="@drawable/arrow_white_right"/>
+                    android:src="@drawable/arrow_white_right" />
 
             </LinearLayout>
 
-            <include layout="@layout/include_b30_barchart" />
+            <include layout="@layout/include_b30_barchart2" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@mipmap/ic_step_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,71 +66,60 @@
                 android:id="@+id/line_dis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:orientation="horizontal">
 
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/detail_step"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="@string/step"
-                        android:textColor = "@color/new_deep_colorAccent"
-                        android:textSize="16sp" />
+                        android:background="@color/new_colorAccent"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/countStepTv"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+                            android:text="@string/step"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/countStepTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+                            android:text="--"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/detail_step_img"
+                        android:layout_marginTop="@dimen/size_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="3dp"
-                        android:textColor = "@color/new_deep_colorAccent"
-                        android:gravity="center"
-                        android:text="--"
-                        android:textSize="16sp" />
+                        android:src="@mipmap/ic_deatail_couur" />
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/chang_white" />
-
-                <LinearLayout
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="@string/mileage"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/countDisTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="--"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:layout_marginBottom="@dimen/size_5"
                     android:background="@color/chang_white" />
 
                 <LinearLayout
@@ -137,25 +128,100 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/detail_dis"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="@string/calories"
-                        android:textSize="16sp" />
+                        android:background="#6DCB99"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/countKcalTv"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+                            android:text="@string/mileage"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/countDisTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+                            android:text="--"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/detail_dis_img"
+                        android:layout_marginTop="@dimen/size_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="--"
-                        android:textSize="16sp" />
+                        android:visibility="gone"
+                        android:src="@mipmap/ic_deatail_couur" />
+
                 </LinearLayout>
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:layout_marginBottom="@dimen/size_5"
+                    android:background="@color/chang_white" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/detail_kcl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#6DCB99"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+                            android:text="@string/calories"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/countKcalTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="3dp"
+                            android:gravity="center"
+                            android:text="--"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/detail_kcl_img"
+                        android:layout_marginTop="@dimen/size_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:src="@mipmap/ic_deatail_couur" />
+                </LinearLayout>
+
 
                 <View
                     android:layout_width="1dp"
@@ -165,14 +231,14 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/chang_white" />
+                android:layout_height="@dimen/size_10"
+                android:background="@color/white" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/b30StepDetailRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
+                android:overScrollMode="never" />
         </LinearLayout>
     </LinearLayout>
 

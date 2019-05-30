@@ -22,7 +22,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:background="#FF307E"
+            android:background="#E63F52"
             android:layout_height="wrap_content">
 
             <LinearLayout

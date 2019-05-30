@@ -715,7 +715,7 @@ public class CommDataFragment extends LazyFragment {
     //周，月，年切换
     private void setClearStyle(int code) {
         if (b30DataWeekTv != null) {
-            b30DataWeekTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap);
+            b30DataWeekTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap_l);
             b30DataWeekTv.setTextColor(Color.parseColor("#333333"));
         }
         if (b30DataMonthTv != null) {
@@ -723,7 +723,7 @@ public class CommDataFragment extends LazyFragment {
             b30DataMonthTv.setTextColor(Color.parseColor("#333333"));
         }
         if (b30DataYearTv != null) {
-            b30DataYearTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap);
+            b30DataYearTv.setBackgroundResource(R.drawable.newh9data_selecte_text_shap_r);
             b30DataYearTv.setTextColor(Color.parseColor("#333333"));
         }
 

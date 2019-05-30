@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
@@ -35,12 +36,14 @@ import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.tjdL4.tjdmain.ctrls.DisEnergy;
 import com.veepoo.protocol.model.datas.HalfHourSportData;
 import com.veepoo.protocol.model.datas.TimeData;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -87,6 +90,23 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
     @BindView(R.id.stepCurrDateTv)
     TextView stepCurrDateTv;
 
+
+    @BindView(R.id.detail_step)
+    LinearLayout detailStep;
+    @BindView(R.id.detail_dis)
+    LinearLayout detailDis;
+    @BindView(R.id.detail_kcl)
+    LinearLayout detailKcl;
+
+    @BindView(R.id.detail_step_img)
+    ImageView detail_stepIMG;
+    @BindView(R.id.detail_dis_img)
+    ImageView detail_disIMG;
+    @BindView(R.id.detail_kcl_img)
+    ImageView detail_kclIMG;
+
+
+
     /**
      * 列表数据源
      */
@@ -122,7 +142,7 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
         commentB30TitleTv.setText(R.string.move_ment);
 //        commentB30ShareImg.setVisibility(View.VISIBLE);
         b30ChartTopRel.setVisibility(View.GONE);
-        b30SportChartLin1.setBackgroundColor(Color.parseColor("#2594EE"));
+        b30SportChartLin1.setBackgroundColor(Color.parseColor("#6DCB99"));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager
                 .VERTICAL, true);
         b30StepDetailRecyclerView.setLayoutManager(layoutManager);
@@ -169,7 +189,7 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
                         //根据日期判断去当天的值
                         if (stepData.substring(0, 10).equals(currDay)) {
                             step = step + b15PStepDB.getStepItemNumber();
-                            Log.e("====", "===步数计算时间对比==" + stepData.substring(0, 10) + "  " + currDay + "  " + b15PStepDB.getStepItemNumber());
+                            //Log.e("====", "===步数计算时间对比==" + stepData.substring(0, 10) + "  " + currDay + "  " + b15PStepDB.getStepItemNumber());
                             if (timeString[i].equals(stepTime.substring(0, 2))) {
                                 hourStep += b15PStepDB.getStepItemNumber();
                             }
@@ -400,7 +420,8 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
     }
 
     @OnClick({R.id.commentB30BackImg, R.id.commentB30ShareImg, R.id.stepCurrDateLeft,
-            R.id.stepCurrDateRight})
+            R.id.stepCurrDateRight,
+            R.id.detail_step, R.id.detail_dis, R.id.detail_kcl})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.commentB30BackImg:
@@ -414,6 +435,51 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
                 break;
             case R.id.stepCurrDateRight:   //切换下一天数据
                 changeDayData(false);
+                break;
+                //下面是  步数详细中 步数、距离、卡路里切换
+            case R.id.detail_step:
+                Commont.TYPE_DATAS = 0;
+                if (b30StepDetailAdapter != null) b30StepDetailAdapter.notifyDataSetChanged();
+                SelectType(0);
+                break;
+            case R.id.detail_dis:
+                Commont.TYPE_DATAS = 1;
+                if (b30StepDetailAdapter != null) b30StepDetailAdapter.notifyDataSetChanged();
+                SelectType(1);
+                break;
+            case R.id.detail_kcl:
+                Commont.TYPE_DATAS = 2;
+                if (b30StepDetailAdapter != null) b30StepDetailAdapter.notifyDataSetChanged();
+                SelectType(2);
+                break;
+        }
+    }
+
+    void SelectType(int type){
+        switch (type){
+            case 0:
+                detailStep.setBackgroundColor(Color.parseColor("#207F6F"));
+                detailDis.setBackgroundColor(Color.parseColor("#6DCB99"));
+                detailKcl.setBackgroundColor(Color.parseColor("#6DCB99"));
+                detail_stepIMG.setVisibility(View.VISIBLE);
+                detail_disIMG.setVisibility(View.GONE);
+                detail_kclIMG.setVisibility(View.GONE);
+                break;
+            case 1:
+                detailStep.setBackgroundColor(Color.parseColor("#6DCB99"));
+                detailDis.setBackgroundColor(Color.parseColor("#207F6F"));
+                detailKcl.setBackgroundColor(Color.parseColor("#6DCB99"));
+                detail_stepIMG.setVisibility(View.GONE);
+                detail_disIMG.setVisibility(View.VISIBLE);
+                detail_kclIMG.setVisibility(View.GONE);
+                break;
+            case 2:
+                detailStep.setBackgroundColor(Color.parseColor("#6DCB99"));
+                detailDis.setBackgroundColor(Color.parseColor("#6DCB99"));
+                detailKcl.setBackgroundColor(Color.parseColor("#207F6F"));
+                detail_stepIMG.setVisibility(View.GONE);
+                detail_disIMG.setVisibility(View.GONE);
+                detail_kclIMG.setVisibility(View.VISIBLE);
                 break;
         }
     }

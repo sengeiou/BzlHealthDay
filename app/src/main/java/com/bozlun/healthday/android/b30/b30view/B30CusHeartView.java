@@ -56,6 +56,8 @@ public class B30CusHeartView extends View {
     //线的颜色
     private int heartLineColor ;
 
+    private int xLineTextColor = Color.WHITE;
+
     private boolean isStart = false;
 
     /**
@@ -92,6 +94,11 @@ public class B30CusHeartView extends View {
             typedArray.recycle();
         }
         initPaint(context);
+    }
+
+    public void setxLineTextColor(int xLineTextColor) {
+        this.xLineTextColor = xLineTextColor;
+        this.invalidate();
     }
 
     /**
@@ -233,14 +240,15 @@ public class B30CusHeartView extends View {
     //绘制空数据时显示的文字 #FF307E 线#F5BED3
     private void drawEmptyTxt(Canvas canvas){
         if(rateDataList== null || rateDataList.size()<=0){
-            emptyPaint.setColor(Color.parseColor("#FF949496"));
+//            emptyPaint.setColor(Color.parseColor("#FF949496"));
+            emptyPaint.setColor(xLineTextColor);
             canvas.drawText("No Data",getWidth()/2-40,-getHeight()/2,emptyPaint);
         }
     }
 
     //画字
     private void drawTimeText(Canvas canvas) {
-        txtPaint.setColor(Color.parseColor("#FF949496"));
+        txtPaint.setColor(xLineTextColor);//"#FF949496"
         for(int i = 0;i<timeStr.length;i++){
             canvas.drawText(timeStr[i],txtCurrentWidth*i+dp2px(10),-10,txtPaint);
         }

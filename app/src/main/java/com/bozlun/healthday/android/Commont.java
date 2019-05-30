@@ -11,6 +11,9 @@ import com.tjdL4.tjdmain.contr.L4Command;
 public class Commont {
 
 
+    //步数详细中   步数、距离、卡路里切换时的标识
+    public static int TYPE_DATAS = 0;
+
     /**
      * 判断B31是否带有血压功能
      */
