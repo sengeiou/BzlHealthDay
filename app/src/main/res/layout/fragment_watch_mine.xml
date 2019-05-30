@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/b30_sport"
     android:orientation="vertical"
+    android:fillViewport="true"
     android:scrollbars="none">
 
     <LinearLayout
@@ -12,57 +12,67 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:id="@+id/l1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1.5"
-            android:background="@color/new_colorAccent"
+            android:background="@mipmap/ic_mine_back"
             android:gravity="center"
             android:orientation="vertical">
-
             <!--android:background="@mipmap/h8_mine_bg"-->
             <!--@color/new_colorAccent-->
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="2.5"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_weight="2.8"
+                android:gravity="center_vertical">
+
+                <!--icon_de_head-->
+
+
+                <View
+                    android:id="@+id/vs"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/size_30" />
 
 
                 <FrameLayout
+                    android:id="@+id/fm"
                     android:layout_width="@dimen/size_70"
                     android:layout_height="@dimen/size_70"
-                    android:layout_gravity="center"
-                    android:background="@mipmap/icon_de_head">
+                    android:layout_toRightOf="@+id/vs"
+                    android:background="@mipmap/ic_image_race_mine">
 
                     <ImageView
                         android:id="@+id/watch_mine_userheadImg"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/size_70"
+                        android:src="@mipmap/image_nomal_today" />
                 </FrameLayout>
 
+
                 <TextView
+                    android:layout_marginTop="@dimen/size_5"
+                    android:layout_toEndOf="@+id/vs"
                     android:id="@+id/watch_mine_uname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/fm"
+                    android:gravity="center"
+                    android:lines="1"
                     android:padding="3dp"
                     android:text=""
+                    android:minWidth="@dimen/size_70"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_14" />
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            </RelativeLayout>
 
 
             <FrameLayout
@@ -91,14 +101,7 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/watch_distanceTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="0"
-                            android:textColor="#ffffff"
-                            android:textSize="@dimen/text_size_17" />
+
 
                         <TextView
                             android:id="@+id/textView3"
@@ -110,8 +113,17 @@
                             android:padding="2dp"
                             android:text="@string/totaldistance"
                             android:textColor="#ffffff"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_16" />
 
+
+                        <TextView
+                            android:id="@+id/watch_distanceTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="@dimen/text_size_17" />
 
                     </LinearLayout>
 
@@ -124,14 +136,7 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/watch_mine_avageStepsTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="0"
-                            android:textColor="#ffffff"
-                            android:textSize="@dimen/text_size_17" />
+
 
                         <TextView
                             android:layout_width="match_parent"
@@ -142,8 +147,17 @@
                             android:padding="2dp"
                             android:text="@string/Totalnumberofsteps"
                             android:textColor="#ffffff"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_16" />
 
+
+                        <TextView
+                            android:id="@+id/watch_mine_avageStepsTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="@dimen/text_size_17" />
 
                     </LinearLayout>
 
@@ -156,14 +170,6 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/watch_mine_dabiaoTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="3dp"
-                            android:text="0"
-                            android:textColor="#ffffff"
-                            android:textSize="@dimen/text_size_17" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -174,8 +180,17 @@
                             android:padding="2dp"
                             android:text="@string/goalfinish"
                             android:textColor="#ffffff"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_16" />
 
+
+                        <TextView
+                            android:id="@+id/watch_mine_dabiaoTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="@dimen/text_size_17" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -246,8 +261,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:padding="15dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="15dp">
 
                     <ImageView
                         android:id="@+id/img_0"
@@ -508,7 +523,7 @@
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size_100"/>
+                android:layout_height="@dimen/size_100" />
 
         </LinearLayout>
     </LinearLayout>

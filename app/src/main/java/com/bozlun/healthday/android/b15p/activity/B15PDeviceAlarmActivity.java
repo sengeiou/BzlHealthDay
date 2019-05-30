@@ -40,7 +40,7 @@ import butterknife.OnClick;
 
 public class B15PDeviceAlarmActivity extends WatchBaseActivity {
 
-    private static final String TAG = "B30DeviceAlarmActivity";
+    private static final String TAG = "B15PDeviceAlarmActivity";
 
     @BindView(R.id.commentB30BackImg)
     ImageView commentB30BackImg;
@@ -138,18 +138,19 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
      * @param position 闹钟列表下标
      */
     private void updateAlarm(int position) {
-        if(mAlarmList.size()==0)
-            return;
-        B15PAlarmSetting alarm2Setting = mAlarmList.get(position);
-        Log.d("----zza--要改变的-", alarm2Setting.toString());
+        if(mAlarmList!=null&&mAlarmList.size()>0){
+            B15PAlarmSetting alarm2Setting = mAlarmList.get(position);
+            Log.d("----zza--要改变的-", alarm2Setting.toString());
 
-        byte[] bytes = byteWeek(alarm2Setting.getWeek());
-        Log.e(TAG, "改变的周期  " + Arrays.toString(bytes));
-        setAlarm(alarm2Setting.getAlarmId(),
-                !alarm2Setting.isOpen(),
-                alarm2Setting.getInterval(),
-                bytes,
-                alarm2Setting.getAlarmHour(), alarm2Setting.getAlarmMinute());
+            byte[] bytes = byteWeek(alarm2Setting.getWeek());
+            Log.e(TAG, "改变的周期  " + Arrays.toString(bytes));
+            setAlarm(alarm2Setting.getAlarmId(),
+                    !alarm2Setting.isOpen(),
+                    alarm2Setting.getInterval(),
+                    bytes,
+                    alarm2Setting.getAlarmHour(), alarm2Setting.getAlarmMinute());
+        }
+
     }
 
 
@@ -248,7 +249,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
                     AlarmClock.AlarmClockData myAlarmClockData = (AlarmClock.AlarmClockData) TempObj;
 
                     if (myAlarmClockData.clockId_int >= 0 && myAlarmClockData.clockId_int <= 4) {
-                        if (myAlarmClockData.clock_switch == 1
+                        if (myAlarmClockData.clock_switch != 0
                                 || myAlarmClockData.hours != 0
                                 || myAlarmClockData.minutes != 0
                                 || myAlarmClockData.week != 0

@@ -351,10 +351,13 @@ public class B31HrvDetailActivity extends WatchBaseActivity {
         List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
 
         ChartViewUtil chartViewUtil = new ChartViewUtil(b31HrvDetailTopChart, mMarkviewHrv, true,
-                CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV);
+                CHART_MAX_HRV, CHART_MIN_HRV, "No Data", TYPE_HRV,Color.parseColor("#50FFFFFF"),Color.parseColor("#EEFFFFFF"));
 
-        chartViewUtil.setxColor(Color.parseColor("#FF949496"));
-        chartViewUtil.setNoDataColor(Color.parseColor("#FF949496"));
+        chartViewUtil.setxColor(Color.parseColor("#FFFFFFFF"));
+        chartViewUtil.setNoDataColor(Color.parseColor("#FFFFFFFF"));
+        chartViewUtil.setGridColor(Color.parseColor("#DCFFFFFF"));
+        chartViewUtil.setTextColor(Color.parseColor("#ffffffff"));
+
         chartViewUtil.updateChartView(tenMinuteData);
         mMarkviewHrv.setData(tenMinuteData);
         closeLoadingDialog();

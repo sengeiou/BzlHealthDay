@@ -197,7 +197,6 @@ public class B15PDeviceActivity extends WatchBaseActivity
                 break;
             case R.id.set_findeDevice:
                 //查找设备
-                //查找
                 L4Command.FindDev();
                 break;
             case R.id.b31DevicePtoRel:      //拍照
