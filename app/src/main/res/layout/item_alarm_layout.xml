@@ -37,8 +37,9 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@string/repeat_once"
+
                 android:textSize="@dimen/size_13" />
+            <!--android:text="@string/repeat_once"-->
         </LinearLayout>
 
         <ImageView

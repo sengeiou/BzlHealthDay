@@ -1527,7 +1527,8 @@ public class WatchUtils {
      */
     public static String obtainB15PAlarmDate(Context context, String repeat) {
         if (repeat == null || repeat.length() != 7 || repeat.equals("0000000")) {
-            return context.getResources().getString(R.string.repeat_once);
+//            return context.getResources().getString(R.string.repeat_once);
+            return "";
         }
         String[] week = context.getResources().getStringArray(R.array.B15PWeekItems);
         StringBuilder builder = new StringBuilder();
