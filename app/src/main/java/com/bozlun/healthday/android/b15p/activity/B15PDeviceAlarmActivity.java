@@ -17,10 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAlarmSetting;
 import com.bozlun.healthday.android.b15p.common.B15PAlarmAdapter;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
+import com.bozlun.healthday.android.util.ToastUtil;
 import com.google.gson.Gson;
 import com.tjdL4.tjdmain.L4M;
 import com.tjdL4.tjdmain.contr.AlarmClock;
@@ -30,6 +33,7 @@ import com.tjdL4.tjdmain.utils.L4DateUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -125,7 +129,8 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
         lv_alarm.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                showDeleteAlarmDia(i);//长按删除闹钟
+                //showDeleteAlarmDia(i);//长按删除闹钟
+                ToastUtil.showShort(MyApp.getContext(),"共5组闹钟，不可删除，只可编辑");
                 return true;
             }
         });
@@ -138,7 +143,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
      * @param position 闹钟列表下标
      */
     private void updateAlarm(int position) {
-        if(mAlarmList!=null&&mAlarmList.size()>0){
+        if (mAlarmList != null && mAlarmList.size() > 0) {
             B15PAlarmSetting alarm2Setting = mAlarmList.get(position);
             Log.d("----zza--要改变的-", alarm2Setting.toString());
 
@@ -185,7 +190,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
     /**
      * 删除闹钟
      */
-    private void showDeleteAlarmDia(int position) {
+    private void showDeleteAlarmDia(final int position) {
         final B15PAlarmSetting alarmSetting = mAlarmList.get(position);
         AlertDialog.Builder builder = new AlertDialog.Builder(B15PDeviceAlarmActivity.this)
                 .setTitle(R.string.deleda)
@@ -249,33 +254,54 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
                     AlarmClock.AlarmClockData myAlarmClockData = (AlarmClock.AlarmClockData) TempObj;
 
                     if (myAlarmClockData.clockId_int >= 0 && myAlarmClockData.clockId_int <= 4) {
-                        if (myAlarmClockData.clock_switch != 0
-                                || myAlarmClockData.hours != 0
-                                || myAlarmClockData.minutes != 0
-                                || myAlarmClockData.week != 0
-                                || myAlarmClockData.interval != 0) {
+//                        if (myAlarmClockData.clock_switch != 0
+//                                || myAlarmClockData.hours != 0
+//                                || myAlarmClockData.minutes != 0
+//                                || myAlarmClockData.week != 0
+//                                || myAlarmClockData.interval != 0) {
+//
+//                            Log.e(TAG, "===闹钟数据 "
+//                                    + myAlarmClockData.clockId_int
+//                                    + "  " + myAlarmClockData.hours
+//                                    + "  " + myAlarmClockData.minutes
+//                                    + "  " + myAlarmClockData.week
+//                                    + "  " + myAlarmClockData.weeks
+//                                    + "  " + myAlarmClockData.clock_switch
+//                                    + "  " + myAlarmClockData.interval
+//                                    + "  " + StringWeek(myAlarmClockData.week)
+//                                    + "  " + Arrays.toString(L4DateUtils.getBytes(myAlarmClockData.week)));
+//
+//
+//                            B15PAlarmSetting alarmSetting = new B15PAlarmSetting();
+//                            alarmSetting.setAlarmId(myAlarmClockData.clockId_int);
+//                            alarmSetting.setAlarmHour(myAlarmClockData.hours);
+//                            alarmSetting.setAlarmMinute(myAlarmClockData.minutes);
+//                            alarmSetting.setOpen(myAlarmClockData.clock_switch == 1);
+//                            alarmSetting.setWeek(myAlarmClockData.week);
+//                            alarmSetting.setInterval(myAlarmClockData.interval);
+//                            mAlarmList.add(alarmSetting);
+//                        }
 
-                            Log.e(TAG, "===闹钟数据 "
-                                    + myAlarmClockData.clockId_int
-                                    + "  " + myAlarmClockData.hours
-                                    + "  " + myAlarmClockData.minutes
-                                    + "  " + myAlarmClockData.week
-                                    + "  " + myAlarmClockData.weeks
-                                    + "  " + myAlarmClockData.clock_switch
-                                    + "  " + myAlarmClockData.interval
-                                    + "  " + StringWeek(myAlarmClockData.week)
-                                    + "  " + Arrays.toString(L4DateUtils.getBytes(myAlarmClockData.week)));
+                        Log.e(TAG, "===闹钟数据 "
+                                + myAlarmClockData.clockId_int
+                                + "  " + myAlarmClockData.hours
+                                + "  " + myAlarmClockData.minutes
+                                + "  " + myAlarmClockData.week
+                                + "  " + myAlarmClockData.weeks
+                                + "  " + myAlarmClockData.clock_switch
+                                + "  " + myAlarmClockData.interval
+                                + "  " + StringWeek(myAlarmClockData.week)
+                                + "  " + Arrays.toString(L4DateUtils.getBytes(myAlarmClockData.week)));
 
 
-                            B15PAlarmSetting alarmSetting = new B15PAlarmSetting();
-                            alarmSetting.setAlarmId(myAlarmClockData.clockId_int);
-                            alarmSetting.setAlarmHour(myAlarmClockData.hours);
-                            alarmSetting.setAlarmMinute(myAlarmClockData.minutes);
-                            alarmSetting.setOpen(myAlarmClockData.clock_switch == 1);
-                            alarmSetting.setWeek(myAlarmClockData.week);
-                            alarmSetting.setInterval(myAlarmClockData.interval);
-                            mAlarmList.add(alarmSetting);
-                        }
+                        B15PAlarmSetting alarmSetting = new B15PAlarmSetting();
+                        alarmSetting.setAlarmId(myAlarmClockData.clockId_int);
+                        alarmSetting.setAlarmHour(myAlarmClockData.hours);
+                        alarmSetting.setAlarmMinute(myAlarmClockData.minutes);
+                        alarmSetting.setOpen(myAlarmClockData.clock_switch == 1);
+                        alarmSetting.setWeek(myAlarmClockData.week);
+                        alarmSetting.setInterval(myAlarmClockData.interval);
+                        mAlarmList.add(alarmSetting);
                     }
 //                    if (myAlarmClockData.clockId_int == 4) //最多为5个闹钟所以最大值为==4
 //                    {
@@ -287,13 +313,16 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
                         @Override
                         public void run() {
                             if (mAlarmList.size() >= 5) {
-                                b30addAlarmBtn.setVisibility(View.GONE);
+                                //b30addAlarmBtn.setVisibility(View.GONE);
                             } else {
-                                b30addAlarmBtn.setVisibility(View.VISIBLE);
-                                Log.e(TAG, "=========可以新建的ID是"+mAlarmList.size());
+                                //b30addAlarmBtn.setVisibility(View.VISIBLE);
+                                Log.e(TAG, "=========可以新建的ID是" + mAlarmList.size());
                             }
 
                             alarmID = mAlarmList.size();
+
+
+
                             b30addAlarmBtn.setEnabled(true);
                             showAllAlarm(mAlarmList);
                         }
@@ -302,7 +331,6 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
                 }
             }
         });
-
 
     }
 
@@ -359,7 +387,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
             lv_alarm.setVisibility(View.VISIBLE);
 //            mAlarmList.clear();
 //            mAlarmList.addAll(alarmList);
-            if (alarmAdapter!=null)alarmAdapter.notifyDataSetChanged();
+            if (alarmAdapter != null) alarmAdapter.notifyDataSetChanged();
         }
     }
 

@@ -480,8 +480,8 @@ public class B31HrvDetailActivity extends WatchBaseActivity {
                 break;
             case 1:
 //                herDataTv.setBackgroundColor(Color.parseColor("#ECA83D"));
-                herLerzeoTv.setBackgroundColor(getResources().getColor(R.color.new_colorAccent));
-                herDataTv.setTextColor(Color.BLACK);
+                herDataTv.setBackgroundColor(getResources().getColor(R.color.new_colorAccent));
+                herDataTv.setTextColor(Color.WHITE);
                 hrvLerozenLin.setVisibility(View.GONE);
                 hrvListDataConLy.setVisibility(View.VISIBLE);
                 break;
