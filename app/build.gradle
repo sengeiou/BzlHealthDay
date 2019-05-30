@@ -45,8 +45,8 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "true"//是否输出LOG信息
             debuggable true
 //            //开启dex字节码压缩，舍去未使用的jar和class文件
-//            minifyEnabled false//混淆编译
-//            zipAlignEnabled false//压缩
+            minifyEnabled false//混淆编译
+            zipAlignEnabled false//压缩
 //            shrinkResources false//移除无用的资源文件
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            signingConfig signingConfigs.debug
@@ -55,8 +55,8 @@ android {
             debuggable false
             jniDebuggable false
 //            //开启dex字节码压缩，舍去未使用的jar和class文件
-//            minifyEnabled false//混淆编译
-//            zipAlignEnabled false//压缩
+            minifyEnabled false//混淆编译
+            zipAlignEnabled false//压缩
 //            shrinkResources false//移除无用的资源文件
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            signingConfig signingConfigs.release

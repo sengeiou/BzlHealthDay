@@ -129,8 +129,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
         lv_alarm.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                //showDeleteAlarmDia(i);//长按删除闹钟
-                ToastUtil.showShort(MyApp.getContext(),"共5组闹钟，不可删除，只可编辑");
+                showDeleteAlarmDia(i);//长按删除闹钟
                 return true;
             }
         });
@@ -193,7 +192,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
     private void showDeleteAlarmDia(final int position) {
         final B15PAlarmSetting alarmSetting = mAlarmList.get(position);
         AlertDialog.Builder builder = new AlertDialog.Builder(B15PDeviceAlarmActivity.this)
-                .setTitle(R.string.deleda)
+                .setTitle("确定要重置闹钟？")
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
