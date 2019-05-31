@@ -136,13 +136,19 @@ public class CommDBManager {
      * @return
      */
     public CommStepCountDb findCountStepForUpload(String bMac, String dateStr) {
-        List<CommStepCountDb> commStepCountDbList = LitePal.where(stepWhereStr, userId, bMac, dateStr).find(CommStepCountDb.class);
-        if (commStepCountDbList == null || commStepCountDbList.isEmpty()) {
+        try {
+            List<CommStepCountDb> commStepCountDbList = LitePal.where(stepWhereStr, userId, bMac, dateStr).find(CommStepCountDb.class);
+            if (commStepCountDbList == null || commStepCountDbList.isEmpty()) {
 //            Log.e(TAG, "-----------为null了------");
+                return null;
+            } else {
+                return commStepCountDbList.get(0);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
             return null;
-        } else {
-            return commStepCountDbList.get(0);
         }
+
     }
 
     /**
@@ -154,10 +160,16 @@ public class CommDBManager {
      * @return
      */
     public List<CommStepCountDb> findCountStepForUpload(String bMac, String startDay, String endDay) {
-//        Log.e(TAG, "------start=" + startDay + "--end=" + endDay);
-        String where = "userid = ? and devicecode = ? and dateStr  between ? and ?";
-        List<CommStepCountDb> commStepCountDbList = LitePal.where(where, userId, bMac, startDay, endDay).find(CommStepCountDb.class);
-        return commStepCountDbList == null || commStepCountDbList.isEmpty() ? null : commStepCountDbList;
+        try {
+            //        Log.e(TAG, "------start=" + startDay + "--end=" + endDay);
+            String where = "userid = ? and devicecode = ? and dateStr  between ? and ?";
+            List<CommStepCountDb> commStepCountDbList = LitePal.where(where, userId, bMac, startDay, endDay).find(CommStepCountDb.class);
+            return commStepCountDbList == null || commStepCountDbList.isEmpty() ? null : commStepCountDbList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 
@@ -228,10 +240,16 @@ public class CommDBManager {
      * @return
      */
     public List<CommHeartDb> findCommHeartForUpload(String bMac, String dateStr) {
-        List<CommHeartDb> commHeartDbList = LitePal.where("userid = ? and devicecode = ? and dateStr = ?", userId, bMac, dateStr).find(CommHeartDb.class);
-        //List<CommHeartDb> commHeartDbList = LitePal.findAll(CommHeartDb.class);
+        try {
+            List<CommHeartDb> commHeartDbList = LitePal.where("userid = ? and devicecode = ? and dateStr = ?", userId, bMac, dateStr).find(CommHeartDb.class);
+            //List<CommHeartDb> commHeartDbList = LitePal.findAll(CommHeartDb.class);
 
-        return commHeartDbList == null || commHeartDbList.isEmpty() ? null : commHeartDbList;
+            return commHeartDbList == null || commHeartDbList.isEmpty() ? null : commHeartDbList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     /**
@@ -243,9 +261,15 @@ public class CommDBManager {
      * @return
      */
     public List<CommHeartDb> findCommHeartForUpload(String bMac, String startDay, String endDay) {
-        String where = "devicecode = ? and dateStr  between ? and ?";
-        List<CommHeartDb> commHeartDbList = LitePal.where(where, bMac, startDay, endDay).find(CommHeartDb.class);
-        return commHeartDbList == null || commHeartDbList.isEmpty() ? null : commHeartDbList;
+        try {
+            String where = "devicecode = ? and dateStr  between ? and ?";
+            List<CommHeartDb> commHeartDbList = LitePal.where(where, bMac, startDay, endDay).find(CommHeartDb.class);
+            return commHeartDbList == null || commHeartDbList.isEmpty() ? null : commHeartDbList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 
@@ -319,8 +343,14 @@ public class CommDBManager {
      * @return
      */
     public List<CommSleepDb> findCommSleepForUpload(String bMac, String dateStr) {
-        List<CommSleepDb> commSleepDbList = LitePal.where("userid = ? and devicecode = ? and dateStr = ?", userId, bMac, dateStr).find(CommSleepDb.class);
-        return commSleepDbList == null || commSleepDbList.isEmpty() ? null : commSleepDbList;
+        try {
+            List<CommSleepDb> commSleepDbList = LitePal.where("userid = ? and devicecode = ? and dateStr = ?", userId, bMac, dateStr).find(CommSleepDb.class);
+            return commSleepDbList == null || commSleepDbList.isEmpty() ? null : commSleepDbList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 
@@ -333,12 +363,15 @@ public class CommDBManager {
      * @return
      */
     public List<CommSleepDb> findCommSleepForUpload(String bMac, String startDay, String endDay) {
-//        Log.e(TAG, "-------satrtDay=" + startDay + "--endDay=" + endDay);
-        String where = "devicecode = ? and dateStr  between ? and ?";
-        List<CommSleepDb> commSleepDbList = LitePal.where("userid = ? and devicecode = ? and dateStr between ? and ?", userId, bMac, startDay, endDay).find(CommSleepDb.class);
+        try {
+            String where = "devicecode = ? and dateStr  between ? and ?";
+            List<CommSleepDb> commSleepDbList = LitePal.where("userid = ? and devicecode = ? and dateStr between ? and ?", userId, bMac, startDay, endDay).find(CommSleepDb.class);
 
-        return commSleepDbList == null || commSleepDbList.isEmpty() ? null : commSleepDbList;
-
+            return commSleepDbList == null || commSleepDbList.isEmpty() ? null : commSleepDbList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
@@ -481,10 +514,15 @@ public class CommDBManager {
 
     //查询保存的数据，一天只有一条
     public List<CommDownloadDb> findCommDownloadDb(String bleMac, String type) {
-        String whereStr = "userId = ? and deviceCode = ? and commType = ?";
-        List<CommDownloadDb> commDownloadDbList = LitePal.where(whereStr, userId, bleMac, type).find(CommDownloadDb.class);
-        return commDownloadDbList == null || commDownloadDbList.isEmpty() ? null : commDownloadDbList;
+        try {
+            String whereStr = "userId = ? and deviceCode = ? and commType = ?";
+            List<CommDownloadDb> commDownloadDbList = LitePal.where(whereStr, userId, bleMac, type).find(CommDownloadDb.class);
+            return commDownloadDbList == null || commDownloadDbList.isEmpty() ? null : commDownloadDbList;
 
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
 
     }
 
@@ -499,9 +537,15 @@ public class CommDBManager {
      * @return
      */
     public List<CommDownloadDb> findCommDownloadDb(String bleMac, String type, String startDay, String endDay) {
-        String whereStr = "userId = ? and deviceCode = ? and commType = ? and dateStr between ? and ?";
-        List<CommDownloadDb> commDownloadDbList = LitePal.where(whereStr, userId, bleMac, type, startDay, endDay).find(CommDownloadDb.class);
-        return commDownloadDbList == null || commDownloadDbList.isEmpty() ? null : commDownloadDbList;
+        try {
+            String whereStr = "userId = ? and deviceCode = ? and commType = ? and dateStr between ? and ?";
+            List<CommDownloadDb> commDownloadDbList = LitePal.where(whereStr, userId, bleMac, type, startDay, endDay).find(CommDownloadDb.class);
+            return commDownloadDbList == null || commDownloadDbList.isEmpty() ? null : commDownloadDbList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 

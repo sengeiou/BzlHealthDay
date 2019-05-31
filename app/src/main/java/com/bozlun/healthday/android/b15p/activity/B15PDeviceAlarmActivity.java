@@ -378,6 +378,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
      * @param alarmList 手环闹钟数据源
      */
     private void showAllAlarm(List<B15PAlarmSetting> alarmList) {
+        Log.e(TAG,"-------showAllAlarm="+alarmList.size());
         if (alarmList == null || alarmList.isEmpty()) {
             lv_alarm.setVisibility(View.GONE);
             ll_no_alarm_data.setVisibility(View.VISIBLE);

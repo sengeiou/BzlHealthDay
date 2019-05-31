@@ -106,7 +106,7 @@ public class UploadCommDbServices extends IntentService {
                 if(countDb.getDateStr().equals(endDay)){    //当天的上传
                     mp.put("userid", countDb.getUserid());
                     mp.put("stepnumber", countDb.getStepnumber() + "");
-                    mp.put("date", countDb.getDateStr());
+                    mp.put("date", endDay);
                     mp.put("devicecode", countDb.getDevicecode());
                     mp.put("count", countDb.getCount() + "");
                     mp.put("distance",dis);

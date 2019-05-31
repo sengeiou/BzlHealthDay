@@ -110,7 +110,7 @@ public class B15pHomeActivity extends WatchBaseActivity {
             }
             L4M.SetOnRSISICallsback(null);
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 
