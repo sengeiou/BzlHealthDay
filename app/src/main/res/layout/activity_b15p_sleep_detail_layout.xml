@@ -43,6 +43,8 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="@dimen/size_10"
                             android:isIndicator="true"
+                            android:rating="0"
+                            android:numStars="5"
                             android:max="5" />
 
                         <ImageView

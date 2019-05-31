@@ -24,9 +24,11 @@ import com.bozlun.healthday.android.b30.b30datafragment.B30DataFragment;
 import com.bozlun.healthday.android.b30.b30homefragment.B30HomeFragment;
 import com.bozlun.healthday.android.b30.b30run.B36RunFragment;
 import com.bozlun.healthday.android.b30.service.NewDateUploadService;
+import com.bozlun.healthday.android.b31.record.B31RecordFragment;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.mine.WatchMineFragment;
+import com.bozlun.healthday.android.siswatch.run.W30sNewRunFragment;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.bozlun.healthday.android.widget.NoScrollViewPager;
@@ -94,12 +96,18 @@ public class B30HomeActivity extends WatchBaseActivity implements IDeviceControl
 
 
     private void initViews() {
-        b30FragmentList.add(new B30HomeFragment());
+        /*b30FragmentList.add(new B30HomeFragment());
         b30FragmentList.add(new B30DataFragment());
 //        b30FragmentList.add(new W30sNewRunFragment());
 //        b30FragmentList.add(new B30RunFragment());   //跑步
         b30FragmentList.add(new B36RunFragment());   //跑步
         // b30FragmentList.add(new B30MineFragment());
+        b30FragmentList.add(new WatchMineFragment());*/
+
+        b30FragmentList.add(new B30HomeFragment());
+//        fragmentList.add(new B30DataFragment());
+//        fragmentList.add(new B36RunFragment());
+        b30FragmentList.add(new W30sNewRunFragment());   //跑步
         b30FragmentList.add(new WatchMineFragment());
         FragmentStatePagerAdapter fragmentPagerAdapter = new FragmentAdapter(getSupportFragmentManager(), b30FragmentList);
         if (b30ViewPager != null) {
@@ -114,14 +122,14 @@ public class B30HomeActivity extends WatchBaseActivity implements IDeviceControl
                     case R.id.b30_tab_home: //首页
                         b30ViewPager.setCurrentItem(0, false);
                         break;
-                    case R.id.b30_tab_data: //数据
+//                    case R.id.b30_tab_data: //数据
+//                        b30ViewPager.setCurrentItem(1, false);
+//                        break;
+                    case R.id.b30_tab_set:  //开跑
                         b30ViewPager.setCurrentItem(1, false);
                         break;
-                    case R.id.b30_tab_set:  //开跑
-                        b30ViewPager.setCurrentItem(2, false);
-                        break;
                     case R.id.b30_tab_my:   //我的
-                        b30ViewPager.setCurrentItem(3, false);
+                        b30ViewPager.setCurrentItem(2, false);
                         break;
                 }
             }

@@ -415,7 +415,7 @@ public class UploadCommDbServices extends IntentService {
         OkHttpTool.getInstance().doRequest(url, commParams, "1", new OkHttpTool.HttpResult() {
             @Override
             public void onResult(String result) {
-                Log.e(TAG,"-------下载步数返回="+result);
+                //Log.e(TAG,"-------下载步数返回="+result);
                 //downloadCountStepListener.allCountStep(result);
                 if (WatchUtils.isEmpty(result))
                     return;
@@ -428,7 +428,7 @@ public class UploadCommDbServices extends IntentService {
         OkHttpTool.getInstance().doRequest(heartUrl, commParams, "2", new OkHttpTool.HttpResult() {
             @Override
             public void onResult(String result) {
-                Log.e(TAG,"--------下载心率返回="+result);
+                //Log.e(TAG,"--------下载心率返回="+result);
                 if (WatchUtils.isEmpty(result))
                     return;
                 analysisHearatData(result, startDay, endDay);
@@ -441,7 +441,7 @@ public class UploadCommDbServices extends IntentService {
         OkHttpTool.getInstance().doRequest(sleepUrl, commParams, "3", new OkHttpTool.HttpResult() {
             @Override
             public void onResult(String result) {
-                Log.e(TAG,"--------下载睡眠返回="+result);
+                //Log.e(TAG,"--------下载睡眠返回="+result);
                 if (WatchUtils.isEmpty(result))
                     return;
                 analysisSleepData(result, startDay, endDay);
@@ -454,7 +454,7 @@ public class UploadCommDbServices extends IntentService {
         OkHttpTool.getInstance().doRequest(bloodUrl, commParams, "4", new OkHttpTool.HttpResult() {
             @Override
             public void onResult(String result) {
-                Log.e(TAG, "--------下载血压返回=" + result);
+//                Log.e(TAG, "--------下载血压返回=" + result);
                 if (WatchUtils.isEmpty(result))
                     return;
                 analysisBlood(result, startDay, endDay);

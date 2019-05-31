@@ -206,29 +206,29 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                     //TypeInfo:PEDO_DAY  StrData:[,2019-05-13,164]
                     String[] splitAllStep = strDataAllStep.substring(2, strDataAllStep.length() - 1).split(",");
 
-                    if (splitAllStep[0].substring(0, 10).equals(t)
+//                    if (splitAllStep[0].substring(0, 10).equals(t)
 //                            || splitAllStep[0].substring(0, 10).equals(y)
 //                            || splitAllStep[0].substring(0, 10).equals(q)
-                            ) {
+//                            ) {
 
-                        Log.e(TAG, "线程中保存汇总步数" + splitAllStep[0] + "   " + Integer.valueOf(splitAllStep[1]));
+                       // Log.e(TAG, "线程中保存汇总步数" + splitAllStep[0] + "   " + Integer.valueOf(splitAllStep[1]));
                         //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
 //                                && !splitStep[0].substring(11, 19).equals("00:00:00")
                                 && (L4M.Get_Connect_flag() == 2))
                             b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], Integer.valueOf(splitAllStep[1]));
-                    }
+//                    }
                     break;
                 case "step":
                     String strDataStep = strings[1];
                     //[,2019-04-24 13:30:00,337]
                     String[] splitStep = strDataStep.substring(2, strDataStep.length() - 1).split(",");
-                    Log.e(TAG, "=保存前看时间===" + Arrays.toString(splitStep) + "今天 " + t + " 昨天 " + y + " 前天 " + q);
+                    //Log.e(TAG, "=保存前看时间===" + Arrays.toString(splitStep) + "今天 " + t + " 昨天 " + y + " 前天 " + q);
                     if (splitStep[0].substring(0, 10).equals(t)
                             || splitStep[0].substring(0, 10).equals(y)
                             || splitStep[0].substring(0, 10).equals(q)) {
 
-                        Log.e(TAG, "线程中保存步数" + splitStep[0] + "   " + Integer.valueOf(splitStep[1]));
+                        //Log.e(TAG, "线程中保存步数" + splitStep[0] + "   " + Integer.valueOf(splitStep[1]));
                         //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
 //                                && !splitStep[0].substring(11, 19).equals("00:00:00")
@@ -239,48 +239,48 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                 case "sleep":
                     String strDataSleep = strings[1];
                     String[] splitSleep = strDataSleep.substring(2, strDataSleep.length() - 1).split(",");
-                    Log.e(TAG, " 睡眠数据保存之前  " + strDataSleep + "   " + splitSleep[0] + "  " + t + " " + y + " " + q + "  " + WatchUtils.obtainAroundDate(q, true));
-                    if (splitSleep[0].substring(0, 10).equals(t)
-                            || splitSleep[0].substring(0, 10).equals(y)
-                            || splitSleep[0].substring(0, 10).equals(q)
-                            || splitSleep[0].substring(0, 10).equals(WatchUtils.obtainAroundDate(q, true))) {
+                    //Log.e(TAG, " 睡眠数据保存之前  " + strDataSleep + "   " + splitSleep[0] + "  " + t + " " + y + " " + q + "  " + WatchUtils.obtainAroundDate(q, true));
+//                    if (splitSleep[0].substring(0, 10).equals(t)
+//                            || splitSleep[0].substring(0, 10).equals(y)
+//                            || splitSleep[0].substring(0, 10).equals(q)
+//                            || splitSleep[0].substring(0, 10).equals(WatchUtils.obtainAroundDate(q, true))) {
 
-                        Log.e(TAG, "线程中保存睡眠" + splitSleep[0] + "   " + splitSleep[1]);
+                        //Log.e(TAG, "线程中保存睡眠" + splitSleep[0] + "   " + splitSleep[1]);
                         //保存详细睡眠数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
                                 && (L4M.Get_Connect_flag() == 2))
                             b15PDBCommont.saveSleepToDB(mac, splitSleep[0], splitSleep[1]);
-                    }
+//                    }
                     break;
                 case "heart":
                     String strDataHeart = strings[1];
                     String[] splitHeart = strDataHeart.substring(2, strDataHeart.length() - 1).split(",");
-                    if (splitHeart[0].substring(0, 10).equals(t)
-                            || splitHeart[0].substring(0, 10).equals(y)
-                            || splitHeart[0].substring(0, 10).equals(q)) {
+//                    if (splitHeart[0].substring(0, 10).equals(t)
+//                            || splitHeart[0].substring(0, 10).equals(y)
+//                            || splitHeart[0].substring(0, 10).equals(q)) {
 
-                        Log.e(TAG, "线程中保存心率" + splitHeart[0] + "   " + Integer.valueOf(splitHeart[1]));
+                        //Log.e(TAG, "线程中保存心率" + splitHeart[0] + "   " + Integer.valueOf(splitHeart[1]));
                         //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
                                 && (L4M.Get_Connect_flag() == 2))
                             b15PDBCommont.saveHeartToDB(mac, splitHeart[0], Integer.valueOf(splitHeart[1]));
-                    }
+//                    }
                     break;
                 case "bloop":
                     String strDataBloop = strings[1];
                     //[,2019-04-17 09:36:30,129,89]------(L4M.Get_Connect_flag() == 2说明设备已经连接
                     String[] splitBloop = strDataBloop.substring(2, strDataBloop.length() - 1).split(",");
-                    if (splitBloop[0].substring(0, 10).equals(t)
-                            || splitBloop[0].substring(0, 10).equals(y)
-                            || splitBloop[0].substring(0, 10).equals(q)) {
+//                    if (splitBloop[0].substring(0, 10).equals(t)
+//                            || splitBloop[0].substring(0, 10).equals(y)
+//                            || splitBloop[0].substring(0, 10).equals(q)) {
 
-                        Log.e(TAG, "线程中保存血压" + splitBloop[0] + "   " + Integer.valueOf(splitBloop[1]) + "  " + Integer.valueOf(splitBloop[2]));
+                        //Log.e(TAG, "线程中保存血压" + splitBloop[0] + "   " + Integer.valueOf(splitBloop[1]) + "  " + Integer.valueOf(splitBloop[2]));
                         if (!WatchUtils.isEmpty(mac)
                                 && (L4M.Get_Connect_flag() == 2))
                             b15PDBCommont.saveBloopToDB(mac, splitBloop[0],
                                     Integer.valueOf(splitBloop[1]),
                                     Integer.valueOf(splitBloop[2]));
-                    }
+//                    }
                     break;
             }
 

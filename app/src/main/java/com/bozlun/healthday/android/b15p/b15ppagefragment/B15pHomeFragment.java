@@ -42,6 +42,7 @@ import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.commdbserver.CommDBManager;
 import com.bozlun.healthday.android.commdbserver.CommentDataActivity;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
+import com.bozlun.healthday.android.siswatch.utils.WatchConstants;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.bozlun.healthday.android.util.Constant;
 import com.github.mikephil.charting.charts.BarChart;
@@ -316,15 +317,15 @@ public class B15pHomeFragment extends LazyFragment
     @Override
     protected void onFragmentVisibleChange(boolean isVisible) {
         super.onFragmentVisibleChange(isVisible);
-//        if (isVisible) {
-//            if (MyB15PStepDetailActivityCommandManager.DEVICENAME != null) {
+        if (isVisible) {
+            if (MyCommandManager.DEVICENAME!= null) {
 //                long currentTime = System.currentTimeMillis() / 1000;
-//                //保存的时间
+//                保存的时间
 //                String tmpSaveTime = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "saveDate", currentTime + "");
 //                long diffTime = (currentTime - Long.valueOf(tmpSaveTime)) / 60;
+                setImageType();
 //                if (WatchConstants.isScanConn) {  //是搜索进来的
 //                    WatchConstants.isScanConn = false;
-//                    Log.e(TAG, "======搜索进来");
 //                    getBleDevicesDatas();
 //                    if (b30HomeSwipeRefreshLayout != null) b30HomeSwipeRefreshLayout.autoRefresh();
 //                    Log.d("bobo", "onFragmentVisibleChange: autoRefresh()");
@@ -336,10 +337,31 @@ public class B15pHomeFragment extends LazyFragment
 //                            b30HomeSwipeRefreshLayout.autoRefresh();
 //                    }
 //                }
-//            }
-//        }
+            }
+        }
     }
 
+
+
+    void setImageType(){
+        if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
+            if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
+                if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
+                    ivTop.setImageResource(R.mipmap.ic_series_w_b);
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
+                    ivTop.setImageResource(R.mipmap.ic_series_w_l);
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
+                    ivTop.setImageResource(R.mipmap.ic_series_w_f);
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
+                    ivTop.setImageResource(R.mipmap.ic_series_w_m);
+                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
+                    ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                }
+            } else {
+                ivTop.setImageResource(R.mipmap.img_wirte_f6);
+            }
+        }
+    }
     /**
      * 链接状态返回
      *
@@ -384,28 +406,12 @@ public class B15pHomeFragment extends LazyFragment
                     //设置每次回主界面，返回数据不清空的
                     clearDataStyle(0);
 
-                    if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
-                        if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
-                            if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
-                                ivTop.setImageResource(R.mipmap.ic_series_w_b);
-                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
-                                ivTop.setImageResource(R.mipmap.ic_series_w_l);
-                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
-                                ivTop.setImageResource(R.mipmap.ic_series_w_f);
-                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
-                                ivTop.setImageResource(R.mipmap.ic_series_w_m);
-                            } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
-                                ivTop.setImageResource(R.mipmap.ic_series_w_w);
-                            }
-                        } else {
-                            ivTop.setImageResource(R.mipmap.img_wirte_f6);
-                        }
-                    }
 
                     Log.d(TAG, "--是否是第一次链接   " + MyApp.b15pIsFirstConntent);
                     if (MyApp.b15pIsFirstConntent) {
                         MyApp.b15pIsFirstConntent = false;//第一次链接同步后改变第一次链接之后的状态
 
+                        setImageType();
                         // 第一次链接自动获取数据
                         // 先获根据系统语言设置语言------之后去获取电池电量
                         mHandler.sendEmptyMessageDelayed(0x01, 100);
@@ -681,9 +687,9 @@ public class B15pHomeFragment extends LazyFragment
                     if (mHandler != null) {
 
                         //分别读取数据空中的数据
-                        mHandler.sendEmptyMessageDelayed(0x11, 100);
-                        mHandler.sendEmptyMessageDelayed(0x12, 200);
-                        mHandler.sendEmptyMessageDelayed(0x13, 300);
+                        mHandler.sendEmptyMessageDelayed(0x11, 0);
+                        mHandler.sendEmptyMessageDelayed(0x12, 0);
+                        mHandler.sendEmptyMessageDelayed(0x13, 0);
                     }
                     break;
                 /**
@@ -794,13 +800,14 @@ public class B15pHomeFragment extends LazyFragment
                                         @Override
                                         public void run() {
                                             //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
-                                            if (hrvBeanList != null && hrvBeanList.size()>0) {
+                                            if (hrvBeanList != null) {
 
                                                 datahrv.clear();
                                                 for (B31HRVBean hBean : hrvBeanList) {
                                                     // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
                                                     datahrv.add(gson.fromJson(hBean.getHrvDataStr(), HRVOriginData.class));
                                                 }
+
 
                                                 if (datahrv != null) showHrvData(datahrv);
                                             }
@@ -821,7 +828,7 @@ public class B15pHomeFragment extends LazyFragment
                                         @Override
                                         public void run() {
                                             //Log.e(TAG, "-----------HRV--HRV---SPO---SPO");
-                                            if (b31Spo2hBeanList != null && b31Spo2hBeanList.size()>0) {
+                                            if (b31Spo2hBeanList != null) {
                                                 data0To8.clear();
                                                 for (B31Spo2hBean hBean : b31Spo2hBeanList) {
                                                     // Log.e(TAG, "------xueyang---走到这里来了=" + hBean.toString());
@@ -923,6 +930,7 @@ public class B15pHomeFragment extends LazyFragment
                                         }
                                     } else {
                                         if (b30CusSleepView != null) {
+
                                             b30CusSleepView.setSeekBarShow(false);
                                             b30CusSleepView.setSleepList(new ArrayList<Integer>());
                                         }
@@ -1164,8 +1172,24 @@ public class B15pHomeFragment extends LazyFragment
 //        sycnDataListenterHeart.setDateStr(date);
         //handler.sendEmptyMessageDelayed(0x11, 200);
 
+        tableClear();
         setSysTextStute(true);
         mHandler.sendEmptyMessage(0x00);
+    }
+
+
+    /**
+     * 数据表清空
+     */
+    void tableClear(){
+        showSportStepData(null);
+        showHrvData(new ArrayList<HRVOriginData>());
+        updateSpo2View(new ArrayList<Spo2hOriginData>());
+        if (b30CusSleepView!=null){
+            b30CusSleepView.setSeekBarShow(false);
+            b30CusSleepView.setSleepList(new ArrayList<Integer>());
+        }
+        if (b30CusHeartView!=null) b30CusHeartView.setRateDataList(null);
     }
 
 
@@ -1433,10 +1457,11 @@ public class B15pHomeFragment extends LazyFragment
 
     //显示HRV的数据
     private void showHrvData(List<HRVOriginData> dataList) {
+
         //Log.e(TAG,"----显示HRV="+dataList.size());
 
         try {
-            if (dataList.size() > 420)
+            if (dataList==null||dataList.size() > 420)
                 return;
             List<HRVOriginData> data0to8 = getMoringData(dataList);
             HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);

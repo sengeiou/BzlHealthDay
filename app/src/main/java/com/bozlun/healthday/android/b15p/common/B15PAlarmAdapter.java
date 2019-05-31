@@ -80,7 +80,7 @@ public class B15PAlarmAdapter extends BaseAdapter {
 //            }else{
         viewHolder.singleImg.setVisibility(View.GONE);
         viewHolder.check.setVisibility(View.VISIBLE);
-        viewHolder.check.setImageResource(setting.isOpen() ? R.mipmap.myvp_open : R.mipmap
+        viewHolder.check.setImageResource(setting.isOpen() ? R.mipmap.myvp_open_n : R.mipmap
                 .myvp_close);
         viewHolder.iv_alarm_type.setImageResource(R.mipmap.crtur_time_image);
 //            }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -106,11 +108,23 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
          */
         alarmAdapter.setChangeCallBack(new B15PAlarmAdapter.AlarmCheckChange() {
             @Override
-            public void onCheckChange(int position) {
-                updateAlarm(position);
+            public void onCheckChange(final int position) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!isCheck){
+                            isCheck = true;
+                            updateAlarm(position);
+                        }
+
+                    }
+                });
             }
         });
     }
+
+    boolean isCheck = false;
+
 
     /**
      * 设置监听
@@ -142,6 +156,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
      * @param position 闹钟列表下标
      */
     private void updateAlarm(int position) {
+        if (handler!=null)handler.sendEmptyMessageDelayed(0x01,1000);
         if (mAlarmList != null && mAlarmList.size() > 0) {
             B15PAlarmSetting alarm2Setting = mAlarmList.get(position);
             Log.d("----zza--要改变的-", alarm2Setting.toString());
@@ -154,7 +169,6 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
                     bytes,
                     alarm2Setting.getAlarmHour(), alarm2Setting.getAlarmMinute());
         }
-
     }
 
 
@@ -229,6 +243,20 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
         String ret = L4Command.AlarmClockSet(myAlarmClockData);   /*ret  返回值类型在文档最下面*/
         Log.e(TAG, " 闹钟设置 " + ret);
     }
+
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message message) {
+            switch (message.what){
+                case 0x01:
+                    if (handler!=null)handler.removeMessages(0x01);
+                    isCheck = false;
+                    break;
+            }
+
+            return false;
+        }
+    });
 
     /**
      * 从手环读取闹钟数据

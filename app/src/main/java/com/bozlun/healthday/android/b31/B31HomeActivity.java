@@ -40,6 +40,7 @@ import com.bozlun.healthday.android.bzlmaps.sos.GPSGaoDeUtils;
 import com.bozlun.healthday.android.bzlmaps.sos.GPSGoogleUtils;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.mine.WatchMineFragment;
+import com.bozlun.healthday.android.siswatch.run.W30sNewRunFragment;
 import com.bozlun.healthday.android.siswatch.utils.PhoneUtils;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.bozlun.healthday.android.util.ToastUtil;
@@ -124,8 +125,9 @@ public class B31HomeActivity extends WatchBaseActivity implements IDeviceControl
 
     private void initViews() {
         fragmentList.add(new B31RecordFragment());
-        fragmentList.add(new B30DataFragment());
-        fragmentList.add(new B36RunFragment());
+//        fragmentList.add(new B30DataFragment());
+//        fragmentList.add(new B36RunFragment());
+        fragmentList.add(new W30sNewRunFragment());   //跑步
         fragmentList.add(new WatchMineFragment());
         FragmentStatePagerAdapter fragmentPagerAdapter = new FragmentAdapter(getSupportFragmentManager(), fragmentList);
         if (b31ViewPager != null) {
@@ -140,14 +142,14 @@ public class B31HomeActivity extends WatchBaseActivity implements IDeviceControl
                     case R.id.b30_tab_home: //首页
                         b31ViewPager.setCurrentItem(0, false);
                         break;
-                    case R.id.b30_tab_data: //数据
+//                    case R.id.b30_tab_data: //数据
+//                        b31ViewPager.setCurrentItem(1, false);
+//                        break;
+                    case R.id.b30_tab_set:  //开跑
                         b31ViewPager.setCurrentItem(1, false);
                         break;
-                    case R.id.b30_tab_set:  //开跑
-                        b31ViewPager.setCurrentItem(2, false);
-                        break;
                     case R.id.b30_tab_my:   //我的
-                        b31ViewPager.setCurrentItem(3, false);
+                        b31ViewPager.setCurrentItem(2, false);
                         break;
                 }
             }

@@ -101,8 +101,11 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
         commentB30TitleTv.setText(getResources().getString(R.string.sleep));
 //        commentB30ShareImg.setVisibility(View.VISIBLE);
         detailSleepQuitRatingBar.setMax(5);
-        detailSleepQuitRatingBar.setRating(5);
+        detailSleepQuitRatingBar.setNumStars(5);
+        detailSleepQuitRatingBar.setRating(0);
+//        detailSleepQuitRatingBar.setRating(5);
         // detailSleepQuitRatingBar.setRating(100);
+
         listValue = new ArrayList<>();
         gson = new Gson();
         currDay = getIntent().getStringExtra(Constant.DETAIL_DATE);
@@ -142,9 +145,9 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
             } else {
                 if (detailCusSleepView != null)
                     detailCusSleepView.setSleepList(new ArrayList<Integer>());
-                if (detailSleepQuitRatingBar!=null){
-                    detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
-                }
+//                if (detailSleepQuitRatingBar!=null){
+//                    detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+//                }
                 if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
                 if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
                 if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
@@ -155,9 +158,9 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
         } else {
             if (detailCusSleepView != null)
                 detailCusSleepView.setSleepList(new ArrayList<Integer>());
-            if (detailSleepQuitRatingBar!=null){
-                detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
-            }
+//            if (detailSleepQuitRatingBar!=null){
+//                detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+//            }
             if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
             if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
             if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
@@ -286,9 +289,9 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
             } else {
                 if (detailCusSleepView != null)
                     detailCusSleepView.setSleepList(new ArrayList<Integer>());
-                if (detailSleepQuitRatingBar!=null){
-                    detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
-                }
+//                if (detailSleepQuitRatingBar!=null){
+//                    detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+//                }
                 if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
                 if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
                 if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
@@ -299,9 +302,9 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
         } else {
             if (detailCusSleepView != null)
                 detailCusSleepView.setSleepList(new ArrayList<Integer>());
-            if (detailSleepQuitRatingBar!=null){
-                detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
-            }
+//            if (detailSleepQuitRatingBar!=null){
+//                detailSleepQuitRatingBar.setVisibility(View.INVISIBLE);
+//            }
             if (detailAllSleepTv != null) detailAllSleepTv.setText("--");//睡眠时长
             if (detailAwakeNumTv != null) detailAwakeNumTv.setText("--");//苏醒次数
             if (detailStartSleepTv != null) detailStartSleepTv.setText("--");//入睡时间
@@ -340,25 +343,25 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
 
         double sleep_times = Double.valueOf(S);
         if (detailSleepQuitRatingBar!=null){
-            detailSleepQuitRatingBar.setVisibility(View.VISIBLE);
-            detailSleepQuitRatingBar.setEnabled(false);
+//            detailSleepQuitRatingBar.setVisibility(View.VISIBLE);
+//            detailSleepQuitRatingBar.setEnabled(false);
             if(0<sleep_times&&sleep_times<=0.8){
-                detailSleepQuitRatingBar.setNumStars(1);
+                detailSleepQuitRatingBar.setRating(1);
 
             }else if (0.8<sleep_times&&sleep_times<=1.6){
-                detailSleepQuitRatingBar.setNumStars(2);
+                detailSleepQuitRatingBar.setRating(2);
 
             }else if (1.6<sleep_times&&sleep_times<=2.4){
-                detailSleepQuitRatingBar.setNumStars(3);
+                detailSleepQuitRatingBar.setRating(3);
 
             }else if (2.4<sleep_times&&sleep_times<=3.2){
-                detailSleepQuitRatingBar.setNumStars(4);
+                detailSleepQuitRatingBar.setRating(4);
 
             }else if (3.2<sleep_times){
-                detailSleepQuitRatingBar.setNumStars(5);
+                detailSleepQuitRatingBar.setRating(5);
 
             }else {
-                detailSleepQuitRatingBar.setNumStars(0);
+                detailSleepQuitRatingBar.setRating(0);
             }
         }
 

@@ -450,7 +450,8 @@ public class B31RecordFragment extends LazyFragment implements ConnBleHelpServic
         b30TopDateTv.setText(WatchUtils.getCurrentDate());
         if (b31GoalStepTv != null)
             b31GoalStepTv.setText(getResources().getString(R.string.goal_step) + goalStep + getResources().getString(R.string.steps));
-        ivTop.setImageResource(R.mipmap.ic_home_top_b31);
+//        ivTop.setImageResource(R.mipmap.ic_home_top_b31);
+        ivTop.setImageResource(R.mipmap.ic_b25);
 
         //暂时屏蔽分享
         batteryWatchRecordShareImg.setVisibility(View.GONE);

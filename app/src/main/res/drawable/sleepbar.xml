@@ -4,6 +4,12 @@
 
     <!--<item android:id="@android:id/background" android:drawable="@drawable/ic_star_select"/>-->
 
-    <item android:id="@android:id/background" android:drawable="@mipmap/ic_sleep_xing"/>
+    <item android:id="@android:id/background"
+        android:drawable="@mipmap/ic_sleep_unxing"/>
 
+    <item android:id="@android:id/secondaryProgress"
+        android:drawable="@mipmap/ic_sleep_unxing"/>
+
+    <item android:id="@android:id/progress"
+        android:drawable="@mipmap/ic_sleep_xing"/>
 </layer-list>
