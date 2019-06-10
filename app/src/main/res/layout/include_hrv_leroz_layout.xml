@@ -41,17 +41,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="80dp"
+                    android:layout_margin="@dimen/size_5"
+                    android:background="@color/white"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:layout_marginLeft="5dp"
                     android:src="@drawable/hrv_gradivew_1" />
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -71,7 +71,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -81,6 +80,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_2" />
 
                 <TextView
@@ -101,7 +101,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -111,6 +110,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_3" />
 
                 <TextView
@@ -131,7 +131,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -141,6 +140,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_4" />
 
                 <TextView
@@ -161,7 +161,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -171,6 +170,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_5" />
 
                 <TextView
@@ -192,7 +192,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -202,6 +201,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_6" />
 
                 <TextView
@@ -222,7 +222,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -232,6 +231,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_7" />
 
                 <TextView
@@ -252,7 +252,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -262,6 +261,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_8" />
 
                 <TextView
@@ -282,7 +282,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:background="@drawable/read_radius_layout"
                 android:orientation="vertical">
 
 
@@ -292,6 +291,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@color/white"
                     android:src="@drawable/hrv_gradivew_9" />
 
                 <TextView
@@ -343,10 +343,12 @@
 
 
         <ListView
+            android:background="@drawable/read_radius_layout_list"
+            android:padding="@dimen/size_7"
             android:id="@+id/lorenz_list_descripe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_margin="@dimen/size_7" />
 
     </LinearLayout>
 

@@ -162,7 +162,7 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                             b15PDBCommont.saveTestBloopToDB(mac, 0, 0);
                         }
                         break;
-                    case "HEART_HISTORY"://case "HEART_HISTORY_111"://历史测量的心率值
+                    case "HEART_HISTORY_111"://case "HEART_HISTORY_111"://历史测量的心率值
                         String[] hearts = {"heart", strData};
                         new SaveDatas().execute(hearts);
                         break;

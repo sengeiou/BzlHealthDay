@@ -1,6 +1,7 @@
 package com.bozlun.healthday.android.b15p.activity;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PBloodDB;
@@ -18,6 +20,7 @@ import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PTestBloopDB;
 import com.bozlun.healthday.android.b30.adapter.B30BloadDetailAdapter;
 import com.bozlun.healthday.android.b30.b30view.CustomCircleProgressBar;
+import com.bozlun.healthday.android.b30.b30view.MyCicleView;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
@@ -42,11 +45,11 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
     ImageView commentB30BackImg;
     @BindView(R.id.commentB30ShareImg)
     ImageView commentB30ShareImg;
-    @BindView(R.id.b30MeaurePlaceHolderImg)
-    ImageView b30MeaurePlaceHolderImg;
+//    @BindView(R.id.b30MeaurePlaceHolderImg)
+//    ImageView b30MeaurePlaceHolderImg;
 
-    @BindView(R.id.b30MeaureBloadProgressView)
-    CustomCircleProgressBar b30MeaureBloadProgressView;
+//    @BindView(R.id.b30MeaureBloadProgressView)
+//    CustomCircleProgressBar b30MeaureBloadProgressView;
     @BindView(R.id.b30MeaureStartImg)
     ImageView b30MeaureStartImg;
     @BindView(R.id.b30DetailBloadRecyclerView)
@@ -58,15 +61,25 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
     private List<HalfHourBpData> dataList;
 
 
+    /**
+     * 圆环进度
+     */
+    @BindView(R.id.my_cicleview)
+    MyCicleView my_cicleview;
+    @BindView(R.id.rec_img_back)
+    RelativeLayout rec_img_back;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.b15p_test_bload_activity);
+        setContentView(R.layout.b15p_test_bload_activity_b15p);
         ButterKnife.bind(this);
 
         initViews();
 
 
+//
     }
 
     @Override
@@ -91,7 +104,9 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
         b30BloadDetailAdapter = new B30BloadDetailAdapter(B15PManualMeaureBloadActivity.this, dataList);
         b30DetailBloadRecyclerView.setAdapter(b30BloadDetailAdapter);
 
-        b30MeaureBloadProgressView.setMaxProgress(100);
+        my_cicleview.setProssColor(Color.parseColor("#BAD4D2"));
+        my_cicleview.setHeart(false);
+        //b30MeaureBloadProgressView.setMaxProgress(100);
     }
 
     @OnClick({R.id.commentB30BackImg, R.id.commentB30ShareImg, R.id.b30MeaureStartImg})
@@ -158,13 +173,20 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
                 if (EventStr.equals(Health_HeartBldPrs.OPENSTART)) {
                     //测量开始
                     Log.e(TAG, "====血压测量开始");
-                    b30MeaurePlaceHolderImg.setVisibility(View.GONE);
-                    b30MeaureBloadProgressView.setVisibility(View.VISIBLE);
+//                    b30MeaurePlaceHolderImg.setVisibility(View.GONE);
+//                    b30MeaureBloadProgressView.setVisibility(View.VISIBLE);
+
+
+                    my_cicleview.startTestAction();
                     isStart = true;
-                    b30MeaureStartImg.setImageResource(R.drawable.detect_bp_pause);
-                    b30MeaureBloadProgressView.setTmpTxt(null);
-                    b30MeaureBloadProgressView.setScheduleDuring(27 * 1000);
-                    b30MeaureBloadProgressView.setProgress(100);
+//                    b30MeaureStartImg.setImageResource(R.drawable.detect_bp_pause);
+                    if (b30MeaureStartImg != null)
+                        b30MeaureStartImg.setImageResource(R.mipmap.ic_heart_start);
+                    if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+
+//                    b30MeaureBloadProgressView.setTmpTxt(null);
+//                    b30MeaureBloadProgressView.setScheduleDuring(27 * 1000);
+//                    b30MeaureBloadProgressView.setProgress(100);
                 } else if (EventStr.equals(Health_HeartBldPrs.OPENOK)) {
                     //打开测量成功，等待结果
                     //可以在界面做等待超时处理，超时后可以使用Health_HeartBldPrs.ForceClose_BldPrsMeasure();强制关闭
@@ -193,16 +215,16 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
                     stopMeaureBoload();
 
 
-                    if (b30MeaureBloadProgressView != null) {
-                        b30MeaureStartImg.setImageResource(R.drawable.detect_bp_start);
-                        b30MeaureBloadProgressView.stopAnim();
-                    }
+//                    if (b30MeaureBloadProgressView != null) {
+//                        b30MeaureStartImg.setImageResource(R.drawable.detect_bp_start);
+//                        b30MeaureBloadProgressView.stopAnim();
+//                    }
                     handler.sendEmptyMessage(0x11);
 
                 } else if (EventStr.equals(Health_HeartBldPrs.FAIL)) {
                     //测量失败
                     Log.e(TAG, "====血压测量失败 " + DataInfo);
-                    b30MeaureBloadProgressView.setTmpTxt("--/--");
+                    //b30MeaureBloadProgressView.setTmpTxt("--/--");
                     stopMeaureBoload();
                 }
 
@@ -219,8 +241,10 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
                 if (testBloopAllDatas != null&&!testBloopAllDatas.isEmpty()) {
                     for (int i = 0; i < testBloopAllDatas.size(); i++) {
                         Log.e(TAG, "=======血压  血压 " + testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
-                        if (b30MeaureBloadProgressView != null)
-                            b30MeaureBloadProgressView.setTmpTxt(testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
+//                        if (b30MeaureBloadProgressView != null)
+//                            b30MeaureBloadProgressView.setTmpTxt(testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
+
+                        if (my_cicleview!=null)my_cicleview.stopTestAction(testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
                     }
 
                 }
@@ -321,9 +345,10 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
     //停止测量
     private void stopMeaureBoload() {
         isStart = false;
-        b30MeaureStartImg.setImageResource(R.drawable.detect_bp_start);
-        b30MeaureBloadProgressView.stopAnim();
-
+        b30MeaureStartImg.setImageResource(R.mipmap.ic_heart_stop);
+        rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+        //b30MeaureBloadProgressView.stopAnim();
+        my_cicleview.stopTestAction("--/--");
         Health_HeartBldPrs.ForceClose_BldPrsMeasure();
     }
 

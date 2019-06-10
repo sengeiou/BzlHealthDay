@@ -12,7 +12,7 @@
     <View
         android:id="@+id/v_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/size_2"
         android:layout_below="@+id/watch_record_titleLin"
         android:background="@color/white" />
 
@@ -63,6 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:paddingBottom="@dimen/size_3"
                         android:paddingTop="@dimen/size_10">
 
                         <!--<-->
@@ -73,8 +74,8 @@
                         <!--app:shadowSrc="@mipmap/lotus"-->
                         <!--app:shadowColor="@color/colorAccent"/>-->
                         <com.yinglan.shadowimageview.ShadowImageView
-                            android:layout_width="265dp"
-                            android:layout_height="265dp"
+                            android:layout_width="245dp"
+                            android:layout_height="245dp"
                             android:layout_gravity="center"
                             android:background="@mipmap/icon_record_circule_luminous"
                             app:shadowColor="#f6f7f9"
@@ -89,15 +90,23 @@
                             app:bgCircleColor="@color/new_colorAccent"
                             app:circleWidth="@dimen/size_10"
                             app:darkWaveAnimTime="3000"
-                            app:darkWaveColor="#c4f6f7f9"
+                            app:darkWaveColor="#4c988c"
                             app:lightWaveAnimTime="4000"
-                            app:lightWaveColor="@color/new_colorAccent"
+                            app:lightWaveColor="#e54c988c"
                             app:lightWaveDirect="R2L"
                             app:lockWave="false"
                             app:valueColor="@color/black"
                             app:valueSize="45sp"
                             app:waveHeight="10dp"
                             app:waveNum="1" />
+
+                        <!--android:background="@mipmap/ic_step_cir"-->
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/size_2"
+                            android:src="@mipmap/ic_step_cir"
+                            android:layout_width="230dp"
+                            android:layout_height="230dp" />
 
                     </FrameLayout>
 
@@ -141,7 +150,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|top"
                             android:gravity="center"
-                            android:padding="3dp"
+                            android:padding="5dp"
                             android:text="@string/today"
                             android:textColor="@color/new_colorAccent"
                             android:textSize="18sp" />
@@ -149,8 +158,9 @@
                         <ImageView
                             android:id="@+id/homeTodayImg"
                             android:layout_width="wrap_content"
+                            android:layout_gravity="bottom"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/fgm_home_move" />
+                            android:background="@drawable/fgm_home_move" />
 
 
                     </LinearLayout>
@@ -170,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|top"
                             android:gravity="center"
-                            android:padding="3dp"
+                            android:padding="5dp"
                             android:text="@string/yesterday"
                             android:textColor="@color/new_colorAccent"
                             android:textSize="18sp" />
@@ -179,7 +189,7 @@
                             android:id="@+id/homeYestdayImg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/fgm_home_move"
+                            android:background="@drawable/fgm_home_move"
                             android:visibility="invisible" />
 
 
@@ -199,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|top"
                             android:gravity="center"
-                            android:padding="3dp"
+                            android:padding="5dp"
                             android:text="@string/string_yesterday"
                             android:textColor="@color/new_colorAccent"
                             android:textSize="18sp" />
@@ -208,7 +218,7 @@
                             android:id="@+id/homeBeYestdayImg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/fgm_home_move"
+                            android:background="@drawable/fgm_home_move"
                             android:visibility="invisible" />
 
 

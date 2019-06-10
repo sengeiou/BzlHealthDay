@@ -134,13 +134,8 @@ public class PhoneBroadcastReceiver extends BroadcastReceiver {
                         sendPhoneAlertData(phoneNumber,"B30");
                     }
 
-                    //滕进达系列
-                    if (WatchUtils.verBleNameForSearch(bleName)) {
-                        int pushMsg_call = AppIC.SData().getIntData("pushMsg_call");
-                        if (pushMsg_call == 1) {
-                            L4Command.SendCallInstruction(phoneNumber);
-                        }
-                    }
+                    //腾进达系列
+                    senPhoneTJD();
                     break;
                 case TelephonyManager.CALL_STATE_IDLE:// "[Broadcast]挂断电话
                     Log.d(TAG, "------挂断电话--");
@@ -170,6 +165,18 @@ public class PhoneBroadcastReceiver extends BroadcastReceiver {
         }
 
 
+
+    }
+
+
+    void senPhoneTJD(){
+        //判断是否有读取联系人和通讯录的权限
+        if(!AndPermission.hasPermissions(MyApp.getContext(),Manifest.permission.READ_CONTACTS,Manifest.permission.READ_CALL_LOG)){
+            AndPermission.with(MyApp.getContext()).runtime().permission(Manifest.permission.READ_CONTACTS
+                    ,Manifest.permission.READ_CALL_LOG,Manifest.permission.WRITE_CALL_LOG).start();
+        }else{
+            getPhoneContacts(phoneNumber, "TJD");
+        }
 
     }
 
@@ -391,6 +398,11 @@ public class PhoneBroadcastReceiver extends BroadcastReceiver {
                             setB30PhoneMsg(contactNames);
                         } else if (tag.equals("W30")) {
                             MyApp.getInstance().getmW30SBLEManage().notifacePhone(contactNames, 0x01);
+                        }else if (tag.equals("TJD")) {
+                            int pushMsg_call = AppIC.SData().getIntData("pushMsg_call");
+                            if (pushMsg_call == 1) {
+                                L4Command.SendCallInstruction(contactNames);
+                            }
                         }
 
                         return;
@@ -407,6 +419,15 @@ public class PhoneBroadcastReceiver extends BroadcastReceiver {
                     setB30PhoneMsg("");
                 } else if (tag.equals("W30")) {
                     MyApp.getInstance().getmW30SBLEManage().notifacePhone(pName, 0x01);
+                }else if (tag.equals("TJD")){
+                    //滕进达系列
+//                    if (WatchUtils.verBleNameForSearch(bleName)) {
+//
+//                    }
+                    int pushMsg_call = AppIC.SData().getIntData("pushMsg_call");
+                    if (pushMsg_call == 1) {
+                        L4Command.SendCallInstruction(pName);
+                    }
                 }
 
             }
@@ -417,6 +438,11 @@ public class PhoneBroadcastReceiver extends BroadcastReceiver {
                 setB30PhoneMsg("");
             } else if (tag.equals("W30")) {
                 MyApp.getInstance().getmW30SBLEManage().notifacePhone(pName, 0x01);
+            }else if (tag.equals("TJD")){
+                int pushMsg_call = AppIC.SData().getIntData("pushMsg_call");
+                if (pushMsg_call == 1) {
+                    L4Command.SendCallInstruction(pName);
+                }
             }
             // MyApp.getmW30SBLEManage().notifacePhone(pName,0x01);
         }

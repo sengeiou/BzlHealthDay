@@ -13,10 +13,12 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
+import com.bozlun.healthday.android.b30.b30view.MyCicleView;
 import com.bozlun.healthday.android.bleutil.MyCommandManager;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
@@ -30,6 +32,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ * Created by Administrator on 2018/8/6.
+ * <p>
+ * 手动测量心率
+ * <p>
  * Created by Administrator on 2018/8/6.
  */
 
@@ -60,10 +66,20 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
     LinearLayout b30ScaleLin;
     @BindView(R.id.b30MeaureHeartValueTv)
     TextView b30MeaureHeartValueTv;
-    @BindView(R.id.b30finishTv)
-    TextView b30finishTv;
+    //    @BindView(R.id.b30finishTv)
+//    TextView b30finishTv;
     @BindView(R.id.b30MeaureHeartStartBtn)
     ImageView b30MeaureHeartStartBtn;
+
+
+    /**
+     * 圆环进度
+     */
+    @BindView(R.id.my_cicleview)
+    MyCicleView my_cicleview;
+    @BindView(R.id.rec_img_back)
+    RelativeLayout rec_img_back;
+
 
     //是否正常测量
     private boolean isMeaure = false;
@@ -82,16 +98,19 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
                     HeartData heartData = (HeartData) msg.obj;
                     Log.e(TAG, "----heartData-=" + heartData.toString());
                     b30MeaureHeartValueTv.setText(heartData.getData() + "");
-
                     break;
                 case 0x11:
-                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+                    //b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+
+                    b30MeaureHeartStartBtn.setImageResource(R.mipmap.ic_heart_stop);
+                    rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
                     isMeaure = false;
                     stopAllAnimat(b30ScaleLin, b30cirImg);
-                    b30finishTv.setText("测量完毕");
+                    //b30finishTv.setText("测量完毕");
                     String heartValue = (String) msg.obj;
                     Log.e(TAG, "----heartData-=" + heartValue);
                     b30MeaureHeartValueTv.setText(heartValue + "");
+                    my_cicleview.stopTestAction(heartValue + "");
                     break;
                 case 0x12:
                     Health_HeartBldPrs.ForceClose_HeartrateMeasure();
@@ -104,7 +123,7 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manual_meaure_heart);
+        setContentView(R.layout.activity_manual_meaure_heart_b15p);
         ButterKnife.bind(this);
 
         try {
@@ -159,19 +178,30 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
 
 
                     } else {
-                        b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
-                        isMeaure = false;
-                        stopAllAnimat(b30ScaleLin, b30cirImg);
-                        b30finishTv.setText("测量完毕");
-                        if (!WatchUtils.isEmpty(devicesType)&&devicesType.equals("b15p")){
+                        if (!WatchUtils.isEmpty(devicesType) && devicesType.equals("b15p")) {
                             //如果推出界面或者界面停止时心率还在测量，则强行关闭心率测量
                             Health_HeartBldPrs.ForceClose_HeartrateMeasure();
-                        }else {
+//                            b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+                            if (b30MeaureHeartStartBtn != null)
+                                b30MeaureHeartStartBtn.setImageResource(R.mipmap.ic_heart_stop);
+                            if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+                            isMeaure = false;
+
+                            my_cicleview.stopTestAction("-- ");
+
+                        } else {
+//                            b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+                            if (b30MeaureHeartStartBtn != null)
+                                b30MeaureHeartStartBtn.setImageResource(R.mipmap.ic_heart_stop);
+                            if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+                            isMeaure = false;
+                            stopAllAnimat(b30ScaleLin, b30cirImg);
+                            //b30finishTv.setText("测量完毕");
                             MyApp.getInstance().getVpOperateManager().stopDetectHeart(iBleWriteResponse);
                         }
                     }
                 } else {
-                    b30finishTv.setText(getResources().getString(R.string.device)+getResources().getString(R.string.string_not_coon));
+                    // b30finishTv.setText(getResources().getString(R.string.device)+getResources().getString(R.string.string_not_coon));
                 }
                 break;
         }
@@ -209,13 +239,19 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
                     //测量开始
                     Log.e(TAG, "-----开始测量心率");
                     isMeaure = true;
-                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_pause);
-                    startAllAnimat(b30ScaleLin, b30cirImg);
+                    //b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_pause);
+                    if (b30MeaureHeartStartBtn != null)
+                        b30MeaureHeartStartBtn.setImageResource(R.mipmap.ic_heart_start);
+                    if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+                    //startAllAnimat(b30ScaleLin, b30cirImg);
+
+                    //b30finishTv.setText("测量中...");
+                    my_cicleview.startTestAction();
                 } else if (EventStr.equals(Health_HeartBldPrs.OPENOK)) {
                     //打开测量成功，等待结果
                     //可以在界面做等待超时处理，超时后可以使用Health_HeartBldPrs.ForceClose_HeartrateMeasure()强制关闭
                     Log.e(TAG, "-----打开开始测量心率成功， 可以强制关闭");
-                    handler.sendEmptyMessageAtTime(0x12,60*1000);//一分钟没检测到强制关闭
+                    handler.sendEmptyMessageAtTime(0x12, 60 * 1000);//一分钟没检测到强制关闭
                 }
             }
 
@@ -225,6 +261,7 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
                     //测量关闭
                     Log.e(TAG, "-----心率测量关闭");
                     b30MeaureHeartValueTv.setText("--");
+                    //b30finishTv.setText(" ");
                 } else if (EventStr.equals(Health_HeartBldPrs.END)) {
                     //测量结束
                     Log.e(TAG, "-----心率测量结束");
@@ -244,10 +281,13 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
                     //测量失败
                     Log.e(TAG, "-----心率测量失败 " + DataInfo);
                     b30MeaureHeartValueTv.setText("--");
-                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+//                    b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+                    if (b30MeaureHeartStartBtn != null)
+                        b30MeaureHeartStartBtn.setImageResource(R.mipmap.ic_heart_stop);
+                    if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
                     isMeaure = false;
                     stopAllAnimat(b30ScaleLin, b30cirImg);
-                    b30finishTv.setText("测量失败");
+                    //b30finishTv.setText("测量失败");
                 }
             }
         });
@@ -322,15 +362,17 @@ public class ManualMeaureHeartActivity extends WatchBaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
+//        b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
         if (b30MeaureHeartStartBtn != null)
-            b30MeaureHeartStartBtn.setImageResource(R.drawable.detect_heart_start);
+            b30MeaureHeartStartBtn.setImageResource(R.mipmap.ic_heart_stop);
+        if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
         isMeaure = false;
         stopAllAnimat(b30ScaleLin, b30cirImg);
-        b30finishTv.setText("测量完毕");
-        if (!WatchUtils.isEmpty(devicesType)&&devicesType.equals("b15p")){
+        //b30finishTv.setText("测量完毕");
+        if (!WatchUtils.isEmpty(devicesType) && devicesType.equals("b15p")) {
             //如果推出界面或者界面停止时心率还在测量，则强行关闭心率测量
             Health_HeartBldPrs.ForceClose_HeartrateMeasure();
-        }else {
+        } else {
             MyApp.getInstance().getVpOperateManager().stopDetectHeart(iBleWriteResponse);
         }
 

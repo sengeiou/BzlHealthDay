@@ -28,8 +28,9 @@
         android:layout_weight="1"
         android:gravity="center"
         android:padding="3dp"
-        android:src="@mipmap/item_step_small"
+        android:src="@mipmap/ic_deatil_tep"
         android:visibility="gone" />
+    <!--item_step_small-->
 
     <TextView
         android:id="@+id/itemB30StepDetailKcalTv"

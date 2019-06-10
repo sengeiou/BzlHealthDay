@@ -13,6 +13,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:padding="5dp"
+        android:textColor="@color/white"
         android:text="--" />
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:padding="5dp"
+        android:textColor="@color/white"
         android:text="--" />
 
 

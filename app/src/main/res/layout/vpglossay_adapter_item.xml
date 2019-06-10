@@ -13,7 +13,7 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/vpglossay_bg_tip"
+        android:background="@drawable/blue_with_layout_line"
         android:gravity="center|left"
         android:lineSpacingMultiplier="1.5"
         android:letterSpacing="0.1"

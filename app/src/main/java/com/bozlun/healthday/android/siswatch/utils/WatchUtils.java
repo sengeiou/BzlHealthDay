@@ -133,7 +133,7 @@ public class WatchUtils {
      */
     public static boolean verBleNameForSearch(String bleName) {
         String []FilterNamas= new String[]
-                {"B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7", "F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
+                {"B25","B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7", "F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
         Set<String> set = new HashSet<>(Arrays.asList(FilterNamas));
         if (set.contains(bleName)){
             return true;

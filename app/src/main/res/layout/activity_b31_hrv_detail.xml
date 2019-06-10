@@ -35,10 +35,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:text="@string/heart_health_sorce"
-                    android:textColor="@color/red"
+                    android:textColor="@color/black"
                     android:textSize="17sp"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:layout_marginTop="@dimen/size_5"
                     android:layout_height="wrap_content" />
 
 
@@ -50,31 +51,31 @@
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:padding="8dp"
+                    android:padding="3dp"
                     android:gravity="center"
                     android:layout_height="wrap_content" />
 
-                <FrameLayout
+                <!--<FrameLayout-->
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-
+                    <ImageView
+                        android:id="@+id/hrvReferMarkviewImg"
+                        android:layout_width="wrap_content"
+                        android:src="@mipmap/ic_deatail_couur"
+                        android:layout_height="20dp" />
+                    <!--android:src="@drawable/hrv_refer_markview"-->
                     <ImageView
                         android:id="@+id/hrvReferBackImg"
                         android:layout_width="match_parent"
                         android:layout_height="15dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/hrv_refer_img" />
+                        android:background="@mipmap/hrv_refer_img" />
 
 
-                    <ImageView
-                        android:id="@+id/hrvReferMarkviewImg"
-                        android:layout_width="wrap_content"
-                        android:src="@drawable/hrv_refer_markview"
-                        android:layout_height="20dp" />
-
-
-                </FrameLayout>
+                </LinearLayout>
 
 
 
@@ -153,6 +154,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/size_1"
+                android:background="@color/new_colorAccent"
                 android:orientation="horizontal">
 
 
@@ -173,6 +176,7 @@
 
                 <TextView
                     android:id="@+id/herDataTv"
+                    android:background="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

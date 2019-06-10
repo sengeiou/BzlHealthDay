@@ -152,7 +152,6 @@ public class MyApp extends LitePalApplication {
                      */
                     L4M.InitData(instance, 1, 0);
                     Looper.loop();
-                    B15PContentState.isSycnLanguage = false;//将这个每次设置为false，通过这个每次APP中只设置语言一次
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

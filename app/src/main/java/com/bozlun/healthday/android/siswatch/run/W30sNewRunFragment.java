@@ -258,6 +258,7 @@ public class W30sNewRunFragment extends BaseFragment implements SwipeRefreshLayo
 //                    commentRunRecyclerView.setVisibility(View.GONE);
 //                }
 //            }
+
         }
     };
 

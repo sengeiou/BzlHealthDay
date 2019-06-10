@@ -6,10 +6,10 @@
     android:orientation="vertical">
 
 
-    <include layout="@layout/comment_b30_title_layout"/>
+    <include layout="@layout/comment_b30_title_layout2"/>
 
 
-    <include layout="@layout/comment_date_arrow_layout"/>
+    <include layout="@layout/comment_date_arrow_layout2"/>
 
     <ScrollView
         android:id="@+id/ananly_scroll_view"
@@ -26,10 +26,13 @@
 
             <!--模块1 血氧/呼吸暂停-->
             <LinearLayout
+                android:layout_margin="@dimen/size_5"
                 android:id="@+id/block_spo2h"
                 style="@style/style_block"
                 android:layout_marginTop="1dp"
-                android:background="@drawable/vpspo2h_bg_spo2h">
+                android:background="@drawable/blue_with_layout_chart"
+                >
+                <!--android:background="@drawable/vpspo2h_bg_spo2h"-->
 
                 <RelativeLayout
                     android:id="@+id/block_title_spo2h"
@@ -92,7 +95,7 @@
 
             <include layout="@layout/include_spo2_analy_result_layout"/>
 
-            <include layout="@layout/include_b31_spo2_charts_layout"/>
+            <include layout="@layout/include_b31_spo2_charts_layout2"/>
 
 
         </LinearLayout>

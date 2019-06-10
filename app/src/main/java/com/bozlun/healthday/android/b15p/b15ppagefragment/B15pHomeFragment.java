@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -282,10 +283,9 @@ public class B15pHomeFragment extends LazyFragment
     }
 
 
-    private Context getmContext(){
-        return mContext == null ? MyApp.getContext():mContext;
+    private Context getmContext() {
+        return mContext == null ? MyApp.getContext() : mContext;
     }
-
 
 
     private void initData() {
@@ -318,7 +318,7 @@ public class B15pHomeFragment extends LazyFragment
     protected void onFragmentVisibleChange(boolean isVisible) {
         super.onFragmentVisibleChange(isVisible);
         if (isVisible) {
-            if (MyCommandManager.DEVICENAME!= null) {
+            if (MyCommandManager.DEVICENAME != null) {
 //                long currentTime = System.currentTimeMillis() / 1000;
 //                保存的时间
 //                String tmpSaveTime = (String) SharedPreferencesUtils.getParam(MyApp.getContext(), "saveDate", currentTime + "");
@@ -342,8 +342,7 @@ public class B15pHomeFragment extends LazyFragment
     }
 
 
-
-    void setImageType(){
+    void setImageType() {
         if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
             if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
                 if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
@@ -362,6 +361,7 @@ public class B15pHomeFragment extends LazyFragment
             }
         }
     }
+
     /**
      * 链接状态返回
      *
@@ -414,7 +414,7 @@ public class B15pHomeFragment extends LazyFragment
                         setImageType();
                         // 第一次链接自动获取数据
                         // 先获根据系统语言设置语言------之后去获取电池电量
-                        mHandler.sendEmptyMessageDelayed(0x01, 100);
+                        mHandler.sendEmptyMessageDelayed(0x01, 5000);
                     } else {
 
                         long currentTime = System.currentTimeMillis() / 1000;
@@ -496,10 +496,14 @@ public class B15pHomeFragment extends LazyFragment
         String param = (String) SharedPreferencesUtils.getParam(getmContext(), "Languages", "EN");
 
         Log.e(TAG, "----------localelLanguage=" + localelLanguage + "   " + param);
-        if (!WatchUtils.isEmpty(param) && !param.equalsIgnoreCase(localelLanguage)) {
-            if (!WatchUtils.isEmpty(localelLanguage) && localelLanguage.equals("zh"))
+        if (!WatchUtils.isEmpty(param)) {
+            if (!WatchUtils.isEmpty(localelLanguage) && localelLanguage.equals("zh")) {
+                Log.e(TAG, "======   " + localelLanguage + "    设置中文 ");
                 L4Command.LanguageZH();//中文
-            else L4Command.LanguageEN();//英文
+            } else {
+                Log.e(TAG, "======   " + localelLanguage + "    设置英文 ");
+                L4Command.LanguageEN();//英文
+            }
         }
     }
 
@@ -509,7 +513,6 @@ public class B15pHomeFragment extends LazyFragment
 
             if (TypeInfo.equals(L4M.SetLanguage) && StrData.equals(L4M.OK)) {
                 if (StrData.equals("OK")) {
-                    B15PContentState.isSycnLanguage = true;
                     String param = (String) SharedPreferencesUtils.getParam(getmContext(), "Languages", "EN");
                     SharedPreferencesUtils.setParam(MyApp.getContext(), "Languages", (!WatchUtils.isEmpty(param) && param.equals("ZH")) ? "ZH" : "EN");
                 }
@@ -525,7 +528,14 @@ public class B15pHomeFragment extends LazyFragment
 
         setSysTextStute(true);
 
-        L4Command.BatLevel(btResultListenr);
+
+        int param = (int) SharedPreferencesUtils.getParam(getmContext(), Commont.BATTERNUMBER, 0);
+        if (param > 0) {
+            //设置每次会来电电池电量
+            showBatterStute(param);
+        }
+        mHandler.sendEmptyMessage(0x02);
+//   L4Command.BatLevel(btResultListenr);
     }
 
 
@@ -539,7 +549,8 @@ public class B15pHomeFragment extends LazyFragment
 
             if (TypeInfo.equals(L4M.ERROR) && StrData.equals(L4M.TIMEOUT)) {
                 Log.e(TAG, "--------------==  获取电量超时 ~~~~~~~~~~~~~~ 跳过去执行下一个指令");
-                mHandler.sendEmptyMessageDelayed(0x02, 100);
+//                mHandler.sendEmptyMessageDelayed(0x02, 100);
+                mHandler.sendEmptyMessageDelayed(0xd9, 200);
                 return;
             }
 
@@ -556,7 +567,8 @@ public class B15pHomeFragment extends LazyFragment
                     showBatterStute(param);
                 }
 
-                mHandler.sendEmptyMessageDelayed(0x02, 100);
+//                mHandler.sendEmptyMessageDelayed(0x02, 100);
+                mHandler.sendEmptyMessageDelayed(0xd9, 200);
             }
 
         }
@@ -632,6 +644,9 @@ public class B15pHomeFragment extends LazyFragment
         public boolean handleMessage(Message message) {
             mac = (String) SharedPreferencesUtils.readObject(getmContext(), Commont.BLEMAC);
             switch (message.what) {
+                case 0xd9://获取电量完成了 --- 下来获取语言
+                    getLanguage();
+                    break;
                 case 0x55:
                     /**
                      * 同步完成上传数据
@@ -715,6 +730,7 @@ public class B15pHomeFragment extends LazyFragment
                 case 0x03://获取步数
                     mHandler.sendEmptyMessageDelayed(0x77, 12 * 1000);//77 步数6秒超时处理
                     L4Command.GetPedo1();
+//                    L4Command.CommPedoTime(currDay, 3000);
                     //获取步数+睡眠
 //                    L4Command.YsnALLData();
                     break;
@@ -988,9 +1004,8 @@ public class B15pHomeFragment extends LazyFragment
                                     if (b30HomeSwipeRefreshLayout != null)
                                         b30HomeSwipeRefreshLayout.finishRefresh();
 
-                                    if (!B15PContentState.isSycnLanguage) {
-                                        getLanguage();
-                                    }
+                                    L4Command.BatLevel(btResultListenr);
+//                                    getLanguage();
                                     setSysTextStute(false);
                                 }
 
@@ -1181,15 +1196,15 @@ public class B15pHomeFragment extends LazyFragment
     /**
      * 数据表清空
      */
-    void tableClear(){
+    void tableClear() {
         showSportStepData(null);
         showHrvData(new ArrayList<HRVOriginData>());
         updateSpo2View(new ArrayList<Spo2hOriginData>());
-        if (b30CusSleepView!=null){
+        if (b30CusSleepView != null) {
             b30CusSleepView.setSeekBarShow(false);
             b30CusSleepView.setSleepList(new ArrayList<Integer>());
         }
-        if (b30CusHeartView!=null) b30CusHeartView.setRateDataList(null);
+        if (b30CusHeartView != null) b30CusHeartView.setRateDataList(null);
     }
 
 
@@ -1461,7 +1476,7 @@ public class B15pHomeFragment extends LazyFragment
         //Log.e(TAG,"----显示HRV="+dataList.size());
 
         try {
-            if (dataList==null||dataList.size() > 420)
+            if (dataList == null || dataList.size() > 420)
                 return;
             List<HRVOriginData> data0to8 = getMoringData(dataList);
             HRVOriginUtil mHrvOriginUtil = new HRVOriginUtil(data0to8);
@@ -1471,7 +1486,7 @@ public class B15pHomeFragment extends LazyFragment
             final List<Map<String, Float>> tenMinuteData = mHrvOriginUtil.getTenMinuteData();
             //主界面
             showHomeView(tenMinuteData);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1500,7 +1515,7 @@ public class B15pHomeFragment extends LazyFragment
 //            dataSetByIndex.setColor(Color.parseColor("#EC1A3B"));
                 dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1553,7 +1568,7 @@ public class B15pHomeFragment extends LazyFragment
 //            dataSetByIndex.setColor(Color.parseColor("#17AAE2"));
                 dataSetByIndex.setColor(Color.parseColor("#FF207F6F"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

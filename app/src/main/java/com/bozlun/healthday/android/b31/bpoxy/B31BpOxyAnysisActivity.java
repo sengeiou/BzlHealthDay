@@ -3,6 +3,8 @@ package com.bozlun.healthday.android.b31.bpoxy;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
@@ -200,9 +204,10 @@ public class B31BpOxyAnysisActivity extends WatchBaseActivity {
 
             if (msg.what == 1001) {
                 initSpo2hUtil();
-                vpSpo2hUtil.setData(list);
-                vpSpo2hUtil.showAllChartView();
-                showSpo2Desc(list);
+                if (list!=null){ vpSpo2hUtil.setData(list);
+                    vpSpo2hUtil.showAllChartView();
+                    showSpo2Desc(list);
+                   }
                 Log.e(TAG, "-----");
 
             }
@@ -214,6 +219,13 @@ public class B31BpOxyAnysisActivity extends WatchBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#289A86"));
+        }
+
         setContentView(R.layout.activity_b31_bp_oxy_anay_layout);
         ButterKnife.bind(this);
 

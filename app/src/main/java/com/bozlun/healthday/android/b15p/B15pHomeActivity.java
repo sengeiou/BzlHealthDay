@@ -1,16 +1,24 @@
 package com.bozlun.healthday.android.b15p;
 
+import android.content.Context;
 import android.content.IntentFilter;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.adpter.FragmentAdapter;
 import com.bozlun.healthday.android.b15p.b15ppagefragment.B15pHomeFragment;
@@ -22,6 +30,7 @@ import com.bozlun.healthday.android.w30s.MyBroadcastReceiver;
 import com.bozlun.healthday.android.widget.NoScrollViewPager;
 import com.tjd.tjdmain.icentre.ICC_Contents;
 import com.tjdL4.tjdmain.L4M;
+
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;

@@ -365,6 +365,7 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                 }
             }, 2000);
             getPhonePairDevice();   //获取手机配对的设备
+            //Dev.SetScanFilter(1,"TJDR");
             bluetoothAdapter.startLeScan(leScanCallback);
             handler.postDelayed(new Runnable() {
                 @Override

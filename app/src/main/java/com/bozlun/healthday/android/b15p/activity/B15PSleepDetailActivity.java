@@ -466,6 +466,7 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
                 WatchUtils.shareCommData(B15PSleepDetailActivity.this);
                 break;
             case R.id.sleepCurrDateLeft:   //切换上一天数据
+                if (detailSleepQuitRatingBar!=null)detailSleepQuitRatingBar.setRating(0);
                 changeDayData(true);
                 break;
             case R.id.sleepCurrDateRight:   //切换下一天数据
@@ -482,6 +483,7 @@ public class B15PSleepDetailActivity extends WatchBaseActivity {
         if (date.equals(currDay) || date.isEmpty()) {
             return;// 空数据,或者大于今天的数据就别切了
         }
+        if (detailSleepQuitRatingBar!=null)detailSleepQuitRatingBar.setRating(0);
         currDay = date;
         initData();
     }

@@ -28,7 +28,6 @@ public class B15PContentState {
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothManager bluetoothManager;
     public boolean isContentioning = false;//是否在连接中
-    public static boolean isSycnLanguage = false;
 
 
     public void setB15PContentState(ConntentStuteListenter b15PContentState) {
@@ -143,7 +142,9 @@ public class B15PContentState {
     BluetoothAdapter.LeScanCallback leScanCallback = new BluetoothAdapter.LeScanCallback() {
         @Override
         public void onLeScan(BluetoothDevice bluetoothDevice, int i, byte[] bytes) {
+            //Log.e(TAG, "===A====" + bluetoothDevice.getAddress() + "      " + bluetoothDevice.getName());
             if (bluetoothDevice != null && !isContentioning) {
+                Log.e(TAG, "===B====" + bluetoothDevice.getAddress() + "      " + bluetoothDevice.getName());
                 String blrMac = (String) SharedPreferencesUtils.readObject(MyApp.getContext(), Commont.BLEMAC);
                 if (!WatchUtils.isEmpty(blrMac) && bluetoothDevice.getAddress().equals(blrMac)) {
                     Log.d(TAG, "=====开始扫描链接");
@@ -185,13 +186,16 @@ public class B15PContentState {
         //已连接
         else if (L4M.Get_Connect_flag() == 2) {
             String s = L4M.GetConnectedMAC();
+            isContentioning = false;
             SharedPreferencesUtils.saveObject(MyApp.getInstance(), Commont.BLEMAC, s);
-            Log.e(TAG, "--B15P--已连接 " + "====" + s+"------"+L4M.GetConnecteddName());
-            MyCommandManager.DEVICENAME = (WatchUtils.isEmpty(L4M.GetConnecteddName())?"B15P":L4M.GetConnecteddName());
+            if (bluetoothAdapter != null) bluetoothAdapter.stopLeScan(leScanCallback);
+            Log.e(TAG, "--B15P--已连接 " + "====" + s + "------" + L4M.GetConnecteddName());
+            MyCommandManager.DEVICENAME = (WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName());
             b15PContentState.b15p_Connection_State(2);
         }
         //未连接
         else {
+            isContentioning = false;
             Log.e(TAG, "--B15P--未连接");
             MyCommandManager.DEVICENAME = null;
             b15PContentState.b15p_Connection_State(0);

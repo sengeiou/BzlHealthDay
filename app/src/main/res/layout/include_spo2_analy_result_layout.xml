@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/white_radio_layout"
+        android:background="@drawable/blue_radio_layout"
         android:padding="3dp">
 
 
@@ -33,7 +33,7 @@
             android:layout_centerVertical="true"
             android:padding="5dp"
             android:text="OSAHS:"
-            android:textColor="@color/blue"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
 
@@ -41,6 +41,7 @@
             android:id="@+id/osahsStatusTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
             android:text=""
@@ -84,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/white_radio_layout"
+        android:background="@drawable/grenn_radio_layout"
         android:orientation="vertical">
 
 
@@ -102,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:gravity="left"
                 android:padding="5dp"
                 android:text="@string/name" />
@@ -112,6 +114,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:padding="5dp"
                 android:text="@string/frequent_time" />
 
@@ -122,6 +125,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="@color/white"
                 android:text="@string/times" />
 
             <TextView
@@ -130,6 +134,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textColor="@color/white"
                 android:padding="5dp"
                 android:text="@string/reference" />
 
@@ -152,7 +157,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="@color/blue"
+                android:textColor="@color/white"
                 android:text="@string/vpspo2h_state_breathbreak" />
 
 
@@ -175,6 +180,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textColor="@color/white"
                 android:padding="5dp"
                 android:text="≤7" />
 
@@ -189,7 +195,7 @@
         android:id="@+id/spo2AnalyMoreLin"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/white_radio_layout"
+        android:background="@drawable/blue_with_layout_line"
         android:layout_margin="5dp"
         android:visibility="visible"
         android:layout_marginTop="5dp"
@@ -209,6 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:textColor="#003C71"
                 android:gravity="left"
                 android:padding="5dp"
                 android:text="@string/name" />
@@ -220,6 +227,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="@string/ave_value" />
 
             <TextView
@@ -228,6 +236,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="@string/max_min" />
 
@@ -237,6 +246,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="@string/reference" />
 
@@ -261,7 +271,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="@color/blue"
+                android:textColor="#003C71"
                 android:text="@string/vpspo2h_spo2h" />
 
             <TextView
@@ -271,6 +281,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="--" />
 
@@ -282,6 +293,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -290,6 +302,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="95-99(%)" />
 
@@ -314,7 +327,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="@color/blue"
+                android:textColor="#003C71"
                 android:text="@string/vpspo2h_toptitle_breath" />
 
             <TextView
@@ -325,6 +338,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -335,6 +349,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -343,6 +358,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="18-26次/分" />
 
@@ -367,7 +383,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="@color/blue"
+                android:textColor="#003C71"
                 android:text="@string/vpspo2h_toptitle_lowspo2h" />
 
             <TextView
@@ -378,6 +394,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -388,6 +405,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -396,6 +414,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="right"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="≤20(s)" />
 
@@ -420,7 +439,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="@color/blue"
+                android:textColor="#003C71"
                 android:text="@string/vpspo2h_toptitle_heart" />
 
             <TextView
@@ -431,6 +450,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -441,6 +461,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
             <TextView
@@ -450,6 +471,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="20-40(pi)" />
 
 
@@ -471,7 +493,7 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:padding="5dp"
-                android:textColor="@color/blue"
+                android:textColor="#003C71"
                 android:text="@string/vpspo2h_toptitle_sleep" />
 
 
@@ -483,6 +505,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="5dp"
+                android:textColor="#003C71"
                 android:text="--" />
 
 
@@ -493,6 +516,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="#003C71"
                 android:padding="5dp"
                 android:text="无" />
 
@@ -511,6 +535,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:padding="5dp"
+                    android:textColor="#003C71"
                     android:text="≤20(安静)" />
 
                 <TextView
@@ -519,6 +544,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="right"
+                    android:textColor="#003C71"
                     android:padding="5dp"
                     android:text="20-50(多动)" />
 
@@ -528,6 +554,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="right"
+                    android:textColor="#003C71"
                     android:padding="5dp"
                     android:text="50-80(躁动)" />
 
@@ -598,8 +625,8 @@
         android:padding="5dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:background="@drawable/white_radio_layout"
-        android:textColor="@color/blue"
+        android:background="@drawable/blue_radio_layout"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 

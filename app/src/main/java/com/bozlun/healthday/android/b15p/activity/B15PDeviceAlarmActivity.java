@@ -1,6 +1,5 @@
 package com.bozlun.healthday.android.b15p.activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,23 +8,18 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAlarmSetting;
 import com.bozlun.healthday.android.b15p.common.B15PAlarmAdapter;
 import com.bozlun.healthday.android.siswatch.WatchBaseActivity;
-import com.bozlun.healthday.android.util.ToastUtil;
 import com.google.gson.Gson;
 import com.tjdL4.tjdmain.L4M;
 import com.tjdL4.tjdmain.contr.AlarmClock;
@@ -163,6 +157,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
 
             byte[] bytes = byteWeek(alarm2Setting.getWeek());
             Log.e(TAG, "改变的周期  " + Arrays.toString(bytes));
+            showLoadingDialog("设置中...");
             setAlarm(alarm2Setting.getAlarmId(),
                     !alarm2Setting.isOpen(),
                     alarm2Setting.getInterval(),
@@ -210,6 +205,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        showLoadingDialog("重置中...");
                         setAlarm(alarmSetting.getAlarmId(), false, 0, new byte[]{0, 0, 0, 0, 0, 0, 0, 0}, 0, 0);
                     }
                 })
@@ -242,6 +238,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
         //设置
         String ret = L4Command.AlarmClockSet(myAlarmClockData);   /*ret  返回值类型在文档最下面*/
         Log.e(TAG, " 闹钟设置 " + ret);
+        closeLoadingDialog();
     }
 
     Handler handler = new Handler(new Handler.Callback() {
@@ -263,6 +260,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
      */
     private void readAlarmFromBleAll() {
         //MyApp.getInstance().getVpOperateManager().readAlarm2(iBleWriteResponse, alarmDataListener);
+        showLoadingDialog("读取中...");
         mAlarmList.clear();
         L4Command.AlarmClockGet(new L4M.BTResultListenr() {
             @Override
@@ -361,6 +359,13 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAlarmList!=null)mAlarmList.clear();
+        if (alarmAdapter!=null)alarmAdapter.notifyDataSetChanged();
+    }
+
     public String StringWeek(int week) {
         int[] weekArray = new int[]{1, 2, 4, 8, 16, 32, 64};//周一  ~~  周日
 //        String[] sateString = {"1", "0", "0", "0", "0", "0", "0", "0"};//开关，周一  ~~  周日
@@ -417,6 +422,7 @@ public class B15PDeviceAlarmActivity extends WatchBaseActivity {
 //            mAlarmList.addAll(alarmList);
             if (alarmAdapter != null) alarmAdapter.notifyDataSetChanged();
         }
+        closeLoadingDialog();
     }
 
 

@@ -139,7 +139,7 @@ public class B30StepDetailAdapter extends RecyclerView.Adapter<B30StepDetailAdap
 
                 BigDecimal bdDS = new BigDecimal((double) (Double.valueOf(distanceWithStep) * Constant.METRIC_FT));
                 BigDecimal setScaleDS = bdDS.setScale(1, RoundingMode.DOWN);
-                distanceWithStep = Integer.valueOf(setScaleDS.toString());
+                distanceWithStep = setScaleDS.intValue();
             }
 //        disValue = Math.round(disValue * 100) / 100;
             Log.d("bobo", "calValue: " + calorieWithSteps + ",disValue: " + distanceWithStep);

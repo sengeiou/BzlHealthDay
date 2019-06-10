@@ -278,7 +278,7 @@ public class WaveProgress extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        drawCircle(canvas);
+        //drawCircle(canvas);
         drawLightWave(canvas);
         drawDarkWave(canvas);
         drawProgress(canvas);

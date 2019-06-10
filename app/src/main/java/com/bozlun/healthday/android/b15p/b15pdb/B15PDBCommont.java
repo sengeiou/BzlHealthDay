@@ -223,7 +223,7 @@ public class B15PDBCommont {
                             B15PStepDBDao.Properties.StepData.eq(dataTime.substring(0, 10)),
                             B15PStepDBDao.Properties.StepTime.eq(dataTime.substring(11, 16)),
                             B15PStepDBDao.Properties.DevicesMac.eq(mac)).unique();
-            Log.e(TAG, "Step保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PStepDB == null ? dataTime + "  点的步数数据没有" : b15PStepDB.toString()));
+            Log.e(TAG, "Step保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 16) + "  " + (b15PStepDB == null ? dataTime + "  点的步数数据没有" : b15PStepDB.toString()));
             if (b15PStepDB != null) {
                 if (sportValues > 0) {
                     b15PStepDB.setDevicesMac(mac);
@@ -258,7 +258,7 @@ public class B15PDBCommont {
                     .where(B15PSleepDBDao.Properties.SleepData.eq(dataTime.substring(0, 10)),
                             B15PSleepDBDao.Properties.SleepTime.eq(dataTime.substring(11, 16)),
                             B15PSleepDBDao.Properties.DevicesMac.eq(mac)).unique();
-            Log.e(TAG, "Sleep保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PSleepDB == null ? dataTime + "  点的睡眠数据没有" : b15PSleepDB.toString()));
+            Log.e(TAG, "Sleep保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 16) + "  " + (b15PSleepDB == null ? dataTime + "  点的睡眠数据没有" : b15PSleepDB.toString()));
             if (b15PSleepDB != null) {
                 b15PSleepDB.setDevicesMac(mac);
                 //[,2019-04-22 04:00:00,26]
@@ -291,7 +291,7 @@ public class B15PDBCommont {
                             B15PHeartDBDao.Properties.HeartData.eq(dataTime.substring(0, 10)),
                             B15PHeartDBDao.Properties.HeartTime.eq(dataTime.substring(11, 16)),
                             B15PHeartDBDao.Properties.DevicesMac.eq(mac)).unique();
-            Log.e(TAG, "Heart保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PHeartDB == null ? dataTime + "  点的心率数据没有" : b15PHeartDB.toString()));
+            Log.e(TAG, "Heart保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 16) + "  " + (b15PHeartDB == null ? dataTime + "  点的心率数据没有" : b15PHeartDB.toString()));
             if (b15PHeartDB != null) {
                 b15PHeartDB.setDevicesMac(mac);
                 //[,2019-04-22 04:00:00,26]
@@ -324,7 +324,7 @@ public class B15PDBCommont {
                             B15PBloodDBDao.Properties.BloodData.eq(dataTime.substring(0, 10)),
                             B15PBloodDBDao.Properties.BloodTime.eq(dataTime.substring(11, 16)),
                             B15PBloodDBDao.Properties.DevicesMac.eq(mac)).unique();
-            Log.e(TAG, "Bloop保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 19) + "  " + (b15PBloodDB == null ? dataTime + "  点的血压数据没有" : b15PBloodDB.toString()));
+            Log.e(TAG, "Bloop保存前查询  " + mac + "  " + dataTime.substring(0, 10) + "  " + dataTime.substring(11, 16) + "  " + (b15PBloodDB == null ? dataTime + "  点的血压数据没有" : b15PBloodDB.toString()));
             if (b15PBloodDB != null) {
                 b15PBloodDB.setDevicesMac(mac);
                 //[,2019-04-22 04:00:00,26]
