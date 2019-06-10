@@ -162,15 +162,19 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     if (!allDataListSleep.isEmpty()) {
                         List<W30S_SleepDataItem> sleepList = new Gson().fromJson(JSON.toJSON(allDataListSleep).toString(), new TypeToken<List<W30S_SleepDataItem>>() {
                         }.getType());
-                        int count = SleepJ(sleepList);//睡眠中的清醒次数
-                        /**
-                         * 有睡眠书据-------设置血氧假数据
-                         */
-                        setSpo2Datas(mac, date, count);
-                        /**
-                         * 有睡眠书据-------设置HRV假数据
-                         */
-                        setHRvDatas(mac, date);
+                        //判断，睡眠数据为空或者少于一定值的时候就不模拟数据
+                        if (sleepList != null && !sleepList.isEmpty() && sleepList.size() > 4) {
+                            int count = SleepJ(sleepList);//睡眠中的清醒次数
+                            /**
+                             * 有睡眠书据-------设置血氧假数据
+                             */
+                            setSpo2Datas(mac, date, count);
+                            /**
+                             * 有睡眠书据-------设置HRV假数据
+                             */
+                            setHRvDatas(mac, date);
+                        }
+
                     } else {
                         changeDBListenter.updataHrvDataToUIListenter(new ArrayList<B31HRVBean>());
 
