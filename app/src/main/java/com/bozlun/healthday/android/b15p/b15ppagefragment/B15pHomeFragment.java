@@ -768,6 +768,7 @@ public class B15pHomeFragment extends LazyFragment
                                     if (b30ProgressBar != null) {
                                         b30ProgressBar.setMaxValue(goalStep);
                                         b30ProgressBar.setValue(defaultSteps);
+                                        SharedPreferencesUtils.setParam(MyApp.getContext(),"ALL_STEP_VALUE",defaultSteps);
                                     }
                                 }
 

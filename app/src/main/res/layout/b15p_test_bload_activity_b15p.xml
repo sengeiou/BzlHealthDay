@@ -96,9 +96,11 @@
             android:layout_width="@dimen/size_80"
             android:id="@+id/rec_img_back"
             android:background="@drawable/circle_sharpe_heart"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="@dimen/size_30"
+            android:layout_gravity="center"
             android:layout_height="80dp">
+            <!--android:layout_gravity="center|bottom"-->
+            <!--android:layout_marginBottom="@dimen/size_30"-->
+
 
             <ImageView
                 android:id="@+id/b30MeaureStartImg"

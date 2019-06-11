@@ -19,11 +19,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="@dimen/size_5"
         android:gravity="center"
-        android:layout_marginLeft="@dimen/size_5"
-        android:layout_marginRight="@dimen/size_5"
-        android:layout_marginTop="@dimen/size_5"
-        android:layout_marginBottom="@dimen/size__15"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content">
 
