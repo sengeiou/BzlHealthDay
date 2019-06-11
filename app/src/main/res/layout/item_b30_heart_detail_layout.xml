@@ -6,14 +6,16 @@
     android:padding="3dp"
     android:layout_height="wrap_content">
 
-
+    <View
+        android:layout_width="@dimen/size_30"
+        android:layout_height="0dp"/>
     <TextView
         android:id="@+id/itemHeartDetailDateTv"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:text="13:00"
         android:textSize="@dimen/sp_18"
-        android:gravity="center"
+        android:gravity="center|start"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
 
@@ -27,27 +29,32 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:gravity="center|end"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
 
         <ImageView
             android:layout_width="@dimen/size_20"
-            android:background="@drawable/history_heart"
+            android:src="@mipmap/ic_new_heart"
             android:layout_height="@dimen/size_20" />
+        <!--android:background="@drawable/history_heart"-->
 
         <TextView
             android:id="@+id/itemHeartDetailValueTv"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/size_80"
             android:text="78"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:gravity="end"
             android:textColor="#1C1C1C"
             android:layout_marginLeft="8dp"
             android:textSize="@dimen/sp_18"
             android:layout_margin="5dp"
             android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="@dimen/size_30"
+            android:layout_height="0dp"/>
 
     </LinearLayout>
 

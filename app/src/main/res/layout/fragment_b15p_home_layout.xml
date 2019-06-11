@@ -160,7 +160,7 @@
                             android:layout_width="wrap_content"
                             android:layout_gravity="bottom"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/fgm_home_move" />
+                            android:src="@mipmap/ic_xian" />
 
 
                     </LinearLayout>
@@ -189,7 +189,7 @@
                             android:id="@+id/homeYestdayImg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/fgm_home_move"
+                            android:src="@mipmap/ic_xian"
                             android:visibility="invisible" />
 
 
@@ -218,7 +218,7 @@
                             android:id="@+id/homeBeYestdayImg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/fgm_home_move"
+                            android:src="@mipmap/ic_xian"
                             android:visibility="invisible" />
 
 

@@ -46,26 +46,47 @@ public class B30BloadDetailAdapter extends RecyclerView.Adapter<B30BloadDetailAd
         holder.kcalTv.setText(list.get(position).getHighValue()+"/"+list.get(position).getLowValue());
 
         if (list.get(position).getHighValue()<=120){
-            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_norma);
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_bloop_one);
             drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
             holder.kcalTv.setCompoundDrawables(drawable,null, null, null);
             //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_norma);
         }else if (list.get(position).getHighValue()>120 &&list.get(position).getHighValue()<=140){
-            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_slight);
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_bloop_two);
             drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
             holder.kcalTv.setCompoundDrawables(drawable,null, null,  null);
             //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_slight);
         }else if (list.get(position).getHighValue()>140&&list.get(position).getHighValue() <=150){
-            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_serious);
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_bloop_three);
             drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
             holder.kcalTv.setCompoundDrawables(drawable,null, null,  null);
             //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_serious);
         }else{
-            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_veryserious);
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_bloop_four);
             drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
             holder.kcalTv.setCompoundDrawables(drawable,null, null, null);
             //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_veryserious);
         }
+//        if (list.get(position).getHighValue()<=120){
+//            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_norma);
+//            drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+//            holder.kcalTv.setCompoundDrawables(drawable,null, null, null);
+//            //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_norma);
+//        }else if (list.get(position).getHighValue()>120 &&list.get(position).getHighValue()<=140){
+//            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_slight);
+//            drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+//            holder.kcalTv.setCompoundDrawables(drawable,null, null,  null);
+//            //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_slight);
+//        }else if (list.get(position).getHighValue()>140&&list.get(position).getHighValue() <=150){
+//            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_serious);
+//            drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+//            holder.kcalTv.setCompoundDrawables(drawable,null, null,  null);
+//            //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_serious);
+//        }else{
+//            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.b30_bloodpressure_detail_veryserious);
+//            drawable.setBounds( 0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+//            holder.kcalTv.setCompoundDrawables(drawable,null, null, null);
+//            //holder.img.setImageResource(R.mipmap.b30_bloodpressure_detail_veryserious);
+//        }
 
     }
 

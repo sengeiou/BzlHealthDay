@@ -247,7 +247,13 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
 
 
         showBarChart(halfHourSportData);
-        countStepTv.setText(step + "");// 本地步数
+
+        int st = (int) SharedPreferencesUtils.getParam(MyApp.getContext(),"ALL_STEP_VALUE",0);
+        if (st!=0){
+            countStepTv.setText(st + "");// 本地步数
+        }else {
+            countStepTv.setText(step + "");// 本地步数
+        }
         showListData(halfHourSportData);
 
     }

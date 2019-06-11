@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="-15dp">
 
+
         <LinearLayout
             android:id="@+id/tmp_heartLin"
             android:layout_margin="@dimen/size_5"
@@ -23,7 +24,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/size_60"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_40"
                 android:src="@mipmap/ic_b30_sport_heart" />
 
