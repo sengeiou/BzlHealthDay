@@ -26,6 +26,7 @@ import com.bozlun.healthday.android.rxandroid.SubscriberOnNextListener;
 import com.bozlun.healthday.android.siswatch.LazyFragment;
 import com.bozlun.healthday.android.siswatch.NewSearchActivity;
 import com.bozlun.healthday.android.siswatch.WatchDeviceActivity;
+import com.bozlun.healthday.android.siswatch.utils.UpdateManager;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -84,7 +85,7 @@ public class WatchMineFragment extends LazyFragment {
     private String bleName = null;
 
     //更新
-//    private UpdateManager updateManager;
+    private UpdateManager updateManager;
     String userId = "9278cc399ab147d0ad3ef164ca156bf0";
 
     @Override
@@ -130,12 +131,12 @@ public class WatchMineFragment extends LazyFragment {
     @Override
     protected void onFragmentVisibleChange(boolean isVisible) {
         super.onFragmentVisibleChange(isVisible);
-//        if (getActivity() == null || getActivity().isFinishing())
-//            return;
-//        if (isVisible) {
-//            updateManager = new UpdateManager(getActivity(), URLs.HTTPs + URLs.getvision);
-//            updateManager.checkForUpdate(true);
-//        }
+        if (getActivity() == null || getActivity().isFinishing())
+            return;
+        if (isVisible) {
+            updateManager = new UpdateManager(getActivity(), URLs.HTTPs + URLs.getvision);
+            updateManager.checkForUpdate(true);
+        }
 
     }
 
@@ -279,8 +280,8 @@ public class WatchMineFragment extends LazyFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-//        if (updateManager != null)
-//            updateManager.destoryUpdateBroad();
+        if (updateManager != null)
+            updateManager.destoryUpdateBroad();
     }
 
 
