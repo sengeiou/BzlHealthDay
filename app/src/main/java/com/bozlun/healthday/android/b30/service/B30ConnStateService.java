@@ -206,7 +206,7 @@ public class B30ConnStateService extends Service {
     /**
      * 验证设备的密码，此方法必须在connB30ConnBle（）方法后调用
      * @param pwd
-     * @param  无用的参数
+     * @param  //无用的参数
      */
     public void continuteConn(String pwd,VerB30PwdListener verB30PwdListener){
         if(connBleHelpService != null)
@@ -419,7 +419,7 @@ public class B30ConnStateService extends Service {
                 return;
             manager.createNotificationChannel(channel);
             Notification.Builder builder = new Notification.Builder(this);
-            builder.setSmallIcon(R.drawable.ic_noti_s);
+            builder.setSmallIcon(R.drawable.ic_logo_day_s);//ic_noti_s
             builder.setContentText("检一检");
             builder.setContentTitle("检一检");
             //创建通知时指定channelID
@@ -432,7 +432,7 @@ public class B30ConnStateService extends Service {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
                 //Notification.Builder builder = new Notification.Builder(this,11);
-                builder.setSmallIcon(R.drawable.ic_noti_s);
+                builder.setSmallIcon(R.drawable.ic_logo_day_s);//ic_noti_s
                 builder.setContentText("检一检");
                 builder.setContentTitle("检一检");
                 // 设置通知的点击行为：自动取消/跳转等

@@ -159,7 +159,7 @@ public class W30SBLEServices extends Service {
             manager.createNotificationChannel(channel);
             Notification.Builder builder = new Notification.Builder(this);
 //            builder.setSmallIcon(R.drawable.ic_noti_s);
-            builder.setSmallIcon(R.drawable.ic_noti_s);
+            builder.setSmallIcon(R.drawable.ic_logo_day_s);
             builder.setContentText("Day Health");
             builder.setContentTitle("Day Health");
             //创建通知时指定channelID
@@ -179,7 +179,7 @@ public class W30SBLEServices extends Service {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
                 //Notification.Builder builder = new Notification.Builder(this,11);
-                builder.setSmallIcon(R.drawable.ic_noti_s);
+                builder.setSmallIcon(R.drawable.ic_logo_day_s);
                 builder.setContentText("Day Health");
                 builder.setContentTitle("Day Health");
                 // 设置通知的点击行为：自动取消/跳转等

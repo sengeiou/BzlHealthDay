@@ -127,7 +127,7 @@
         android:allowClearUserData="true"
         android:debuggable="false"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/ic_logo_day"
+        android:icon="@drawable/ic_logo_day_s"
         android:label="检一检"
         android:largeHeap="true"
         android:supportsRtl="true"
@@ -1351,6 +1351,7 @@
         <activity android:name=".b15p.MessageHelpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".b15p.activity.B15PIntervalActivity" />
 
 
         <!-- 下载的serveir -->

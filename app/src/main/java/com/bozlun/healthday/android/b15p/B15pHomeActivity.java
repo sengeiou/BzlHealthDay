@@ -101,7 +101,7 @@ public class B15pHomeActivity extends WatchBaseActivity {
             IntentFilter_a.addAction(ICC_Contents.ToUi);
             registerReceiver(myBroadcastReceivers, IntentFilter_a);
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 

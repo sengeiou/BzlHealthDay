@@ -22,6 +22,7 @@ import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.b15p.activity.B15PHeartDetailActivity;
+import com.bozlun.healthday.android.b15p.activity.B15PIntervalActivity;
 import com.bozlun.healthday.android.b15p.activity.B15PManualMeaureBloadActivity;
 import com.bozlun.healthday.android.b15p.activity.B15PSleepDetailActivity;
 import com.bozlun.healthday.android.b15p.activity.B15PStepDetailActivity;
@@ -280,6 +281,16 @@ public class B15pHomeFragment extends LazyFragment
                 }
             });
 
+
+
+        b30TopDateTv.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(getActivity(),B15PIntervalActivity.class));
+
+                return true;
+            }
+        });
     }
 
 

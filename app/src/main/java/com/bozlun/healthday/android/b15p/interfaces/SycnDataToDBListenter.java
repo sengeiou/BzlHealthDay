@@ -215,8 +215,17 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                         //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
 //                                && !splitStep[0].substring(11, 19).equals("00:00:00")
-                                && (L4M.Get_Connect_flag() == 2))
-                            b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], Integer.valueOf(splitAllStep[1]));
+                                && (L4M.Get_Connect_flag() == 2)){
+                            int integer = Integer.valueOf(splitAllStep[1]);
+                            //固件设备没有数据的时候回返回 65535 作为标记为0
+                            if (integer == 65535){
+                                b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], 0);
+                            }else {
+                                b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], integer);
+                            }
+
+                        }
+
 //                    }
                     break;
                 case "step":

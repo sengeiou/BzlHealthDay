@@ -200,8 +200,8 @@ public class GuideActivity extends BaseActivity {
 
     }
 
-    private final int[] imageIds = {R.drawable.ic_logo_day, R.drawable.ic_logo_day
-            ,R.drawable.ic_logo_day};
+    private final int[] imageIds = {R.drawable.ic_logo_day_s, R.drawable.ic_logo_day_s
+            ,R.drawable.ic_logo_day_s};
 
     @NonNull
     private List<View> createPageList() {

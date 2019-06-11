@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/comment_b30_title_layout"/>
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/commB31TitleLayout"
+        android:layout_width="0dp"
+        android:text="读取手环中的步数"
+        app:layout_constraintHorizontal_weight="1"
+        android:id="@+id/readDeviceStepBtn"
+        android:layout_height="wrap_content" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/commB31TitleLayout"
+        android:id="@+id/readDbStepBtn"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="读取数据库中的步数"
+        android:layout_height="wrap_content" />
+
+
+<Button
+    android:layout_width="0dp"
+    android:text="读取手环中的心率"
+    app:layout_constraintTop_toBottomOf="@id/readDeviceStepBtn"
+    android:id="@+id/readDeviceHeartBtn"
+    android:layout_height="wrap_content" />
+
+
+<Button
+    android:id="@+id/readDbHeartBtn"
+    android:layout_width="0dp"
+    android:text="读取数据库中的心率"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/readDbStepBtn"
+    android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/readDeviceSleepBtn"
+        android:layout_width="0dp"
+        android:text="读取手环中的睡眠"
+        app:layout_constraintTop_toBottomOf="@id/readDeviceHeartBtn"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="0dp"
+        android:text="读取数据库中的睡眠"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/readDBSleepBtn"
+        app:layout_constraintTop_toBottomOf="@+id/readDbHeartBtn"
+        android:layout_height="wrap_content" />
+
+
+
+
+    <android.support.v4.widget.NestedScrollView
+        app:layout_constraintTop_toBottomOf="@id/readDeviceSleepBtn"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content">
+
+      <TextView
+          android:id="@+id/showB15PStatusTv"
+          android:text="读取状态"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>

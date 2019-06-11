@@ -48,9 +48,9 @@ public class WhiteService extends Service {
         //使用兼容版本
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         //设置状态栏的通知图标
-        builder.setSmallIcon(R.drawable.ic_logo_day);
+        builder.setSmallIcon(R.drawable.ic_logo_day_s);
         //设置通知栏横条的图标
-        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_logo_day));
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_logo_day_s));
         //禁止用户点击删除按钮删除
         builder.setAutoCancel(false);
         //禁止滑动删除

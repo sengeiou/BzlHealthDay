@@ -100,7 +100,7 @@ public class B15PHeartDetailActivity extends WatchBaseActivity {
         line_st.setVisibility(View.GONE);
         commentB30BackImg.setVisibility(View.VISIBLE);
         commentB30TitleTv.setText(R.string.heart_rate);
-        commentB30ShareImg.setVisibility(View.VISIBLE);
+        //commentB30ShareImg.setVisibility(View.VISIBLE);
 
 
         if (WatchUtils.isB36Device(B15PHeartDetailActivity.this)) {

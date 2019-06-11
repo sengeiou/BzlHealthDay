@@ -64,6 +64,7 @@ import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RequestExecutor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -928,7 +929,7 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.newSearchTitleLeft:   //返回
-                startActivity(B31HomeActivity.class);
+                startActivity(B15pHomeActivity.class);
                 finish();
                 break;
             case R.id.newSearchRightImg1: //帮助
