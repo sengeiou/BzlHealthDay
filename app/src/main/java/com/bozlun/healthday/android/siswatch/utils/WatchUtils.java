@@ -360,6 +360,18 @@ public class WatchUtils {
     }
 
     /**
+     * 获取H格式时间
+     *
+     * @return
+     */
+    public static String getCurrentDate5() {
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH", Locale.CHINA);
+        String date = dateFormat.format(now);
+        return date;
+    }
+
+    /**
      * 格式化时间
      *
      * @param format

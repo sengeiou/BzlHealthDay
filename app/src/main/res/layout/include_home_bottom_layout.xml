@@ -10,7 +10,7 @@
     <!---->
 
     <RelativeLayout
-        android:layout_marginEnd="@dimen/size_40"
+        android:layout_marginEnd="@dimen/size_55"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -45,8 +45,10 @@
     </RelativeLayout>
 
 
+
+
     <RelativeLayout
-        android:layout_marginStart="@dimen/size_40"
+        android:layout_marginStart="@dimen/size_55"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

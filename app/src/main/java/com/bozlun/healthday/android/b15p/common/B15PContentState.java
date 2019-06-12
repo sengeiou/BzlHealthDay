@@ -188,7 +188,10 @@ public class B15PContentState {
             String s = L4M.GetConnectedMAC();
             isContentioning = false;
             SharedPreferencesUtils.saveObject(MyApp.getInstance(), Commont.BLEMAC, s);
-            if (bluetoothAdapter != null) bluetoothAdapter.stopLeScan(leScanCallback);
+            if (bluetoothAdapter == null) bluetoothAdapter = bluetoothManager.getAdapter();
+            if (bluetoothAdapter == null)
+                bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            bluetoothAdapter.stopLeScan(leScanCallback);
             Log.e(TAG, "--B15P--已连接 " + "====" + s + "------" + L4M.GetConnecteddName());
             MyCommandManager.DEVICENAME = (WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName());
             b15PContentState.b15p_Connection_State(2);

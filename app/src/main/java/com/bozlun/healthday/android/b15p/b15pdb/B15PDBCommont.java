@@ -127,6 +127,18 @@ public class B15PDBCommont {
     }
 
 
+    public B15PHeartDB findHeartItemDatas(String mac, String date,String time) {
+        Log.e(TAG, "查询心率  " + mac + "   " + date+"  "+time);
+        B15PHeartDBDao b15PHeartDBDao = getDaoSession().getB15PHeartDBDao();
+        if (b15PHeartDBDao == null) return null;
+        B15PHeartDB unique = b15PHeartDBDao.queryBuilder().where(
+                B15PHeartDBDao.Properties.DevicesMac.eq(mac),
+                B15PHeartDBDao.Properties.HeartData.eq(date),
+                B15PHeartDBDao.Properties.HeartTime.eq(time)
+        ).unique();
+        return unique;
+    }
+
     /**
      * 查血压
      *

@@ -134,7 +134,7 @@ public class WatchMineFragment extends LazyFragment {
         if (getActivity() == null || getActivity().isFinishing())
             return;
         if (isVisible) {
-            updateManager = new UpdateManager(getActivity(), URLs.HTTPs + URLs.getvision);
+            updateManager = new UpdateManager(getActivity(), URLs.HTTPs + URLs.bozlun_health_url);
             updateManager.checkForUpdate(true);
         }
 

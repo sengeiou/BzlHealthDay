@@ -81,7 +81,7 @@
             <!--6074BF-->
             <TextView
                 android:layout_width="wrap_content"
-                android:text="今日 体检报告"
+                android:text="今日体检报告"
                 android:textSize="17sp"
                 android:textColor="#FF949496"
                 android:layout_height="wrap_content" />

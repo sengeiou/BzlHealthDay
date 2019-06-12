@@ -36,6 +36,17 @@ public class MyCicleView extends View {
         initView();
     }
 
+
+    private ForceStopListenter forceStopListenter;
+
+    public void setForceStopListenter(ForceStopListenter forceStopListenter) {
+        this.forceStopListenter = forceStopListenter;
+    }
+
+    public interface ForceStopListenter{
+        void forcesStop();
+    }
+
     private void initView() {
         paint = new Paint();//创建笔
 //        this.setOnClickListener(new OnClickListener() {
@@ -90,6 +101,7 @@ public class MyCicleView extends View {
                     }
                     break;
                 case 0x02:
+                    forceStopListenter.forcesStop();
                     stopTestAction("0");
                     break;
             }

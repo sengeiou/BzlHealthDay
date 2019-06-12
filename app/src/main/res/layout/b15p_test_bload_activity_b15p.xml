@@ -57,6 +57,47 @@
                 android:layout_height="@dimen/size_200" />
 
 
+            <FrameLayout
+                android:id="@+id/frame_img_button"
+                android:visibility="gone"
+                android:background="@drawable/circle_sharpe"
+                android:layout_centerInParent="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp">
+
+               <!-- <RelativeLayout
+                    android:layout_width="@dimen/size_80"
+                    android:id="@+id/rec_img_back"
+                    android:background="@drawable/circle_sharpe_heart"
+                    android:layout_gravity="center"
+                    android:layout_height="80dp">
+                    &lt;!&ndash;android:layout_gravity="center|bottom"&ndash;&gt;
+                    &lt;!&ndash;android:layout_marginBottom="@dimen/size_30"&ndash;&gt;
+
+                    <ImageView
+                        android:id="@+id/b30MeaureStartImg"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/ic_heart_stop"
+                        android:layout_width="wrap_content"
+                        android:translationZ="@dimen/size_10"
+                        android:elevation="@dimen/size_10"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>-->
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/b30MeaureStartImg"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/ic_bloop_stop"
+                    android:layout_width="wrap_content"
+                    android:translationZ="@dimen/size_10"
+                    android:elevation="@dimen/size_10"
+                    android:layout_height="wrap_content" />
+
+            </FrameLayout>
+
+
         </RelativeLayout>
 
 
@@ -77,8 +118,13 @@
 
     </FrameLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/b30DetailBloadRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <FrameLayout
+    </android.support.v7.widget.RecyclerView>
+   <!-- <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -98,8 +144,8 @@
             android:background="@drawable/circle_sharpe_heart"
             android:layout_gravity="center"
             android:layout_height="80dp">
-            <!--android:layout_gravity="center|bottom"-->
-            <!--android:layout_marginBottom="@dimen/size_30"-->
+            &lt;!&ndash;android:layout_gravity="center|bottom"&ndash;&gt;
+            &lt;!&ndash;android:layout_marginBottom="@dimen/size_30"&ndash;&gt;
 
 
             <ImageView
@@ -114,6 +160,6 @@
         </RelativeLayout>
 
 
-    </FrameLayout>
+    </FrameLayout>-->
 
 </LinearLayout>

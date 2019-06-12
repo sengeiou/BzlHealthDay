@@ -193,6 +193,7 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
         }
     }
 
+    int allStep = 65535;
 
     @SuppressLint("StaticFieldLeak")
     class SaveDatas extends AsyncTask<String, Void, Void> {
@@ -211,14 +212,14 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
 //                            || splitAllStep[0].substring(0, 10).equals(q)
 //                            ) {
 
-                       // Log.e(TAG, "线程中保存汇总步数" + splitAllStep[0] + "   " + Integer.valueOf(splitAllStep[1]));
-                        //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
-                        if (!WatchUtils.isEmpty(mac)
+                    // Log.e(TAG, "线程中保存汇总步数" + splitAllStep[0] + "   " + Integer.valueOf(splitAllStep[1]));
+                    //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
+                    if (!WatchUtils.isEmpty(mac)
 //                                && !splitStep[0].substring(11, 19).equals("00:00:00")
-                                && (L4M.Get_Connect_flag() == 2)){
-                            int integer = Integer.valueOf(splitAllStep[1]);
-                            b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], integer);
-                        }
+                            && (L4M.Get_Connect_flag() == 2)) {
+                        allStep = Integer.valueOf(splitAllStep[1]);
+                        b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], allStep);
+                    }
 
 //                    }
                     break;
@@ -235,13 +236,18 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                         //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
                         if (!WatchUtils.isEmpty(mac)
 //                                && !splitStep[0].substring(11, 19).equals("00:00:00")
-                                && (L4M.Get_Connect_flag() == 2)){
+                                && (L4M.Get_Connect_flag() == 2)) {
                             int integer = Integer.valueOf(splitStep[1]);
                             //固件设备没有数据的时候回返回 65535 作为标记为0
-                            if (integer == 65535|| integer == 65280||integer == 0){
+                            if (integer == 65535 || integer == 65280 || integer == 0) {
                                 b15PDBCommont.saveStepToDB(mac, splitStep[0], 0);
-                            }else {
-                                b15PDBCommont.saveStepToDB(mac, splitStep[0], integer);
+                            } else {
+                                //这个判断是避免了 详细心率中出现了部分心率数据大于汇总数据
+                                if (allStep == integer || allStep < integer) {
+                                    b15PDBCommont.saveStepToDB(mac, splitStep[0], 0);
+                                } else {
+                                    b15PDBCommont.saveStepToDB(mac, splitStep[0], integer);
+                                }
                             }
 
                         }
@@ -257,11 +263,11 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
 //                            || splitSleep[0].substring(0, 10).equals(q)
 //                            || splitSleep[0].substring(0, 10).equals(WatchUtils.obtainAroundDate(q, true))) {
 
-                        //Log.e(TAG, "线程中保存睡眠" + splitSleep[0] + "   " + splitSleep[1]);
-                        //保存详细睡眠数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
-                        if (!WatchUtils.isEmpty(mac)
-                                && (L4M.Get_Connect_flag() == 2))
-                            b15PDBCommont.saveSleepToDB(mac, splitSleep[0], splitSleep[1]);
+                    //Log.e(TAG, "线程中保存睡眠" + splitSleep[0] + "   " + splitSleep[1]);
+                    //保存详细睡眠数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
+                    if (!WatchUtils.isEmpty(mac)
+                            && (L4M.Get_Connect_flag() == 2))
+                        b15PDBCommont.saveSleepToDB(mac, splitSleep[0], splitSleep[1]);
 //                    }
                     break;
                 case "heart":
@@ -271,11 +277,11 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
 //                            || splitHeart[0].substring(0, 10).equals(y)
 //                            || splitHeart[0].substring(0, 10).equals(q)) {
 
-                        //Log.e(TAG, "线程中保存心率" + splitHeart[0] + "   " + Integer.valueOf(splitHeart[1]));
-                        //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
-                        if (!WatchUtils.isEmpty(mac)
-                                && (L4M.Get_Connect_flag() == 2))
-                            b15PDBCommont.saveHeartToDB(mac, splitHeart[0], Integer.valueOf(splitHeart[1]));
+                    //Log.e(TAG, "线程中保存心率" + splitHeart[0] + "   " + Integer.valueOf(splitHeart[1]));
+                    //保存详细步数数据------(L4M.Get_Connect_flag() == 2说明设备已经连接
+                    if (!WatchUtils.isEmpty(mac)
+                            && (L4M.Get_Connect_flag() == 2))
+                        b15PDBCommont.saveHeartToDB(mac, splitHeart[0], Integer.valueOf(splitHeart[1]));
 //                    }
                     break;
                 case "bloop":
@@ -286,12 +292,12 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
 //                            || splitBloop[0].substring(0, 10).equals(y)
 //                            || splitBloop[0].substring(0, 10).equals(q)) {
 
-                        //Log.e(TAG, "线程中保存血压" + splitBloop[0] + "   " + Integer.valueOf(splitBloop[1]) + "  " + Integer.valueOf(splitBloop[2]));
-                        if (!WatchUtils.isEmpty(mac)
-                                && (L4M.Get_Connect_flag() == 2))
-                            b15PDBCommont.saveBloopToDB(mac, splitBloop[0],
-                                    Integer.valueOf(splitBloop[1]),
-                                    Integer.valueOf(splitBloop[2]));
+                    //Log.e(TAG, "线程中保存血压" + splitBloop[0] + "   " + Integer.valueOf(splitBloop[1]) + "  " + Integer.valueOf(splitBloop[2]));
+                    if (!WatchUtils.isEmpty(mac)
+                            && (L4M.Get_Connect_flag() == 2))
+                        b15PDBCommont.saveBloopToDB(mac, splitBloop[0],
+                                Integer.valueOf(splitBloop[1]),
+                                Integer.valueOf(splitBloop[2]));
 //                    }
                     break;
             }

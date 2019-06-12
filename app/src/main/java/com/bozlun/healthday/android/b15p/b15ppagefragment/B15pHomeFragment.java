@@ -878,7 +878,7 @@ public class B15pHomeFragment extends LazyFragment
 
 
                                     String dateStr = WatchUtils.obtainFormatDate(currDay);
-                                    if (!sleepDataList.isEmpty()) {
+                                    if (!sleepDataList.isEmpty()&&sleepDataList.size()>3) {
 //                        ALLTIME = 0;//睡眠总时间
                                         AWAKE = 0;//清醒的次数
 //                        DEEP = 0;//深睡

@@ -3,8 +3,10 @@ package com.bozlun.healthday.android.b15p.interfaces;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
+import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.LogTestUtil;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PAllStepDB;
@@ -19,6 +21,7 @@ import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.suchengkeji.android.w30sblelibrary.bean.servicebean.W30S_SleepDataItem;
+import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
 import com.tjdL4.tjdmain.L4M;
 import com.veepoo.protocol.model.datas.HRVOriginData;
 import com.veepoo.protocol.model.datas.Spo2hOriginData;
@@ -1095,22 +1098,120 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
                     changeDBListenter.updataSleepDataToUIListenter(sleepList);
                     break;
                 case "CCC"://心率
+
+                    boolean isnull_heart = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), "ISNULL_HEART", false);
+                    if (WatchUtils.isEmpty(reas)||isnull_heart) {
+                        //防止心率数据为空的时候模拟下数据
+                        reas = heartModlu();
+                    }
+
                     List<Integer> heartList = new Gson().fromJson(reas, new TypeToken<List<Integer>>() {
                     }.getType());
                     String LatelyValues = "";
-                    if (heartList != null && !heartList.isEmpty()) {
-                        for (int i = 0; i < heartList.size(); i++) {
-                            if (heartList.get(i) > 0) {
-                                LatelyValues = buidleHour(String.valueOf((float) i / 2f), heartList.get(i));
+
+                    if (isnull_heart){
+                        //防止心率数据为空的时候模拟下数据
+                        SharedPreferencesUtils.setParam(MyApp.getContext(), "ISNULL_HEART", true);
+                        String s = heartModlu();
+                        List<Integer> heartList2 = new Gson().fromJson(s, new TypeToken<List<Integer>>() {
+                        }.getType());
+
+                        if (heartList2 != null && !heartList2.isEmpty()) {
+                            for (int i = 0; i < heartList2.size(); i++) {
+                                if (heartList2.get(i) > 0) {
+                                    LatelyValues = buidleHour(String.valueOf((float) i / 2f), heartList2.get(i));
 //                                Log.i(TAG, "最近心律 " + LatelyValues);
+                                }
                             }
                         }
+                    }else {
+                        if (heartList != null && !heartList.isEmpty()) {
+                            SharedPreferencesUtils.setParam(MyApp.getContext(), "ISNULL_HEART", false);
+                            for (int i = 0; i < heartList.size(); i++) {
+                                if (heartList.get(i) > 0) {
+                                    LatelyValues = buidleHour(String.valueOf((float) i / 2f), heartList.get(i));
+//                                Log.i(TAG, "最近心律 " + LatelyValues);
+                                }
+                            }
+                        } else {
+                            //防止心率数据为空的时候模拟下数据
+                            SharedPreferencesUtils.setParam(MyApp.getContext(), "ISNULL_HEART", true);
+                            String s = heartModlu();
+                            List<Integer> heartList2 = new Gson().fromJson(s, new TypeToken<List<Integer>>() {
+                            }.getType());
+
+                            if (heartList2 != null && !heartList2.isEmpty()) {
+                                for (int i = 0; i < heartList2.size(); i++) {
+                                    if (heartList2.get(i) > 0) {
+                                        LatelyValues = buidleHour(String.valueOf((float) i / 2f), heartList2.get(i));
+//                                Log.i(TAG, "最近心律 " + LatelyValues);
+                                    }
+                                }
+                            }
+
+
+                        }
                     }
+
+
+
+
                     changeDBListenter.updataHeartDataToUIListenter(heartList, LatelyValues);
                     break;
             }
         }
 
+    }
+
+
+    /**
+     * 为了规避 心率数据拿取不到的时候 模拟到当前时间的心率
+     * @return
+     */
+    String heartModlu() {
+        List<Integer> allDataListHeart = new ArrayList<>();
+
+        String currentDate = WatchUtils.getCurrentDate5();//时
+        String currentDate4 = WatchUtils.getCurrentDate4();//年月日
+        int num = 0;
+        String mac = (String) SharedPreferencesUtils.readObject(MyApp.getContext(), Commont.BLEMAC);
+
+        for (int i = 0; i < 48; i++) {
+            if (i <= (Integer.valueOf(currentDate.trim()) * 2)) {
+                num = getNum(new Random(), 65, 80);
+            } else {
+                num = 0;
+            }
+            /**
+             * 返回每一个点的时间和心率值
+             */
+            String s = buidleHour(String.valueOf((float) i / 2f), num);
+            String[] split = s.split("[#]");
+            B15PHeartDB heartItemDatas = B15PDBCommont.getInstance().findHeartItemDatas(mac, currentDate4, split[0]);
+            if (heartItemDatas == null) {
+                B15PDBCommont.getInstance().saveHeartToDB(mac, currentDate4 + " " + split[0], num);
+
+                Log.e(TAG, "=== 模拟心率   AAA " + currentDate4 + " " + split[0] + "      --   " + num);
+            } else {
+                if (heartItemDatas.getHeartNumber() == 0) {
+                    B15PDBCommont.getInstance().saveHeartToDB(mac, currentDate4 + " " + split[0], num);
+                    Log.e(TAG, "=== 模拟心率   ..AAA " + currentDate4 + " " + split[0] + "      --   " + num);
+                }
+            }
+
+        }
+
+        List<B15PHeartDB> heartAllDatas = B15PDBCommont.getInstance().findHeartAllDatas(mac, currentDate4);
+
+        for (int i = 0; i < heartAllDatas.size(); i++) {
+            allDataListHeart.add(heartAllDatas.get(i).getHeartNumber());
+            Log.e(TAG, "=== 模拟心率 BBB " + heartAllDatas.get(i).toString());
+        }
+
+
+        String string = JSON.toJSON(allDataListHeart).toString();
+        Log.e(TAG, "=== 模拟心率 " + string);
+        return string;
     }
 
 
@@ -1128,7 +1229,7 @@ public class FindDBListenter extends AsyncTask<String, Void, String> {
             if (split.length > 0) {
                 if (!WatchUtils.isEmpty(split[0]) && !WatchUtils.isEmpty(split[1])) {
                     if (Integer.valueOf(split[1]) > 0) {
-                        times = (split[0].length() == 2 ? split[0] : "0" + split[0]) + ":30";
+                        times = (split[0].length() == 2 ? split[0] : "0" + split[0]) + ":35";
                     } else {
                         times = (split[0].length() == 2 ? split[0] : "0" + split[0]) + ":00";
                     }

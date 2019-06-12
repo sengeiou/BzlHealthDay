@@ -11,9 +11,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PBloodDB;
 import com.bozlun.healthday.android.b15p.b15pdb.B15PDBCommont;
@@ -30,8 +32,10 @@ import com.tjdL4.tjdmain.contr.Health_HeartBldPrs;
 import com.tjdL4.tjdmain.contr.L4Command;
 import com.veepoo.protocol.model.datas.HalfHourBpData;
 import com.veepoo.protocol.model.datas.TimeData;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,7 +52,7 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
 //    @BindView(R.id.b30MeaurePlaceHolderImg)
 //    ImageView b30MeaurePlaceHolderImg;
 
-//    @BindView(R.id.b30MeaureBloadProgressView)
+    //    @BindView(R.id.b30MeaureBloadProgressView)
 //    CustomCircleProgressBar b30MeaureBloadProgressView;
     @BindView(R.id.b30MeaureStartImg)
     ImageView b30MeaureStartImg;
@@ -60,14 +64,16 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
     private B30BloadDetailAdapter b30BloadDetailAdapter;
     private List<HalfHourBpData> dataList;
 
+    @BindView(R.id.frame_img_button)
+    FrameLayout frame_img_button;
 
     /**
      * 圆环进度
      */
     @BindView(R.id.my_cicleview)
     MyCicleView my_cicleview;
-    @BindView(R.id.rec_img_back)
-    RelativeLayout rec_img_back;
+//    @BindView(R.id.rec_img_back)
+//    RelativeLayout rec_img_back;
 
 
     @Override
@@ -79,7 +85,26 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
         initViews();
 
 
-//
+        //没拿到数据时候自己停止了之后
+        if (my_cicleview!=null)my_cicleview.setForceStopListenter(forceStopListenter);
+    }
+
+    MyCicleView.ForceStopListenter forceStopListenter = new MyCicleView.ForceStopListenter() {
+        @Override
+        public void forcesStop() {
+            if (!B15PManualMeaureBloadActivity.this.isFinishing()) {
+                Health_HeartBldPrs.ForceClose_BldPrsMeasure();
+                if (handler != null) handler.sendEmptyMessageDelayed(0x11, 4000);
+            }
+        }
+    };
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (forceStopListenter != null) forceStopListenter = null;
+        if (handler != null) handler = null;
     }
 
     @Override
@@ -104,8 +129,8 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
         b30BloadDetailAdapter = new B30BloadDetailAdapter(B15PManualMeaureBloadActivity.this, dataList);
         b30DetailBloadRecyclerView.setAdapter(b30BloadDetailAdapter);
 
-        my_cicleview.setProssColor(Color.parseColor("#BAD4D2"));
-        my_cicleview.setHeart(false);
+        if (my_cicleview!=null)my_cicleview.setProssColor(Color.parseColor("#BAD4D2"));
+        if (my_cicleview!=null)my_cicleview.setHeart(false);
         //b30MeaureBloadProgressView.setMaxProgress(100);
     }
 
@@ -177,13 +202,13 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
 //                    b30MeaureBloadProgressView.setVisibility(View.VISIBLE);
 
 
-                    my_cicleview.startTestAction();
+                    if (my_cicleview!=null)my_cicleview.startTestAction();
                     isStart = true;
 //                    b30MeaureStartImg.setImageResource(R.drawable.detect_bp_pause);
                     if (b30MeaureStartImg != null)
-                        b30MeaureStartImg.setImageResource(R.mipmap.ic_heart_start);
-                    if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
-
+                        b30MeaureStartImg.setImageResource(R.mipmap.ic_bloop_start);
+//                    if (rec_img_back!=null)rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+                    if (frame_img_button != null) frame_img_button.setVisibility(View.GONE);
 //                    b30MeaureBloadProgressView.setTmpTxt(null);
 //                    b30MeaureBloadProgressView.setScheduleDuring(27 * 1000);
 //                    b30MeaureBloadProgressView.setProgress(100);
@@ -238,13 +263,14 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
             String tempAddr = L4M.GetConnectedMAC();
             if (tempAddr != null) {
                 List<B15PTestBloopDB> testBloopAllDatas = B15PDBCommont.getInstance().findTestBloopAllDatas(tempAddr);
-                if (testBloopAllDatas != null&&!testBloopAllDatas.isEmpty()) {
+                if (testBloopAllDatas != null && !testBloopAllDatas.isEmpty()) {
                     for (int i = 0; i < testBloopAllDatas.size(); i++) {
                         Log.e(TAG, "=======血压  血压 " + testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
 //                        if (b30MeaureBloadProgressView != null)
 //                            b30MeaureBloadProgressView.setTmpTxt(testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
 
-                        if (my_cicleview!=null)my_cicleview.stopTestAction(testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
+                        if (my_cicleview != null)
+                            my_cicleview.stopTestAction(testBloopAllDatas.get(i).getBloodNumberH() + "/" + testBloopAllDatas.get(i).getBloodNumberL());
                     }
 
                 }
@@ -315,6 +341,8 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
 //                    if (!dataList.contains(halfHourBpData)) dataList.add(halfHourBpData);
 //                }
                 b30BloadDetailAdapter.notifyDataSetChanged();
+
+                handler.sendEmptyMessageDelayed(0x55, 2000);
             }
         }
     }
@@ -325,16 +353,22 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
         public boolean handleMessage(Message message) {
             switch (message.what) {
                 case 0x11:
-                    closeLoadingDialog();
-                    String currentDate = WatchUtils.getCurrentDate();//今天
-                    update_View(currentDate, true);
+                    if (!B15PManualMeaureBloadActivity.this.isFinishing()) {
+                        closeLoadingDialog();
+                        String currentDate = WatchUtils.getCurrentDate();//今天
+                        update_View(currentDate, true);
+                    }
+
                     break;
                 case 0x12:
                     Health_HeartBldPrs.ForceClose_BldPrsMeasure();
                     break;
                 case 0x13:
                     L4Command.GetBloodPrs();   //刷新血压指令
-                    if (handler!=null)handler.sendEmptyMessageDelayed(0x11,3000);
+                    if (handler != null) handler.sendEmptyMessageDelayed(0x11, 4000);
+                    break;
+                case 0x55:
+                    if (frame_img_button != null) frame_img_button.setVisibility(View.VISIBLE);
                     break;
             }
             return false;
@@ -345,10 +379,11 @@ public class B15PManualMeaureBloadActivity extends WatchBaseActivity {
     //停止测量
     private void stopMeaureBoload() {
         isStart = false;
-        b30MeaureStartImg.setImageResource(R.mipmap.ic_heart_stop);
-        rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
+        if (b30MeaureStartImg != null)
+            b30MeaureStartImg.setImageResource(R.mipmap.ic_bloop_stop);
+//        rec_img_back.setBackgroundResource(R.drawable.circle_sharpe_heart);
         //b30MeaureBloadProgressView.stopAnim();
-        my_cicleview.stopTestAction("--/--");
+        if (my_cicleview!=null) my_cicleview.stopTestAction("--/--");
         Health_HeartBldPrs.ForceClose_BldPrsMeasure();
     }
 

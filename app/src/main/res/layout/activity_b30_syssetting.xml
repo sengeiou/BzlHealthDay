@@ -137,7 +137,7 @@
 
     <Button
         android:id="@+id/commExit_login"
-        android:background="@drawable/login_selector"
+        android:background="@drawable/out_selector"
         android:layout_marginLeft="@dimen/size_20"
         android:layout_marginRight="@dimen/size_20"
         android:layout_width="match_parent"
