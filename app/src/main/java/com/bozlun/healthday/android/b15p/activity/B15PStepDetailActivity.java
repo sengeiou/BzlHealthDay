@@ -104,7 +104,7 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
     ImageView detail_disIMG;
     @BindView(R.id.detail_kcl_img)
     ImageView detail_kclIMG;
-
+    private int st = 0;
 
 
     /**
@@ -248,7 +248,7 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
 
         showBarChart(halfHourSportData);
 
-        int st = (int) SharedPreferencesUtils.getParam(MyApp.getContext(),"ALL_STEP_VALUE",0);
+        st = (int) SharedPreferencesUtils.getParam(MyApp.getContext(),"ALL_STEP_VALUE",0);
         if (st!=0){
             countStepTv.setText(st + "");// 本地步数
         }else {
@@ -368,17 +368,25 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
 
         String uHeight = (String) SharedPreferencesUtils.getParam(B15PStepDetailActivity.this, "userheight", "170");
         String uWeight = (String) SharedPreferencesUtils.getParam(B15PStepDetailActivity.this, "userweight", "60");
-        //获取卡路里 ka
-        //step：   步数
-        //height：身高 cm
-        //weight：体重
-        double calorieWithSteps = (double) DisEnergy.getCalorieWithSteps(step, Integer.valueOf(uHeight), Integer.valueOf(uWeight));
-        double distanceWithStep = (double) DisEnergy.getDistanceWithStep(step, Integer.valueOf(uHeight));
+        double calorieWithSteps = 0;
+        double distanceWithStep = 0;
+        if (st!=0){
+            calorieWithSteps = (double) DisEnergy.getCalorieWithSteps(st, Integer.valueOf(uHeight), Integer.valueOf(uWeight));
+            distanceWithStep = (double) DisEnergy.getDistanceWithStep(st, Integer.valueOf(uHeight));
+        }else {
+            //获取卡路里 ka
+            //step：   步数
+            //height：身高 cm
+            //weight：体重
+            calorieWithSteps = (double) DisEnergy.getCalorieWithSteps(step, Integer.valueOf(uHeight), Integer.valueOf(uWeight));
+            distanceWithStep = (double) DisEnergy.getDistanceWithStep(step, Integer.valueOf(uHeight));
+        }
+
 
 
         Log.e("返回的卡路里等  ", calorieWithSteps + "   " + distanceWithStep);
         BigDecimal bdK = new BigDecimal((double) (distanceWithStep / 1000.00));
-        BigDecimal setScaleK = bdK.setScale(1, RoundingMode.DOWN);
+        BigDecimal setScaleK = bdK.setScale(0, RoundingMode.DOWN);
 
         BigDecimal bdD = new BigDecimal((double) (calorieWithSteps / 1000.00));
         BigDecimal setScaleD = bdD.setScale(0, RoundingMode.DOWN);
@@ -393,7 +401,7 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
         if (!isMetric) {
 
             BigDecimal bdDS = new BigDecimal((double) (Double.valueOf(disValue) * Constant.METRIC_MILE));
-            BigDecimal setScaleDS = bdDS.setScale(1, RoundingMode.DOWN);
+            BigDecimal setScaleDS = bdDS.setScale(0, RoundingMode.DOWN);
             disValue = setScaleDS.toString();
         }
 //        disValue = Math.round(disValue * 100) / 100;

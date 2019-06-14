@@ -14,7 +14,7 @@ import com.bozlun.healthday.android.b15p.activity.B15PDeviceActivity;
 import com.bozlun.healthday.android.Commont;
 import com.bozlun.healthday.android.MyApp;
 import com.bozlun.healthday.android.R;
-import com.bozlun.healthday.android.activity.MyPersonalActivity;
+import com.bozlun.healthday.android.b15p.activity.B15PMineActivity;
 import com.bozlun.healthday.android.b30.B30DeviceActivity;
 import com.bozlun.healthday.android.b30.B30SysSettingActivity;
 import com.bozlun.healthday.android.b31.B31DeviceActivity;
@@ -29,7 +29,6 @@ import com.bozlun.healthday.android.siswatch.WatchDeviceActivity;
 import com.bozlun.healthday.android.siswatch.utils.UpdateManager;
 import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.suchengkeji.android.w30sblelibrary.utils.SharedPreferencesUtils;
@@ -290,7 +289,7 @@ public class WatchMineFragment extends LazyFragment {
         switch (view.getId()) {
             case R.id.watch_mine_userheadImg://用户头像点击
             case R.id.watchMinepersonalData:    //个人资料
-                startActivity(new Intent(getActivity(), MyPersonalActivity.class));
+                startActivity(new Intent(getActivity(), B15PMineActivity.class));
                 break;
             case R.id.watchMineDevice:  //我的设备
                 if (MyCommandManager.DEVICENAME != null) {

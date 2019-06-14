@@ -52,9 +52,15 @@ public class B15PDBCommont {
         Log.e(TAG, "查询汇总步数  " + mac + "   " + timeDate);
         B15PAllStepDBDao b15PStepDBDao = getDaoSession().getB15PAllStepDBDao();
         if (b15PStepDBDao == null) return null;
-        List<B15PAllStepDB> list = b15PStepDBDao.queryBuilder().where(
-                B15PAllStepDBDao.Properties.DevicesMac.eq(mac),
-                B15PAllStepDBDao.Properties.StepDataTime.eq(timeDate)).list();
+        List<B15PAllStepDB> list = null;
+        try {
+            list = b15PStepDBDao.queryBuilder().where(
+                    B15PAllStepDBDao.Properties.DevicesMac.eq(mac),
+                    B15PAllStepDBDao.Properties.StepDataTime.eq(timeDate)).list();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
 //        List<B15PStepDB> list = LitePal.where("devicesMac = ? and stepData = ?", mac, timeDate).find(B15PStepDB.class);
 //        if (list == null) list = LitePal.findAll(B15PStepDB.class);
 //        Log.e(TAG,list.toString());
@@ -72,9 +78,14 @@ public class B15PDBCommont {
         Log.e(TAG, "查询步数  " + mac + "   " + timeDate);
         B15PStepDBDao b15PStepDBDao = getDaoSession().getB15PStepDBDao();
         if (b15PStepDBDao == null) return null;
-        List<B15PStepDB> list = b15PStepDBDao.queryBuilder().where(
-                B15PStepDBDao.Properties.DevicesMac.eq(mac),
-                B15PStepDBDao.Properties.StepData.eq(timeDate)).list();
+        List<B15PStepDB> list = null;
+        try {
+            list = b15PStepDBDao.queryBuilder().where(
+                    B15PStepDBDao.Properties.DevicesMac.eq(mac),
+                    B15PStepDBDao.Properties.StepData.eq(timeDate)).list();
+        }catch (Exception e){
+            e.getMessage();
+        }
 //        List<B15PStepDB> list = LitePal.where("devicesMac = ? and stepData = ?", mac, timeDate).find(B15PStepDB.class);
 //        if (list == null) list = LitePal.findAll(B15PStepDB.class);
 //        Log.e(TAG,list.toString());
@@ -96,7 +107,13 @@ public class B15PDBCommont {
 //        List<B15PSleepDB> lists = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac),
 //                B15PSleepDBDao.Properties.SleepData.eq(timeDate)).list();
 //        Log.e(TAG, "=========获取的睡眠  " + (lists == null ? "获取的睡眠为空" : lists.toString()));
-        List<B15PSleepDB> list = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac)).list();
+        List<B15PSleepDB> list = null;
+        try {
+            list = b15PSleepDBDao.queryBuilder().where(B15PSleepDBDao.Properties.DevicesMac.eq(mac)).list();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
 
 //        List<B15PSleepDB> list = LitePal.where("devicesMac = ? and sleepData = ?", mac, timeDate).find(B15PSleepDB.class);
 //        if (list == null) list = LitePal.findAll(B15PSleepDB.class);
@@ -116,10 +133,14 @@ public class B15PDBCommont {
         Log.e(TAG, "查询心率  " + mac + "   " + timeDate);
         B15PHeartDBDao b15PHeartDBDao = getDaoSession().getB15PHeartDBDao();
         if (b15PHeartDBDao == null) return null;
-        List<B15PHeartDB> list = b15PHeartDBDao.queryBuilder().where(
-                B15PHeartDBDao.Properties.DevicesMac.eq(mac),
-                B15PHeartDBDao.Properties.HeartData.eq(timeDate)).list();
-
+        List<B15PHeartDB> list = null;
+        try {
+            list = b15PHeartDBDao.queryBuilder().where(
+                    B15PHeartDBDao.Properties.DevicesMac.eq(mac),
+                    B15PHeartDBDao.Properties.HeartData.eq(timeDate)).list();
+        }catch (Exception e){
+            e.getMessage();
+        }
 //        List<B15PHeartDB> list = LitePal.where("devicesMac = ? and heartData = ?", mac, timeDate).find(B15PHeartDB.class);
 //        //if (list == null) list = LitePal.findAll(B15PHeartDB.class);
 //        Log.e(TAG,"-----心率读取----"+list.toString());
@@ -131,11 +152,17 @@ public class B15PDBCommont {
         Log.e(TAG, "查询心率  " + mac + "   " + date+"  "+time);
         B15PHeartDBDao b15PHeartDBDao = getDaoSession().getB15PHeartDBDao();
         if (b15PHeartDBDao == null) return null;
-        B15PHeartDB unique = b15PHeartDBDao.queryBuilder().where(
-                B15PHeartDBDao.Properties.DevicesMac.eq(mac),
-                B15PHeartDBDao.Properties.HeartData.eq(date),
-                B15PHeartDBDao.Properties.HeartTime.eq(time)
-        ).unique();
+        B15PHeartDB unique = null;
+        try {
+            unique = b15PHeartDBDao.queryBuilder().where(
+                    B15PHeartDBDao.Properties.DevicesMac.eq(mac),
+                    B15PHeartDBDao.Properties.HeartData.eq(date),
+                    B15PHeartDBDao.Properties.HeartTime.eq(time)
+            ).unique();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
         return unique;
     }
 
@@ -150,9 +177,16 @@ public class B15PDBCommont {
         Log.e(TAG, "查询血压  " + mac + "   " + timeDate);
         B15PBloodDBDao b15PBloodDBDao = getDaoSession().getB15PBloodDBDao();
         if (b15PBloodDBDao == null) return null;
-        List<B15PBloodDB> list = b15PBloodDBDao.queryBuilder().where(
-                B15PBloodDBDao.Properties.DevicesMac.eq(mac),
-                B15PBloodDBDao.Properties.BloodData.eq(timeDate)).list();
+
+        List<B15PBloodDB> list = null;
+        try {
+            list = b15PBloodDBDao.queryBuilder().where(
+                    B15PBloodDBDao.Properties.DevicesMac.eq(mac),
+                    B15PBloodDBDao.Properties.BloodData.eq(timeDate)).list();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
 //        List<B15PBloodDB> list = LitePal.where("devicesMac = ? and bloodData = ?", mac, timeDate).find(B15PBloodDB.class);
 //        if (list == null) list = LitePal.findAll(B15PBloodDB.class);
 //        Log.e(TAG,list.toString());
@@ -169,12 +203,17 @@ public class B15PDBCommont {
     public List<B15PTestBloopDB> findTestBloopAllDatas(String mac) {
         B15PTestBloopDBDao b15PTestBloopDBDao = getDaoSession().getB15PTestBloopDBDao();
         if (b15PTestBloopDBDao == null) return null;
-        List<B15PTestBloopDB> b15PTestBloopDBS = b15PTestBloopDBDao.loadAll();
+        List<B15PTestBloopDB>  list = null;
+        try {
+            list = b15PTestBloopDBDao.loadAll();
+        }catch (Exception e){
+            e.getMessage();
+        }
 
 //        List<B15PTestBloopDB> list = LitePal.where("devicesMac = ?", mac).find(B15PTestBloopDB.class);
 //        if (list == null) list = LitePal.findAll(B15PTestBloopDB.class);
 
-        return b15PTestBloopDBS;
+        return list;
     }
 
     //--------------------------------------------------------------

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bozlun.healthday.android.R;
 import com.bozlun.healthday.android.base.BaseActivity;
+import com.bozlun.healthday.android.siswatch.utils.WatchUtils;
 import com.bozlun.healthday.android.util.ToastUtil;
 
 import butterknife.BindView;
@@ -37,6 +38,18 @@ public class ModifyNickNameActivity extends BaseActivity {
     protected void initViews() {
 
         tvTitle.setText(R.string.modify_nickname);
+
+
+        Intent intent = getIntent();
+        if (intent!=null) {
+            String name = intent.getStringExtra("name");
+            if (!WatchUtils.isEmpty(name)){
+                codeEt.setHint(name+"");
+            }else {
+                codeEt.setHint(R.string.modify_nickname);
+            }
+        }
+
 //        subscriberOnNextListener = new SubscriberOnNextListener<String>() {
 //            @Override
 //            public void onNext(String result) {

@@ -352,6 +352,12 @@
             android:name="com.bozlun.healthday.android.activity.MyPersonalActivity"
             android:launchMode="standard"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".b15p.activity.B15PMineActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!-- 信息修改 -->
         <activity
             android:name="com.bozlun.healthday.android.activity.ModifyNickNameActivity"

@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.aigestudio.wheelpicker.widgets.ProfessionPick;
@@ -44,9 +45,11 @@ import com.yanzhenjie.permission.Permission;
 import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RequestExecutor;
 import com.yanzhenjie.permission.Setting;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -235,7 +238,14 @@ public class B15PDeviceActivity extends WatchBaseActivity
                 startActivity(B30ScreenStyleActivity.class);
                 break;
             case R.id.b31DeviceDfuRel:      //固件更新
-                startActivity(B30DufActivity.class, new String[]{"type"}, new String[]{"B15P"});
+
+                //软件版本号
+                String SVer = Dev.get_SWVerCode();
+                //硬件版本号
+                String HVer = Dev.get_HWVerCode();
+                Log.e(TAG, "   " + SVer + "    " + HVer);
+                SharedPreferencesUtils.setParam(B15PDeviceActivity.this, "B25_V", "2");
+                startActivity(B30DufActivity.class, new String[]{"type"}, new String[]{"B25"});
                 break;
             case R.id.b31DeviceClearDataRel:    //清除数据
 

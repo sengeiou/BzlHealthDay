@@ -24,6 +24,7 @@ public class B15PContentState {
 
     //将同步内容下方到if内部，提高了执行的效率，不必每次获取对象时都进行同步，只有第一次才同步，创建了以后就没必要了。
     private static volatile B15PContentState instance = null;
+    public static int  heartRe = 0;//累计心率刷新次数，两次之后还为空那么就模拟数据
     private ConntentStuteListenter b15PContentState;//对外链接状态的接口
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothManager bluetoothManager;

@@ -886,6 +886,11 @@ public class B15pHomeFragment extends LazyFragment
                                         startSleepTime = "";
                                         endSleepTime = "";
                                         StringBuilder strSleep = new StringBuilder("");
+
+                                        //是否第一次次进入睡眠状态
+                                        //目的是为了处理睡眠入睡之前大部分的清醒睡眠
+                                        boolean isIntoSleep = false;
+
                                         for (int i = 0; i < sleepDataList.size() - 1; i++) {
                                             String startTime = null;
                                             String startTimeLater = null;
@@ -920,12 +925,15 @@ public class B15pHomeFragment extends LazyFragment
                                             //B15P元数据   清醒  0    浅睡 1   深睡 2
                                             //图标绘制时    浅睡  0    深睡 1   清醒 2
                                             if (sleep_type.equals("0")) {
-                                                AWAKE++;
+                                                if (isIntoSleep){
+                                                    AWAKE++;
 //                                Log.e(TAG, "====0===" + all_m);
-                                                for (int j = 1; j <= all_m; j++) {
-                                                    strSleep.append("2");
+                                                    for (int j = 1; j <= all_m; j++) {
+                                                        strSleep.append("2");
+                                                    }
                                                 }
                                             } else if (sleep_type.equals("1")) {
+                                                isIntoSleep = true;
                                                 //潜水
 //                                SHALLOW = SHALLOW + all_m;
 //                                ALLTIME = ALLTIME + all_m;
@@ -934,6 +942,7 @@ public class B15pHomeFragment extends LazyFragment
                                                     strSleep.append("0");
                                                 }
                                             } else if (sleep_type.equals("2")) {
+                                                isIntoSleep = true;
                                                 //深水
 //                                DEEP = DEEP + all_m;
 //                                ALLTIME = ALLTIME + all_m;
