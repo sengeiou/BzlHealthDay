@@ -86,19 +86,22 @@ public class B15PCusSleepView extends View {
         hightPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         hightPaint.setColor(hightSleepColor);
         hightPaint.setAntiAlias(true);
-        hightPaint.setStrokeWidth(5f);
+        hightPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        hightPaint.setStrokeWidth(1f);
 
 
         deepPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         deepPaint.setColor(deepSleepColor);
         deepPaint.setAntiAlias(true);
-        deepPaint.setStrokeWidth(5f);
+        deepPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        deepPaint.setStrokeWidth(1f);
 
 
         awakePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         awakePaint.setColor(awakeSleepColor);
         awakePaint.setAntiAlias(true);
-        awakePaint.setStrokeWidth(5f);
+        awakePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        awakePaint.setStrokeWidth(1f);
 
         emptyPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         emptyPaint.setColor(Color.parseColor("#9a999a"));

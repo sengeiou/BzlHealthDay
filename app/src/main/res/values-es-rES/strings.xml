@@ -528,7 +528,7 @@
 
 
 
-    <string name="app_name">Day Health</string>
+    <string name="app_name">检一检</string>
     <string name="input_password">Introduzca la contraseña</string>
     <string name="input_code">Introduzca el Código de verificación</string>
     <string name="input_nickname">Por favor introduzca el apodo</string>

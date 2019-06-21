@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/size_10"
+    android:padding="5dp"
     android:background="@drawable/b30_sport_chart_select"
     android:orientation="vertical">
 

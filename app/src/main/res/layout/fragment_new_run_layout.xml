@@ -16,11 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:background="@drawable/text_run_shap"
             android:padding="@dimen/size_7"
             android:text="GPS 运动"
             android:textSize="16sp"
-            android:textColor="@color/new_colorAccent" />
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

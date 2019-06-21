@@ -771,7 +771,7 @@ public class W30sCameraActivity extends WatchBaseActivity implements View.OnClic
                 }
             });
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
 
     }

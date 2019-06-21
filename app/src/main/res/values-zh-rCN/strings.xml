@@ -531,7 +531,7 @@
 
 
 
-    <string name="app_name">Day Health</string>
+    <string name="app_name">检一检</string>
     <string name="input_password">请输入密码</string>
     <string name="input_code">请输入验证码</string>
     <string name="input_nickname">请输入昵称</string>

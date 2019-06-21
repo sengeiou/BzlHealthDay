@@ -272,7 +272,7 @@ public class B15PMineActivity extends BaseActivity implements RequestView {
 //                                    height = profession.substring(0, 3);
 
                                     String uHeight = profession.substring(0, 3).trim();
-                                    height = uHeight;//身高赋值
+                                    height = uHeight.trim();//身高赋值
                                     modifyPersonData(uHeight);
                                 }
                             }).textConfirm(getResources().getString(R.string.confirm)) //text of confirm button
@@ -333,7 +333,7 @@ public class B15PMineActivity extends BaseActivity implements RequestView {
                                     mUserInfo.weight = profession.substring(0, 3);// 记录一下提交要用
                                     flag = "weight";
                                     weight = profession.substring(0, 3);//体重赋值
-                                    modifyPersonData(profession.substring(0, 3));
+                                    modifyPersonData(weight.trim());
                                 }
                             }).textConfirm(getResources().getString(R.string.confirm)) //text of confirm button
                                     .textCancel(getResources().getString(R.string.cancle))
@@ -678,7 +678,7 @@ public class B15PMineActivity extends BaseActivity implements RequestView {
     private void modifyPersonData(String val) {
 
         //设置固件的个人信息
-        setUserData((sex.equals("M") ? 0 : 1), Integer.valueOf(height), Integer.valueOf(weight), Integer.valueOf(age));
+        setUserData((sex.equals("M") ? 0 : 1), Integer.valueOf(height.trim()), Integer.valueOf(weight.trim()), Integer.valueOf(age.trim()));
 
 //        isSubmit = true;
         HashMap<String, Object> map = new HashMap<>();
