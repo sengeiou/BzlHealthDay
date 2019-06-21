@@ -384,7 +384,6 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
 
 
 
-        Log.e("返回的卡路里等  ", calorieWithSteps + "   " + distanceWithStep);
         BigDecimal bdK = new BigDecimal((double) (distanceWithStep / 1000.00));
         BigDecimal setScaleK = bdK.setScale(0, RoundingMode.DOWN);
 
@@ -393,8 +392,8 @@ public class B15PStepDetailActivity extends WatchBaseActivity {
 
         disValue = setScaleK.toString();
         calValue = setScaleD.toString();
-        Log.e("======", distanceWithStep + "   " + calorieWithSteps
-                + "\n" + setScaleD.toString() + "  " + setScaleK.toString());
+        Log.e("======", "距离  "+distanceWithStep + "   卡路里  " + calorieWithSteps
+                + "\n   换算后的距离  " + setScaleD.toString() + "   换算后的卡路里  " + setScaleK.toString());
 
 //
         boolean isMetric = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSystem, true);

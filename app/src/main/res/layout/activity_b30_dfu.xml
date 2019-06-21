@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="100dp"
-        android:background="@drawable/oad_pic"
+        android:background="@mipmap/oad_pic"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
