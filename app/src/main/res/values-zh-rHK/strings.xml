@@ -1,4 +1,34 @@
 <resources>
+
+    <string name="today_medical_report">今日體檢報告</string>
+    <string name="today_spo2_report">今日睡眠血氧體檢</string>
+    <string name="today_sport_report">今日運動總量</string>
+    <string name="today_sleep_quality">今日睡眠質量</string>
+    <string name="today_heart_count">今日心率統計</string>
+    <string name="today_spo2_break_rate_check">血氧/呼吸暫停體檢</string>
+    <string name="today_toptitle_heart">心臟負荷體檢</string>
+    <string name="today_sleep_inciti">睡眠躁動體檢</string>
+    <string name="today_toptitle_check">呼吸率體檢</string>
+    <string name="today_low_o2_time">低氧時間體檢</string>
+
+    <string name="string_msg_basic_requ">實現消息提醒的基本要求</string>        
+    <string name="string_basic_cont1">1.確認 檢一檢 處於運行狀態並與設備連接</string>        
+    <string name="string_basic_cont2">2.確認 檢一檢 已設置耗電保護</string>        
+    <string name="string_basic_cont3">3.確認 檢一檢 已設置自動啟動權限</string>        
+    <string name="string_basic_cont4">4.確認 檢一檢 已設置系統或手機管家白名單保護</string>        
+    <string name="string_apps_alert_title">Q:Facebook、QQ、Wechat等應用沒有消息提醒?</string>        
+    <string name="string_apps_cont1">1.確認FaceBook、QQ、Wechat等應用允許在通知欄上顯示消息</string>        
+    <string name="string_apps_cont2">2.關閉 檢一檢 通知使用權限後重新打開</string>        
+    <string name="string_to_restart">去重啟</string>        
+    <string name="string_call_phone_alert">Q:來電沒有提醒?</string>        
+    <string name="string_call_phone_cont1">1.確認開啟了聯繫人/通訊錄權限</string>        
+    <string name="string_call_phone_cont2">2.確認開啟了電話權限</string>        
+    <string name="string_call_phone_cont3">3.確認開啟了通話記錄權限</string>        
+    <string name="string_smg_alert_title">Q:短信沒有提醒?</string>        
+    <string name="string_smg_alert_content1">2.確認開啟了短信權限</string>        
+    <string name="string_enable">已獲取</string>
+    <string name="string_disable">未獲取</string>
+
     <string name="string_systolic">收縮壓</string>
     <string name="string_diastolic">舒張壓</string>
     <string name="string_bloop_di">低血壓</string>
@@ -513,7 +543,7 @@
     <string name="blood">血壓</string>
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">檢一檢</string>
     <string name="input_password">請輸入密碼</string>
     <string name="input_code">請輸入驗證碼</string>
     <string name="input_nickname">請輸入暱稱</string>

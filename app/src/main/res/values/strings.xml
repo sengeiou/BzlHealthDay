@@ -1,27 +1,35 @@
 <resources>
 
-    <string name="string_msg_basic_requ">实现消息提醒的基本要求</string>
-    <string name="string_basic_cont1">1.确认 检一检 处于运行状态并与设备连接</string>
-    <string name="string_basic_cont2">2.确认 检一检 已设置耗电保护</string>
-    <string name="string_basic_cont3">3.确认 检一检 已设置自动启动权限</string>
-    <string name="string_basic_cont4">4.确认 检一检 已设置系统或手机管家白名单保护</string>
-    <string name="string_apps_alert_title">Q:Facebook、QQ、Wechat等应用没有消息提醒?</string>
-    <string name="string_apps_cont1">1.确认FaceBook、QQ、Wechat等应用允许在通知栏上显示消息</string>
-    <string name="string_apps_cont2">2.关闭 检一检 通知使用权限后重新打开</string>
-    <string name="string_to_restart">去重启</string>
-    <string name="string_call_phone_alert">Q:来电没有提醒?</string>
-    <string name="string_call_phone_cont1">1.确认开启了联系人/通讯录权限</string>
-    <string name="string_call_phone_cont2">2.确认开启了电话权限</string>
-    <string name="string_call_phone_cont3">3.确认开启了通话记录权限</string>
-    <string name="string_smg_alert_title">Q:短信没有提醒?</string>
-    <string name="string_smg_alert_content1">2.确认开启了短信权限</string>
-    <string name="string_enable">已获取</string>
-    <string name="string_disable">未获取</string>
+
+    <string name="today_medical_report">Der heutige medizinische Bericht</string>
+    <string name="today_spo2_report">Die heutige Schlafoximetrie</string>
+    <string name="today_sport_report">Gesamtübung heute</string>
+    <string name="today_sleep_quality">Schlafqualität heute</string>
+    <string name="today_heart_count">Herzfrequenzstatistik heute</string>
+    <string name="today_spo2_break_rate_check">Blutsauerstoff/Apnoe-Check</string>
+    <string name="today_toptitle_heart">Herzbelastungsuntersuchung</string>
+    <string name="today_sleep_inciti">Schlafberuhigende körperliche Untersuchung</string>
+    <string name="today_toptitle_check">Atemfrequenzuntersuchung</string>
+    <string name="today_low_o2_time">Hypoxiezeit körperliche Untersuchung</string>
 
 
-
-
-
+    <string name="string_msg_basic_requ">Basic requirements for notifications</string>
+    <string name="string_basic_cont1">1.Make sure Check one is running and connected to the device</string>
+    <string name="string_basic_cont2">2.Make sure Check one has set up power consumption protection</string>
+    <string name="string_basic_cont3">3.Make sure Check one has set up autorun permission</string>
+    <string name="string_basic_cont4">4.Confirm that Check one has set up system or mobile housekeeper whitelist protection</string>
+    <string name="string_apps_alert_title">Q:Why applications such as FaceBook、QQ、Wechat have no notifications?</string>
+    <string name="string_apps_cont1">1.Make sure FaceBook、QQ、Wechat and other applications allow displaying message on notification bar</string>
+    <string name="string_apps_cont2">2.Disable the Check one notification permission and enable it again</string>
+    <string name="string_to_restart">To restart</string>
+    <string name="string_call_phone_alert">Q:Why there is no incoming call alert?</string>
+    <string name="string_call_phone_cont1">1.Make sure you have enable the contacts permission</string>
+    <string name="string_call_phone_cont2">2.Make sure you have enabled phone call permission</string>
+    <string name="string_call_phone_cont3">3.Confirm that the call record permission is turned on.</string>
+    <string name="string_smg_alert_title">Q:Why there is no SMS notification?</string>
+    <string name="string_smg_alert_content1">2.Make sure you have enabled SMS permission</string>
+    <string name="string_enable">Enable</string>
+    <string name="string_disable">Disable</string>
 
 
 
@@ -572,7 +580,7 @@
     <string name="blood">Blood oxygen</string>
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">Check one</string>
     <string name="input_password">Please enter your password</string>
     <string name="input_code">Input Verification Code</string>
     <string name="input_nickname">Please enter a nickname</string>

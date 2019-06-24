@@ -1,5 +1,39 @@
 <resources>
     <!--英语-->
+
+    <string name="today_medical_report">Today\'s medical report</string>
+    <string name="today_spo2_report">Today\'s sleep oximetry</string>
+    <string name="today_sport_report">Total exercise today</string>
+    <string name="today_sleep_quality">Sleep quality today</string>
+    <string name="today_heart_count">Heart rate statistics today</string>
+    <string name="today_spo2_break_rate_check">Blood oxygen/apnea checkup</string>
+    <string name="today_toptitle_heart">Cardiac stress checkup</string>
+    <string name="today_sleep_inciti">Sleep sedative physical examination</string>
+    <string name="today_toptitle_check">Respiratory rate examination</string>
+    <string name="today_low_o2_time">Hypoxia time physical examination</string>
+
+
+    <string name="string_msg_basic_requ">Basic requirements for notifications</string>
+    <string name="string_basic_cont1">1.Make sure Check one is running and connected to the device</string>
+    <string name="string_basic_cont2">2.Make sure Check one has set up power consumption protection</string>
+    <string name="string_basic_cont3">3.Make sure Check one has set up autorun permission</string>
+    <string name="string_basic_cont4">4.Confirm that Check one has set up system or mobile housekeeper whitelist protection</string>
+    <string name="string_apps_alert_title">Q:Why applications such as FaceBook、QQ、Wechat have no notifications?</string>
+    <string name="string_apps_cont1">1.Make sure FaceBook、QQ、Wechat and other applications allow displaying message on notification bar</string>
+    <string name="string_apps_cont2">2.Disable the Check one notification permission and enable it again</string>
+    <string name="string_to_restart">To restart</string>
+    <string name="string_call_phone_alert">Q:Why there is no incoming call alert?</string>
+    <string name="string_call_phone_cont1">1.Make sure you have enable the contacts permission</string>
+    <string name="string_call_phone_cont2">2.Make sure you have enabled phone call permission</string>
+    <string name="string_call_phone_cont3">3.Confirm that the call record permission is turned on.</string>
+    <string name="string_smg_alert_title">Q:Why there is no SMS notification?</string>
+    <string name="string_smg_alert_content1">2.Make sure you have enabled SMS permission</string>
+    <string name="string_enable">Enable</string>
+    <string name="string_disable">Disable</string>
+
+
+
+
     <string name="fatigue_normal">In good condition</string>
     <string name="fatigue_mild">Mild fatigue</string>
     <string name="fatigue_moderate">Moderate fatigue</string>
@@ -659,7 +693,7 @@
     <string name="personal_info">Profile</string>
     <string name="modify_nickname">Modify nickname</string>
     <string name="personal_avatar">Head portrait</string>
-    <string name="sex">Gender</string>
+    <string name="sex">Gender:</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
     <string name="birthday">Date of birth</string>

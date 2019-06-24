@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="今日睡眠质量"
+                android:text="@string/today_sleep_quality"
                 android:textColor="#9a999a"
                 android:textSize="17sp" />
 

@@ -149,6 +149,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/size_5"
                         android:layout_marginRight="@dimen/size_5"
+                        android:textAllCaps="false"
                         android:background="@mipmap/ic_register_getcode"
                         android:padding="@dimen/size_5"
                         android:text="@string/send_code"

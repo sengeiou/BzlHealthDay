@@ -331,7 +331,7 @@ public class UpdateManager {
             request.setDescription("Downloading ...");
             request.setVisibleInDownloadsUi(true);
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 

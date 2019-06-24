@@ -38,7 +38,7 @@
                 android:layout_gravity="center"
                 android:textSize="@dimen/sp_17"
                 android:gravity="center"
-                android:text="今日运动总量"
+                android:text="@string/today_sport_report"
                 android:layout_centerVertical="true"
                 android:textColor="#FF949496" />
 

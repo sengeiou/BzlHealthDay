@@ -21,7 +21,7 @@
 
             <TextView
                 style="@style/style_block_toptitle_tv"
-                android:text="心脏负荷体检" />
+                android:text="@string/today_toptitle_heart" />
 
             <ImageView style="@style/style_block_toptitle_img" />
 
@@ -100,7 +100,7 @@
 
             <TextView
                 style="@style/style_block_toptitle_tv"
-                android:text="睡眠躁动体检" />
+                android:text="@string/today_sleep_inciti" />
 
             <ImageView style="@style/style_block_toptitle_img" />
         </RelativeLayout>
@@ -178,7 +178,7 @@
 
             <TextView
                 style="@style/style_block_toptitle_tv"
-                android:text="呼吸率体检" />
+                android:text="@string/today_toptitle_check" />
 
             <ImageView style="@style/style_block_toptitle_img" />
         </RelativeLayout>
@@ -247,7 +247,7 @@
 
             <TextView
                 style="@style/style_block_toptitle_tv"
-                android:text="低氧时间体检" />
+                android:text="@string/today_low_o2_time" />
 
             <ImageView style="@style/style_block_toptitle_img" />
         </RelativeLayout>

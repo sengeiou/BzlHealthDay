@@ -2,6 +2,43 @@
     <!--头尾内部m部分翻译为英文,后期根据提供文档更改-->
     <!--头-->
     <!--德语-->
+
+    <string name="today_medical_report">今日体检报告</string>
+    <string name="today_spo2_report">今日睡眠血氧体检</string>
+    <string name="today_sport_report">今日运动总量</string>
+    <string name="today_sleep_quality">今日睡眠质量</string>
+    <string name="today_heart_count">今日心率统计</string>
+    <string name="today_spo2_break_rate_check">血氧/呼吸暂停体检</string>
+    <string name="today_toptitle_heart">心脏负荷体检</string>
+    <string name="today_sleep_inciti">睡眠躁动体检</string>
+    <string name="today_toptitle_check">呼吸率体检</string>
+    <string name="today_low_o2_time">低氧时间体检</string>
+
+
+    <string name="string_msg_basic_requ">Grundvoraussetzungen für Nachrichtenerinnerungen</string>
+    <string name="string_basic_cont1">1. Stellen Sie sicher, dass RaceFit läuft und mit dem Gerät verbunden ist</string>
+    <string name="string_basic_cont2">2. Vergewissern Sie sich, dass Überprüfen Sie eine den Stromverbrauchsschutz eingestellt hat</string>
+    <string name="string_basic_cont3">3. Vergewissern Sie sich, dass Überprüfen Sie eine automatische Startberechtigungen festgelegt hat</string>
+    <string name="string_basic_cont4">4. Vergewissern Sie sich, dass Überprüfen Sie eine einen Whitelist-Schutz für das System oder die mobile Haushälterin eingerichtet hat</string>
+    <string name="string_apps_alert_title">F: Apps wie Facebook, QQ, Wechat usw. haben keine Erinnerungsmeldungen?</string>
+    <string name="string_apps_cont1">1. Stellen Sie sicher, dass in Anwendungen wie FaceBook, QQ, Wechat usw. Meldungen in der Benachrichtigungsleiste angezeigt werden.</string>
+    <string name="string_apps_cont2">2. Deaktivieren Sie die Überprüfen Sie eine und öffnen Sie sie mit Erlaubnis erneut</string>
+    <string name="string_to_restart">Zum Neustart gehen</string>
+    <string name="string_call_phone_alert">F: Es gibt keine Erinnerung für den Anruf.</string>
+    <string name="string_call_phone_cont1">1. Stellen Sie sicher, dass die Kontakt- / Adressbuchberechtigungen aktiviert sind.</string>
+    <string name="string_call_phone_cont2">2. Vergewissern Sie sich, dass die Telefonberechtigung aktiviert ist.</string>
+    <string name="string_call_phone_cont3">3. Vergewissern Sie sich, dass die Anrufaufzeichnungsberechtigung aktiviert ist.</string>
+    <string name="string_smg_alert_title">F: Es gibt keine Erinnerung für SMS?</string>
+    <string name="string_smg_alert_content1">2. Vergewissern Sie sich, dass die SMS-Berechtigung aktiviert ist.</string>
+    <string name="string_enable">Erhalten</string>
+    <string name="string_disable">Nicht erworben</string>
+
+
+
+
+
+
+
     <string name="fatigue_normal">In gutem Zustand</string>
     <string name="fatigue_mild">Leichte Müdigkeit</string>
     <string name="fatigue_moderate">Mäßige Müdigkeit</string>
@@ -577,7 +614,7 @@
     <string name="blood">Blutdruck</string>
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">Überprüfen Sie eine</string>
     <string name="input_password">Bitte geben sie DAS passwort</string>
     <string name="input_code">Bitte geben sie den code</string>
     <string name="input_nickname">Bitte geben sie den spitznamen</string>

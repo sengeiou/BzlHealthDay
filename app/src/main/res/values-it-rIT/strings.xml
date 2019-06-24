@@ -1,6 +1,36 @@
 <resources>
     <!--头尾内部m部分翻译为英文,后期根据提供文档更改-->
     <!--意大利语-->
+
+    <string name="today_medical_report">Il rapporto medico di oggi</string>
+    <string name="today_spo2_report">Ossimetria del sonno di oggi</string>
+    <string name="today_sport_report">Esercizio totale oggi</string>
+    <string name="today_sleep_quality">Qualità del sonno oggi</string>
+    <string name="today_heart_count">Statistiche della frequenza cardiaca oggi</string>
+    <string name="today_spo2_break_rate_check">Controllo dell\'ossigeno nel sangue/apnea</string>
+    <string name="today_toptitle_heart">Controllo dello stress cardiaco</string>
+    <string name="today_sleep_inciti">Esame fisico sedativo del sonno</string>
+    <string name="today_toptitle_check">Esame del tasso respiratorio</string>
+    <string name="today_low_o2_time">Esame fisico del tempo di ipossia</string>
+
+    <string name="string_msg_basic_requ">Requisiti di base per i promemoria dei messaggi</string>
+    <string name="string_basic_cont1">1. Conferma che Controlla uno è in esecuzione e connesso al dispositivo</string>
+    <string name="string_basic_cont2">2. Conferma che Controlla uno ha impostato la protezione del consumo energetico</string>
+    <string name="string_basic_cont3">3. Conferma che Controlla uno ha impostato le autorizzazioni di avvio automatiche</string>
+    <string name="string_basic_cont4">4. Confermare che Controlla uno ha impostato la protezione della whitelist della domotica del sistema o della telefonia mobile</string>
+    <string name="string_apps_alert_title">D: App come Facebook, QQ, Wechat, ecc. Non hanno promemoria per i messaggi?</string>
+    <string name="string_apps_cont1">1. Confermare che applicazioni come FaceBook, QQ, Wechat, ecc. Consentano la visualizzazione dei messaggi sulla barra di notifica.</string>
+    <string name="string_apps_cont2">2. Disattiva la notifica Controlla uno e riaprila con il permesso</string>
+    <string name="string_to_restart">Vai a riavviare</string>
+    <string name="string_call_phone_alert">D: Non c\'è nessun promemoria per la chiamata?</string>
+    <string name="string_call_phone_cont1">1. Confermare che le autorizzazioni di contatto/rubrica siano abilitate.</string>
+    <string name="string_call_phone_cont2">2. Confermare che il permesso del telefono sia attivato.</string>
+    <string name="string_call_phone_cont3">3. Confermare che l\'autorizzazione di registrazione della chiamata sia attivata.</string>
+    <string name="string_smg_alert_title">D: Non c\'è un promemoria per gli SMS?</string>
+    <string name="string_smg_alert_content1">2. Confermare che l\'autorizzazione SMS sia abilitata.</string>
+    <string name="string_enable">ha acquisito</string>
+    <string name="string_disable">Non acquisito</string>
+
     <string name="fatigue_normal">In buone condizioni</string>
     <string name="fatigue_mild">Leggera fatica</string>
     <string name="fatigue_moderate">Moderata stanchezza</string>
@@ -508,7 +538,7 @@
 
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">Controlla uno</string>
     <string name="input_password">Inserisci la Password</string>
     <string name="input_code">Per favore, inserisci il Codice</string>
     <string name="input_nickname">Inserisci il soprannome</string>

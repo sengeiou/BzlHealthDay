@@ -87,6 +87,10 @@ public class WatchUtils {
     //B31血氧的数据读取完了
     public static final String B31_SPO2_COMPLETE = "com.example.bozhilun.android.b31.spo2_complete";
 
+    //腾进达方案
+    public static final String B15P_BLENAME = "B15P";  //B15P
+    public static String[] TJ_FilterNamas = new String[]{"B25", "B15P", "Lefun", "F1", "F1S", "F2", "F3", "F3S", "F4", "F6", "F6S", "F7", "F7S", "F9", "F9S", "F10", "F11", "F12", "F13", "F15", "F16", "F18", "M3", "W3"};
+
 
     //卡路里的常量
     public static double kcalcanstanc = 65.4;  //计算卡路里常量
@@ -832,11 +836,11 @@ public class WatchUtils {
     public static int getAgeFromBirthTime(String birthTimeString) {
 
         MyLogUtil.d("---生日---", birthTimeString);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
         if (birthTimeString.contains(".")) {
-            formatter = new SimpleDateFormat("yyyy.MM.dd");
+            formatter = new SimpleDateFormat("yyyy.MM.dd",Locale.CHINA);
         } else if (birthTimeString.contains("-")) {
-            formatter = new SimpleDateFormat("yyyy-MM-dd");
+            formatter = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
         }
 
         Date date = null;

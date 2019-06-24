@@ -1,7 +1,36 @@
 <resources>
-
-
     <!--葡萄牙语-->
+
+    <string name="today_medical_report">Relatório médico de hoje</string>
+    <string name="today_spo2_report">Oximetria do sono de hoje</string>
+    <string name="today_sport_report">Exercício total hoje</string>
+    <string name="today_sleep_quality">A qualidade do sono hoje</string>
+    <string name="today_heart_count">Estatísticas da frequência cardíaca hoje</string>
+    <string name="today_spo2_break_rate_check">Exame de oxigênio no sangue/apneia</string>
+    <string name="today_toptitle_heart">Exame de estresse cardíaco</string>
+    <string name="today_sleep_inciti">Exame físico sedativo do sono</string>
+    <string name="today_toptitle_check">Exame da taxa respiratória</string>
+    <string name="today_low_o2_time">Exame físico do tempo de hipoxia</string>
+
+
+    <string name="string_msg_basic_requ">Requisitos básicos para lembretes de mensagens</string>
+    <string name="string_basic_cont1">1. Confirme se o Marque um está em execução e conectado ao dispositivo</string>
+    <string name="string_basic_cont2">2. Confirme que o Marque um definiu a proteção do consumo de energia</string>
+    <string name="string_basic_cont3">3. Confirme se o Marque um definiu as permissões de lançamento automático</string>
+    <string name="string_basic_cont4">4. Confirme se o Marque um configurou a proteção da lista de desbloqueio do sistema ou da governanta móvel</string>
+    <string name="string_apps_alert_title">P: Aplicativos como Facebook, QQ, Wechat, etc. não têm lembretes de mensagens?</string>
+    <string name="string_apps_cont1">1. Confirme se aplicativos como FaceBook, QQ, Wechat, etc. permitem que as mensagens sejam exibidas na barra de notificação.</string>
+    <string name="string_apps_cont2">2. Desligue a notificação do Marque um e reabra-a com permissãoIr para reiniciar</string>
+    <string name="string_to_restart">Ir para reiniciar</string>
+    <string name="string_call_phone_alert">P: Não há lembrete para a ligação?</string>
+    <string name="string_call_phone_cont1">1. Confirme se as permissões do catálogo de contatos/endereços estão ativadas.</string>
+    <string name="string_call_phone_cont2">2. Confirme se a permissão do telefone está ativada.</string>
+    <string name="string_call_phone_cont3">3. Confirme se a permissão de registro de chamadas está ativada.</string>
+    <string name="string_smg_alert_title">P: Não há lembrete para o SMS?</string>
+    <string name="string_smg_alert_content1">2. Confirme se a permissão do SMS está ativada.</string>
+    <string name="string_enable">Obtido</string>
+    <string name="string_disable">Não adquirido</string>
+
     <string name="fatigue_normal">Em bom estado</string>
     <string name="fatigue_mild">Fadiga leve</string>
     <string name="fatigue_moderate">Fadiga moderada</string>
@@ -524,7 +553,7 @@
     <string name="blood">A pressão arterial</string>
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">檢一檢</string>
     <string name="input_password">Por favor, Digite a SUA senha</string>
     <string name="input_code">Por favor, Digite o código de verificação</string>
     <string name="input_nickname">Por favor, indique o apelido de</string>

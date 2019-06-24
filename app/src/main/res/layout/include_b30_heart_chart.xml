@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="今日心率统计"
+                android:text="@string/today_heart_count"
                 android:textColor="#FF949496"
                 android:textSize="17sp" />
 

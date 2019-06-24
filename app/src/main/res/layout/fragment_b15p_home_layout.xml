@@ -24,7 +24,7 @@
         android:background="#E63F52"
         android:gravity="center"
         android:padding="@dimen/size_3"
-        android:text="同步中..."
+        android:text="@string/syncy_data"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_17" />
 
@@ -272,7 +272,7 @@
                         <TextView
                             android:id="@+id/analysis_chartview_title_spo2h"
                             style="@style/style_block_toptitle_tv"
-                            android:text="血氧/呼吸暂停体检" />
+                            android:text="@string/today_spo2_break_rate_check" />
 
                         <ImageView style="@style/style_block_toptitle_img" />
 

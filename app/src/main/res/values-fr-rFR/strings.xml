@@ -1,6 +1,36 @@
 <resources>
     <!--头尾内部m部分翻译为英文,后期根据提供文档更改-->
     <!--法语-->
+
+    <string name="today_medical_report">Today\'s medical report</string>
+    <string name="today_spo2_report">Today\'s sleep oximetry</string>
+    <string name="today_sport_report">Total exercise today</string>
+    <string name="today_sleep_quality">Sleep quality today</string>
+    <string name="today_heart_count">Heart rate statistics today</string>
+    <string name="today_spo2_break_rate_check">Blood oxygen/apnea checkup</string>
+    <string name="today_toptitle_heart">Cardiac stress checkup</string>
+    <string name="today_sleep_inciti">Sleep sedative physical examination</string>
+    <string name="today_toptitle_check">Respiratory rate examination</string>
+    <string name="today_low_o2_time">Hypoxia time physical examination</string>
+
+    <string name="string_msg_basic_requ">Exigences de base pour les rappels de message</string>
+    <string name="string_basic_cont1">1. Vérifiez que Cochez une est en cours d\'exécution et connecté à l\'appareil.</string>
+    <string name="string_basic_cont2">2. Confirmez que Cochez une a défini la protection de la consommation d\'énergie</string>
+    <string name="string_basic_cont3">3. Confirmez que Cochez une a défini les autorisations de lancement automatique.</string>
+    <string name="string_basic_cont4">4. Confirmez que Cochez une a configuré la protection de la liste blanche du système de gestion interne</string>
+    <string name="string_apps_alert_title">Q: Les applications comme Facebook, QQ, Wechat, etc. n\'ont pas de rappel de message?</string>
+    <string name="string_apps_cont1">1. Vérifiez que des applications telles que FaceBook, QQ, Wechat, etc. permettent d’afficher des messages dans la barre de notification.</string>
+    <string name="string_apps_cont2">2. Désactivez la notification Cochez une et rouvrez-la avec autorisation.</string>
+    <string name="string_to_restart">Aller au redémarrage</string>
+    <string name="string_call_phone_alert">Q: Il n\'y a pas de rappel pour l\'appel?</string>
+    <string name="string_call_phone_cont1">1. Confirmez que les autorisations du carnet d\'adresses/contacts sont activées.</string>
+    <string name="string_call_phone_cont2">2. Confirmez que l\'autorisation du téléphone est activée.</string>
+    <string name="string_call_phone_cont3">3. Confirmez que l\'autorisation d\'enregistrement d\'appel est activée.</string>
+    <string name="string_smg_alert_title">Q: Il n\'y a pas de rappel pour SMS?</string>
+    <string name="string_smg_alert_content1">2. Confirmez que l\'autorisation SMS est activée.</string>
+    <string name="string_enable">Obtenu</string>
+    <string name="string_disable">Non acquis</string>
+
     <string name="fatigue_normal">En bon état</string>
     <string name="fatigue_mild">Fatigue légère</string>
     <string name="fatigue_moderate">Fatigue modérée</string>
@@ -515,7 +545,7 @@
 
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">Cochez une</string>
     <string name="input_password">Veuillez saisir le mot de passe</string>
     <string name="input_code">Veuillez entrer le Code de vérification</string>
     <string name="input_nickname">Veuillez saisir un surnom</string>

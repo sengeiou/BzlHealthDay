@@ -1,6 +1,35 @@
 <resources>
     <!--韩语-->
 
+    <string name="today_medical_report">오늘의 의료 보고서</string>
+    <string name="today_spo2_report">오늘의 수면 산소 측정법</string>
+    <string name="today_sport_report">오늘 총 운동</string>
+    <string name="today_sleep_quality">오늘 수면 품질</string>
+    <string name="today_heart_count">오늘 심박수 통계</string>
+    <string name="today_spo2_break_rate_check">혈액 산소/무호흡 검진</string>
+    <string name="today_toptitle_heart">심장 스트레스 검사</string>
+    <string name="today_sleep_inciti">수면 진정 시험</string>
+    <string name="today_toptitle_check">호흡률 검사</string>
+    <string name="today_low_o2_time">저산소 시간 신체 검사</string>
+
+    <string name="string_msg_basic_requ">메시지경고의기본요구사항 </string>        
+    <string name="string_basic_cont1">1. 하나만 확인하십시오. 이 실행 중이고 장치에 연결되어 있는지 확인하십시오. </string>        
+    <string name="string_basic_cont2">2. 하나만 확인하십시오. 의 전원 보호설정 확인 </string>        
+    <string name="string_basic_cont3">3. 하나만 확인하십시오. 이 자동 실행 권한을 설정했는지 확인합니다. </string>        
+    <string name="string_basic_cont4">4. 하나만 확인하십시오. 이 시스템 또는 모바일 하우스 키퍼 허용 목록 보호를 설정했는지 확인합니다. </string>        
+    <string name="string_apps_alert_title">Q : Facebook, QQ, Wechat 및 기타 애플리케이션에 메시지 알림이 없습니까? </string>        
+    <string name="string_apps_cont1">1. FaceBook, QQ, Wechat 등의 응용 프로그램에서 알림 표시 줄에 메시지를 표시 할 수 있는지 확인하십시오. </string>        
+    <string name="string_apps_cont2">2. 사용 권한을 사용한 후에 다시 열려면 하나만 확인하십시오. 알림을 끄십시오. </string>        
+    <string name="string_to_restart">다시 시작하십시오. </string>        
+    <string name="string_call_phone_alert">질문 : 호출에 대한 알림이 없습니까? </string>        
+    <string name="string_call_phone_cont1">1. 연락처/주소록 권한이 활성화되어 있는지 확인하십시오. </string>        
+    <string name="string_call_phone_cont2">2. 전화 권한이 활성화되어 있는지 확인하십시오. </string>        
+    <string name="string_call_phone_cont3">3. 통화 기록 사용 권한이 활성화되어 있는지 확인하십시오. </string>        
+    <string name="string_smg_alert_title">Q : SMS에 알림이 없습니까? </string>        
+    <string name="string_smg_alert_content1">2. SMS 사용 권한이 사용되는지 확인하십시오. </string>        
+    <string name="string_enable">을 획득했습니다. </string>        
+    <string name="string_disable">가져 오지 못했습니다. </string>
+
     <string name="fatigue_normal">양호한 상태</string>
     <string name="fatigue_mild">가벼운 피로</string>
     <string name="fatigue_moderate">보통 피로</string>
@@ -511,7 +540,7 @@
     <string name="blood">혈압</string>
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">하나만 확인하십시오.</string>
     <string name="input_password">암호를 입력하십시오</string>
     <string name="input_code">좀 검증 야드</string>
     <string name="input_nickname">별명 입력하십시오.</string>

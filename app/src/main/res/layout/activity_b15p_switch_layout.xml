@@ -204,7 +204,7 @@
                 <TextView
                     style="@style/B30DeviceStyle"
                     android:layout_toRightOf="@+id/img15"
-                    android:text="摇一摇拍照" />
+                    android:text="@string/yaoyiyaoPhotograph" />
 
 
                 <ToggleButton

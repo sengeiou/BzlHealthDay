@@ -95,22 +95,6 @@ public class RegisterActivity extends BaseActivity {
 //        SMSSDK.initSDK(getApplicationContext(), "169d6eaccd2ac", "753aa57cf4a85122671fcc7d4c379ac5");
         //SMSSDK.initSDK(getApplicationContext(), "27d747209c6db", "716ae323ee316f142777ebc73f89c90f");
         tvTitle.setText(R.string.user_regsiter);
-
-
-        boolean lauage= VerifyUtil.isZh(RegisterActivity.this);
-//        if(lauage){
-//            usernameInput.setHint(getResources().getString(R.string.input_name));
-//        }else{
-//            usernameInput.setHint(getResources().getString(R.string.input_email));
-//            sendBtn.setVisibility(View.GONE);
-//            textinput_code.setVisibility(View.GONE);
-//        }
-
-        //usernameInput.setHint(getResources().getString(R.string.input_email));
-        //sendBtn.setVisibility(View.GONE);
-        //textinput_code.setVisibility(View.GONE);
-
-        //codeEt.setHintTextColor(getResources().getColor(R.color.white));
         subscriberOnNextListener = new SubscriberOnNextListener<String>() {
             @Override
             public void onNext(String result) {
@@ -127,11 +111,7 @@ public class RegisterActivity extends BaseActivity {
                         Common.customer_id = userInfo.getUserId();
                         MobclickAgent.onProfileSignIn(Common.customer_id);
                         String pass = password.getText().toString();
-                        String usernametxt = username.getText().toString();
-                        userInfo.setPassword(Md5Util.Md532(pass));
 
-
-                        MyApp.getInstance().getDaoSession().getBlueUserDao().insertOrReplace(userInfo);
                         SharedPreferencesUtils.setParam(RegisterActivity.this, SharedPreferencesUtils.CUSTOMER_ID, Common.customer_id);
                         SharedPreferencesUtils.setParam(RegisterActivity.this, SharedPreferencesUtils.CUSTOMER_PASSWORD, pass);
                         startActivity(new Intent(RegisterActivity.this, PersonDataActivity.class));

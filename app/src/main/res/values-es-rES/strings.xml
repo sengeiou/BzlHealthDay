@@ -1,6 +1,44 @@
 <resources>
     <!--头尾内部m部分翻译为英文,后期根据提供文档更改-->
     <!--西班牙语-->
+
+
+    <string name="today_medical_report">Today\'s medical report</string>
+    <string name="today_spo2_report">Today\'s sleep oximetry</string>
+    <string name="today_sport_report">Total exercise today</string>
+    <string name="today_sleep_quality">Sleep quality today</string>
+    <string name="today_heart_count">Heart rate statistics today</string>
+    <string name="today_spo2_break_rate_check">Blood oxygen/apnea checkup</string>
+    <string name="today_toptitle_heart">Cardiac stress checkup</string>
+    <string name="today_sleep_inciti">Sleep sedative physical examination</string>
+    <string name="today_toptitle_check">Respiratory rate examination</string>
+    <string name="today_low_o2_time">Hypoxia time physical examination</string>
+
+
+    <string name="string_msg_basic_requ">Requisitos básicos para recordatorios de mensajes</string>
+    <string name="string_basic_cont1">1. Confirme que Marque uno está funcionando y conectado al dispositivo</string>
+    <string name="string_basic_cont2">2. Confirme que Marque uno ha configurado la protección del consumo de energía.</string>
+    <string name="string_basic_cont3">3. Confirmar que Marque uno ha establecido permisos de inicio automáticos</string>
+    <string name="string_basic_cont4">4. Confirme que Marque uno haya configurado la protección de la lista blanca del sistema o del ama de llaves móvil</string>
+    <string name="string_apps_alert_title">P: ¿Las aplicaciones como Facebook, QQ, Wechat, etc. no tienen recordatorios de mensajes?</string>
+    <string name="string_apps_cont1">1. Confirme que las aplicaciones como FaceBook, QQ, Wechat, etc. permiten que se muestren mensajes en la barra de notificaciones.</string>
+    <string name="string_apps_cont2">2. Desactive la notificación Marque uno y vuelva a abrirla con permiso</string>
+    <string name="string_to_restart">Ir a reiniciar</string>
+    <string name="string_call_phone_alert">P: ¿No hay recordatorio para la llamada?</string>
+    <string name="string_call_phone_cont1">1. Confirme que los permisos de contacto / libreta de direcciones están habilitados.1. Confirme que los permisos de contacto/libreta de direcciones están habilitados.</string>
+    <string name="string_call_phone_cont2">2. Confirme que el permiso del teléfono está encendido.</string>
+    <string name="string_call_phone_cont3">3. Confirme que el permiso de grabación de llamadas está activado.</string>
+    <string name="string_smg_alert_title">P: ¿No hay recordatorio para SMS?</string>
+    <string name="string_smg_alert_content1">2. Confirme que el permiso de SMS está habilitado.</string>
+    <string name="string_enable">Obtenido</string>
+    <string name="string_disable">No adquirido</string>
+
+
+
+
+
+
+
     <string name="fatigue_normal">En buen estado</string>
     <string name="fatigue_mild">Fatiga leve</string>
     <string name="fatigue_moderate">Fatiga moderada</string>
@@ -528,7 +566,7 @@
 
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">Marque uno</string>
     <string name="input_password">Introduzca la contraseña</string>
     <string name="input_code">Introduzca el Código de verificación</string>
     <string name="input_nickname">Por favor introduzca el apodo</string>

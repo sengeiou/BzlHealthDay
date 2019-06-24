@@ -1,5 +1,35 @@
 <resources>
     <!-- 越南语-->
+
+    <string name="today_medical_report">Báo cáo y tế ngày hôm nay</string>
+    <string name="today_spo2_report">Giấc ngủ ngày nay</string>
+    <string name="today_sport_report">Tổng số bài tập hôm nay</string>
+    <string name="today_sleep_quality">Chất lượng giấc ngủ hôm nay</string>
+    <string name="today_heart_count">Thống kê nhịp tim hôm nay</string>
+    <string name="today_spo2_break_rate_check">Kiểm tra oxy máu/ngưng thở</string>
+    <string name="today_toptitle_heart">Kiểm tra căng thẳng tim</string>
+    <string name="today_sleep_inciti">Ngủ an thần khám</string>
+    <string name="today_toptitle_check">Kiểm tra nhịp hô hấp</string>
+    <string name="today_low_o2_time">Hypoxia thời gian kiểm tra thể chất</string>
+
+    <string name="string_msg_basic_requ">Yêu cầu cơ bản cho lời nhắc tin nhắn</string>
+    <string name="string_basic_cont1">1. Xác nhận rằng Kiểm tra một đang chạy và kết nối với thiết bị</string>
+    <string name="string_basic_cont2">2. Xác nhận rằng Kiểm tra một đã thiết lập bảo vệ tiêu thụ năng lượng</string>
+    <string name="string_basic_cont3">3. Xác nhận rằng Kiểm tra một đã đặt quyền khởi chạy tự động</string>
+    <string name="string_basic_cont4">4. Xác nhận rằng Kiểm tra một đã thiết lập bảo vệ danh sách trắng quản lý hệ thống hoặc quản gia di động</string>
+    <string name="string_apps_alert_title">Q: Các ứng dụng như Facebook, QQ, Wechat, v.v ... không có tin nhắn nhắc nhở?</string>
+    <string name="string_apps_cont1">1. Xác nhận rằng các ứng dụng như FaceBook, QQ, Wechat, v.v. cho phép tin nhắn được hiển thị trên thanh thông báo.</string>
+    <string name="string_apps_cont2">2. Tắt thông báo RaceFit và mở lại với sự cho phép</string>
+    <string name="string_to_restart">Đi để khởi động lại</string>
+    <string name="string_call_phone_alert">Q: Không có lời nhắc cho cuộc gọi?</string>
+    <string name="string_call_phone_cont1">1. Xác nhận rằng các quyền liên hệ/sổ địa chỉ được bật.</string>
+    <string name="string_call_phone_cont2">2. Xác nhận rằng quyền điện thoại được bật.</string>
+    <string name="string_call_phone_cont3">3. Xác nhận rằng quyền cho phép ghi lại cuộc gọi được bật.</string>
+    <string name="string_smg_alert_title">Q: Không có lời nhắc cho SMS?</string>
+    <string name="string_smg_alert_content1">2. Xác nhận rằng quyền SMS được bật.</string>
+    <string name="string_enable">Thu được</string>
+    <string name="string_disable">Không có được</string>
+
     <string name="fatigue_normal">Trong điều kiện tốt</string>
     <string name="fatigue_mild">Mệt mỏi nhẹ</string>
     <string name="fatigue_moderate">Mệt mỏi vừa phải</string>

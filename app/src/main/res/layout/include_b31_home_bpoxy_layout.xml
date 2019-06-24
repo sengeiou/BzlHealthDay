@@ -34,7 +34,7 @@
 
         <!--6074BF  FF949496-->
         <TextView
-            android:text="今日睡眠血氧体检"
+            android:text="@string/today_spo2_report"
             android:textSize="17sp"
             android:gravity="center"
             android:layout_margin="@dimen/size_5"
@@ -64,80 +64,6 @@
             android:layout_height="0dp"/>
     </LinearLayout>
 
-    <!--<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/size__15"
-        android:layout_height="wrap_content">
-
-
-        &lt;!&ndash;<TextView&ndash;&gt;
-            &lt;!&ndash;android:text="今日睡眠血氧体检"&ndash;&gt;
-            &lt;!&ndash;android:textSize="17sp"&ndash;&gt;
-            &lt;!&ndash;android:gravity="center"&ndash;&gt;
-            &lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;
-            &lt;!&ndash;android:layout_margin="@dimen/size_5"&ndash;&gt;
-            &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;
-            &lt;!&ndash;android:textColor="#6074BF"&ndash;&gt;
-            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
-            &lt;!&ndash;tools:ignore="RtlHardcoded" />&ndash;&gt;
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="@dimen/size_5"
-            android:layout_centerVertical="true"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:src="@mipmap/fgm_home_spo2h"
-                android:layout_height="@dimen/size_40" />
-
-
-
-
-            &lt;!&ndash;6074BF  FF949496&ndash;&gt;
-            <TextView
-                android:text="今日睡眠血氧体检"
-                android:textSize="17sp"
-                android:gravity="center"
-                android:layout_margin="@dimen/size_5"
-                android:layout_width="wrap_content"
-                android:textColor="#FF949496"
-                android:layout_height="wrap_content"
-                tools:ignore="RtlHardcoded" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
-
-            <TextView
-                android:id="@+id/b31Spo2AveTv"
-                android:layout_width="wrap_content"
-                android:text="@string/ave_value"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="#FF949496"
-                android:layout_marginLeft="@dimen/size_10"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
-        </LinearLayout>
-
-
-
-
-
-
-
-    </RelativeLayout>-->
 
     <View
         android:id="@+id/b31BpOxyLin"

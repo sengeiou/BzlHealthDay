@@ -60,6 +60,9 @@ import com.bozlun.healthday.android.w30s.utils.httputils.RequestView;
 import com.flipboard.bottomsheet.BottomSheetLayout;
 import com.flipboard.bottomsheet.commons.MenuSheetView;
 import com.google.gson.Gson;
+import com.tjdL4.tjdmain.L4M;
+import com.tjdL4.tjdmain.contr.BrltUserParaSet;
+import com.tjdL4.tjdmain.contr.L4Command;
 import com.veepoo.protocol.listener.base.IBleWriteResponse;
 import com.veepoo.protocol.listener.data.ICustomSettingDataListener;
 import com.veepoo.protocol.listener.data.IPersonInfoDataListener;
@@ -83,8 +86,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -147,7 +153,7 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
     RelativeLayout skinColorRel;
     @BindView(R.id.personalH8UnitTv)
     TextView personalH8UnitTv;
-    private String nickName, sex, height, weight, birthday, flag;
+    private String nickName, sex, flag;
     private DialogSubscriber dialogSubscriber;
     private boolean isSubmit;
 
@@ -509,8 +515,7 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
                                     weightTv.setText(profession);
                                     mUserInfo.weight = profession.substring(0, 3);// 记录一下提交要用
                                     flag = "weight";
-                                    weight = profession.substring(0, 3);
-                                    modifyPersonData(weight);
+                                    modifyPersonData(profession.substring(0, 3).trim());
                                 }
                             }).textConfirm(getResources().getString(R.string.confirm)) //text of confirm button
                                     .textCancel(getResources().getString(R.string.cancle))
@@ -567,7 +572,6 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
                                 birthdayTv.setText(dateDesc);
                                 mUserInfo.birthday = dateDesc;
                                 flag = "birthday";
-                                birthday = dateDesc;
                                 modifyPersonData(dateDesc);//
                             }
                         }).textConfirm(getResources().getString(R.string.confirm)) //text of confirm button
@@ -919,7 +923,55 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
         Log.e(TAG, "-----mapJson=" + mapjson);
         dialogSubscriber = new DialogSubscriber(subscriberOnNextListener, MyPersonalActivity.this);
         OkHttpObservable.getInstance().getData(dialogSubscriber, URLs.HTTPs + URLs.yonghuziliao, mapjson);
+
+        //B25或者B15P设置用户信息
+        if(bleName == null)
+            return;
+        if(L4M.Get_Connect_flag() == 1){
+            Set<String> set = new HashSet<>(Arrays.asList(WatchUtils.TJ_FilterNamas));
+            //腾进达方案，用户信息要同步
+            if (set.contains(bleName)) {
+                //身高
+                int resultHeight = 0;
+                //体重
+                int resultWeight = 0;
+                String b15pUHeight = heightTv.getText().toString();
+                String b15pUWeight = weightTv.getText().toString();
+                if(w30sunit){   //公制
+                    resultHeight = Integer.valueOf(StringUtils.substringBefore(b15pUHeight,"cm").trim());
+                    resultWeight = Integer.valueOf(StringUtils.substringBefore(b15pUWeight,"kg").trim());
+                }else{  //英制
+                    resultHeight = Integer.valueOf(StringUtils.substringBefore(b15pUHeight,"in").trim());
+                    resultWeight = Integer.valueOf(StringUtils.substringBefore(b15pUWeight,"lb").trim());
+                }
+
+                //生日
+                String b15pUAge = birthdayTv.getText().toString().trim();
+                int resultAge = WatchUtils.getAgeFromBirthTime(b15pUAge);
+                String b15pSex = mUserInfo.sex;
+                //设置固件的个人信息
+                setUserData((b15pSex.equals("M") ? 0 : 1), resultHeight, resultWeight, resultAge);
+            }
+        }
+
     }
+
+
+
+
+    void setUserData(int mGender, int mHeight, int mWeight, int mAge) {
+        //设置数据对象
+        BrltUserParaSet.UserParaSetData myUserParaSetData = new BrltUserParaSet.UserParaSetData();
+        myUserParaSetData.mGender = mGender;//int mGender 性别  0男 1女
+        myUserParaSetData.mHeight = mHeight;//int mHeight 身高
+        myUserParaSetData.mWeight = mWeight;//int mWeight 体重
+        myUserParaSetData.mAge = mAge;  //int mAge    年龄
+
+        //设置
+        String ret = L4Command.Brlt_UserParaSet(myUserParaSetData);
+        Log.e(TAG, "==========  用户信息设置= " + ret);
+    }
+
 
     @Override
     public void showLoadDialog(int what) {
@@ -1043,147 +1095,6 @@ public class MyPersonalActivity extends BaseActivity implements RequestView {
     }
 
 
-    //显示用户信息
-    private void showUserInfo(String userData) {
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(userData);
-            String jsonObjectb = jsonObject.getString("userInfo");
-            Log.e(TAG, "------else---" + jsonObjectb);
-            //保存用户信息
-            SharedPreferencesUtils.saveObject(MyPersonalActivity.this, "saveuserinfodata", jsonObjectb);
-            JSONObject jsonObjectbV = new JSONObject(jsonObjectb);
-            sex = jsonObjectbV.getString("sex").toString();
-            userInfo.setSex(sex);
-            if ("M".equals(sex)) {
-                userSex = 1;
-                sexTv.setText(getResources().getString(R.string.sex_nan));
-            } else if ("F".equals(sex)) {
-                sexTv.setText(getResources().getString(R.string.sex_nv));
-                userSex = 2;
-            }
-            birthday = jsonObjectbV.getString("birthday").toString();
-            userInfo.setBirthday(birthday);
-            birthdayTv.setText(birthday);
-
-
-            height = jsonObjectbV.getString("height").toString();
-            userInfo.setHeight(height);
-            if (w30sunit) { //公制
-                if (height.contains("cm")) {
-                    heightTv.setText(height);
-                } else {
-                    heightTv.setText(height + "cm");
-                }
-
-            } else {
-                int tmpuserHeight;
-                if (height.contains("cm")) {
-                    tmpuserHeight = Integer.valueOf(height.substring(0, height.length() - 2).trim());
-                } else {
-                    tmpuserHeight = Integer.valueOf(height.trim());
-                }
-                double showTmpHe = WatchUtils.mul(Double.valueOf(tmpuserHeight), 0.4);
-                //截取的小数点前部分
-                int tmpBeforeHe = Integer.valueOf(StringUtils.substringBefore(String.valueOf(showTmpHe), "."));
-                String afterTmpH = StringUtils.substringAfter(String.valueOf(showTmpHe), ".").trim();
-                //截取的小数点后部分
-                int tmpAftereHe = Integer.valueOf(afterTmpH.length() >= 1 ? afterTmpH.substring(0, 1) : "0");
-                //判断截取小数点后一位是否大于5
-                if (tmpAftereHe >= 5) {
-                    heightTv.setText(StringUtils.substringBefore(String.valueOf(tmpBeforeHe + 1), ".") + "in");
-                } else {
-                    heightTv.setText(StringUtils.substringBefore(String.valueOf(showTmpHe), ".") + "in");
-                }
-            }
-
-            SharedPreferencesUtils.setParam(MyPersonalActivity.this, "userheight", StringUtils.substringBefore(height, "cm"));
-
-            weight = jsonObjectbV.getString("weight").toString();
-            userInfo.setHeight(weight);
-            if (w30sunit) { //公制
-                if (weight.contains("kg")) {
-                    weightTv.setText(weight);
-                } else {
-                    weightTv.setText(weight + "kg");
-                }
-
-            } else {
-                int tmpWid;
-                //体重
-                if (weight.contains("kg")) {
-                    tmpWid = Integer.valueOf(weight.trim().substring(0, weight.length() - 2).trim());
-                } else {
-                    tmpWid = Integer.valueOf(weight.trim());
-                }
-                double showWid = WatchUtils.mul(Double.valueOf(tmpWid), 2.2);
-                //截取小数点前的数据
-                String beforeShowWid = StringUtils.substringBefore(String.valueOf(showWid), ".");
-
-                //截取小数点后的数据
-                String afterShowWid = StringUtils.substringAfter(String.valueOf(showWid), ".");
-                //小数点后一位
-                int lastWidNum = Integer.valueOf(afterShowWid.length() >= 1 ? afterShowWid.substring(0, 1) : "0");
-                //判断小数点后一位是否》=5
-                if (lastWidNum >= 5) {
-                    weightTv.setText((Integer.valueOf(beforeShowWid) + 1) + "lb");
-                } else {
-                    weightTv.setText("" + beforeShowWid + "lb");
-                }
-            }
-
-            nickName = jsonObjectbV.getString("nickName").toString();
-            userInfo.setNickName(nickName);
-            nicknameTv.setText(nickName);
-
-            //年龄
-            int age = WatchUtils.getAgeFromBirthTime(birthday);  //年龄
-            //身高
-            if (height.contains("cm")) {
-                userHeight = Integer.valueOf(height.substring(0, height.length() - 2).trim());
-            } else {
-                userHeight = Integer.valueOf(height.trim());
-            }
-            //体重
-            if (weight.contains("kg")) {
-                userWeitht = Integer.valueOf(weight.trim().substring(0, weight.length() - 2).trim());
-            } else {
-                userWeitht = Integer.valueOf(weight.trim());
-            }
-            String imageUrl = jsonObjectbV.getString("image");
-            if (!WatchUtils.isEmpty(imageUrl)) {
-                SharedPreferencesUtils.saveObject(MyPersonalActivity.this, "Inmageuil", imageUrl);
-                userInfo.setImage(imageUrl);
-                //设置头像
-                RequestOptions mRequestOptions = RequestOptions.circleCropTransform().diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .skipMemoryCache(true);
-                Glide.with(MyPersonalActivity.this).load(imageUrl).
-                        apply(mRequestOptions).into(mineLogoIv);
-            }
-
-            /**
-             * 设置用户资料
-             *
-             * @param isMale 1:男性 ; 2:女性
-             * @param age    年龄
-             * @param hight  身高cm
-             * @param weight 体重kg
-             */
-            SharedPreferencesUtils.setParam(MyPersonalActivity.this, "user_height", userHeight);
-            SharedPreferencesUtils.setParam(MyPersonalActivity.this, "user_weight", userWeitht);
-            /**
-             * 设置用户资料
-             *
-             * @param isMale 1:男性 ; 2:女性
-             * @param age    年龄
-             * @param hight  身高cm
-             * @param weight 体重kg
-             */
-            MyApp.getInstance().getmW30SBLEManage().setUserProfile(userSex, age, userHeight, userWeitht);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

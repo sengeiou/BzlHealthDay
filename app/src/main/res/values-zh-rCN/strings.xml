@@ -1,4 +1,44 @@
 <resources>
+
+
+    <string name="today_medical_report">今日体检报告</string>
+    <string name="today_spo2_report">今日睡眠血氧体检</string>
+    <string name="today_sport_report">今日运动总量</string>
+    <string name="today_sleep_quality">今日睡眠质量</string>
+    <string name="today_heart_count">今日心率统计</string>
+    <string name="today_spo2_break_rate_check">血氧/呼吸暂停体检</string>
+    <string name="today_toptitle_heart">心脏负荷体检</string>
+    <string name="today_sleep_inciti">睡眠躁动体检</string>
+    <string name="today_toptitle_check">呼吸率体检</string>
+    <string name="today_low_o2_time">低氧时间体检</string>
+
+    
+
+    <string name="string_msg_basic_requ">实现消息提醒的基本要求</string>
+    <string name="string_basic_cont1">1.确认 RaceFit 处于运行状态并与设备连接</string>
+    <string name="string_basic_cont2">2.确认 RaceFit 已设置耗电保护</string>
+    <string name="string_basic_cont3">3.确认 RaceFit 已设置自动启动权限</string>
+    <string name="string_basic_cont4">4.确认 RaceFit 已设置系统或手机管家白名单保护</string>
+    <string name="string_apps_alert_title">Q:Facebook、QQ、Wechat等应用没有消息提醒?</string>
+    <string name="string_apps_cont1">1.确认FaceBook、QQ、Wechat等应用允许在通知栏上显示消息</string>
+    <string name="string_apps_cont2">2.关闭 RaceFit 通知使用权限后重新打开</string>
+    <string name="string_to_restart">去重启</string>
+    <string name="string_call_phone_alert">Q:来电没有提醒?</string>
+    <string name="string_call_phone_cont1">1.确认开启了联系人/通讯录权限</string>
+    <string name="string_call_phone_cont2">2.确认开启了电话权限</string>
+    <string name="string_call_phone_cont3">3.确认开启了通话记录权限</string>
+    <string name="string_smg_alert_title">Q:短信没有提醒?</string>
+    <string name="string_smg_alert_content1">2.确认开启了短信权限</string>
+    <string name="string_enable">已获取</string>
+    <string name="string_disable">未获取</string>
+
+
+
+
+
+
+
+
     <string name="string_systolic">收缩压</string>
     <string name="string_diastolic">舒张压</string>
     <string name="string_bloop_di">低血压</string>
@@ -664,7 +704,7 @@
     <string name="personal_info">个人信息</string>
     <string name="modify_nickname">修改昵称</string>
     <string name="personal_avatar">头像</string>
-    <string name="sex">性别</string>
+    <string name="sex">性别:</string>
     <string name="weight">体重</string>
     <string name="height">身高</string>
     <string name="birthday">生日</string>

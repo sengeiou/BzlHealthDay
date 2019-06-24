@@ -1,6 +1,36 @@
 <resources>
 
     <!--日语-->
+
+    <string name="today_medical_report">今日の医学報告</string>
+    <string name="today_spo2_report">今日の睡眠酸素濃度計</string>
+    <string name="today_sport_report">今日の総運動</string>
+    <string name="today_sleep_quality">今日の睡眠の質</string>
+    <string name="today_heart_count">今日の心拍数統計</string>
+    <string name="today_spo2_break_rate_check">血中酸素/無呼吸検査</string>
+    <string name="today_toptitle_heart">心臓ストレス検査</string>
+    <string name="today_sleep_inciti">睡眠鎮静検診</string>
+    <string name="today_toptitle_check">呼吸数検査</string>
+    <string name="today_low_o2_time">低酸素時健診</string>
+
+    <string name="string_msg_basic_requ">メッセージ警告の基本要件</string>        
+    <string name="string_basic_cont1">1. チェックする が起動し、デバイスに接続されていることを確認します。</string>        
+    <string name="string_basic_cont2">2. チェックする が電源保護を設定していることを確認します。</string>        
+    <string name="string_basic_cont3">3.チェックする が自動起動許可を設定したことを確認します。</string>        
+    <string name="string_basic_cont4">4. チェックする がシステムまたはモバイルハウスキーパーのホワイトリスト保護を設定したことを確認します。</string>        
+    <string name="string_apps_alert_title">Q：Facebook、QQ、Wechat、その他のアプリケーションにメッセージの通知はありませんか？</string>        
+    <string name="string_apps_cont1">1. FaceBook、QQ、Wechatなどのアプリケーションがメッセージを通知バーに表示できることを確認します。</string>        
+    <string name="string_apps_cont2">2.パーミッションを使用した後に再び開くには、チェックする 通知をオフにします。</string>        
+    <string name="string_to_restart">再起動する</string>        
+    <string name="string_call_phone_alert">Q：電話の際の注意はありませんか？</string>        
+    <string name="string_call_phone_cont1">1.連絡先/アドレス帳のアクセス許可が有効になっていることを確認します。</string>        
+    <string name="string_call_phone_cont2">2.電話のアクセス許可が有効になっていることを確認します。</string>        
+    <string name="string_call_phone_cont3">3.通話記録のアクセス許可が有効になっていることを確認します。</string>        
+    <string name="string_smg_alert_title">Q：SMSに通知はありませんか？</string>        
+    <string name="string_smg_alert_content1"> 2. SMSのアクセス許可が有効になっていることを確認します。</string>        
+    <string name="string_enable">が取得されました</string>        
+    <string name="string_disable">取得されていません</string>
+
     <string name="fatigue_normal">良い状態で</string>
     <string name="fatigue_mild">軽度の疲労</string>
     <string name="fatigue_moderate">中程度の疲労</string>
@@ -511,7 +541,7 @@
     <string name="blood">血圧</string>
 
 
-    <string name="app_name">检一检</string>
+    <string name="app_name">하나만 확인하십시오.</string>
     <string name="input_password">パスワードを入力して下さい</string>
     <string name="input_code">入力検証コードを入力してください</string>
     <string name="input_nickname">ニックネームを入力して下さい</string>
