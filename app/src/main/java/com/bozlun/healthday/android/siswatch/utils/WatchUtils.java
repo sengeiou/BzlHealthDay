@@ -136,12 +136,13 @@ public class WatchUtils {
      * @return
      */
     public static boolean verBleNameForSearch(String bleName) {
-        String []FilterNamas= new String[]
-                {"B25","B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7", "F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
+        String[] FilterNamas = new String[]
+                {"B25"};
+        //,"B15P","Lefun","F1","F1S","F2","F3","F3S","F4","F6","F6S","F7", "F7S","F9","F9S","F10","F11","F12","F13","F15","F16","F18","M3","W3"};
         Set<String> set = new HashSet<>(Arrays.asList(FilterNamas));
-        if (set.contains(bleName)){
+        if (set.contains(bleName)) {
             return true;
-        }else {
+        } else {
             return false;
         }
 //        if ((bleName.length() >= 2 && bleName.substring(0, 2).equals(H8_NAME))
@@ -160,7 +161,6 @@ public class WatchUtils {
 //        } else {
 //            return false;
 //        }
-
     }
 
     /**
@@ -836,11 +836,11 @@ public class WatchUtils {
     public static int getAgeFromBirthTime(String birthTimeString) {
 
         MyLogUtil.d("---生日---", birthTimeString);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         if (birthTimeString.contains(".")) {
-            formatter = new SimpleDateFormat("yyyy.MM.dd",Locale.CHINA);
+            formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.CHINA);
         } else if (birthTimeString.contains("-")) {
-            formatter = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
+            formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         }
 
         Date date = null;
@@ -1789,16 +1789,16 @@ public class WatchUtils {
         return isSuccess;
     }
 
-    static String[] timeStr = new String[]{"00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00",
-            "06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00",
-            "14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00",
-            "22:30","23:00","23:30"};
+    static String[] timeStr = new String[]{"00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00",
+            "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00",
+            "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00",
+            "22:30", "23:00", "23:30"};
 
 
-    public static Map<String,String> setHalfDateMap(){
-        Map<String,String>  map = new HashMap<>();
-        for(int i = 0;i<timeStr.length;i++){
-            map.put(timeStr[i],0+"");
+    public static Map<String, String> setHalfDateMap() {
+        Map<String, String> map = new HashMap<>();
+        for (int i = 0; i < timeStr.length; i++) {
+            map.put(timeStr[i], 0 + "");
         }
         return map;
 

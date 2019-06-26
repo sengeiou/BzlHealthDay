@@ -61,16 +61,20 @@ public class CustomBlueAdapter extends RecyclerView.Adapter<CustomBlueAdapter.Cu
 //                    holder.img.setImageResource(R.mipmap.b15p_xiaotu);
                     //B、L、F、M、W
                     if (bleName.length()>1&&!bleName.equals("F6")){
-                        if (bleName.substring(0,1).equals("B")){
-                            holder.img.setImageResource(R.mipmap.ic_series_b);
-                        }else if (bleName.substring(0,1).equals("L")){
-                            holder.img.setImageResource(R.mipmap.ic_series_l);
-                        }else if (bleName.substring(0,1).equals("F")){
-                            holder.img.setImageResource(R.mipmap.ic_series_f);
-                        }else if (bleName.substring(0,1).equals("M")){
-                            holder.img.setImageResource(R.mipmap.ic_series_m);
-                        }else if (bleName.substring(0,1).equals("W")){
-                            holder.img.setImageResource(R.mipmap.ic_series_w);
+                        if (bleName.length()>=3&&bleName.substring(0,3).equals("B25")){
+                            holder.img.setImageResource(R.mipmap.ic_b52_seach);
+                        } else {
+                            if (bleName.substring(0,1).equals("B")){
+                                holder.img.setImageResource(R.mipmap.ic_series_b);
+                            }else if (bleName.substring(0,1).equals("L")){
+                                holder.img.setImageResource(R.mipmap.ic_series_l);
+                            }else if (bleName.substring(0,1).equals("F")){
+                                holder.img.setImageResource(R.mipmap.ic_series_f);
+                            }else if (bleName.substring(0,1).equals("M")){
+                                holder.img.setImageResource(R.mipmap.ic_series_m);
+                            }else if (bleName.substring(0,1).equals("W")){
+                                holder.img.setImageResource(R.mipmap.ic_series_w);
+                            }
                         }
                     }else {
                         holder.img.setImageResource(R.mipmap.img_f6);

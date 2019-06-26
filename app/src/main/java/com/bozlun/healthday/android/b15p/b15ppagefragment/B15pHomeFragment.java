@@ -244,16 +244,20 @@ public class B15pHomeFragment extends LazyFragment
 //                }
 //            }
             if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
-                if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_b);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_l);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_f);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_m);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                if (MyCommandManager.DEVICENAME.length()>=3&&MyCommandManager.DEVICENAME.substring(0,3).equals("B25")){
+                    ivTop.setImageResource(R.mipmap.ic_b52_home);
+                }else {
+                    if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_b);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_l);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_f);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_m);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                    }
                 }
             } else {
                 ivTop.setImageResource(R.mipmap.img_wirte_f6);
@@ -356,16 +360,20 @@ public class B15pHomeFragment extends LazyFragment
     void setImageType() {
         if (!WatchUtils.isEmpty(MyCommandManager.DEVICENAME)) {
             if (MyCommandManager.DEVICENAME.length() > 1 && !MyCommandManager.DEVICENAME.equals("F6")) {
-                if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_b);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_l);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_f);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_m);
-                } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
-                    ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                if (MyCommandManager.DEVICENAME.length()>=3&&MyCommandManager.DEVICENAME.substring(0,3).equals("B25")){
+                    ivTop.setImageResource(R.mipmap.ic_b52_home);
+                }else {
+                    if (MyCommandManager.DEVICENAME.substring(0, 1).equals("B")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_b);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("L")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_l);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("F")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_f);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("M")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_m);
+                    } else if (MyCommandManager.DEVICENAME.substring(0, 1).equals("W")) {
+                        ivTop.setImageResource(R.mipmap.ic_series_w_w);
+                    }
                 }
             } else {
                 ivTop.setImageResource(R.mipmap.img_wirte_f6);
