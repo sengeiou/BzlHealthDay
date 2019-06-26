@@ -340,7 +340,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/size_15"
                         android:layout_toRightOf="@+id/img_4"
-                        android:text="@string/mine_equipment"
+                        android:text="@string/function_str"
                         android:textColor="#333333"
                         android:textSize="@dimen/text_size_17" />
 

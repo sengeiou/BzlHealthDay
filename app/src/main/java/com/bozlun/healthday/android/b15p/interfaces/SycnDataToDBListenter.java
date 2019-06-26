@@ -220,7 +220,6 @@ public class SycnDataToDBListenter extends L4M.BTResultToDBListenr {
                         allStep = Integer.valueOf(splitAllStep[1]);
                         b15PDBCommont.saveAllStepToDB(mac, splitAllStep[0], allStep);
                     }
-
 //                    }
                     break;
                 case "step":

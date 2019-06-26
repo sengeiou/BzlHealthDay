@@ -183,6 +183,8 @@ public class MyApp extends LitePalApplication {
     public boolean AppisOneStar = false;
 
 
+
+
     @Override
     public void onTerminate() {
         // 程序终止的时候执行

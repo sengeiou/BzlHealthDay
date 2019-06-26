@@ -614,7 +614,17 @@ public class B15PDeviceActivity extends WatchBaseActivity
                     } else if (sUnit.equals(INLB)) {
                         b31DeviceUnitTv.setText(getResources().getString(R.string.setmi));
                     }
-                    closeLoadingDialog();
+
+
+                    /**
+                     * 应用第一次启动的需要设置开关状态
+                     */
+                    if (MyApp.getInstance().AppisOne && L4M.Get_Connect_flag() == 2) {
+                        handler.sendEmptyMessageDelayed(0x66, 200);
+                    } else {
+                        closeLoadingDialog();
+                    }
+
                     break;
                 case 0x44://设置24小时制
                     boolean is24 = TimeUnitSet(0, 0, 255);//24小时制
@@ -638,6 +648,27 @@ public class B15PDeviceActivity extends WatchBaseActivity
                     } else {
                         radio24.setChecked(true);
                         radio12.setChecked(false);
+                    }
+                    closeLoadingDialog();
+                    break;
+                case 0x66:
+                    boolean wrists = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISWrists, false);//翻腕亮屏
+                    boolean sedentatry = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSedentary, false);//久坐
+                    boolean drink = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDrink, false);//喝水
+                    boolean camera = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISCamera, false);//拍照
+                    boolean disalert = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDisAlert, false);//断开连接提醒--防丢失
+
+                    boolean switchs = Commont.b15pSetSwitch(wrists,
+                            sedentatry,
+                            drink,
+                            camera,
+                            disalert);
+                    Log.e(TAG, " 开关状态设置结果 " + switchs);
+                    /**
+                     * 应用第一次启动的需要设置开关状态不成功默认为下次还是第一次启动
+                     */
+                    if (switchs) {
+                        MyApp.getInstance().AppisOne = false;
                     }
                     closeLoadingDialog();
                     break;

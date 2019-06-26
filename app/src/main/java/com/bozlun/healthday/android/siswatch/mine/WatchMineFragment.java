@@ -1,5 +1,6 @@
 package com.bozlun.healthday.android.siswatch.mine;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -109,6 +110,7 @@ public class WatchMineFragment extends LazyFragment {
         return watchMineView;
     }
 
+    @SuppressLint("SetTextI18n")
     private void initViews() {
         if (bleName == null)
             return;
@@ -119,9 +121,11 @@ public class WatchMineFragment extends LazyFragment {
 
         String bleMac = (String) SharedPreferencesUtils.readObject(MyApp.getContext(), Commont.BLEMAC);
         if (!WatchUtils.isEmpty(bleMac) && bleName.equals("bozlun")) {
-            showBleNameTv.setText("H8" + " " + bleMac);
+            showBleNameTv.setText("H8" + " "
+                    + ((bleMac.length() >= 5) ? bleMac.substring(bleMac.length() - 5, bleMac.length()) : bleMac));
         } else {
-            showBleNameTv.setText(bleName + " " + bleMac);
+            showBleNameTv.setText(bleName + " "
+                    + ((bleMac.length() >= 5) ? bleMac.substring(bleMac.length() - 5, bleMac.length()) : bleMac));
         }
 
 
@@ -241,9 +245,9 @@ public class WatchMineFragment extends LazyFragment {
                                     //头像
 
                                     //设置图片圆角角度
-                                    RoundedCorners roundedCorners= new RoundedCorners(27);
+                                    RoundedCorners roundedCorners = new RoundedCorners(27);
                                     //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
-                                    RequestOptions options=RequestOptions.bitmapTransform(roundedCorners).override(300, 300);
+                                    RequestOptions options = RequestOptions.bitmapTransform(roundedCorners).override(300, 300);
 
 
                                     /*RequestOptions mRequestOptions = RequestOptions.circleCropTransform().diskCacheStrategy(DiskCacheStrategy.NONE)

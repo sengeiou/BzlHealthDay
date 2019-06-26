@@ -184,20 +184,23 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
 //        b3SwirrerFind.setOnCheckedChangeListener(this);// ---查找手机
 //        b3SwirrerMac.setOnCheckedChangeListener(this);// ---MAC 显示
 
+
+
+
         if (switchBeans == null) switchBeans = new ArrayList<>();
         if (switchBeans.isEmpty() || switchBeans.size() < 4) {
             switchBeans.clear();
-            boolean wrists = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISWrists, false);//翻腕亮屏
-            boolean sedentatry = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSedentary, false);//久坐
-            boolean drink = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDrink, false);//喝水
-            boolean camera = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISCamera, false);//拍照
-            boolean disalert = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDisAlert, false);//断开连接提醒--防丢失
+//            boolean wrists = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISWrists, false);//翻腕亮屏
+//            boolean sedentatry = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISSedentary, false);//久坐
+//            boolean drink = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDrink, false);//喝水
+//            boolean camera = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISCamera, false);//拍照
+//            boolean disalert = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDisAlert, false);//断开连接提醒--防丢失
 
-            switchBeans.add(0, new SwitchBean("wrists", wrists));
-            switchBeans.add(1, new SwitchBean("sedentatry", sedentatry));
-            switchBeans.add(2, new SwitchBean("drink", drink));
-            switchBeans.add(3, new SwitchBean("camera", camera));
-            switchBeans.add(4, new SwitchBean("disalert", disalert));
+            switchBeans.add(0, new SwitchBean("wrists", false));
+            switchBeans.add(1, new SwitchBean("sedentatry", false));
+            switchBeans.add(2, new SwitchBean("drink", false));
+            switchBeans.add(3, new SwitchBean("camera", false));
+            switchBeans.add(4, new SwitchBean("disalert", false));
         }
     }
 
@@ -509,7 +512,7 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
         boolean camera = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISCamera, false);//拍照
         boolean disalert = (boolean) SharedPreferencesUtils.getParam(MyApp.getContext(), Commont.ISDisAlert, false);//断开连接提醒--防丢失
 
-        if (switchBeans.size() > 4) {
+        if (switchBeans!=null){
             switchBeans.clear();
 
             switchBeans.add(0, new SwitchBean("wrists", wrists));
@@ -517,7 +520,9 @@ public class B15PSwitchActivity extends WatchBaseActivity implements CompoundBut
             switchBeans.add(2, new SwitchBean("drink", drink));
             switchBeans.add(3, new SwitchBean("camera", camera));
             switchBeans.add(4, new SwitchBean("disalert", disalert));
-        } else {
+        }else {
+            switchBeans = new ArrayList<>();
+
             switchBeans.set(0, new SwitchBean("wrists", wrists));
             switchBeans.set(1, new SwitchBean("sedentatry", sedentatry));
             switchBeans.set(2, new SwitchBean("drink", drink));
