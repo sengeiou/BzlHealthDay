@@ -3,18 +3,9 @@
     <!--头 法语-->
     <!--法语-->
 
+    <string name="bp_test">Test de pression artérielle</string>
+    <string name="detail_data">Données détaillées</string>
 
-
-    <!--<string name="today_medical_report">Bilan médical d\'aujourd'hui</string>-->
-    <!--<string name="today_spo2_report">L\'oxymétrie de sommeil d\'aujourd'hui</string>-->
-    <!--<string name="today_sport_report">Total exercice aujourd\'hui</string>-->
-    <!--<string name="today_sleep_quality">La qualité du sommeil aujourd\'hui</string>-->
-    <!--<string name="today_heart_count">Statistiques de fréquence cardiaque aujourd\'hui</string>-->
-    <!--<string name="today_spo2_break_rate_check">Bilan d\'oxygène/apnée sanguine</string>-->
-    <!--<string name="today_toptitle_heart">Bilan de stress cardiaque</string>-->
-    <!--<string name="today_sleep_inciti">Examen physique sédatif du sommeil</string>-->
-    <!--<string name="today_toptitle_check">Examen de la fréquence respiratoire</string>-->
-    <!--<string name="today_low_o2_time">Hypoxie temps examen physique</string>-->
 
     <string name="string_msg_basic_requ">Exigences de base pour les rappels de message</string>
     <string name="string_basic_cont1">1. Vérifiez que Cochez une est en cours d\'exécution et connecté à l\'appareil.</string>

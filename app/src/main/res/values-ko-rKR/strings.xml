@@ -1,6 +1,7 @@
 <resources>
     <!--韩语-->
-
+    <string name="bp_test">혈압 검사</string>
+    <string name="detail_data">상세 데이터</string>
     <string name="today_medical_report">오늘의 의료 보고서</string>
     <string name="today_spo2_report">오늘의 수면 산소 측정법</string>
     <string name="today_sport_report">오늘 총 운동</string>

@@ -1,6 +1,7 @@
 <resources>
     <!-- 越南语-->
-
+    <string name="bp_test">Xét nghiệm huyết áp</string>
+    <string name="detail_data">Dữ liệu chi tiết</string>
     <string name="today_medical_report">Báo cáo y tế ngày hôm nay</string>
     <string name="today_spo2_report">Giấc ngủ ngày nay</string>
     <string name="today_sport_report">Tổng số bài tập hôm nay</string>

@@ -1,6 +1,7 @@
 <resources>
     <!--英语-->
-
+    <string name="bp_test">Blood pressure test</string>
+    <string name="detail_data">detailed data</string>
     <string name="today_medical_report">Today\'s medical report</string>
     <string name="today_spo2_report">Today\'s sleep oximetry</string>
     <string name="today_sport_report">Total exercise today</string>
@@ -99,8 +100,8 @@
     <string name="severe">Severe</string>
     <string name="moderate">Moderate</string>
     <string name="common_sense_of_apnea">Common sense of apnea</string>
-    <string name="max_value">Maximum</string>
-    <string name="min_value">Minimum</string>
+    <string name="max_value">Max</string>
+    <string name="min_value">Min</string>
     <string name="signle_minute">min</string>
     <string name="second">second</string>
     <string name="time_area">Time</string>

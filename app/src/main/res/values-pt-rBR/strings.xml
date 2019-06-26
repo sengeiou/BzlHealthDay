@@ -1,6 +1,7 @@
 <resources>
     <!--葡萄牙语-->
-
+    <string name="bp_test">Teste de pressão arterial</string>
+    <string name="detail_data">Dados detalhados</string>
     <string name="today_medical_report">Relatório médico de hoje</string>
     <string name="today_spo2_report">Oximetria do sono de hoje</string>
     <string name="today_sport_report">Exercício total hoje</string>

@@ -67,8 +67,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -254,7 +256,7 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
             if (customBlueAdapter != null)
                 customBlueAdapter.notifyDataSetChanged();
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
 
 
@@ -584,8 +586,6 @@ public class NewSearchActivity extends GetUserInfoActivity implements CustomBlue
                             Dev.RemoteDev_CloseManual();
                             Dev.Cache_Connect(customBlueDevice.getBluetoothDevice());
                         }
-
-
                         Message message = handler.obtainMessage();
                         message.what = 0x66;
                         message.obj = customBlueDevice.getBluetoothDevice().getAddress();

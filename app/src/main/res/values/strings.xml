@@ -1,6 +1,7 @@
 <resources>
 
-
+    <string name="bp_test">Blood pressure test</string>
+    <string name="detail_data">detailed data</string>
     <string name="today_medical_report">Der heutige medizinische Bericht</string>
     <string name="today_spo2_report">Die heutige Schlafoximetrie</string>
     <string name="today_sport_report">Gesamtübung heute</string>

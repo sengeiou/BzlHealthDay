@@ -1,6 +1,10 @@
 <resources>
 
 
+    <string name="bp_test">血压测试</string>
+    <string name="detail_data">详细数据</string>
+
+
     <string name="today_medical_report">今日体检报告</string>
     <string name="today_spo2_report">今日睡眠血氧体检</string>
     <string name="today_sport_report">今日运动总量</string>

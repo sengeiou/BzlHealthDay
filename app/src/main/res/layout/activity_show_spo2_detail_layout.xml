@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:text="详细数据"
+                android:text="@string/detail_data"
                 android:textColor="@color/contents_text"
                 android:textSize="20sp" />
 

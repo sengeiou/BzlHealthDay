@@ -31,6 +31,7 @@ import com.veepoo.protocol.util.Spo2hOriginUtil;
 import org.litepal.LitePal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -185,27 +186,52 @@ public class ShowSpo2DetailActivity extends WatchBaseActivity {
                 showSpo2DetailMiddleTv.setText(getResources().getString(R.string.vpspo2h_state_breathbreak)
                         + "(" + getResources().getString(R.string.cishu) + ")");
                 showSpo2DetailRightTv.setText(getResources().getString(R.string.ave_value) + "(%)");
-                url =  "file:///android_asset/b31html/breath_comm_knowle.html";
+                 if(isLanguageZh()){
+                     url =  "file:///android_asset/b31html/breath_comm_knowle.html";
+                 }else{
+                     url =  "file:///android_asset/b31html/breath_comm_knowle_en.html";
+                 }
+
                 break;
             case 0x01:     //心脏负荷
                 showSpo2DetailMiddleTv.setText("");
                 showSpo2DetailRightTv.setText(getResources().getString(R.string.ave_value) + "(pi)");
-                url =  "file:///android_asset/b31html/heart_load_zh.html";
+                if(isLanguageZh()){
+                    url =  "file:///android_asset/b31html/heart_load_zh.html";
+                }else{
+                    url =  "file:///android_asset/b31html/heart_load_en.html";
+                }
+
                 break;
             case 0x02:     //睡眠活动
                 showSpo2DetailMiddleTv.setText("");
                 showSpo2DetailRightTv.setText(getResources().getString(R.string.accumulate));
-                url =  "file:///android_asset/b31html/sleep_activity_zh.html";
+                if(isLanguageZh()){
+                    url =  "file:///android_asset/b31html/sleep_activity_zh.html";
+                }else{
+                    url =  "file:///android_asset/b31html/sleep_activity_en.html";
+                }
+
                 break;
             case 0x03:     //呼吸率
                 showSpo2DetailMiddleTv.setText("");
                 showSpo2DetailRightTv.setText(getResources().getString(R.string.ave_value) + getResources().getString(R.string.cishu) + "/" + getResources().getString(R.string.signle_minute));
-                url =  "file:///android_asset/b31html/respiratory_rate.html";
+                if(isLanguageZh()){
+                    url =  "file:///android_asset/b31html/respiratory_rate.html";
+                }else{
+                    url =  "file:///android_asset/b31html/respiratory_rate_en.html";
+                }
+
                 break;
             case 0x04:     //低氧时间
                 showSpo2DetailMiddleTv.setText("");
                 showSpo2DetailRightTv.setText(getResources().getString(R.string.accumulate) + getResources().getString(R.string.second) + "/" + getResources().getString(R.string.signle_minute));
-                url =  "file:///android_asset/b31html/low_o2_zh.html";
+                if(isLanguageZh()){
+                    url =  "file:///android_asset/b31html/low_o2_zh.html";
+                }else{
+                    url =  "file:///android_asset/b31html/low_o2_en.html";
+                }
+
                 break;
         }
 
@@ -305,5 +331,15 @@ public class ShowSpo2DetailActivity extends WatchBaseActivity {
 
         }
     };
+
+    //判断系统语言是否是中文
+    private boolean isLanguageZh(){
+        String locals = Locale.getDefault().getLanguage();
+        if (!WatchUtils.isEmpty(locals)) {
+            return locals.equals("zh");
+        }
+
+        return false;
+    }
 
 }

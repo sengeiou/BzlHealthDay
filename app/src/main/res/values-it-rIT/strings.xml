@@ -1,7 +1,8 @@
 <resources>
     <!--头尾内部m部分翻译为英文,后期根据提供文档更改-->
     <!--意大利语-->
-
+    <string name="bp_test">Test della pressione sanguigna</string>
+    <string name="detail_data">Dati dettagliati</string>
     <string name="today_medical_report">Il rapporto medico di oggi</string>
     <string name="today_spo2_report">Ossimetria del sonno di oggi</string>
     <string name="today_sport_report">Esercizio totale oggi</string>

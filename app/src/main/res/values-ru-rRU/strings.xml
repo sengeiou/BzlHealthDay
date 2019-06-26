@@ -1,6 +1,7 @@
 <resources>
     <!--//饿语-->
-
+    <string name="bp_test">Кровяное давление</string>
+    <string name="detail_data">Подробные данные</string>
     <string name="today_medical_report">Сегодняшний медицинский отчет</string>
     <string name="today_spo2_report">Сегодняшняя оксиметрия сна</string>
     <string name="today_sport_report">Всего упражнений сегодня</string>

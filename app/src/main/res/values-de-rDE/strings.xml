@@ -2,7 +2,8 @@
     <!--头尾内部m部分翻译为英文,后期根据提供文档更改-->
     <!--头-->
     <!--德语-->
-
+    <string name="bp_test">Blutdrucktest</string>
+    <string name="detail_data">Detaillierte Daten</string>
     <string name="today_medical_report">今日体检报告</string>
     <string name="today_spo2_report">今日睡眠血氧体检</string>
     <string name="today_sport_report">今日运动总量</string>

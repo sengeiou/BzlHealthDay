@@ -1,7 +1,8 @@
 <resources>
 
     <!--日语-->
-
+    <string name="bp_test">血圧テスト</string>
+    <string name="detail_data">詳細データ</string>
     <string name="today_medical_report">今日の医学報告</string>
     <string name="today_spo2_report">今日の睡眠酸素濃度計</string>
     <string name="today_sport_report">今日の総運動</string>

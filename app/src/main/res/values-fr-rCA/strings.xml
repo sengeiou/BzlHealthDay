@@ -3,6 +3,9 @@
     <!--法语-->
     <!--法语-->
 
+    <string name="bp_test">Test de pression artérielle</string>
+    <string name="detail_data">Données détaillées</string>
+
     <string name="today_medical_report">Today\'s medical report</string>
     <string name="today_spo2_report">Today\'s sleep oximetry</string>
     <string name="today_sport_report">Total exercise today</string>
