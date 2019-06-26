@@ -81,7 +81,7 @@ public class B15PContentState {
             }
         } else {
             isContentioning = false;
-            MyCommandManager.DEVICENAME = "B15P";
+            MyCommandManager.DEVICENAME = (WatchUtils.isEmpty(L4M.GetConnecteddName()) ? "B15P" : L4M.GetConnecteddName());
         }
     }
 
